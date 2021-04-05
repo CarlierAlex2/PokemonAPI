@@ -5,16 +5,16 @@ EXPOSE 5001
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["SneakerAPI.csproj", "./"]
-RUN dotnet restore "SneakerAPI.csproj"
+COPY ["PokemonAPI.csproj", "./"]
+RUN dotnet restore "PokemonAPI.csproj"
 COPY . .
 WORKDIR "/src/."
-RUN dotnet build "SneakerAPI.csproj" -c Release -o /app/build
+RUN dotnet build "PokemonAPI.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "SneakerAPI.csproj" -c Release -o /app/publish
+RUN dotnet publish "PokemonAPI.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "SneakerAPI.dll"]
+ENTRYPOINT ["dotnet", "PokemonAPI.dll"]

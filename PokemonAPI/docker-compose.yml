@@ -15,7 +15,7 @@ services:
         - ./db/data:/var/opt/mssql/data
 
   api:
-    image: sneakerapi
+    image: pokemonapi
     build:
       context: .
       dockerfile: ./Dockerfile

@@ -12,6 +12,11 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
+using PokemonAPI.Configuration;
+using PokemonAPI.Services;
+using PokemonAPI.Repositories;
+using PokemonAPI.Data;
+
 namespace PokemonAPI
 {
     public class Startup
@@ -26,8 +31,23 @@ namespace PokemonAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //add configurations
+            services.Configure<ConnectionStrings>(Configuration.GetSection("ConnectionStrings"));
 
+            //add db context
+            services.AddDbContext<PokemonContext>(); //nog altijd nodig voor migrations
+
+            //add controllers
             services.AddControllers();
+
+            // context
+            services.AddTransient<IPokemonContext, PokemonContext>();
+            // repositories
+            services.AddTransient<IPokemonTypeRepository, PokemonTypeRepository>();
+            // services
+            services.AddTransient<IPokemonService, PokemonService>();
+
+            //rest
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "PokemonAPI", Version = "v1" });
