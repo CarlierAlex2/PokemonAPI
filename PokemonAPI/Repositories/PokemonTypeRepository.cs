@@ -32,7 +32,7 @@ namespace PokemonAPI.Repositories
             return await _context.PokemonTypes
             .Where(pokemonType => pokemonType.Name == name)
             .Include(pokemonType => pokemonType.TypeEffects)
-            //.Include(pokemonType => pokemonType.TypeEffects)
+            .ThenInclude(typeEffect => typeEffect.TargetPokemonType)
             .SingleOrDefaultAsync();
         }
     }

@@ -7,15 +7,16 @@ namespace PokemonAPI.Models
 {
     public class TypeEffect
     {
-        public int UserPokemonTypeId { get; set; }
+        public int PokemonTypeId { get; set; }
         public int TargetPokemonTypeId { get; set; }
+        [JsonIgnore]
         public PokemonType TargetPokemonType {get; set;}
         public decimal Power { get; set; }
     }
 
     public class TypeEffectDTO
     {
-        public string UserPokemonType { get; set; }
+        public string PokemonType { get; set; }
         public string TargetPokemonType { get; set; }
         public decimal Power { get; set; }
     }

@@ -128,7 +128,7 @@ namespace PokemonAPI.Migrations
 
             modelBuilder.Entity("PokemonAPI.Models.TypeEffect", b =>
                 {
-                    b.Property<int>("UserPokemonTypeId")
+                    b.Property<int>("PokemonTypeId")
                         .HasColumnType("int");
 
                     b.Property<int>("TargetPokemonTypeId")
@@ -137,7 +137,7 @@ namespace PokemonAPI.Migrations
                     b.Property<decimal>("Power")
                         .HasColumnType("decimal(18,2)");
 
-                    b.HasKey("UserPokemonTypeId", "TargetPokemonTypeId");
+                    b.HasKey("PokemonTypeId", "TargetPokemonTypeId");
 
                     b.HasIndex("TargetPokemonTypeId");
 
@@ -146,703 +146,703 @@ namespace PokemonAPI.Migrations
                     b.HasData(
                         new
                         {
-                            UserPokemonTypeId = 1,
+                            PokemonTypeId = 1,
                             TargetPokemonTypeId = 11,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 1,
+                            PokemonTypeId = 1,
                             TargetPokemonTypeId = 17,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 1,
+                            PokemonTypeId = 1,
                             TargetPokemonTypeId = 15,
                             Power = 0m
                         },
                         new
                         {
-                            UserPokemonTypeId = 2,
+                            PokemonTypeId = 2,
                             TargetPokemonTypeId = 13,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 2,
+                            PokemonTypeId = 2,
                             TargetPokemonTypeId = 6,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 2,
+                            PokemonTypeId = 2,
                             TargetPokemonTypeId = 12,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 2,
+                            PokemonTypeId = 2,
                             TargetPokemonTypeId = 14,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 2,
+                            PokemonTypeId = 2,
                             TargetPokemonTypeId = 2,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 2,
+                            PokemonTypeId = 2,
                             TargetPokemonTypeId = 11,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 2,
+                            PokemonTypeId = 2,
                             TargetPokemonTypeId = 4,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 3,
+                            PokemonTypeId = 3,
                             TargetPokemonTypeId = 16,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 3,
+                            PokemonTypeId = 3,
                             TargetPokemonTypeId = 12,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 3,
+                            PokemonTypeId = 3,
                             TargetPokemonTypeId = 1,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 3,
+                            PokemonTypeId = 3,
                             TargetPokemonTypeId = 11,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 3,
+                            PokemonTypeId = 3,
                             TargetPokemonTypeId = 17,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 3,
+                            PokemonTypeId = 3,
                             TargetPokemonTypeId = 13,
                             Power = 0m
                         },
                         new
                         {
-                            UserPokemonTypeId = 3,
+                            PokemonTypeId = 3,
                             TargetPokemonTypeId = 18,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 3,
+                            PokemonTypeId = 3,
                             TargetPokemonTypeId = 5,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 3,
+                            PokemonTypeId = 3,
                             TargetPokemonTypeId = 7,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 3,
+                            PokemonTypeId = 3,
                             TargetPokemonTypeId = 10,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 3,
+                            PokemonTypeId = 3,
                             TargetPokemonTypeId = 15,
                             Power = 0m
                         },
                         new
                         {
-                            UserPokemonTypeId = 4,
+                            PokemonTypeId = 4,
                             TargetPokemonTypeId = 2,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 4,
+                            PokemonTypeId = 4,
                             TargetPokemonTypeId = 9,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 4,
+                            PokemonTypeId = 4,
                             TargetPokemonTypeId = 11,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 4,
+                            PokemonTypeId = 4,
                             TargetPokemonTypeId = 14,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 4,
+                            PokemonTypeId = 4,
                             TargetPokemonTypeId = 6,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 4,
+                            PokemonTypeId = 4,
                             TargetPokemonTypeId = 4,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 5,
+                            PokemonTypeId = 5,
                             TargetPokemonTypeId = 13,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 5,
+                            PokemonTypeId = 5,
                             TargetPokemonTypeId = 3,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 5,
+                            PokemonTypeId = 5,
                             TargetPokemonTypeId = 6,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 5,
+                            PokemonTypeId = 5,
                             TargetPokemonTypeId = 8,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 5,
+                            PokemonTypeId = 5,
                             TargetPokemonTypeId = 11,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 5,
+                            PokemonTypeId = 5,
                             TargetPokemonTypeId = 17,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 6,
+                            PokemonTypeId = 6,
                             TargetPokemonTypeId = 9,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 6,
+                            PokemonTypeId = 6,
                             TargetPokemonTypeId = 11,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 6,
+                            PokemonTypeId = 6,
                             TargetPokemonTypeId = 4,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 6,
+                            PokemonTypeId = 6,
                             TargetPokemonTypeId = 13,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 6,
+                            PokemonTypeId = 6,
                             TargetPokemonTypeId = 14,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 6,
+                            PokemonTypeId = 6,
                             TargetPokemonTypeId = 2,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 6,
+                            PokemonTypeId = 6,
                             TargetPokemonTypeId = 5,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 6,
+                            PokemonTypeId = 6,
                             TargetPokemonTypeId = 6,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 6,
+                            PokemonTypeId = 6,
                             TargetPokemonTypeId = 7,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 6,
+                            PokemonTypeId = 6,
                             TargetPokemonTypeId = 17,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 7,
+                            PokemonTypeId = 7,
                             TargetPokemonTypeId = 18,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 7,
+                            PokemonTypeId = 7,
                             TargetPokemonTypeId = 6,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 7,
+                            PokemonTypeId = 7,
                             TargetPokemonTypeId = 7,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 7,
+                            PokemonTypeId = 7,
                             TargetPokemonTypeId = 9,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 7,
+                            PokemonTypeId = 7,
                             TargetPokemonTypeId = 11,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 7,
+                            PokemonTypeId = 7,
                             TargetPokemonTypeId = 15,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 8,
+                            PokemonTypeId = 8,
                             TargetPokemonTypeId = 5,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 8,
+                            PokemonTypeId = 8,
                             TargetPokemonTypeId = 4,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 8,
+                            PokemonTypeId = 8,
                             TargetPokemonTypeId = 14,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 8,
+                            PokemonTypeId = 8,
                             TargetPokemonTypeId = 8,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 8,
+                            PokemonTypeId = 8,
                             TargetPokemonTypeId = 6,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 8,
+                            PokemonTypeId = 8,
                             TargetPokemonTypeId = 9,
                             Power = 0m
                         },
                         new
                         {
-                            UserPokemonTypeId = 9,
+                            PokemonTypeId = 9,
                             TargetPokemonTypeId = 8,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 9,
+                            PokemonTypeId = 9,
                             TargetPokemonTypeId = 2,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 9,
+                            PokemonTypeId = 9,
                             TargetPokemonTypeId = 7,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 9,
+                            PokemonTypeId = 9,
                             TargetPokemonTypeId = 11,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 9,
+                            PokemonTypeId = 9,
                             TargetPokemonTypeId = 17,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 9,
+                            PokemonTypeId = 9,
                             TargetPokemonTypeId = 13,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 9,
+                            PokemonTypeId = 9,
                             TargetPokemonTypeId = 6,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 9,
+                            PokemonTypeId = 9,
                             TargetPokemonTypeId = 5,
                             Power = 0m
                         },
                         new
                         {
-                            UserPokemonTypeId = 10,
+                            PokemonTypeId = 10,
                             TargetPokemonTypeId = 7,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 10,
+                            PokemonTypeId = 10,
                             TargetPokemonTypeId = 10,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 10,
+                            PokemonTypeId = 10,
                             TargetPokemonTypeId = 17,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 10,
+                            PokemonTypeId = 10,
                             TargetPokemonTypeId = 16,
                             Power = 0m
                         },
                         new
                         {
-                            UserPokemonTypeId = 11,
+                            PokemonTypeId = 11,
                             TargetPokemonTypeId = 13,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 11,
+                            PokemonTypeId = 11,
                             TargetPokemonTypeId = 2,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 11,
+                            PokemonTypeId = 11,
                             TargetPokemonTypeId = 5,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 11,
+                            PokemonTypeId = 11,
                             TargetPokemonTypeId = 12,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 11,
+                            PokemonTypeId = 11,
                             TargetPokemonTypeId = 3,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 11,
+                            PokemonTypeId = 11,
                             TargetPokemonTypeId = 9,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 11,
+                            PokemonTypeId = 11,
                             TargetPokemonTypeId = 17,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 12,
+                            PokemonTypeId = 12,
                             TargetPokemonTypeId = 14,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 12,
+                            PokemonTypeId = 12,
                             TargetPokemonTypeId = 5,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 12,
+                            PokemonTypeId = 12,
                             TargetPokemonTypeId = 6,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 12,
+                            PokemonTypeId = 12,
                             TargetPokemonTypeId = 9,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 12,
+                            PokemonTypeId = 12,
                             TargetPokemonTypeId = 2,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 12,
+                            PokemonTypeId = 12,
                             TargetPokemonTypeId = 12,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 12,
+                            PokemonTypeId = 12,
                             TargetPokemonTypeId = 17,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 12,
+                            PokemonTypeId = 12,
                             TargetPokemonTypeId = 4,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 13,
+                            PokemonTypeId = 13,
                             TargetPokemonTypeId = 16,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 13,
+                            PokemonTypeId = 13,
                             TargetPokemonTypeId = 6,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 13,
+                            PokemonTypeId = 13,
                             TargetPokemonTypeId = 10,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 13,
+                            PokemonTypeId = 13,
                             TargetPokemonTypeId = 18,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 13,
+                            PokemonTypeId = 13,
                             TargetPokemonTypeId = 3,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 13,
+                            PokemonTypeId = 13,
                             TargetPokemonTypeId = 2,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 13,
+                            PokemonTypeId = 13,
                             TargetPokemonTypeId = 5,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 13,
+                            PokemonTypeId = 13,
                             TargetPokemonTypeId = 15,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 13,
+                            PokemonTypeId = 13,
                             TargetPokemonTypeId = 7,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 13,
+                            PokemonTypeId = 13,
                             TargetPokemonTypeId = 17,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 14,
+                            PokemonTypeId = 14,
                             TargetPokemonTypeId = 14,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 14,
+                            PokemonTypeId = 14,
                             TargetPokemonTypeId = 17,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 14,
+                            PokemonTypeId = 14,
                             TargetPokemonTypeId = 18,
                             Power = 0m
                         },
                         new
                         {
-                            UserPokemonTypeId = 15,
+                            PokemonTypeId = 15,
                             TargetPokemonTypeId = 15,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 15,
+                            PokemonTypeId = 15,
                             TargetPokemonTypeId = 10,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 15,
+                            PokemonTypeId = 15,
                             TargetPokemonTypeId = 16,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 15,
+                            PokemonTypeId = 15,
                             TargetPokemonTypeId = 1,
                             Power = 0m
                         },
                         new
                         {
-                            UserPokemonTypeId = 16,
+                            PokemonTypeId = 16,
                             TargetPokemonTypeId = 15,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 16,
+                            PokemonTypeId = 16,
                             TargetPokemonTypeId = 10,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 16,
+                            PokemonTypeId = 16,
                             TargetPokemonTypeId = 16,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 16,
+                            PokemonTypeId = 16,
                             TargetPokemonTypeId = 18,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 16,
+                            PokemonTypeId = 16,
                             TargetPokemonTypeId = 3,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 17,
+                            PokemonTypeId = 17,
                             TargetPokemonTypeId = 18,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 17,
+                            PokemonTypeId = 17,
                             TargetPokemonTypeId = 12,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 17,
+                            PokemonTypeId = 17,
                             TargetPokemonTypeId = 11,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 17,
+                            PokemonTypeId = 17,
                             TargetPokemonTypeId = 8,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 17,
+                            PokemonTypeId = 17,
                             TargetPokemonTypeId = 2,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 17,
+                            PokemonTypeId = 17,
                             TargetPokemonTypeId = 17,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 17,
+                            PokemonTypeId = 17,
                             TargetPokemonTypeId = 4,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 18,
+                            PokemonTypeId = 18,
                             TargetPokemonTypeId = 16,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 18,
+                            PokemonTypeId = 18,
                             TargetPokemonTypeId = 14,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 18,
+                            PokemonTypeId = 18,
                             TargetPokemonTypeId = 3,
                             Power = 2m
                         },
                         new
                         {
-                            UserPokemonTypeId = 18,
+                            PokemonTypeId = 18,
                             TargetPokemonTypeId = 2,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 18,
+                            PokemonTypeId = 18,
                             TargetPokemonTypeId = 7,
                             Power = 0.5m
                         },
                         new
                         {
-                            UserPokemonTypeId = 18,
+                            PokemonTypeId = 18,
                             TargetPokemonTypeId = 17,
                             Power = 0.5m
                         });
