@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "Yoep0KTesfwCeq7Y4yjkqum4VU5vbjAJzj1hMc15fGNBW7GfbPVrl60+cT4ipWOtwpFQQfnImk36kAZERzFGcg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\alexc\\Documents\\MCT\\Jaar2_2020_2021\\MCT_semester_4\\BackendDevelopment\\BackDev_Project\\2MCT4-AIE_CarlierAlex_BackendDevelopment_Project\\PokemonAPI\\PokemonAPI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\alexc\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\alexc\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\alexc\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
+    "C:\\Users\\alexc\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
+    "C:\\Users\\alexc\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
+    "C:\\Users\\alexc\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512"
+  ],
+  "logs": []
+}
