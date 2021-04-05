@@ -13,6 +13,7 @@ namespace PokemonAPI.Services
     public interface IPokemonService
     {
         Task<List<PokemonType>> GetPokemonTypes();
+        Task<PokemonType> GetPokemonTypeDetail(string name);
     }
 
     public class PokemonService : IPokemonService
@@ -27,6 +28,12 @@ namespace PokemonAPI.Services
         public async Task<List<PokemonType>> GetPokemonTypes()
         {
             var results = await _typeRepository.GetPokemonTypes();
+            return results;
+        }
+
+        public async Task<PokemonType> GetPokemonTypeDetail(string name)
+        {
+            var results = await _typeRepository.GetPokemonTypeDetail(name);
             return results;
         }
     }

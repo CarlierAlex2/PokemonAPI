@@ -44,6 +44,20 @@ namespace PokemonAPI.Controllers
                 return new StatusCodeResult(500);
             }
         }
+
+        [HttpGet]
+        [Route("type/{typeName}")]
+        public async Task<ActionResult<PokemonType>> GetPokemonTypeDetail(string typeName)
+        {
+            try{
+                PokemonType pokemonType = await _serviceTypes.GetPokemonTypeDetail(typeName);
+                return new OkObjectResult(pokemonType);
+            }
+            catch(Exception ex){
+                _logger.LogError(ex.Message);
+                return new StatusCodeResult(500);
+            }
+        }
         #endregion
     }
 }
