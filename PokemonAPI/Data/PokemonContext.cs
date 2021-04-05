@@ -38,6 +38,8 @@ namespace PokemonAPI.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<TypeEffect>().HasKey(cs => new { cs.PokemonTypeId, cs.TargetPokemonTypeId });
+            //modelBuilder.Entity<TypeEffect>().HasOne<PokemonType>().WithMany().HasForeignKey(e => e.TargetPokemonTypeId);
+            //modelBuilder.Entity<TypeEffect>().HasOne(t => t.TargetPokemonType).WithOne();
 
             List<PokemonType> listPokemonType = SeedPokemonTypes(modelBuilder);
             SeedTypeEffect(modelBuilder, listPokemonType);
@@ -91,6 +93,7 @@ namespace PokemonAPI.Data
                     var newEffect = new TypeEffect(){
                         PokemonTypeId = listPokemonType[userIndex].PokemonTypeId, 
                         TargetPokemonTypeId=listPokemonType[targetIndex].PokemonTypeId, 
+                        //TargetPokemonType=listPokemonType[targetIndex],
                         Power=power};
                     modelBuilder.Entity<TypeEffect>().HasData(newEffect);
                 }

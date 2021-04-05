@@ -33,8 +33,8 @@ namespace PokemonAPI.Services
 
         public async Task<PokemonType> GetPokemonTypeDetail(string name)
         {
-            var results = await _typeRepository.GetPokemonTypeDetail(name);
-            return results;
+            var result = await _typeRepository.GetPokemonTypeDetail(name);
+            return result;
         }
     }
 }

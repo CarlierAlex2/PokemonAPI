@@ -12,6 +12,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
+//to fix infinite loopin
+using Newtonsoft.Json;
+
 using PokemonAPI.Configuration;
 using PokemonAPI.Services;
 using PokemonAPI.Repositories;
@@ -38,7 +41,7 @@ namespace PokemonAPI
             services.AddDbContext<PokemonContext>(); //nog altijd nodig voor migrations
 
             //add controllers
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             // context
             services.AddTransient<IPokemonContext, PokemonContext>();

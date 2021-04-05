@@ -27,6 +27,14 @@ namespace PokemonAPI.Repositories
         {
             return await _context.PokemonTypes.ToListAsync();
         }
+
+        public async Task<PokemonType> GetPokemonTypeById(int id)
+        {
+            return await _context.PokemonTypes
+            .Where(pokemonType => pokemonType.PokemonTypeId == id)
+            .SingleOrDefaultAsync();
+        }
+
         public async Task<PokemonType> GetPokemonTypeDetail(string name)
         {
             return await _context.PokemonTypes

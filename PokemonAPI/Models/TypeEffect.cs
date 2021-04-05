@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
 namespace PokemonAPI.Models
@@ -8,8 +9,9 @@ namespace PokemonAPI.Models
     public class TypeEffect
     {
         public int PokemonTypeId { get; set; }
+        //[ForeignKey("TargetPokemonType")]
         public int TargetPokemonTypeId { get; set; }
-        [JsonIgnore]
+        //[ForeignKey("TargetPokemonTypeId")]
         public PokemonType TargetPokemonType {get; set;}
         public decimal Power { get; set; }
     }
