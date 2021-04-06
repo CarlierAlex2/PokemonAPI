@@ -46,6 +46,7 @@ namespace PokemonAPI.Repositories
             return await _context.Pokemons
             .Include(pokemon => pokemon.PokemonTypings)
             .ThenInclude(pokTyping => pokTyping.Typing)
+            .Where(p => p.PokemonTypings.Any(t => t.Typing.Name == typeName))
             .ToListAsync();
         }
     }
