@@ -3,31 +3,41 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Logging;
 
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
 using PokemonAPI.Models;
 using PokemonAPI.DTO;
 using PokemonAPI.Configuration;
-using System.Collections.Generic;
+
+using AutoMapper;
 
 namespace PokemonAPI.Data
 {
     public interface IPokemonContext
     {
-        DbSet<PokemonType> PokemonTypes { get; set; }
+        DbSet<Pokemon> Pokemons { get; set; }
+
+        DbSet<Typing> Typings { get; set; }
         DbSet<TypeEffect> TypeEffects { get; set; }
     }
 
     public class PokemonContext : DbContext, IPokemonContext
     {
-        public DbSet<PokemonType> PokemonTypes { get; set; }
+        private readonly IMapper _mapper;
+        public DbSet<Pokemon> Pokemons { get; set; }
+        public DbSet<Typing> Typings { get; set; }
         public DbSet<TypeEffect> TypeEffects { get; set; }
         private readonly ConnectionStrings _connectionStrings;
 
-        public PokemonContext(DbContextOptions<PokemonContext> options, IOptions<ConnectionStrings> connectionstrings) : base(options)
+        public PokemonContext(
+            DbContextOptions<PokemonContext> options, 
+            IOptions<ConnectionStrings> connectionstrings,
+            IMapper mapper) : base(options)
         {
             _connectionStrings = connectionstrings.Value;
+            _mapper = mapper;
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
@@ -38,89 +48,137 @@ namespace PokemonAPI.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<TypeEffect>().HasKey(cs => new { cs.PokemonTypeId, cs.TargetPokemonTypeId });
-            //modelBuilder.Entity<TypeEffect>().HasOne(t => t.PokemonType).WithMany().HasForeignKey(t => t.PokemonTypeId);
-            //modelBuilder.Entity<TypeEffect>().HasOne(t => t.TargetPokemonType).WithMany().HasForeignKey(t => t.TargetPokemonTypeId);
-
-            //modelBuilder.Entity<TypeEffect>().HasOne<PokemonType>().WithMany().HasForeignKey(e => e.TargetPokemonTypeId);
-            //modelBuilder.Entity<TypeEffect>().HasOne(t => t.TargetPokemonType).WithOne();
-
             //https://stackoverflow.com/questions/5559043/entity-framework-code-first-two-foreign-keys-from-same-table
             //https://forums.asp.net/t/2148073.aspx?What+is+the+alternative+to+WillCascadeOnDelete+in+EF+core
             //https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.deletebehavior?view=efcore-5.0
             modelBuilder.Entity<TypeEffect>()
-                    .HasOne(effect => effect.OffensePokemonType)
+                    .HasOne(effect => effect.OffenseTyping)
                     .WithMany(pokemon => pokemon.TypeOffense)
-                    .HasForeignKey(effect => effect.OffensePokemonTypeId)
+                    .HasForeignKey(effect => effect.OffenseTypingId)
                     .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<TypeEffect>()
-                    .HasOne(effect => effect.DefensePokemonType)
+                    .HasOne(effect => effect.DefenseTyping)
                     .WithMany(pokemon => pokemon.TypeDefense)
-                    .HasForeignKey(effect => effect.DefensePokemonTypeId)
+                    .HasForeignKey(effect => effect.DefenseTypingId)
                     .OnDelete(DeleteBehavior.NoAction);
 
-            List<PokemonType> listPokemonType = SeedPokemonTypes(modelBuilder);
-            SeedTypeEffect(modelBuilder, listPokemonType);
+
+            modelBuilder.Entity<PokemonTyping>().HasKey(cs => new { cs.PokemonId, cs.TypingId });
+
+            
+            modelBuilder.Entity<PokemonTyping>()
+                    .HasOne(pokType => pokType.Pokemon)
+                    .WithMany(pok => pok.PokemonTypings)
+                    .HasForeignKey(pokType => pokType.PokemonId)
+                    .OnDelete(DeleteBehavior.NoAction);
+            
+
+            modelBuilder.Entity<PokemonTyping>()
+                    .HasOne(pokType => pokType.Typing)
+                    .WithMany(typing => typing.PokemonTypings)
+                    .HasForeignKey(pokType => pokType.TypingId)
+                    .OnDelete(DeleteBehavior.NoAction);
+            
+
+
+            List<Typing> listTypings = SeedTypings(modelBuilder);
+            SeedTypeEffect(modelBuilder, listTypings);
+            SeedPokemons(modelBuilder, listTypings);
 
             base.OnModelCreating(modelBuilder);
         }
 
-        private List<PokemonType> SeedPokemonTypes(ModelBuilder modelBuilder)
+        private void SeedPokemons(ModelBuilder modelBuilder, List<Typing> listTypings)
         {
-            var listPokemonType = new List<PokemonType>();
-            listPokemonType.Add(new PokemonType() { PokemonTypeId = listPokemonType.Count + 1, Name = "Normal" });
-            listPokemonType.Add(new PokemonType() { PokemonTypeId = listPokemonType.Count + 1, Name = "Fire" });
-            listPokemonType.Add(new PokemonType() { PokemonTypeId = listPokemonType.Count + 1, Name = "Fighting" });
-            listPokemonType.Add(new PokemonType() { PokemonTypeId = listPokemonType.Count + 1, Name = "Water" });
+            var listPokemon = new List<PokemonDTO>();
+            listPokemon.Add(new PokemonDTO() { 
+                PokedexEntry = 306,
+                Name = "Aggron",
+                Generation = 3,
+                Types = new List<string>{"Steel","Rock"},
+                Classification = "Iron Armor Pokemon",
+                EggGroup = "Monster"
+                });
 
-            listPokemonType.Add(new PokemonType() { PokemonTypeId = listPokemonType.Count + 1, Name = "Flying" });
-            listPokemonType.Add(new PokemonType() { PokemonTypeId = listPokemonType.Count + 1, Name = "Grass" });
-            listPokemonType.Add(new PokemonType() { PokemonTypeId = listPokemonType.Count + 1, Name = "Poison" });
-            listPokemonType.Add(new PokemonType() { PokemonTypeId = listPokemonType.Count + 1, Name = "Electric" });
 
-            listPokemonType.Add(new PokemonType() { PokemonTypeId = listPokemonType.Count + 1, Name = "Ground" });
-            listPokemonType.Add(new PokemonType() { PokemonTypeId = listPokemonType.Count + 1, Name = "Psychic" });
-            listPokemonType.Add(new PokemonType() { PokemonTypeId = listPokemonType.Count + 1, Name = "Rock" });
-            listPokemonType.Add(new PokemonType() { PokemonTypeId = listPokemonType.Count + 1, Name = "Ice" });
-
-            listPokemonType.Add(new PokemonType() { PokemonTypeId = listPokemonType.Count + 1, Name = "Bug" });
-            listPokemonType.Add(new PokemonType() { PokemonTypeId = listPokemonType.Count + 1, Name = "Dragon" });
-            listPokemonType.Add(new PokemonType() { PokemonTypeId = listPokemonType.Count + 1, Name = "Ghost" });
-            listPokemonType.Add(new PokemonType() { PokemonTypeId = listPokemonType.Count + 1, Name = "Dark" });
-
-            listPokemonType.Add(new PokemonType() { PokemonTypeId = listPokemonType.Count + 1, Name = "Steel" });
-            listPokemonType.Add(new PokemonType() { PokemonTypeId = listPokemonType.Count + 1, Name = "Fairy" });
-
-            foreach (var pokemonType in listPokemonType)
+            for(int index = 0; index < listPokemon.Count; index++)
             {
-                modelBuilder.Entity<PokemonType>().HasData(pokemonType);
-            }
+                var pokemonDTO = listPokemon[index];
+                Pokemon pokemon = _mapper.Map<Pokemon>(pokemonDTO);
+                pokemon.PokemonId = index + 1;
+                var pokemonTypings = new List<PokemonTyping>();
+                foreach(var t in pokemonDTO.Types)
+                {
+                    var newPokemonTyping = new PokemonTyping(){
+                        PokemonId = pokemon.PokemonId,
+                        TypingId = listTypings.Find(typing => typing.Name == t).TypingId
+                        };
+                    pokemonTypings.Add(newPokemonTyping);
+                }
+                //pokemon.PokemonTypings = pokemonTypings;
 
-            return listPokemonType;
+
+                modelBuilder.Entity<Pokemon>().HasData(pokemon);
+                modelBuilder.Entity<PokemonTyping>().HasData(pokemonTypings);
+            }
         }
 
-        private void SeedTypeEffect(ModelBuilder modelBuilder, List<PokemonType> listPokemonType)
+        private List<Typing> SeedTypings(ModelBuilder modelBuilder)
+        {
+            var listTypings = new List<Typing>();
+            listTypings.Add(new Typing() { TypingId = listTypings.Count + 1, Name = "Normal" });
+            listTypings.Add(new Typing() { TypingId = listTypings.Count + 1, Name = "Fire" });
+            listTypings.Add(new Typing() { TypingId = listTypings.Count + 1, Name = "Fighting" });
+            listTypings.Add(new Typing() { TypingId = listTypings.Count + 1, Name = "Water" });
+
+            listTypings.Add(new Typing() { TypingId = listTypings.Count + 1, Name = "Flying" });
+            listTypings.Add(new Typing() { TypingId = listTypings.Count + 1, Name = "Grass" });
+            listTypings.Add(new Typing() { TypingId = listTypings.Count + 1, Name = "Poison" });
+            listTypings.Add(new Typing() { TypingId = listTypings.Count + 1, Name = "Electric" });
+
+            listTypings.Add(new Typing() { TypingId = listTypings.Count + 1, Name = "Ground" });
+            listTypings.Add(new Typing() { TypingId = listTypings.Count + 1, Name = "Psychic" });
+            listTypings.Add(new Typing() { TypingId = listTypings.Count + 1, Name = "Rock" });
+            listTypings.Add(new Typing() { TypingId = listTypings.Count + 1, Name = "Ice" });
+
+            listTypings.Add(new Typing() { TypingId = listTypings.Count + 1, Name = "Bug" });
+            listTypings.Add(new Typing() { TypingId = listTypings.Count + 1, Name = "Dragon" });
+            listTypings.Add(new Typing() { TypingId = listTypings.Count + 1, Name = "Ghost" });
+            listTypings.Add(new Typing() { TypingId = listTypings.Count + 1, Name = "Dark" });
+
+            listTypings.Add(new Typing() { TypingId = listTypings.Count + 1, Name = "Steel" });
+            listTypings.Add(new Typing() { TypingId = listTypings.Count + 1, Name = "Fairy" });
+
+            foreach (var Typing in listTypings)
+            {
+                modelBuilder.Entity<Typing>().HasData(Typing);
+            }
+
+            return listTypings;
+        }
+
+        private void SeedTypeEffect(ModelBuilder modelBuilder, List<Typing> listTypings)
         {
             // Add effects --------------------------
             int id = 1;
 
             foreach (var effect in CreateEffectList())
             {
-                int offenseIndex = listPokemonType.FindIndex(t => t.Name == effect.Attack);
-                int defenseIndex = listPokemonType.FindIndex(t => t.Name == effect.Defend);
+                int offenseIndex = listTypings.FindIndex(t => t.Name == effect.Attack);
+                int defenseIndex = listTypings.FindIndex(t => t.Name == effect.Defend);
                 decimal power = effect.Power;
 
                 if(offenseIndex >= 0 && defenseIndex >= 0 && power >= 0)
                 {
-                    PokemonType offenseType = listPokemonType[offenseIndex];
-                    PokemonType defenseType = listPokemonType[defenseIndex];
+                    Typing offenseType = listTypings[offenseIndex];
+                    Typing defenseType = listTypings[defenseIndex];
 
                     modelBuilder.Entity<TypeEffect>().HasData(
                         new TypeEffect(){
                         TypeEffectId = id,
-                        OffensePokemonTypeId = offenseType.PokemonTypeId, 
-                        DefensePokemonTypeId = defenseType.PokemonTypeId, 
+                        OffenseTypingId = offenseType.TypingId, 
+                        DefenseTypingId = defenseType.TypingId, 
                         Power = power}
                     );
                 }

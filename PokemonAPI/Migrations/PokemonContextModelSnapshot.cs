@@ -18,111 +18,69 @@ namespace PokemonAPI.Migrations
                 .HasAnnotation("ProductVersion", "5.0.4")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("PokemonAPI.Models.PokemonType", b =>
+            modelBuilder.Entity("PokemonAPI.Models.Pokemon", b =>
                 {
-                    b.Property<int>("PokemonTypeId")
+                    b.Property<int>("PokemonId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Classification")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EggGroup")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Generation")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("PokemonTypeId");
+                    b.Property<int>("PokedexEntry")
+                        .HasColumnType("int");
 
-                    b.ToTable("PokemonTypes");
+                    b.HasKey("PokemonId");
+
+                    b.ToTable("Pokemons");
 
                     b.HasData(
                         new
                         {
-                            PokemonTypeId = 1,
-                            Name = "Normal"
+                            PokemonId = 1,
+                            Classification = "Iron Armor Pokemon",
+                            EggGroup = "Monster",
+                            Generation = 3,
+                            Name = "Aggron",
+                            PokedexEntry = 306
+                        });
+                });
+
+            modelBuilder.Entity("PokemonAPI.Models.PokemonTyping", b =>
+                {
+                    b.Property<int>("PokemonId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TypingId")
+                        .HasColumnType("int");
+
+                    b.HasKey("PokemonId", "TypingId");
+
+                    b.HasIndex("TypingId");
+
+                    b.ToTable("PokemonTyping");
+
+                    b.HasData(
+                        new
+                        {
+                            PokemonId = 1,
+                            TypingId = 17
                         },
                         new
                         {
-                            PokemonTypeId = 2,
-                            Name = "Fire"
-                        },
-                        new
-                        {
-                            PokemonTypeId = 3,
-                            Name = "Fighting"
-                        },
-                        new
-                        {
-                            PokemonTypeId = 4,
-                            Name = "Water"
-                        },
-                        new
-                        {
-                            PokemonTypeId = 5,
-                            Name = "Flying"
-                        },
-                        new
-                        {
-                            PokemonTypeId = 6,
-                            Name = "Grass"
-                        },
-                        new
-                        {
-                            PokemonTypeId = 7,
-                            Name = "Poison"
-                        },
-                        new
-                        {
-                            PokemonTypeId = 8,
-                            Name = "Electric"
-                        },
-                        new
-                        {
-                            PokemonTypeId = 9,
-                            Name = "Ground"
-                        },
-                        new
-                        {
-                            PokemonTypeId = 10,
-                            Name = "Psychic"
-                        },
-                        new
-                        {
-                            PokemonTypeId = 11,
-                            Name = "Rock"
-                        },
-                        new
-                        {
-                            PokemonTypeId = 12,
-                            Name = "Ice"
-                        },
-                        new
-                        {
-                            PokemonTypeId = 13,
-                            Name = "Bug"
-                        },
-                        new
-                        {
-                            PokemonTypeId = 14,
-                            Name = "Dragon"
-                        },
-                        new
-                        {
-                            PokemonTypeId = 15,
-                            Name = "Ghost"
-                        },
-                        new
-                        {
-                            PokemonTypeId = 16,
-                            Name = "Dark"
-                        },
-                        new
-                        {
-                            PokemonTypeId = 17,
-                            Name = "Steel"
-                        },
-                        new
-                        {
-                            PokemonTypeId = 18,
-                            Name = "Fairy"
+                            PokemonId = 1,
+                            TypingId = 11
                         });
                 });
 
@@ -133,10 +91,10 @@ namespace PokemonAPI.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("DefensePokemonTypeId")
+                    b.Property<int>("DefenseTypingId")
                         .HasColumnType("int");
 
-                    b.Property<int>("OffensePokemonTypeId")
+                    b.Property<int>("OffenseTypingId")
                         .HasColumnType("int");
 
                     b.Property<decimal>("Power")
@@ -144,9 +102,9 @@ namespace PokemonAPI.Migrations
 
                     b.HasKey("TypeEffectId");
 
-                    b.HasIndex("DefensePokemonTypeId");
+                    b.HasIndex("DefenseTypingId");
 
-                    b.HasIndex("OffensePokemonTypeId");
+                    b.HasIndex("OffenseTypingId");
 
                     b.ToTable("TypeEffects");
 
@@ -154,845 +112,979 @@ namespace PokemonAPI.Migrations
                         new
                         {
                             TypeEffectId = 1,
-                            DefensePokemonTypeId = 11,
-                            OffensePokemonTypeId = 1,
+                            DefenseTypingId = 11,
+                            OffenseTypingId = 1,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 2,
-                            DefensePokemonTypeId = 17,
-                            OffensePokemonTypeId = 1,
+                            DefenseTypingId = 17,
+                            OffenseTypingId = 1,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 3,
-                            DefensePokemonTypeId = 15,
-                            OffensePokemonTypeId = 1,
+                            DefenseTypingId = 15,
+                            OffenseTypingId = 1,
                             Power = 0m
                         },
                         new
                         {
                             TypeEffectId = 4,
-                            DefensePokemonTypeId = 13,
-                            OffensePokemonTypeId = 2,
+                            DefenseTypingId = 13,
+                            OffenseTypingId = 2,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 5,
-                            DefensePokemonTypeId = 6,
-                            OffensePokemonTypeId = 2,
+                            DefenseTypingId = 6,
+                            OffenseTypingId = 2,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 6,
-                            DefensePokemonTypeId = 12,
-                            OffensePokemonTypeId = 2,
+                            DefenseTypingId = 12,
+                            OffenseTypingId = 2,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 7,
-                            DefensePokemonTypeId = 14,
-                            OffensePokemonTypeId = 2,
+                            DefenseTypingId = 14,
+                            OffenseTypingId = 2,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 8,
-                            DefensePokemonTypeId = 2,
-                            OffensePokemonTypeId = 2,
+                            DefenseTypingId = 2,
+                            OffenseTypingId = 2,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 9,
-                            DefensePokemonTypeId = 11,
-                            OffensePokemonTypeId = 2,
+                            DefenseTypingId = 11,
+                            OffenseTypingId = 2,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 10,
-                            DefensePokemonTypeId = 4,
-                            OffensePokemonTypeId = 2,
+                            DefenseTypingId = 4,
+                            OffenseTypingId = 2,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 11,
-                            DefensePokemonTypeId = 16,
-                            OffensePokemonTypeId = 3,
+                            DefenseTypingId = 16,
+                            OffenseTypingId = 3,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 12,
-                            DefensePokemonTypeId = 12,
-                            OffensePokemonTypeId = 3,
+                            DefenseTypingId = 12,
+                            OffenseTypingId = 3,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 13,
-                            DefensePokemonTypeId = 1,
-                            OffensePokemonTypeId = 3,
+                            DefenseTypingId = 1,
+                            OffenseTypingId = 3,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 14,
-                            DefensePokemonTypeId = 11,
-                            OffensePokemonTypeId = 3,
+                            DefenseTypingId = 11,
+                            OffenseTypingId = 3,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 15,
-                            DefensePokemonTypeId = 17,
-                            OffensePokemonTypeId = 3,
+                            DefenseTypingId = 17,
+                            OffenseTypingId = 3,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 16,
-                            DefensePokemonTypeId = 13,
-                            OffensePokemonTypeId = 3,
+                            DefenseTypingId = 13,
+                            OffenseTypingId = 3,
                             Power = 0m
                         },
                         new
                         {
                             TypeEffectId = 17,
-                            DefensePokemonTypeId = 18,
-                            OffensePokemonTypeId = 3,
+                            DefenseTypingId = 18,
+                            OffenseTypingId = 3,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 18,
-                            DefensePokemonTypeId = 5,
-                            OffensePokemonTypeId = 3,
+                            DefenseTypingId = 5,
+                            OffenseTypingId = 3,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 19,
-                            DefensePokemonTypeId = 7,
-                            OffensePokemonTypeId = 3,
+                            DefenseTypingId = 7,
+                            OffenseTypingId = 3,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 20,
-                            DefensePokemonTypeId = 10,
-                            OffensePokemonTypeId = 3,
+                            DefenseTypingId = 10,
+                            OffenseTypingId = 3,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 21,
-                            DefensePokemonTypeId = 15,
-                            OffensePokemonTypeId = 3,
+                            DefenseTypingId = 15,
+                            OffenseTypingId = 3,
                             Power = 0m
                         },
                         new
                         {
                             TypeEffectId = 22,
-                            DefensePokemonTypeId = 2,
-                            OffensePokemonTypeId = 4,
+                            DefenseTypingId = 2,
+                            OffenseTypingId = 4,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 23,
-                            DefensePokemonTypeId = 9,
-                            OffensePokemonTypeId = 4,
+                            DefenseTypingId = 9,
+                            OffenseTypingId = 4,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 24,
-                            DefensePokemonTypeId = 11,
-                            OffensePokemonTypeId = 4,
+                            DefenseTypingId = 11,
+                            OffenseTypingId = 4,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 25,
-                            DefensePokemonTypeId = 14,
-                            OffensePokemonTypeId = 4,
+                            DefenseTypingId = 14,
+                            OffenseTypingId = 4,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 26,
-                            DefensePokemonTypeId = 6,
-                            OffensePokemonTypeId = 4,
+                            DefenseTypingId = 6,
+                            OffenseTypingId = 4,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 27,
-                            DefensePokemonTypeId = 4,
-                            OffensePokemonTypeId = 4,
+                            DefenseTypingId = 4,
+                            OffenseTypingId = 4,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 28,
-                            DefensePokemonTypeId = 13,
-                            OffensePokemonTypeId = 5,
+                            DefenseTypingId = 13,
+                            OffenseTypingId = 5,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 29,
-                            DefensePokemonTypeId = 3,
-                            OffensePokemonTypeId = 5,
+                            DefenseTypingId = 3,
+                            OffenseTypingId = 5,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 30,
-                            DefensePokemonTypeId = 6,
-                            OffensePokemonTypeId = 5,
+                            DefenseTypingId = 6,
+                            OffenseTypingId = 5,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 31,
-                            DefensePokemonTypeId = 8,
-                            OffensePokemonTypeId = 5,
+                            DefenseTypingId = 8,
+                            OffenseTypingId = 5,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 32,
-                            DefensePokemonTypeId = 11,
-                            OffensePokemonTypeId = 5,
+                            DefenseTypingId = 11,
+                            OffenseTypingId = 5,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 33,
-                            DefensePokemonTypeId = 17,
-                            OffensePokemonTypeId = 5,
+                            DefenseTypingId = 17,
+                            OffenseTypingId = 5,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 34,
-                            DefensePokemonTypeId = 9,
-                            OffensePokemonTypeId = 6,
+                            DefenseTypingId = 9,
+                            OffenseTypingId = 6,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 35,
-                            DefensePokemonTypeId = 11,
-                            OffensePokemonTypeId = 6,
+                            DefenseTypingId = 11,
+                            OffenseTypingId = 6,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 36,
-                            DefensePokemonTypeId = 4,
-                            OffensePokemonTypeId = 6,
+                            DefenseTypingId = 4,
+                            OffenseTypingId = 6,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 37,
-                            DefensePokemonTypeId = 13,
-                            OffensePokemonTypeId = 6,
+                            DefenseTypingId = 13,
+                            OffenseTypingId = 6,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 38,
-                            DefensePokemonTypeId = 14,
-                            OffensePokemonTypeId = 6,
+                            DefenseTypingId = 14,
+                            OffenseTypingId = 6,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 39,
-                            DefensePokemonTypeId = 2,
-                            OffensePokemonTypeId = 6,
+                            DefenseTypingId = 2,
+                            OffenseTypingId = 6,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 40,
-                            DefensePokemonTypeId = 5,
-                            OffensePokemonTypeId = 6,
+                            DefenseTypingId = 5,
+                            OffenseTypingId = 6,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 41,
-                            DefensePokemonTypeId = 6,
-                            OffensePokemonTypeId = 6,
+                            DefenseTypingId = 6,
+                            OffenseTypingId = 6,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 42,
-                            DefensePokemonTypeId = 7,
-                            OffensePokemonTypeId = 6,
+                            DefenseTypingId = 7,
+                            OffenseTypingId = 6,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 43,
-                            DefensePokemonTypeId = 17,
-                            OffensePokemonTypeId = 6,
+                            DefenseTypingId = 17,
+                            OffenseTypingId = 6,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 44,
-                            DefensePokemonTypeId = 18,
-                            OffensePokemonTypeId = 7,
+                            DefenseTypingId = 18,
+                            OffenseTypingId = 7,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 45,
-                            DefensePokemonTypeId = 6,
-                            OffensePokemonTypeId = 7,
+                            DefenseTypingId = 6,
+                            OffenseTypingId = 7,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 46,
-                            DefensePokemonTypeId = 7,
-                            OffensePokemonTypeId = 7,
+                            DefenseTypingId = 7,
+                            OffenseTypingId = 7,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 47,
-                            DefensePokemonTypeId = 9,
-                            OffensePokemonTypeId = 7,
+                            DefenseTypingId = 9,
+                            OffenseTypingId = 7,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 48,
-                            DefensePokemonTypeId = 11,
-                            OffensePokemonTypeId = 7,
+                            DefenseTypingId = 11,
+                            OffenseTypingId = 7,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 49,
-                            DefensePokemonTypeId = 15,
-                            OffensePokemonTypeId = 7,
+                            DefenseTypingId = 15,
+                            OffenseTypingId = 7,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 50,
-                            DefensePokemonTypeId = 5,
-                            OffensePokemonTypeId = 8,
+                            DefenseTypingId = 5,
+                            OffenseTypingId = 8,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 51,
-                            DefensePokemonTypeId = 4,
-                            OffensePokemonTypeId = 8,
+                            DefenseTypingId = 4,
+                            OffenseTypingId = 8,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 52,
-                            DefensePokemonTypeId = 14,
-                            OffensePokemonTypeId = 8,
+                            DefenseTypingId = 14,
+                            OffenseTypingId = 8,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 53,
-                            DefensePokemonTypeId = 8,
-                            OffensePokemonTypeId = 8,
+                            DefenseTypingId = 8,
+                            OffenseTypingId = 8,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 54,
-                            DefensePokemonTypeId = 6,
-                            OffensePokemonTypeId = 8,
+                            DefenseTypingId = 6,
+                            OffenseTypingId = 8,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 55,
-                            DefensePokemonTypeId = 9,
-                            OffensePokemonTypeId = 8,
+                            DefenseTypingId = 9,
+                            OffenseTypingId = 8,
                             Power = 0m
                         },
                         new
                         {
                             TypeEffectId = 56,
-                            DefensePokemonTypeId = 8,
-                            OffensePokemonTypeId = 9,
+                            DefenseTypingId = 8,
+                            OffenseTypingId = 9,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 57,
-                            DefensePokemonTypeId = 2,
-                            OffensePokemonTypeId = 9,
+                            DefenseTypingId = 2,
+                            OffenseTypingId = 9,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 58,
-                            DefensePokemonTypeId = 7,
-                            OffensePokemonTypeId = 9,
+                            DefenseTypingId = 7,
+                            OffenseTypingId = 9,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 59,
-                            DefensePokemonTypeId = 11,
-                            OffensePokemonTypeId = 9,
+                            DefenseTypingId = 11,
+                            OffenseTypingId = 9,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 60,
-                            DefensePokemonTypeId = 17,
-                            OffensePokemonTypeId = 9,
+                            DefenseTypingId = 17,
+                            OffenseTypingId = 9,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 61,
-                            DefensePokemonTypeId = 13,
-                            OffensePokemonTypeId = 9,
+                            DefenseTypingId = 13,
+                            OffenseTypingId = 9,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 62,
-                            DefensePokemonTypeId = 6,
-                            OffensePokemonTypeId = 9,
+                            DefenseTypingId = 6,
+                            OffenseTypingId = 9,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 63,
-                            DefensePokemonTypeId = 5,
-                            OffensePokemonTypeId = 9,
+                            DefenseTypingId = 5,
+                            OffenseTypingId = 9,
                             Power = 0m
                         },
                         new
                         {
                             TypeEffectId = 65,
-                            DefensePokemonTypeId = 7,
-                            OffensePokemonTypeId = 10,
+                            DefenseTypingId = 7,
+                            OffenseTypingId = 10,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 66,
-                            DefensePokemonTypeId = 10,
-                            OffensePokemonTypeId = 10,
+                            DefenseTypingId = 10,
+                            OffenseTypingId = 10,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 67,
-                            DefensePokemonTypeId = 17,
-                            OffensePokemonTypeId = 10,
+                            DefenseTypingId = 17,
+                            OffenseTypingId = 10,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 68,
-                            DefensePokemonTypeId = 16,
-                            OffensePokemonTypeId = 10,
+                            DefenseTypingId = 16,
+                            OffenseTypingId = 10,
                             Power = 0m
                         },
                         new
                         {
                             TypeEffectId = 69,
-                            DefensePokemonTypeId = 13,
-                            OffensePokemonTypeId = 11,
+                            DefenseTypingId = 13,
+                            OffenseTypingId = 11,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 70,
-                            DefensePokemonTypeId = 2,
-                            OffensePokemonTypeId = 11,
+                            DefenseTypingId = 2,
+                            OffenseTypingId = 11,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 71,
-                            DefensePokemonTypeId = 5,
-                            OffensePokemonTypeId = 11,
+                            DefenseTypingId = 5,
+                            OffenseTypingId = 11,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 72,
-                            DefensePokemonTypeId = 12,
-                            OffensePokemonTypeId = 11,
+                            DefenseTypingId = 12,
+                            OffenseTypingId = 11,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 73,
-                            DefensePokemonTypeId = 3,
-                            OffensePokemonTypeId = 11,
+                            DefenseTypingId = 3,
+                            OffenseTypingId = 11,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 74,
-                            DefensePokemonTypeId = 9,
-                            OffensePokemonTypeId = 11,
+                            DefenseTypingId = 9,
+                            OffenseTypingId = 11,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 75,
-                            DefensePokemonTypeId = 17,
-                            OffensePokemonTypeId = 11,
+                            DefenseTypingId = 17,
+                            OffenseTypingId = 11,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 76,
-                            DefensePokemonTypeId = 14,
-                            OffensePokemonTypeId = 12,
+                            DefenseTypingId = 14,
+                            OffenseTypingId = 12,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 77,
-                            DefensePokemonTypeId = 5,
-                            OffensePokemonTypeId = 12,
+                            DefenseTypingId = 5,
+                            OffenseTypingId = 12,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 78,
-                            DefensePokemonTypeId = 6,
-                            OffensePokemonTypeId = 12,
+                            DefenseTypingId = 6,
+                            OffenseTypingId = 12,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 79,
-                            DefensePokemonTypeId = 9,
-                            OffensePokemonTypeId = 12,
+                            DefenseTypingId = 9,
+                            OffenseTypingId = 12,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 80,
-                            DefensePokemonTypeId = 2,
-                            OffensePokemonTypeId = 12,
+                            DefenseTypingId = 2,
+                            OffenseTypingId = 12,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 81,
-                            DefensePokemonTypeId = 12,
-                            OffensePokemonTypeId = 12,
+                            DefenseTypingId = 12,
+                            OffenseTypingId = 12,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 82,
-                            DefensePokemonTypeId = 17,
-                            OffensePokemonTypeId = 12,
+                            DefenseTypingId = 17,
+                            OffenseTypingId = 12,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 83,
-                            DefensePokemonTypeId = 4,
-                            OffensePokemonTypeId = 12,
+                            DefenseTypingId = 4,
+                            OffenseTypingId = 12,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 84,
-                            DefensePokemonTypeId = 16,
-                            OffensePokemonTypeId = 13,
+                            DefenseTypingId = 16,
+                            OffenseTypingId = 13,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 85,
-                            DefensePokemonTypeId = 6,
-                            OffensePokemonTypeId = 13,
+                            DefenseTypingId = 6,
+                            OffenseTypingId = 13,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 86,
-                            DefensePokemonTypeId = 10,
-                            OffensePokemonTypeId = 13,
+                            DefenseTypingId = 10,
+                            OffenseTypingId = 13,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 87,
-                            DefensePokemonTypeId = 18,
-                            OffensePokemonTypeId = 13,
+                            DefenseTypingId = 18,
+                            OffenseTypingId = 13,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 88,
-                            DefensePokemonTypeId = 3,
-                            OffensePokemonTypeId = 13,
+                            DefenseTypingId = 3,
+                            OffenseTypingId = 13,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 89,
-                            DefensePokemonTypeId = 2,
-                            OffensePokemonTypeId = 13,
+                            DefenseTypingId = 2,
+                            OffenseTypingId = 13,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 90,
-                            DefensePokemonTypeId = 5,
-                            OffensePokemonTypeId = 13,
+                            DefenseTypingId = 5,
+                            OffenseTypingId = 13,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 91,
-                            DefensePokemonTypeId = 15,
-                            OffensePokemonTypeId = 13,
+                            DefenseTypingId = 15,
+                            OffenseTypingId = 13,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 92,
-                            DefensePokemonTypeId = 7,
-                            OffensePokemonTypeId = 13,
+                            DefenseTypingId = 7,
+                            OffenseTypingId = 13,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 93,
-                            DefensePokemonTypeId = 17,
-                            OffensePokemonTypeId = 13,
+                            DefenseTypingId = 17,
+                            OffenseTypingId = 13,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 94,
-                            DefensePokemonTypeId = 14,
-                            OffensePokemonTypeId = 14,
+                            DefenseTypingId = 14,
+                            OffenseTypingId = 14,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 95,
-                            DefensePokemonTypeId = 17,
-                            OffensePokemonTypeId = 14,
+                            DefenseTypingId = 17,
+                            OffenseTypingId = 14,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 96,
-                            DefensePokemonTypeId = 18,
-                            OffensePokemonTypeId = 14,
+                            DefenseTypingId = 18,
+                            OffenseTypingId = 14,
                             Power = 0m
                         },
                         new
                         {
                             TypeEffectId = 97,
-                            DefensePokemonTypeId = 15,
-                            OffensePokemonTypeId = 15,
+                            DefenseTypingId = 15,
+                            OffenseTypingId = 15,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 98,
-                            DefensePokemonTypeId = 10,
-                            OffensePokemonTypeId = 15,
+                            DefenseTypingId = 10,
+                            OffenseTypingId = 15,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 99,
-                            DefensePokemonTypeId = 16,
-                            OffensePokemonTypeId = 15,
+                            DefenseTypingId = 16,
+                            OffenseTypingId = 15,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 100,
-                            DefensePokemonTypeId = 1,
-                            OffensePokemonTypeId = 15,
+                            DefenseTypingId = 1,
+                            OffenseTypingId = 15,
                             Power = 0m
                         },
                         new
                         {
                             TypeEffectId = 101,
-                            DefensePokemonTypeId = 15,
-                            OffensePokemonTypeId = 16,
+                            DefenseTypingId = 15,
+                            OffenseTypingId = 16,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 102,
-                            DefensePokemonTypeId = 10,
-                            OffensePokemonTypeId = 16,
+                            DefenseTypingId = 10,
+                            OffenseTypingId = 16,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 103,
-                            DefensePokemonTypeId = 16,
-                            OffensePokemonTypeId = 16,
+                            DefenseTypingId = 16,
+                            OffenseTypingId = 16,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 104,
-                            DefensePokemonTypeId = 18,
-                            OffensePokemonTypeId = 16,
+                            DefenseTypingId = 18,
+                            OffenseTypingId = 16,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 105,
-                            DefensePokemonTypeId = 3,
-                            OffensePokemonTypeId = 16,
+                            DefenseTypingId = 3,
+                            OffenseTypingId = 16,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 106,
-                            DefensePokemonTypeId = 18,
-                            OffensePokemonTypeId = 17,
+                            DefenseTypingId = 18,
+                            OffenseTypingId = 17,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 107,
-                            DefensePokemonTypeId = 12,
-                            OffensePokemonTypeId = 17,
+                            DefenseTypingId = 12,
+                            OffenseTypingId = 17,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 108,
-                            DefensePokemonTypeId = 11,
-                            OffensePokemonTypeId = 17,
+                            DefenseTypingId = 11,
+                            OffenseTypingId = 17,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 109,
-                            DefensePokemonTypeId = 8,
-                            OffensePokemonTypeId = 17,
+                            DefenseTypingId = 8,
+                            OffenseTypingId = 17,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 110,
-                            DefensePokemonTypeId = 2,
-                            OffensePokemonTypeId = 17,
+                            DefenseTypingId = 2,
+                            OffenseTypingId = 17,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 111,
-                            DefensePokemonTypeId = 17,
-                            OffensePokemonTypeId = 17,
+                            DefenseTypingId = 17,
+                            OffenseTypingId = 17,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 112,
-                            DefensePokemonTypeId = 4,
-                            OffensePokemonTypeId = 17,
+                            DefenseTypingId = 4,
+                            OffenseTypingId = 17,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 113,
-                            DefensePokemonTypeId = 16,
-                            OffensePokemonTypeId = 18,
+                            DefenseTypingId = 16,
+                            OffenseTypingId = 18,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 114,
-                            DefensePokemonTypeId = 14,
-                            OffensePokemonTypeId = 18,
+                            DefenseTypingId = 14,
+                            OffenseTypingId = 18,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 115,
-                            DefensePokemonTypeId = 3,
-                            OffensePokemonTypeId = 18,
+                            DefenseTypingId = 3,
+                            OffenseTypingId = 18,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 116,
-                            DefensePokemonTypeId = 2,
-                            OffensePokemonTypeId = 18,
+                            DefenseTypingId = 2,
+                            OffenseTypingId = 18,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 117,
-                            DefensePokemonTypeId = 7,
-                            OffensePokemonTypeId = 18,
+                            DefenseTypingId = 7,
+                            OffenseTypingId = 18,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 118,
-                            DefensePokemonTypeId = 17,
-                            OffensePokemonTypeId = 18,
+                            DefenseTypingId = 17,
+                            OffenseTypingId = 18,
                             Power = 0.5m
                         });
                 });
 
-            modelBuilder.Entity("PokemonAPI.Models.TypeEffect", b =>
+            modelBuilder.Entity("PokemonAPI.Models.Typing", b =>
                 {
-                    b.HasOne("PokemonAPI.Models.PokemonType", "DefensePokemonType")
-                        .WithMany("TypeDefense")
-                        .HasForeignKey("DefensePokemonTypeId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                    b.Property<int>("TypingId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.HasOne("PokemonAPI.Models.PokemonType", "OffensePokemonType")
-                        .WithMany("TypeOffense")
-                        .HasForeignKey("OffensePokemonTypeId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Navigation("DefensePokemonType");
+                    b.HasKey("TypingId");
 
-                    b.Navigation("OffensePokemonType");
+                    b.ToTable("Typings");
+
+                    b.HasData(
+                        new
+                        {
+                            TypingId = 1,
+                            Name = "Normal"
+                        },
+                        new
+                        {
+                            TypingId = 2,
+                            Name = "Fire"
+                        },
+                        new
+                        {
+                            TypingId = 3,
+                            Name = "Fighting"
+                        },
+                        new
+                        {
+                            TypingId = 4,
+                            Name = "Water"
+                        },
+                        new
+                        {
+                            TypingId = 5,
+                            Name = "Flying"
+                        },
+                        new
+                        {
+                            TypingId = 6,
+                            Name = "Grass"
+                        },
+                        new
+                        {
+                            TypingId = 7,
+                            Name = "Poison"
+                        },
+                        new
+                        {
+                            TypingId = 8,
+                            Name = "Electric"
+                        },
+                        new
+                        {
+                            TypingId = 9,
+                            Name = "Ground"
+                        },
+                        new
+                        {
+                            TypingId = 10,
+                            Name = "Psychic"
+                        },
+                        new
+                        {
+                            TypingId = 11,
+                            Name = "Rock"
+                        },
+                        new
+                        {
+                            TypingId = 12,
+                            Name = "Ice"
+                        },
+                        new
+                        {
+                            TypingId = 13,
+                            Name = "Bug"
+                        },
+                        new
+                        {
+                            TypingId = 14,
+                            Name = "Dragon"
+                        },
+                        new
+                        {
+                            TypingId = 15,
+                            Name = "Ghost"
+                        },
+                        new
+                        {
+                            TypingId = 16,
+                            Name = "Dark"
+                        },
+                        new
+                        {
+                            TypingId = 17,
+                            Name = "Steel"
+                        },
+                        new
+                        {
+                            TypingId = 18,
+                            Name = "Fairy"
+                        });
                 });
 
-            modelBuilder.Entity("PokemonAPI.Models.PokemonType", b =>
+            modelBuilder.Entity("PokemonAPI.Models.PokemonTyping", b =>
                 {
+                    b.HasOne("PokemonAPI.Models.Pokemon", "Pokemon")
+                        .WithMany("PokemonTypings")
+                        .HasForeignKey("PokemonId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("PokemonAPI.Models.Typing", "Typing")
+                        .WithMany("PokemonTypings")
+                        .HasForeignKey("TypingId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Pokemon");
+
+                    b.Navigation("Typing");
+                });
+
+            modelBuilder.Entity("PokemonAPI.Models.TypeEffect", b =>
+                {
+                    b.HasOne("PokemonAPI.Models.Typing", "DefenseTyping")
+                        .WithMany("TypeDefense")
+                        .HasForeignKey("DefenseTypingId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("PokemonAPI.Models.Typing", "OffenseTyping")
+                        .WithMany("TypeOffense")
+                        .HasForeignKey("OffenseTypingId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("DefenseTyping");
+
+                    b.Navigation("OffenseTyping");
+                });
+
+            modelBuilder.Entity("PokemonAPI.Models.Pokemon", b =>
+                {
+                    b.Navigation("PokemonTypings");
+                });
+
+            modelBuilder.Entity("PokemonAPI.Models.Typing", b =>
+                {
+                    b.Navigation("PokemonTypings");
+
                     b.Navigation("TypeDefense");
 
                     b.Navigation("TypeOffense");

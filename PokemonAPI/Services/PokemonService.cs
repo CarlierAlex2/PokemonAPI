@@ -14,44 +14,70 @@ namespace PokemonAPI.Services
 {
     public interface IPokemonService
     {
-        Task<List<PokemonType>> GetPokemonTypes();
-        Task<PokemonTypeDTO> GetPokemonTypeDetail(string name);
+        Task<Pokemon> GetPokemonById(int id);
+        Task<List<Pokemon>> GetPokemonByType(string typeName);
+        Task<List<Pokemon>> GetPokemons();
+        Task<TypingDTO> GetTypingDetail(string name);
+        Task<List<Typing>> GetTypings();
     }
 
     public class PokemonService : IPokemonService
     {
         private readonly IMapper _mapper;
-        private readonly IPokemonTypeRepository _typeRepository;
+        private readonly ITypingRepository _typeRepository;
+        private readonly IPokemonRepository _pokemonRepository;
         public PokemonService(
-            IMapper mapper, 
-            IPokemonTypeRepository typeRepository)
+            IMapper mapper,
+            ITypingRepository typeRepository,
+            IPokemonRepository pokemonRepository)
         {
             _mapper = mapper;
             _typeRepository = typeRepository;
+            _pokemonRepository = pokemonRepository;
         }
 
-        public async Task<List<PokemonType>> GetPokemonTypes()
+        //Pokemon Type -------------------------------------------------------------------------------------------
+        public async Task<List<Typing>> GetTypings()
         {
-            var results = await _typeRepository.GetPokemonTypes();
+            var results = await _typeRepository.GetTypings();
             return results;
         }
 
-        public async Task<PokemonTypeDTO> GetPokemonTypeDetail(string name)
+        public async Task<TypingDTO> GetTypingDetail(string name)
         {
-            PokemonType result = await _typeRepository.GetPokemonTypeDetail(name);
-            PokemonTypeDTO resultDTO = _mapper.Map<PokemonTypeDTO>(result);
-            for(int index = 0; index < result.TypeOffense.Count; index++)
+            Typing result = await _typeRepository.GetTypingDetail(name);
+            TypingDTO resultDTO = _mapper.Map<TypingDTO>(result);
+            for (int index = 0; index < result.TypeOffense.Count; index++)
             {
                 resultDTO.TypeOffense[index] = _mapper.Map<TypeEffectOffenseDTO>(result.TypeOffense[index]);
-                resultDTO.TypeOffense[index].Defend = result.TypeOffense[index].DefensePokemonType.Name; //offense -> defense
+                resultDTO.TypeOffense[index].Defend = result.TypeOffense[index].DefenseTyping.Name; //offense -> defense
             }
-            for(int index = 0; index < result.TypeDefense.Count; index++)
+            for (int index = 0; index < result.TypeDefense.Count; index++)
             {
                 resultDTO.TypeDefense[index] = _mapper.Map<TypeEffectDefenseDTO>(result.TypeDefense[index]);
-                resultDTO.TypeDefense[index].Attack = result.TypeDefense[index].OffensePokemonType.Name; //defense -> offense
+                resultDTO.TypeDefense[index].Attack = result.TypeDefense[index].OffenseTyping.Name; //defense -> offense
             }
 
             return resultDTO;
+        }
+
+        //Pokemon -------------------------------------------------------------------------------------------
+        public async Task<List<Pokemon>> GetPokemons()
+        {
+            var results = await _pokemonRepository.GetPokemons();
+            return results;
+        }
+
+        public async Task<Pokemon> GetPokemonById(int id)
+        {
+            var results = await _pokemonRepository.GetPokemonById(id);
+            return results;
+        }
+
+        public async Task<List<Pokemon>> GetPokemonByType(string typeName)
+        {
+            var results = await _pokemonRepository.GetPokemonByType(typeName);
+            return results;
         }
     }
 }

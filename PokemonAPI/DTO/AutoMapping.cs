@@ -8,7 +8,11 @@ namespace PokemonAPI.DTO
     public class AutoMapping: Profile
     {
         public AutoMapping() {
-            CreateMap<PokemonType, PokemonTypeDTO>();
+            CreateMap<Pokemon, PokemonDTO>();
+            CreateMap<PokemonDTO, Pokemon>();
+
+            CreateMap<Typing, TypingDTO>();
+            CreateMap<TypingDTO, Typing>();
             
             CreateMap<TypeEffect, TypeEffectDTO>();
             CreateMap<TypeEffect, TypeEffectDefenseDTO>();

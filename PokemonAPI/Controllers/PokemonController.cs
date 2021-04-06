@@ -18,11 +18,11 @@ namespace PokemonAPI.Controllers
         #region Global Variables + Constructor
         //-----------------------------------------------------------------------------------------------------
         private readonly ILogger<PokemonController> _logger;
-        private readonly IPokemonService _serviceTypes;
+        private readonly IPokemonService _pokemonService;
 
         public PokemonController(ILogger<PokemonController> logger, IPokemonService serviceTypes)
         {
-            _serviceTypes = serviceTypes;
+            _pokemonService = serviceTypes;
 
             _logger = logger;
             _logger.LogInformation("ctor");
@@ -30,15 +30,15 @@ namespace PokemonAPI.Controllers
         #endregion
 
 
-        #region Controller Methods
+        #region Controller Typing Methods
         //-----------------------------------------------------------------------------------------------------
         [HttpGet]
         [Route("types")]
-        public async Task<ActionResult<List<PokemonType>>> GetPokemonTypes()
+        public async Task<ActionResult<List<Typing>>> GetTypings()
         {
             try{
-                List<PokemonType> list = await _serviceTypes.GetPokemonTypes();
-                return new OkObjectResult(list);
+                List<Typing> results = await _pokemonService.GetTypings();
+                return new OkObjectResult(results);
             }
             catch(Exception ex){
                 _logger.LogError(ex.Message);
@@ -48,11 +48,52 @@ namespace PokemonAPI.Controllers
 
         [HttpGet]
         [Route("type/{typeName}")]
-        public async Task<ActionResult<PokemonTypeDTO>> GetPokemonTypeDetail(string typeName)
+        public async Task<ActionResult<TypingDTO>> GetTypingDetail(string typeName)
         {
             try{
-                PokemonTypeDTO pokemonType = await _serviceTypes.GetPokemonTypeDetail(typeName);
-                return new OkObjectResult(pokemonType);
+                TypingDTO results = await _pokemonService.GetTypingDetail(typeName);
+                return new OkObjectResult(results);
+            }
+            catch(Exception ex){
+                _logger.LogError(ex.Message);
+                return new StatusCodeResult(500);
+            }
+        }
+        #endregion
+
+        #region Controller Pokemon Methods
+        //-----------------------------------------------------------------------------------------------------
+        [HttpGet]
+        [Route("pokemons")]
+        public async Task<ActionResult<List<Pokemon>>> GetPokemons(string typeName = "")
+        {
+            try{
+                //Type specified
+                if(typeName!= null & typeName.Length > 0)
+                {
+                    List<Pokemon> results = await _pokemonService.GetPokemonByType(typeName);
+                    return new OkObjectResult(results);
+                }
+                //Default
+                else
+                {
+                    List<Pokemon> results = await _pokemonService.GetPokemons();
+                    return new OkObjectResult(results);
+                }
+            }
+            catch(Exception ex){
+                _logger.LogError(ex.Message);
+                return new StatusCodeResult(500);
+            }
+        }
+
+        [HttpGet]
+        [Route("pokemon/{pokemonId}")]
+        public async Task<ActionResult<List<Pokemon>>> GetPokemonById(int pokemonId)
+        {
+            try{
+                Pokemon results = await _pokemonService.GetPokemonById(pokemonId);
+                return new OkObjectResult(results);
             }
             catch(Exception ex){
                 _logger.LogError(ex.Message);

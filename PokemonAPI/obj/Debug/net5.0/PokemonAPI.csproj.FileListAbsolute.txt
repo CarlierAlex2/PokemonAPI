@@ -63,3 +63,5 @@ C:\Users\alexc\Documents\MCT\Jaar2_2020_2021\MCT_semester_4\BackendDevelopment\B
 C:\Users\alexc\Documents\MCT\Jaar2_2020_2021\MCT_semester_4\BackendDevelopment\BackDev_Project\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\PokemonAPI\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
 C:\Users\alexc\Documents\MCT\Jaar2_2020_2021\MCT_semester_4\BackendDevelopment\BackDev_Project\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\PokemonAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\alexc\Documents\MCT\Jaar2_2020_2021\MCT_semester_4\BackendDevelopment\BackDev_Project\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\PokemonAPI\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+C:\Users\alexc\Documents\MCT\Jaar2_2020_2021\MCT_semester_4\BackendDevelopment\BackDev_Project\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\PokemonAPI\bin\Debug\net5.0\AutoMapper.dll
+C:\Users\alexc\Documents\MCT\Jaar2_2020_2021\MCT_semester_4\BackendDevelopment\BackDev_Project\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\PokemonAPI\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

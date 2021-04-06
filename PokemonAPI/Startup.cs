@@ -47,7 +47,8 @@ namespace PokemonAPI
             // context
             services.AddTransient<IPokemonContext, PokemonContext>();
             // repositories
-            services.AddTransient<IPokemonTypeRepository, PokemonTypeRepository>();
+            services.AddTransient<ITypingRepository, TypingRepository>();
+            services.AddTransient<IPokemonRepository, PokemonRepository>();
             // services
             services.AddTransient<IPokemonService, PokemonService>();
 
