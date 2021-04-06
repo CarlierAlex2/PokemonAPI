@@ -11,9 +11,9 @@ namespace PokemonAPI.Repositories
 {
     public interface IPokemonRepository
     {
-        Task<List<Pokemon>> GetPokemons();
         Task<Pokemon> GetPokemonById(int id);
         Task<List<Pokemon>> GetPokemonByType(string typeName);
+        Task<List<Pokemon>> GetPokemons();
     }
 
     public class PokemonRepository : IPokemonRepository

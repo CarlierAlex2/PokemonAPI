@@ -65,19 +65,19 @@ namespace PokemonAPI.Controllers
         //-----------------------------------------------------------------------------------------------------
         [HttpGet]
         [Route("pokemons")]
-        public async Task<ActionResult<List<Pokemon>>> GetPokemons(string typeName = "")
+        public async Task<ActionResult<List<PokemonDTO>>> GetPokemons(string typeName = "")
         {
             try{
                 //Type specified
                 if(typeName!= null & typeName.Length > 0)
                 {
-                    List<Pokemon> results = await _pokemonService.GetPokemonByType(typeName);
+                    List<PokemonDTO> results = await _pokemonService.GetPokemonByType(typeName);
                     return new OkObjectResult(results);
                 }
                 //Default
                 else
                 {
-                    List<Pokemon> results = await _pokemonService.GetPokemons();
+                    List<PokemonDTO> results = await _pokemonService.GetPokemons();
                     return new OkObjectResult(results);
                 }
             }
@@ -89,10 +89,10 @@ namespace PokemonAPI.Controllers
 
         [HttpGet]
         [Route("pokemon/{pokemonId}")]
-        public async Task<ActionResult<List<Pokemon>>> GetPokemonById(int pokemonId)
+        public async Task<ActionResult<PokemonDTO>> GetPokemonById(int pokemonId)
         {
             try{
-                Pokemon results = await _pokemonService.GetPokemonById(pokemonId);
+                PokemonDTO results = await _pokemonService.GetPokemonById(pokemonId);
                 return new OkObjectResult(results);
             }
             catch(Exception ex){

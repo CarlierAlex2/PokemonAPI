@@ -93,12 +93,9 @@ namespace PokemonAPI.Data
         {
             var listPokemon = new List<PokemonDTO>();
             listPokemon.Add(new PokemonDTO() { 
-                PokedexEntry = 306,
-                Name = "Aggron",
-                Generation = 3,
+                PokedexEntry = 306, Name = "Aggron", Generation = 3,
                 Types = new List<string>{"Steel","Rock"},
-                Classification = "Iron Armor Pokemon",
-                EggGroup = "Monster"
+                Classification = "Iron Armor Pokemon", EggGroup = "Monster"
                 });
 
 

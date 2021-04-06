@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
@@ -14,9 +15,9 @@ namespace PokemonAPI.Services
 {
     public interface IPokemonService
     {
-        Task<Pokemon> GetPokemonById(int id);
-        Task<List<Pokemon>> GetPokemonByType(string typeName);
-        Task<List<Pokemon>> GetPokemons();
+        Task<PokemonDTO> GetPokemonById(int id);
+        Task<List<PokemonDTO>> GetPokemonByType(string typeName);
+        Task<List<PokemonDTO>> GetPokemons();
         Task<TypingDTO> GetTypingDetail(string name);
         Task<List<Typing>> GetTypings();
     }
@@ -62,22 +63,44 @@ namespace PokemonAPI.Services
         }
 
         //Pokemon -------------------------------------------------------------------------------------------
-        public async Task<List<Pokemon>> GetPokemons()
+        public async Task<List<PokemonDTO>> GetPokemons()
         {
             var results = await _pokemonRepository.GetPokemons();
-            return results;
+            List<PokemonDTO> resultDTO = GetPokemonDTOList(results);
+            return resultDTO;
         }
 
-        public async Task<Pokemon> GetPokemonById(int id)
+        public async Task<PokemonDTO> GetPokemonById(int id)
         {
             var results = await _pokemonRepository.GetPokemonById(id);
-            return results;
+            PokemonDTO resultDTO = GetPokemonDTO(results);
+            return resultDTO;
         }
 
-        public async Task<List<Pokemon>> GetPokemonByType(string typeName)
+        public async Task<List<PokemonDTO>> GetPokemonByType(string typeName)
         {
             var results = await _pokemonRepository.GetPokemonByType(typeName);
-            return results;
+            List<PokemonDTO> resultDTO = GetPokemonDTOList(results);
+            return resultDTO;
+        }
+
+        private PokemonDTO GetPokemonDTO(Pokemon pokemon)
+        {
+            var dto = _mapper.Map<PokemonDTO>(pokemon);
+            dto.Types = pokemon.PokemonTypings.Select(r => r.Typing.Name).ToList();
+            return dto;
+        }
+
+        private List<PokemonDTO> GetPokemonDTOList(List<Pokemon> pokemons)
+        {
+            List<PokemonDTO> resultDTO = new List<PokemonDTO>();
+            foreach(var pok in pokemons)
+            {
+                var dto = _mapper.Map<PokemonDTO>(pok);
+                dto.Types = pok.PokemonTypings.Select(r => r.Typing.Name).ToList();
+                resultDTO.Add(dto);
+            }
+            return resultDTO;
         }
     }
 }
