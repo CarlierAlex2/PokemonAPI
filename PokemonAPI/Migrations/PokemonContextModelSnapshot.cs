@@ -49,11 +49,326 @@ namespace PokemonAPI.Migrations
                         new
                         {
                             PokemonId = 1,
+                            Classification = "Sleeping Pokemon",
+                            EggGroup = "Monster",
+                            Generation = 1,
+                            Name = "Snorlax",
+                            PokedexEntry = 143
+                        },
+                        new
+                        {
+                            PokemonId = 2,
+                            Classification = "Blocking Pokemon",
+                            EggGroup = "Field",
+                            Generation = 8,
+                            Name = "Obstagoon",
+                            PokedexEntry = 598
+                        },
+                        new
+                        {
+                            PokemonId = 3,
+                            Classification = "Lizard Pokemon",
+                            EggGroup = "Monster, Dragon",
+                            Generation = 1,
+                            Name = "Charmander",
+                            PokedexEntry = 4
+                        },
+                        new
+                        {
+                            PokemonId = 4,
+                            Classification = "Sun Pokemon",
+                            EggGroup = "Bug",
+                            Generation = 5,
+                            Name = "Volcarona",
+                            PokedexEntry = 637
+                        },
+                        new
+                        {
+                            PokemonId = 5,
+                            Classification = "Superpower Pokemon",
+                            EggGroup = "Human-Like",
+                            Generation = 1,
+                            Name = "Machoke",
+                            PokedexEntry = 67
+                        },
+                        new
+                        {
+                            PokemonId = 6,
+                            Classification = "Single Horn Pokemon",
+                            EggGroup = "Bug",
+                            Generation = 2,
+                            Name = "Heracross",
+                            PokedexEntry = 214
+                        },
+                        new
+                        {
+                            PokemonId = 7,
+                            Classification = "Mud Fish Pokemon",
+                            EggGroup = "Monster, Water 1",
+                            Generation = 3,
+                            Name = "Swampert",
+                            PokedexEntry = 260
+                        },
+                        new
+                        {
+                            PokemonId = 8,
+                            Classification = "Mock Kelp Pokemon",
+                            EggGroup = "Bug",
+                            Generation = 6,
+                            Name = "Skrelp",
+                            PokedexEntry = 637
+                        },
+                        new
+                        {
+                            PokemonId = 9,
+                            Classification = "Raven Pokemon",
+                            EggGroup = "Flying",
+                            Generation = 8,
+                            Name = "Corviknight",
+                            PokedexEntry = 823
+                        },
+                        new
+                        {
+                            PokemonId = 10,
+                            Classification = "Balloon Pokemon",
+                            EggGroup = "Amorphous",
+                            Generation = 4,
+                            Name = "Drifloon",
+                            PokedexEntry = 425
+                        },
+                        new
+                        {
+                            PokemonId = 11,
+                            Classification = "Sickle Grass Pokemon",
+                            EggGroup = "Grass",
+                            Generation = 7,
+                            Name = "Fomantis",
+                            PokedexEntry = 753
+                        },
+                        new
+                        {
+                            PokemonId = 12,
+                            Classification = "Sea Lily Pokemon",
+                            EggGroup = "Water 3",
+                            Generation = 3,
+                            Name = "Lileep",
+                            PokedexEntry = 345
+                        },
+                        new
+                        {
+                            PokemonId = 13,
+                            Classification = "Poison Pin Pokemon",
+                            EggGroup = "Undiscovered",
+                            Generation = 7,
+                            Name = "Naganadel",
+                            PokedexEntry = 804
+                        },
+                        new
+                        {
+                            PokemonId = 14,
+                            Classification = "Bouquet Pokemon",
+                            EggGroup = "Fairy, Grass",
+                            Generation = 4,
+                            Name = "Roserade",
+                            PokedexEntry = 407
+                        },
+                        new
+                        {
+                            PokemonId = 15,
+                            Classification = "Magnet Area Pokemon",
+                            EggGroup = "Mineral",
+                            Generation = 4,
+                            Name = "Magnezone",
+                            PokedexEntry = 462
+                        },
+                        new
+                        {
+                            PokemonId = 16,
+                            Classification = "Deep Black Pokemon",
+                            EggGroup = "Undiscovered",
+                            Generation = 5,
+                            Name = "Zekrom",
+                            PokedexEntry = 644
+                        },
+                        new
+                        {
+                            PokemonId = 17,
+                            Classification = "Automaton Pokemon",
+                            EggGroup = "Mineral",
+                            Generation = 5,
+                            Name = "Golett",
+                            PokedexEntry = 622
+                        },
+                        new
+                        {
+                            PokemonId = 18,
+                            Classification = "Order Pokemon",
+                            EggGroup = "Undiscovered",
+                            Generation = 6,
+                            Name = "Zygarde",
+                            PokedexEntry = 718
+                        },
+                        new
+                        {
+                            PokemonId = 19,
+                            Classification = "Psi Pokemon",
+                            EggGroup = "Human-Like",
+                            Generation = 1,
+                            Name = "Abra",
+                            PokedexEntry = 63
+                        },
+                        new
+                        {
+                            PokemonId = 20,
+                            Classification = "Bronze Bell Pokemon",
+                            EggGroup = "Mineral",
+                            Generation = 4,
+                            Name = "Bronzong",
+                            PokedexEntry = 437
+                        },
+                        new
+                        {
+                            PokemonId = 21,
+                            Classification = "Head Butt Pokemon",
+                            EggGroup = "Monster",
+                            Generation = 4,
+                            Name = "Rampardos",
+                            PokedexEntry = 409
+                        },
+                        new
+                        {
+                            PokemonId = 22,
+                            Classification = "Tundra Pokemon",
+                            EggGroup = "Monster",
+                            Generation = 6,
+                            Name = "Aurorus",
+                            PokedexEntry = 699
+                        },
+                        new
+                        {
+                            PokemonId = 23,
+                            Classification = "Snow Hat Pokemon",
+                            EggGroup = "Fairy, Mineral",
+                            Generation = 3,
+                            Name = "Snorunt",
+                            PokedexEntry = 361
+                        },
+                        new
+                        {
+                            PokemonId = 24,
+                            Classification = "Worm Pokemon",
+                            EggGroup = "Bug",
+                            Generation = 8,
+                            Name = "Snom",
+                            PokedexEntry = 872
+                        },
+                        new
+                        {
+                            PokemonId = 25,
+                            Classification = "Leaf-Wrapped Pokemon",
+                            EggGroup = "Bug",
+                            Generation = 5,
+                            Name = "Swadloon",
+                            PokedexEntry = 541
+                        },
+                        new
+                        {
+                            PokemonId = 26,
+                            Classification = "Curlipede Pokemon",
+                            EggGroup = "Bug",
+                            Generation = 5,
+                            Name = "Whirlipede",
+                            PokedexEntry = 544
+                        },
+                        new
+                        {
+                            PokemonId = 27,
+                            Classification = "Dragon Pokemon",
+                            EggGroup = "Water 1, Dragon",
+                            Generation = 1,
+                            Name = "Dragonair",
+                            PokedexEntry = 148
+                        },
+                        new
+                        {
+                            PokemonId = 28,
+                            Classification = "Stealth Pokemon",
+                            EggGroup = "Amorphous, Dragon",
+                            Generation = 8,
+                            Name = "Dragapult",
+                            PokedexEntry = 887
+                        },
+                        new
+                        {
+                            PokemonId = 29,
+                            Classification = "Screech Pokemon",
+                            EggGroup = "Amorphous",
+                            Generation = 2,
+                            Name = "Misdreavus",
+                            PokedexEntry = 200
+                        },
+                        new
+                        {
+                            PokemonId = 30,
+                            Classification = "Magical Pokemon",
+                            EggGroup = "Amorphous",
+                            Generation = 4,
+                            Name = "Mismagius",
+                            PokedexEntry = 429
+                        },
+                        new
+                        {
+                            PokemonId = 31,
+                            Classification = "Wily Pokemon",
+                            EggGroup = "Field, Grass",
+                            Generation = 3,
+                            Name = "Nuzleaf",
+                            PokedexEntry = 306
+                        },
+                        new
+                        {
+                            PokemonId = 32,
+                            Classification = "Skunk Pokemon",
+                            EggGroup = "Field",
+                            Generation = 4,
+                            Name = "Skuntank",
+                            PokedexEntry = 435
+                        },
+                        new
+                        {
+                            PokemonId = 33,
                             Classification = "Iron Armor Pokemon",
                             EggGroup = "Monster",
                             Generation = 3,
                             Name = "Aggron",
                             PokedexEntry = 306
+                        },
+                        new
+                        {
+                            PokemonId = 34,
+                            Classification = "Thorn Pod Pokemon",
+                            EggGroup = "Grass, Mineral",
+                            Generation = 5,
+                            Name = "Ferrothorn",
+                            PokedexEntry = 598
+                        },
+                        new
+                        {
+                            PokemonId = 35,
+                            Classification = "Balloon Pokemon",
+                            EggGroup = "Fairy",
+                            Generation = 1,
+                            Name = "Jigglypuff",
+                            PokedexEntry = 39
+                        },
+                        new
+                        {
+                            PokemonId = 36,
+                            Classification = "Embrace Pokemon",
+                            EggGroup = "Human-Like, Amorphous",
+                            Generation = 3,
+                            Name = "Gardevoir",
+                            PokedexEntry = 282
                         });
                 });
 
@@ -75,12 +390,312 @@ namespace PokemonAPI.Migrations
                         new
                         {
                             PokemonId = 1,
+                            TypingId = 1
+                        },
+                        new
+                        {
+                            PokemonId = 2,
+                            TypingId = 16
+                        },
+                        new
+                        {
+                            PokemonId = 2,
+                            TypingId = 1
+                        },
+                        new
+                        {
+                            PokemonId = 3,
+                            TypingId = 2
+                        },
+                        new
+                        {
+                            PokemonId = 4,
+                            TypingId = 13
+                        },
+                        new
+                        {
+                            PokemonId = 4,
+                            TypingId = 2
+                        },
+                        new
+                        {
+                            PokemonId = 5,
+                            TypingId = 3
+                        },
+                        new
+                        {
+                            PokemonId = 6,
+                            TypingId = 13
+                        },
+                        new
+                        {
+                            PokemonId = 6,
+                            TypingId = 3
+                        },
+                        new
+                        {
+                            PokemonId = 7,
+                            TypingId = 4
+                        },
+                        new
+                        {
+                            PokemonId = 7,
+                            TypingId = 9
+                        },
+                        new
+                        {
+                            PokemonId = 8,
+                            TypingId = 7
+                        },
+                        new
+                        {
+                            PokemonId = 8,
+                            TypingId = 4
+                        },
+                        new
+                        {
+                            PokemonId = 9,
+                            TypingId = 5
+                        },
+                        new
+                        {
+                            PokemonId = 9,
                             TypingId = 17
                         },
                         new
                         {
-                            PokemonId = 1,
+                            PokemonId = 10,
+                            TypingId = 15
+                        },
+                        new
+                        {
+                            PokemonId = 10,
+                            TypingId = 5
+                        },
+                        new
+                        {
+                            PokemonId = 11,
+                            TypingId = 6
+                        },
+                        new
+                        {
+                            PokemonId = 12,
                             TypingId = 11
+                        },
+                        new
+                        {
+                            PokemonId = 12,
+                            TypingId = 6
+                        },
+                        new
+                        {
+                            PokemonId = 13,
+                            TypingId = 7
+                        },
+                        new
+                        {
+                            PokemonId = 13,
+                            TypingId = 14
+                        },
+                        new
+                        {
+                            PokemonId = 14,
+                            TypingId = 6
+                        },
+                        new
+                        {
+                            PokemonId = 14,
+                            TypingId = 7
+                        },
+                        new
+                        {
+                            PokemonId = 15,
+                            TypingId = 8
+                        },
+                        new
+                        {
+                            PokemonId = 15,
+                            TypingId = 17
+                        },
+                        new
+                        {
+                            PokemonId = 16,
+                            TypingId = 14
+                        },
+                        new
+                        {
+                            PokemonId = 16,
+                            TypingId = 8
+                        },
+                        new
+                        {
+                            PokemonId = 17,
+                            TypingId = 9
+                        },
+                        new
+                        {
+                            PokemonId = 17,
+                            TypingId = 15
+                        },
+                        new
+                        {
+                            PokemonId = 18,
+                            TypingId = 14
+                        },
+                        new
+                        {
+                            PokemonId = 18,
+                            TypingId = 9
+                        },
+                        new
+                        {
+                            PokemonId = 19,
+                            TypingId = 10
+                        },
+                        new
+                        {
+                            PokemonId = 20,
+                            TypingId = 17
+                        },
+                        new
+                        {
+                            PokemonId = 20,
+                            TypingId = 10
+                        },
+                        new
+                        {
+                            PokemonId = 21,
+                            TypingId = 11
+                        },
+                        new
+                        {
+                            PokemonId = 22,
+                            TypingId = 11
+                        },
+                        new
+                        {
+                            PokemonId = 22,
+                            TypingId = 12
+                        },
+                        new
+                        {
+                            PokemonId = 23,
+                            TypingId = 12
+                        },
+                        new
+                        {
+                            PokemonId = 24,
+                            TypingId = 12
+                        },
+                        new
+                        {
+                            PokemonId = 24,
+                            TypingId = 13
+                        },
+                        new
+                        {
+                            PokemonId = 25,
+                            TypingId = 13
+                        },
+                        new
+                        {
+                            PokemonId = 25,
+                            TypingId = 6
+                        },
+                        new
+                        {
+                            PokemonId = 26,
+                            TypingId = 13
+                        },
+                        new
+                        {
+                            PokemonId = 26,
+                            TypingId = 7
+                        },
+                        new
+                        {
+                            PokemonId = 27,
+                            TypingId = 14
+                        },
+                        new
+                        {
+                            PokemonId = 28,
+                            TypingId = 14
+                        },
+                        new
+                        {
+                            PokemonId = 28,
+                            TypingId = 15
+                        },
+                        new
+                        {
+                            PokemonId = 29,
+                            TypingId = 15
+                        },
+                        new
+                        {
+                            PokemonId = 30,
+                            TypingId = 15
+                        },
+                        new
+                        {
+                            PokemonId = 31,
+                            TypingId = 6
+                        },
+                        new
+                        {
+                            PokemonId = 31,
+                            TypingId = 16
+                        },
+                        new
+                        {
+                            PokemonId = 32,
+                            TypingId = 7
+                        },
+                        new
+                        {
+                            PokemonId = 32,
+                            TypingId = 16
+                        },
+                        new
+                        {
+                            PokemonId = 33,
+                            TypingId = 17
+                        },
+                        new
+                        {
+                            PokemonId = 33,
+                            TypingId = 11
+                        },
+                        new
+                        {
+                            PokemonId = 34,
+                            TypingId = 6
+                        },
+                        new
+                        {
+                            PokemonId = 34,
+                            TypingId = 17
+                        },
+                        new
+                        {
+                            PokemonId = 35,
+                            TypingId = 1
+                        },
+                        new
+                        {
+                            PokemonId = 35,
+                            TypingId = 18
+                        },
+                        new
+                        {
+                            PokemonId = 36,
+                            TypingId = 10
+                        },
+                        new
+                        {
+                            PokemonId = 36,
+                            TypingId = 18
                         });
                 });
 
