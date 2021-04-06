@@ -7,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using PokemonAPI.Models;
+using PokemonAPI.DTO;
 using PokemonAPI.Configuration;
 using System.Collections.Generic;
 
@@ -37,12 +38,32 @@ namespace PokemonAPI.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<TypeEffect>().HasKey(cs => new { cs.PokemonTypeId, cs.TargetPokemonTypeId });
+            //modelBuilder.Entity<TypeEffect>().HasKey(cs => new { cs.PokemonTypeId, cs.TargetPokemonTypeId });
+            //modelBuilder.Entity<TypeEffect>().HasOne(t => t.PokemonType).WithMany().HasForeignKey(t => t.PokemonTypeId);
+            //modelBuilder.Entity<TypeEffect>().HasOne(t => t.TargetPokemonType).WithMany().HasForeignKey(t => t.TargetPokemonTypeId);
+
             //modelBuilder.Entity<TypeEffect>().HasOne<PokemonType>().WithMany().HasForeignKey(e => e.TargetPokemonTypeId);
             //modelBuilder.Entity<TypeEffect>().HasOne(t => t.TargetPokemonType).WithOne();
 
+            //https://stackoverflow.com/questions/5559043/entity-framework-code-first-two-foreign-keys-from-same-table
+            //https://forums.asp.net/t/2148073.aspx?What+is+the+alternative+to+WillCascadeOnDelete+in+EF+core
+            //https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.deletebehavior?view=efcore-5.0
+            modelBuilder.Entity<TypeEffect>()
+                    .HasOne(effect => effect.OffensePokemonType)
+                    .WithMany(pokemon => pokemon.TypeOffense)
+                    .HasForeignKey(effect => effect.OffensePokemonTypeId)
+                    .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<TypeEffect>()
+                    .HasOne(effect => effect.DefensePokemonType)
+                    .WithMany(pokemon => pokemon.TypeDefense)
+                    .HasForeignKey(effect => effect.DefensePokemonTypeId)
+                    .OnDelete(DeleteBehavior.NoAction);
+
             List<PokemonType> listPokemonType = SeedPokemonTypes(modelBuilder);
             SeedTypeEffect(modelBuilder, listPokemonType);
+
+            base.OnModelCreating(modelBuilder);
         }
 
         private List<PokemonType> SeedPokemonTypes(ModelBuilder modelBuilder)
@@ -82,21 +103,29 @@ namespace PokemonAPI.Data
         private void SeedTypeEffect(ModelBuilder modelBuilder, List<PokemonType> listPokemonType)
         {
             // Add effects --------------------------
+            int id = 1;
+
             foreach (var effect in CreateEffectList())
             {
-                int userIndex = listPokemonType.FindIndex(t => t.Name == effect.PokemonType);
-                int targetIndex = listPokemonType.FindIndex(t => t.Name == effect.TargetPokemonType);
+                int offenseIndex = listPokemonType.FindIndex(t => t.Name == effect.Attack);
+                int defenseIndex = listPokemonType.FindIndex(t => t.Name == effect.Defend);
                 decimal power = effect.Power;
 
-                if(userIndex >= 0 && targetIndex >= 0 && power >= 0)
+                if(offenseIndex >= 0 && defenseIndex >= 0 && power >= 0)
                 {
-                    var newEffect = new TypeEffect(){
-                        PokemonTypeId = listPokemonType[userIndex].PokemonTypeId, 
-                        TargetPokemonTypeId=listPokemonType[targetIndex].PokemonTypeId, 
-                        //TargetPokemonType=listPokemonType[targetIndex],
-                        Power=power};
-                    modelBuilder.Entity<TypeEffect>().HasData(newEffect);
+                    PokemonType offenseType = listPokemonType[offenseIndex];
+                    PokemonType defenseType = listPokemonType[defenseIndex];
+
+                    modelBuilder.Entity<TypeEffect>().HasData(
+                        new TypeEffect(){
+                        TypeEffectId = id,
+                        OffensePokemonTypeId = offenseType.PokemonTypeId, 
+                        DefensePokemonTypeId = defenseType.PokemonTypeId, 
+                        Power = power}
+                    );
                 }
+
+                id++;
             }
         }
 
@@ -104,181 +133,181 @@ namespace PokemonAPI.Data
         {
             var listEffects = new List<TypeEffectDTO>();
             //Normal --------------------------
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Normal", TargetPokemonType = "Rock", Power=0.5m });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Normal", TargetPokemonType = "Steel", Power=0.5m });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Normal", TargetPokemonType = "Ghost", Power=0 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Normal", Defend = "Rock", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Normal", Defend = "Steel", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Normal", Defend = "Ghost", Power=0 });
 
             //Fire --------------------------
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Fire", TargetPokemonType = "Bug", Power=2 });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Fire", TargetPokemonType = "Grass", Power=2 });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Fire", TargetPokemonType = "Ice", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Fire", Defend = "Bug", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Fire", Defend = "Grass", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Fire", Defend = "Ice", Power=2 });
 
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Fire", TargetPokemonType = "Dragon", Power=2 });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Fire", TargetPokemonType = "Fire", Power=2 });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Fire", TargetPokemonType = "Rock", Power=2 });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Fire", TargetPokemonType = "Water", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Fire", Defend = "Dragon", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Fire", Defend = "Fire", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Fire", Defend = "Rock", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Fire", Defend = "Water", Power=2 });
 
             //Fighting --------------------------
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Fighting", TargetPokemonType = "Dark", Power=2 });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Fighting", TargetPokemonType = "Ice", Power=2 });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Fighting", TargetPokemonType = "Normal", Power=2 });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Fighting", TargetPokemonType = "Rock", Power=2 });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Fighting", TargetPokemonType = "Steel", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Fighting", Defend = "Dark", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Fighting", Defend = "Ice", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Fighting", Defend = "Normal", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Fighting", Defend = "Rock", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Fighting", Defend = "Steel", Power=2 });
 
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Fighting", TargetPokemonType = "Bug", Power=0 });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Fighting", TargetPokemonType = "Fairy", Power=0.5m });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Fighting", TargetPokemonType = "Flying", Power=0.5m });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Fighting", TargetPokemonType = "Poison", Power=0.5m });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Fighting", TargetPokemonType = "Psychic", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Fighting", Defend = "Bug", Power=0 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Fighting", Defend = "Fairy", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Fighting", Defend = "Flying", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Fighting", Defend = "Poison", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Fighting", Defend = "Psychic", Power=0.5m });
 
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Fighting", TargetPokemonType = "Ghost", Power=0 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Fighting", Defend = "Ghost", Power=0 });
 
             //Water --------------------------
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Water", TargetPokemonType = "Fire", Power=2 });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Water", TargetPokemonType = "Ground", Power=2 });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Water", TargetPokemonType = "Rock", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Water", Defend = "Fire", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Water", Defend = "Ground", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Water", Defend = "Rock", Power=2 });
 
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Water", TargetPokemonType = "Dragon", Power=0.5m });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Water", TargetPokemonType = "Grass", Power=0.5m });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Water", TargetPokemonType = "Water", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Water", Defend = "Dragon", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Water", Defend = "Grass", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Water", Defend = "Water", Power=0.5m });
 
             //Flying --------------------------
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Flying", TargetPokemonType = "Bug", Power=2 });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Flying", TargetPokemonType = "Fighting", Power=2 });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Flying", TargetPokemonType = "Grass", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Flying", Defend = "Bug", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Flying", Defend = "Fighting", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Flying", Defend = "Grass", Power=2 });
 
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Flying", TargetPokemonType = "Electric", Power=0.5m });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Flying", TargetPokemonType = "Rock", Power=0.5m });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Flying", TargetPokemonType = "Steel", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Flying", Defend = "Electric", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Flying", Defend = "Rock", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Flying", Defend = "Steel", Power=0.5m });
 
             //Grass --------------------------
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Grass", TargetPokemonType = "Ground", Power=2 });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Grass", TargetPokemonType = "Rock", Power=2 });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Grass", TargetPokemonType = "Water", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Grass", Defend = "Ground", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Grass", Defend = "Rock", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Grass", Defend = "Water", Power=2 });
 
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Grass", TargetPokemonType = "Bug", Power=0.5m });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Grass", TargetPokemonType = "Dragon", Power=0.5m });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Grass", TargetPokemonType = "Fire", Power=0.5m });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Grass", TargetPokemonType = "Flying", Power=0.5m });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Grass", TargetPokemonType = "Grass", Power=0.5m });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Grass", TargetPokemonType = "Poison", Power=0.5m });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Grass", TargetPokemonType = "Steel", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Grass", Defend = "Bug", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Grass", Defend = "Dragon", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Grass", Defend = "Fire", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Grass", Defend = "Flying", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Grass", Defend = "Grass", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Grass", Defend = "Poison", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Grass", Defend = "Steel", Power=0.5m });
 
             //Poison --------------------------
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Poison", TargetPokemonType = "Fairy", Power=2 });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Poison", TargetPokemonType = "Grass", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Poison", Defend = "Fairy", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Poison", Defend = "Grass", Power=2 });
 
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Poison", TargetPokemonType = "Poison", Power=0.5m });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Poison", TargetPokemonType = "Ground", Power=0.5m });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Poison", TargetPokemonType = "Rock", Power=0.5m });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Poison", TargetPokemonType = "Ghost", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Poison", Defend = "Poison", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Poison", Defend = "Ground", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Poison", Defend = "Rock", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Poison", Defend = "Ghost", Power=0.5m });
 
             //Electric --------------------------
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Electric", TargetPokemonType = "Flying", Power=2 });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Electric", TargetPokemonType = "Water", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Electric", Defend = "Flying", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Electric", Defend = "Water", Power=2 });
 
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Electric", TargetPokemonType = "Dragon", Power=0.5m });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Electric", TargetPokemonType = "Electric", Power=0.5m });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Electric", TargetPokemonType = "Grass", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Electric", Defend = "Dragon", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Electric", Defend = "Electric", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Electric", Defend = "Grass", Power=0.5m });
 
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Electric", TargetPokemonType = "Ground", Power=0 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Electric", Defend = "Ground", Power=0 });
 
             //Ground --------------------------
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Ground", TargetPokemonType = "Electric", Power=2 });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Ground", TargetPokemonType = "Fire", Power=2 });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Ground", TargetPokemonType = "Poison", Power=2 });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Ground", TargetPokemonType = "Rock", Power=2 });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Ground", TargetPokemonType = "Steel", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Ground", Defend = "Electric", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Ground", Defend = "Fire", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Ground", Defend = "Poison", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Ground", Defend = "Rock", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Ground", Defend = "Steel", Power=2 });
 
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Ground", TargetPokemonType = "Bug", Power=0.5m });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Ground", TargetPokemonType = "Grass", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Ground", Defend = "Bug", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Ground", Defend = "Grass", Power=0.5m });
 
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Ground", TargetPokemonType = "Flying", Power=0 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Ground", Defend = "Flying", Power=0 });
 
             //Psychic --------------------------
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Psychic", TargetPokemonType = "Fight", Power=2 });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Psychic", TargetPokemonType = "Poison", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Psychic", Defend = "Fight", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Psychic", Defend = "Poison", Power=2 });
 
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Psychic", TargetPokemonType = "Psychic", Power=0.5m });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Psychic", TargetPokemonType = "Steel", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Psychic", Defend = "Psychic", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Psychic", Defend = "Steel", Power=0.5m });
 
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Psychic", TargetPokemonType = "Dark", Power=0 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Psychic", Defend = "Dark", Power=0 });
 
             //Rock --------------------------
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Rock", TargetPokemonType = "Bug", Power=2 });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Rock", TargetPokemonType = "Fire", Power=2 });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Rock", TargetPokemonType = "Flying", Power=2 });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Rock", TargetPokemonType = "Ice", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Rock", Defend = "Bug", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Rock", Defend = "Fire", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Rock", Defend = "Flying", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Rock", Defend = "Ice", Power=2 });
 
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Rock", TargetPokemonType = "Fighting", Power=0.5m });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Rock", TargetPokemonType = "Ground", Power=0.5m });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Rock", TargetPokemonType = "Steel", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Rock", Defend = "Fighting", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Rock", Defend = "Ground", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Rock", Defend = "Steel", Power=0.5m });
 
             //Ice --------------------------
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Ice", TargetPokemonType = "Dragon", Power=2 });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Ice", TargetPokemonType = "Flying", Power=2 });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Ice", TargetPokemonType = "Grass", Power=2 });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Ice", TargetPokemonType = "Ground", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Ice", Defend = "Dragon", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Ice", Defend = "Flying", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Ice", Defend = "Grass", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Ice", Defend = "Ground", Power=2 });
 
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Ice", TargetPokemonType = "Fire", Power=0.5m });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Ice", TargetPokemonType = "Ice", Power=0.5m });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Ice", TargetPokemonType = "Steel", Power=0.5m });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Ice", TargetPokemonType = "Water", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Ice", Defend = "Fire", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Ice", Defend = "Ice", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Ice", Defend = "Steel", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Ice", Defend = "Water", Power=0.5m });
 
             //Bug --------------------------
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Bug", TargetPokemonType = "Dark", Power=2 });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Bug", TargetPokemonType = "Grass", Power=2 });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Bug", TargetPokemonType = "Psychic", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Bug", Defend = "Dark", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Bug", Defend = "Grass", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Bug", Defend = "Psychic", Power=2 });
 
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Bug", TargetPokemonType = "Fairy", Power=0.5m });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Bug", TargetPokemonType = "Fighting", Power=0.5m });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Bug", TargetPokemonType = "Fire", Power=0.5m });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Bug", TargetPokemonType = "Flying", Power=0.5m });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Bug", TargetPokemonType = "Ghost", Power=0.5m });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Bug", TargetPokemonType = "Poison", Power=0.5m });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Bug", TargetPokemonType = "Steel", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Bug", Defend = "Fairy", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Bug", Defend = "Fighting", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Bug", Defend = "Fire", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Bug", Defend = "Flying", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Bug", Defend = "Ghost", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Bug", Defend = "Poison", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Bug", Defend = "Steel", Power=0.5m });
 
             //Dragon --------------------------
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Dragon", TargetPokemonType = "Dragon", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Dragon", Defend = "Dragon", Power=2 });
 
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Dragon", TargetPokemonType = "Steel", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Dragon", Defend = "Steel", Power=0.5m });
 
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Dragon", TargetPokemonType = "Fairy", Power=0 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Dragon", Defend = "Fairy", Power=0 });
 
             //Ghost --------------------------
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Ghost", TargetPokemonType = "Ghost", Power=2 });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Ghost", TargetPokemonType = "Psychic", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Ghost", Defend = "Ghost", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Ghost", Defend = "Psychic", Power=2 });
 
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Ghost", TargetPokemonType = "Dark", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Ghost", Defend = "Dark", Power=0.5m });
 
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Ghost", TargetPokemonType = "Normal", Power=0 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Ghost", Defend = "Normal", Power=0 });
 
             //Dark --------------------------
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Dark", TargetPokemonType = "Ghost", Power=2 });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Dark", TargetPokemonType = "Psychic", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Dark", Defend = "Ghost", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Dark", Defend = "Psychic", Power=2 });
 
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Dark", TargetPokemonType = "Dark", Power=0.5m });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Dark", TargetPokemonType = "Fairy", Power=0.5m });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Dark", TargetPokemonType = "Fighting", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Dark", Defend = "Dark", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Dark", Defend = "Fairy", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Dark", Defend = "Fighting", Power=0.5m });
 
             //Steel --------------------------
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Steel", TargetPokemonType = "Fairy", Power=2 });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Steel", TargetPokemonType = "Ice", Power=2 });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Steel", TargetPokemonType = "Rock", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Steel", Defend = "Fairy", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Steel", Defend = "Ice", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Steel", Defend = "Rock", Power=2 });
 
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Steel", TargetPokemonType = "Electric", Power=0.5m });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Steel", TargetPokemonType = "Fire", Power=0.5m });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Steel", TargetPokemonType = "Steel", Power=0.5m });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Steel", TargetPokemonType = "Water", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Steel", Defend = "Electric", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Steel", Defend = "Fire", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Steel", Defend = "Steel", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Steel", Defend = "Water", Power=0.5m });
 
             //Fairy --------------------------
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Fairy", TargetPokemonType = "Dark", Power=2 });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Fairy", TargetPokemonType = "Dragon", Power=2 });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Fairy", TargetPokemonType = "Fighting", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Fairy", Defend = "Dark", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Fairy", Defend = "Dragon", Power=2 });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Fairy", Defend = "Fighting", Power=2 });
 
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Fairy", TargetPokemonType = "Fire", Power=0.5m });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Fairy", TargetPokemonType = "Poison", Power=0.5m });
-            listEffects.Add(new TypeEffectDTO() { PokemonType = "Fairy", TargetPokemonType = "Steel", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Fairy", Defend = "Fire", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Fairy", Defend = "Poison", Power=0.5m });
+            listEffects.Add(new TypeEffectDTO() { Attack = "Fairy", Defend = "Steel", Power=0.5m });
 
             //Return list --------------------------
             return listEffects;

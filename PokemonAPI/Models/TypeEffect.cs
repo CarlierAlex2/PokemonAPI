@@ -8,18 +8,17 @@ namespace PokemonAPI.Models
 {
     public class TypeEffect
     {
-        public int PokemonTypeId { get; set; }
-        //[ForeignKey("TargetPokemonType")]
-        public int TargetPokemonTypeId { get; set; }
-        //[ForeignKey("TargetPokemonTypeId")]
-        public PokemonType TargetPokemonType {get; set;}
-        public decimal Power { get; set; }
-    }
+        [Key]
+        public int TypeEffectId  { get; set; }
 
-    public class TypeEffectDTO
-    {
-        public string PokemonType { get; set; }
-        public string TargetPokemonType { get; set; }
+        public int OffensePokemonTypeId { get; set; }
+        //[ForeignKey("PokemonTypeId")]
+        public virtual PokemonType OffensePokemonType {get; set;}
+
+        public int DefensePokemonTypeId { get; set; }
+        //[ForeignKey("TargetPokemonTypeId")]
+        public virtual PokemonType DefensePokemonType {get; set;}
+
         public decimal Power { get; set; }
     }
 }

@@ -11,6 +11,8 @@ namespace PokemonAPI.Models
         public int PokemonTypeId { get; set; }
         [Required] 
         public string  Name { get; set; }
-        public List<TypeEffect> TypeEffects { get; set; }
+
+        public virtual List<TypeEffect> TypeOffense { get; set; }
+        public virtual List<TypeEffect> TypeDefense { get; set; }
     }
 }

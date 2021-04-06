@@ -32,16 +32,18 @@ namespace PokemonAPI.Repositories
         {
             return await _context.PokemonTypes
             .Where(pokemonType => pokemonType.PokemonTypeId == id)
-            .SingleOrDefaultAsync();
+            .FirstOrDefaultAsync();
         }
 
         public async Task<PokemonType> GetPokemonTypeDetail(string name)
         {
             return await _context.PokemonTypes
             .Where(pokemonType => pokemonType.Name == name)
-            .Include(pokemonType => pokemonType.TypeEffects)
-            .ThenInclude(typeEffect => typeEffect.TargetPokemonType)
-            .SingleOrDefaultAsync();
+            .Include(pokemonType => pokemonType.TypeOffense.OrderByDescending(t => t.Power))
+            .ThenInclude(typeEffect => typeEffect.DefensePokemonType)
+            .Include(pokemonType => pokemonType.TypeDefense.OrderByDescending(t => t.Power))
+            .ThenInclude(typeEffect => typeEffect.OffensePokemonType)
+            .FirstOrDefaultAsync();
         }
     }
 }

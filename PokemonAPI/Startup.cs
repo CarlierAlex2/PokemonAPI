@@ -19,6 +19,7 @@ using PokemonAPI.Configuration;
 using PokemonAPI.Services;
 using PokemonAPI.Repositories;
 using PokemonAPI.Data;
+using PokemonAPI.DTO;
 
 namespace PokemonAPI
 {
@@ -51,6 +52,7 @@ namespace PokemonAPI
             services.AddTransient<IPokemonService, PokemonService>();
 
             //rest
+            services.AddAutoMapper(typeof(Startup)); //automapper
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "PokemonAPI", Version = "v1" });

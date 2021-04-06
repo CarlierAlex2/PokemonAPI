@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 using PokemonAPI.Models;
+using PokemonAPI.DTO;
 using PokemonAPI.Services;
 
 namespace PokemonAPI.Controllers
@@ -47,10 +48,10 @@ namespace PokemonAPI.Controllers
 
         [HttpGet]
         [Route("type/{typeName}")]
-        public async Task<ActionResult<PokemonType>> GetPokemonTypeDetail(string typeName)
+        public async Task<ActionResult<PokemonTypeDTO>> GetPokemonTypeDetail(string typeName)
         {
             try{
-                PokemonType pokemonType = await _serviceTypes.GetPokemonTypeDetail(typeName);
+                PokemonTypeDTO pokemonType = await _serviceTypes.GetPokemonTypeDetail(typeName);
                 return new OkObjectResult(pokemonType);
             }
             catch(Exception ex){
