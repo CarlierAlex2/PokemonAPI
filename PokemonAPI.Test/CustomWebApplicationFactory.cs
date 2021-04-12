@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
 
+using PokemonAPI.Services;
+
 namespace PokemonAPI.Test
 {
     public class CustomWebApplicationFactory : WebApplicationFactory<PokemonAPI.Startup>

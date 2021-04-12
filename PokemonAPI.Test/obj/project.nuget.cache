@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "UrG24eCNbF2YvvMbmYZNTuPFCUw08WZdUql1Lm6GPHOYBs/9u9eaWK+Z18sMUduktu7lKBjkyJjozO1ip1h7kg==",
+  "dgSpecHash": "m61RO+ddq8PjlTwEn717t52ibierXK+OnZHERbCAEfpFGUhZkIgvKDzK1z9/1SJk6z9TuODepKuR/MH7ngMhMQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\alexc\\Documents\\MCT\\Jaar2_2020_2021\\MCT_semester_4\\BackendDevelopment\\BackDev_Project\\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\\PokemonAPI.Test\\PokemonAPI.Test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alexc\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\alexc\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
-    "C:\\Users\\alexc\\.nuget\\packages\\coverlet.collector\\1.3.0\\coverlet.collector.1.3.0.nupkg.sha512",
+    "C:\\Users\\alexc\\.nuget\\packages\\coverlet.collector\\3.0.3\\coverlet.collector.3.0.3.nupkg.sha512",
+    "C:\\Users\\alexc\\.nuget\\packages\\coverlet.msbuild\\3.0.3\\coverlet.msbuild.3.0.3.nupkg.sha512",
     "C:\\Users\\alexc\\.nuget\\packages\\fluentassertions\\5.10.3\\fluentassertions.5.10.3.nupkg.sha512",
     "C:\\Users\\alexc\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\5.0.4\\microsoft.aspnetcore.jsonpatch.5.0.4.nupkg.sha512",
     "C:\\Users\\alexc\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\5.0.4\\microsoft.aspnetcore.mvc.newtonsoftjson.5.0.4.nupkg.sha512",

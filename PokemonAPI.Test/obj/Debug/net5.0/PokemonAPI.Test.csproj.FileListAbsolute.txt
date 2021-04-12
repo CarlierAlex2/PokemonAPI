@@ -427,3 +427,4 @@ C:\Users\alexc\Documents\MCT\Jaar2_2020_2021\MCT_semester_4\BackendDevelopment\B
 C:\Users\alexc\Documents\MCT\Jaar2_2020_2021\MCT_semester_4\BackendDevelopment\BackDev_Project\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\PokemonAPI.Test\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\alexc\Documents\MCT\Jaar2_2020_2021\MCT_semester_4\BackendDevelopment\BackDev_Project\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\PokemonAPI.Test\bin\Debug\net5.0\PokemonAPI.dll
 C:\Users\alexc\Documents\MCT\Jaar2_2020_2021\MCT_semester_4\BackendDevelopment\BackDev_Project\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\PokemonAPI.Test\bin\Debug\net5.0\PokemonAPI.pdb
+C:\Users\alexc\Documents\MCT\Jaar2_2020_2021\MCT_semester_4\BackendDevelopment\BackDev_Project\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\PokemonAPI.Test\bin\Debug\net5.0\CoverletSourceRootsMapping

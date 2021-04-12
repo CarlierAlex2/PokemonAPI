@@ -16,8 +16,13 @@ using PokemonAPI.Models;
 
 namespace PokemonAPI.Test
 {
-    public class PokemonControllerTest
+    public class PokemonControllerTest: IClassFixture<CustomWebApplicationFactory>
     {
+        //dotnet test
+        //dotnet test /p:CollectCoverage=true
+        //dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:Exclude="[xunit*]\*" /p:CoverletOutput="./TestResults/"
+        //dotnet reportgenerator "-reports:TestResults\coverage.cobertura.xml" "-targetdir:TestResults\html" -reporttypes:HTML
+
         public HttpClient Client { get; set;}
         public PokemonControllerTest(CustomWebApplicationFactory fixture)
         {
