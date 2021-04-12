@@ -15,6 +15,8 @@ namespace PokemonAPI.DTO
             CreateMap<TypingDTO, Typing>();
             
             CreateMap<TypeEffect, TypeEffectDTO>();
+            CreateMap<TypeEffectDTO, TypeEffect>();
+            
             CreateMap<TypeEffect, TypeEffectDefenseDTO>();
             CreateMap<TypeEffect, TypeEffectOffenseDTO>();
         }
