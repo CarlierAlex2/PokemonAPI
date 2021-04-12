@@ -21,6 +21,8 @@ namespace PokemonAPI.Data
 
         DbSet<Typing> Typings { get; set; }
         DbSet<TypeEffect> TypeEffects { get; set; }
+        int SaveChanges();
+        Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
 
     public class PokemonContext : DbContext, IPokemonContext

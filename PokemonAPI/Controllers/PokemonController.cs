@@ -48,10 +48,10 @@ namespace PokemonAPI.Controllers
 
         [HttpGet]
         [Route("type/{typeName}")]
-        public async Task<ActionResult<TypingDTO>> GetTypingDetail(string typeName)
+        public async Task<ActionResult<TypingDTO>> GetTypingByName(string typeName)
         {
             try{
-                TypingDTO results = await _pokemonService.GetTypingDetail(typeName);
+                TypingDTO results = await _pokemonService.GetTypingByName(typeName);
                 return new OkObjectResult(results);
             }
             catch(Exception ex){
@@ -88,8 +88,8 @@ namespace PokemonAPI.Controllers
         }
 
         [HttpGet]
-        [Route("pokemon/{pokemonId}")]
-        public async Task<ActionResult<PokemonDTO>> GetPokemonById(int pokemonId)
+        [Route("pokemon/id/{pokemonId}")]
+        public async Task<ActionResult<PokemonDTO>> GetPokemonById(Guid pokemonId)
         {
             try{
                 PokemonDTO results = await _pokemonService.GetPokemonById(pokemonId);
@@ -97,6 +97,34 @@ namespace PokemonAPI.Controllers
             }
             catch(Exception ex){
                 _logger.LogError(ex.Message);
+                return new StatusCodeResult(500);
+            }
+        }
+
+        [HttpGet]
+        [Route("pokemon/entry/{pokedexEntry}")]
+        public async Task<ActionResult<PokemonDTO>> GetPokemonByEntry(int pokedexEntry)
+        {
+            try{
+                PokemonDTO results = await _pokemonService.GetPokemonByEntry(pokedexEntry);
+                return new OkObjectResult(results);
+            }
+            catch(Exception ex){
+                _logger.LogError(ex.Message);
+                return new StatusCodeResult(500);
+            }
+        }
+
+        [HttpPost]
+        [Route("pokemon")]
+        public async Task<ActionResult<Pokemon>> AddPokemon(PokemonDTO pokemonDTO){
+            try{
+                var result = await _pokemonService.AddPokemon(pokemonDTO);
+                _logger.LogInformation($"Pokemon was added - {result}");
+                return new OkObjectResult(result);
+            }
+            catch (Exception ex){
+                _logger.LogWarning($"Warning {ex.Message}");
                 return new StatusCodeResult(500);
             }
         }

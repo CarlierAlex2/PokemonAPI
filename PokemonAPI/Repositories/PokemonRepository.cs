@@ -11,7 +11,9 @@ namespace PokemonAPI.Repositories
 {
     public interface IPokemonRepository
     {
-        Task<Pokemon> GetPokemonById(int id);
+        Task<Pokemon> AddPokemon(Pokemon pokemon);
+        Task<Pokemon> GetPokemonByEntry(int pokedexEntry);
+        Task<Pokemon> GetPokemonById(Guid id);
         Task<List<Pokemon>> GetPokemonByType(string typeName);
         Task<List<Pokemon>> GetPokemons();
     }
@@ -33,10 +35,19 @@ namespace PokemonAPI.Repositories
             .ToListAsync();
         }
 
-        public async Task<Pokemon> GetPokemonById(int id)
+        public async Task<Pokemon> GetPokemonById(Guid id)
         {
             return await _context.Pokemons
             .Where(pokemon => pokemon.PokemonId == id)
+            .Include(pokemon => pokemon.PokemonTypings)
+            .ThenInclude(pokTyping => pokTyping.Typing)
+            .FirstOrDefaultAsync();
+        }
+
+        public async Task<Pokemon> GetPokemonByEntry(int pokedexEntry)
+        {
+            return await _context.Pokemons
+            .Where(pokemon => pokemon.PokedexEntry == pokedexEntry)
             .Include(pokemon => pokemon.PokemonTypings)
             .ThenInclude(pokTyping => pokTyping.Typing)
             .FirstOrDefaultAsync();
@@ -50,6 +61,13 @@ namespace PokemonAPI.Repositories
             .Where(p => p.PokemonTypings.Any(t => t.Typing.Name == typeName))
             .OrderBy(t => t.PokedexEntry)
             .ToListAsync();
+        }
+
+        public async Task<Pokemon> AddPokemon(Pokemon pokemon)
+        {
+            await _context.Pokemons.AddAsync(pokemon);
+            await _context.SaveChangesAsync();
+            return pokemon;
         }
     }
 }

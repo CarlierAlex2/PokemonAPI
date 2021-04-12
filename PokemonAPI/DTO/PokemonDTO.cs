@@ -14,7 +14,7 @@ namespace PokemonAPI.DTO
         [Required] 
         public int Generation { get; set; }
         [Required] 
-        [Range(1,2)]
+        //[Range(1,2)]
         public List<string> Types { get; set; }
         public string Classification { get; set; }
         public string EggGroup { get; set; }

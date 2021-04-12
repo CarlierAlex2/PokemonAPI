@@ -8,7 +8,7 @@ namespace PokemonAPI.Models
     public class Pokemon
     {
         [Key]
-        public int PokemonId { get; set; }
+        public Guid PokemonId { get; set; }
         [Required] 
         public int PokedexEntry { get; set; }
         [Required] 

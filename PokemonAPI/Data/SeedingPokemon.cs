@@ -189,7 +189,7 @@ namespace PokemonAPI.Data
             {
                 var pokemonDTO = listPokemon[index];
                 Pokemon pokemon = mapper.Map<Pokemon>(pokemonDTO);
-                pokemon.PokemonId = index + 1;
+                pokemon.PokemonId = Guid.NewGuid();
                 var pokemonTypings = new List<PokemonTyping>();
                 foreach(var t in pokemonDTO.Types)
                 {

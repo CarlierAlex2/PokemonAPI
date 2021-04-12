@@ -12,7 +12,7 @@ namespace PokemonAPI.Repositories
     public interface ITypingRepository
     {
         Task<Typing> GetTypingById(int id);
-        Task<Typing> GetTypingDetail(string name);
+        Task<Typing> GetTypingByName(string name, bool isDetailed = false);
         Task<List<Typing>> GetTypings();
     }
 
@@ -36,15 +36,30 @@ namespace PokemonAPI.Repositories
             .FirstOrDefaultAsync();
         }
 
-        public async Task<Typing> GetTypingDetail(string name)
+        public async Task<Typing> GetTypingByName(string name, bool isDetailed = false)
+        {
+            if (isDetailed == true)
+                return await GetTypingByName_Detailed(name);
+
+            return await GetTypingByName_Simple(name);
+        }
+
+        private async Task<Typing> GetTypingByName_Simple(string name)
         {
             return await _context.Typings
             .Where(Typing => Typing.Name == name)
-            .Include(Typing => Typing.TypeOffense
+            .FirstOrDefaultAsync();
+        }
+
+        private async Task<Typing> GetTypingByName_Detailed(string name)
+        {
+            return await _context.Typings
+            .Where(Typing => Typing.Name == name)
+            .Include(Typing => Typing.TypeOffense //include TypeOffense
                 .OrderByDescending(t => t.Power)
                 )
             .ThenInclude(typeEffect => typeEffect.DefenseTyping)
-            .Include(Typing => Typing.TypeDefense
+            .Include(Typing => Typing.TypeDefense //include TypeDefense
                 .OrderByDescending(t => t.Power)
                 )
             .ThenInclude(typeEffect => typeEffect.OffenseTyping)
