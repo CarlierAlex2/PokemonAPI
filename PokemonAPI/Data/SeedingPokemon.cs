@@ -150,7 +150,7 @@ namespace PokemonAPI.Data
 
             //Dark --------------------------
             listPokemon.Add(new PokemonDTO() { 
-                PokedexEntry = 306, Name = "Nuzleaf", Generation = 3, Classification = "Wily Pokemon", EggGroup = "Field, Grass",
+                PokedexEntry = 274, Name = "Nuzleaf", Generation = 3, Classification = "Wily Pokemon", EggGroup = "Field, Grass",
                 Types = new List<string>{"Grass","Dark"}
                 });
             listPokemon.Add(new PokemonDTO() { 

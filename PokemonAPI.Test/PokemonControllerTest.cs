@@ -79,5 +79,56 @@ namespace PokemonAPI.Test
             Assert.NotNull(pokemon);
             Assert.Contains<string>(typingName, pokemon.Types);
         }
+
+        [Fact]
+        public async Task GetPokemonById_ByType_Return_Ok()
+        {
+            Guid id = Guid.Parse("9ae91a19-ba47-4506-ab97-fe20718b9bea");
+
+            var response = await Client.GetAsync($"/api/pokemon/id/{id}");
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+
+            var content = await response.Content.ReadAsStringAsync();
+            var pokemon = JsonConvert.DeserializeObject<PokemonDTO>(content);
+            Assert.NotNull(pokemon);
+        }
+
+        [Fact]
+        public async Task GetPokemonByEntry_ByType_Return_Ok()
+        {
+            int pokedexEntry = 637;
+
+            var response = await Client.GetAsync($"/api/pokemon/entry/{pokedexEntry}");
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+
+            var content = await response.Content.ReadAsStringAsync();
+            var pokemon = JsonConvert.DeserializeObject<PokemonDTO>(content);
+            Assert.NotNull(pokemon);
+            Assert.Equal<int>(pokedexEntry, pokemon.PokedexEntry);
+        }
+
+        [Fact]
+        public async Task AddPokemon_Ok()
+        {
+            PokemonDTO pokemonDTO = new PokemonDTO()
+            {
+                Name = "Pikachu",
+                PokedexEntry = 25,
+                Generation = 1,
+                Types = new List<string>{"Electric"},
+                Classification = "Mouse Pokemon",
+                EggGroup = "Field, Fairy",
+            };
+
+            string json = JsonConvert.SerializeObject(pokemonDTO);
+            StringContent contentSend = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await Client.PostAsync("/api/pokemon", contentSend);
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+
+            var contentReceived = await response.Content.ReadAsStringAsync();
+            var createdPokemon = JsonConvert.DeserializeObject<Pokemon>(contentReceived);
+            Assert.NotNull(createdPokemon);
+            Assert.Equal<string>("Pikachu", createdPokemon.Name);
+        }
     }
 }
