@@ -56,19 +56,29 @@ namespace PokemonAPI
             services.AddAutoMapper(typeof(Startup)); //automapper
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "PokemonAPI", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { 
+                    Title = "PokemonAPI", 
+                    Version = "v1",
+                    Description = "An API to search for Pokemon and their Types"
+                    });
             });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
+            //https://code-maze.com/how-to-prepare-aspnetcore-app-dockerization/
+            //https://code-maze.com/swagger-ui-asp-net-core-web-api/
+            /*if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PokemonAPI v1"));
-            }
+            }*/ //tussen deze comments => enkel in develop mode
+
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PokemonAPI v1"));
 
             app.UseHttpsRedirection();
 

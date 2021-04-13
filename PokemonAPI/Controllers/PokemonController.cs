@@ -32,6 +32,16 @@ namespace PokemonAPI.Controllers
 
         #region Controller Typing Methods
         //-----------------------------------------------------------------------------------------------------
+        
+        /// <summary>
+        /// Get a list of all available Pokemon Types.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// 
+        ///     GET api/types
+        ///
+        /// </remarks>
         [HttpGet]
         [Route("types")]
         public async Task<ActionResult<List<Typing>>> GetTypings()
@@ -46,6 +56,16 @@ namespace PokemonAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Get a detailed summary of one specified Pokemon Type.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// 
+        ///     GET api/types/Water
+        ///
+        /// </remarks>
+        /// <param name="typeName">Name of the type</param>   
         [HttpGet]
         [Route("type/{typeName}")]
         public async Task<ActionResult<TypingDTO>> GetTypingByName(string typeName)
@@ -63,6 +83,21 @@ namespace PokemonAPI.Controllers
 
         #region Controller Pokemon Methods
         //-----------------------------------------------------------------------------------------------------
+        
+        /// <summary>
+        /// Get a list of Pokemon, with the option to specify a Pokemon Type.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// 
+        ///     GET api/pokemons
+        ///
+        ///     or
+        ///
+        ///     GET api/pokemons?typeName=Water
+        ///
+        /// </remarks>
+        /// <param name="typeName">Name of the type</param>  
         [HttpGet]
         [Route("pokemons")]
         public async Task<ActionResult<List<PokemonDTO>>> GetPokemons(string typeName = "")
@@ -87,6 +122,16 @@ namespace PokemonAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Get a Pokemon by ID.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// 
+        ///     GET api/pokemons/id/9ae91a19-ba47-4506-ab97-fe20718b9bea
+        ///
+        /// </remarks>
+        /// <param name="pokemonId">Pokemon ID within the database</param>  
         [HttpGet]
         [Route("pokemon/id/{pokemonId}")]
         public async Task<ActionResult<PokemonDTO>> GetPokemonById(Guid pokemonId)
@@ -101,6 +146,16 @@ namespace PokemonAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Get a Pokemon by Pokedex entry.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// 
+        ///     GET api/pokemons/entry/25
+        ///
+        /// </remarks>
+        /// <param name="pokedexEntry">Pokemon's Pokedex entry</param>  
         [HttpGet]
         [Route("pokemon/entry/{pokedexEntry}")]
         public async Task<ActionResult<PokemonDTO>> GetPokemonByEntry(int pokedexEntry)
@@ -115,6 +170,25 @@ namespace PokemonAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Add a Pokemon to the API
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// 
+        ///     POST api/pokemon
+        ///     {
+        ///     "pokedexEntry": 350,
+        ///     "name": "Milotic",
+        ///     "generation": 3,
+        ///     "types": [
+        ///         "Water"
+        ///     ],
+        ///     "classification": "Tender Pokemon",
+        ///     "eggGroup": "Water 1, Dragon"
+        ///
+        /// </remarks>
+        /// <param name="pokemonDTO">Pokemon to add</param>  
         [HttpPost]
         [Route("pokemon")]
         public async Task<ActionResult<Pokemon>> AddPokemon(PokemonDTO pokemonDTO){
