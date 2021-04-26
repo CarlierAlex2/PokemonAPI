@@ -39,16 +39,19 @@ namespace PokemonAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //configurations
+            // configurations
             services.Configure<ConnectionStrings>(Configuration.GetSection("ConnectionStrings"));
 
-            //db context
+            // db context
             services.AddDbContext<PokemonContext>(); //nog altijd nodig voor migrations
 
-            //controllers
+            // caching
+            services.AddResponseCaching();
+
+            // controllers
             services.AddControllers().AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
-            //
+            // versioning
             services.AddApiVersioning(config=> {
                 config.DefaultApiVersion = new ApiVersion(1, 0);
                 config.AssumeDefaultVersionWhenUnspecified = true;
@@ -64,10 +67,10 @@ namespace PokemonAPI
             // services
             services.AddTransient<IPokemonService, PokemonService>();
 
-            //rest
+            // mapping
             services.AddAutoMapper(typeof(Startup)); //automapper
 
-            //auth0
+            // authorization + authentication - auth0
             /*
             services.AddAuthentication(options => {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -78,9 +81,10 @@ namespace PokemonAPI
             });
             */
 
-            //PCKE
+            // authorization + authentication - PCKE
             services.AddMicrosoftIdentityWebApiAuthentication(Configuration, "AzureAdB2C");
 
+            // swagger
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { 
@@ -108,12 +112,12 @@ namespace PokemonAPI
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PokemonAPI v1"));
 
             app.UseHttpsRedirection();
-
             app.UseRouting();
 
             //app.UseAuthentication();
             app.UseAuthorization();
 
+            app.UseResponseCaching();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

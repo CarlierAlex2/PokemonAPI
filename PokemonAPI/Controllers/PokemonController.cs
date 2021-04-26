@@ -74,6 +74,7 @@ namespace PokemonAPI.Controllers
         [HttpGet]
         [Route("type/{typeName}")]
         [MapToApiVersion("1.0")]
+        [ResponseCache(Duration = 60, Location = ResponseCacheLocation.Any)]
         public async Task<ActionResult<TypingDTO>> GetTypingByName(string typeName)
         {
             try{
@@ -107,6 +108,7 @@ namespace PokemonAPI.Controllers
         [HttpGet]
         [Route("pokemons")]
         [MapToApiVersion("1.0")]
+        [ResponseCache(Duration = 60, Location = ResponseCacheLocation.Any)]
         public async Task<ActionResult<List<PokemonDTO>>> GetPokemons(string typeName = "")
         {
             try{
