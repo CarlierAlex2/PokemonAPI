@@ -176,6 +176,8 @@ namespace PokemonAPI.Controllers
                     return new BadRequestObjectResult("Pokedex Entry cannot be less than 1");
 
                 List<PokemonDTO> results = await _pokemonService.GetPokemonByEntry(pokedexEntry);
+                if(results == null || results.Count <= 0)
+                    return new BadRequestObjectResult("No pokemon were found with given parameters");
                 return new OkObjectResult(results);
             }
             catch(Exception ex){
@@ -207,6 +209,8 @@ namespace PokemonAPI.Controllers
                     return new BadRequestObjectResult("Generation cannot be less than 1");
 
                 PokemonDTO results = await _pokemonService.GetPokemonByEntryAndGen(pokedexEntry, generation);
+                if(results == null)
+                    return new BadRequestObjectResult("No pokemon were found with given parameters");
                 return new OkObjectResult(results);
             }
             catch(Exception ex){
@@ -240,6 +244,9 @@ namespace PokemonAPI.Controllers
         public async Task<ActionResult<Pokemon>> AddPokemon(PokemonDTO pokemonDTO){
             try{
                 var result = await _pokemonService.AddPokemon(pokemonDTO);
+                if(result == null)
+                    return new BadRequestObjectResult("Pokemon with given entry and generation already exists in database");
+                
                 _logger.LogInformation($"Pokemon was added - {result}");
                 return new OkObjectResult(result);
             }

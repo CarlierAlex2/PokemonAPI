@@ -10,7 +10,7 @@
 using System;
 using System.Reflection;
 
-[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("PokemonAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "c:\\Users\\alexc\\Documents\\MCT\\Jaar2_2020_2021\\MCT_semester_4\\BackendDevelopment\\Ba" +
+[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("PokemonAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "C:\\Users\\alexc\\Documents\\MCT\\Jaar2_2020_2021\\MCT_semester_4\\BackendDevelopment\\Ba" +
     "ckDev_Project\\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\\PokemonAPI", "PokemonAPI.csproj", "0")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("PokemonAPI.Test")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]

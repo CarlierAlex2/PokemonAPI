@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\alexc\\Documents\\MCT\\Jaar2_2020_2021\\MCT_semester_4\\BackendDevelopment\\BackDev_Project\\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\\PokemonAPI.Test\\PokemonAPI.Test.csproj": {}
+    "C:\\Users\\alexc\\Documents\\MCT\\Jaar2_2020_2021\\MCT_semester_4\\BackendDevelopment\\BackDev_Project\\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\\PokemonAPI.Test\\PokemonAPI.Test.csproj": {}
   },
   "projects": {
-    "c:\\Users\\alexc\\Documents\\MCT\\Jaar2_2020_2021\\MCT_semester_4\\BackendDevelopment\\BackDev_Project\\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\\PokemonAPI.Test\\PokemonAPI.Test.csproj": {
+    "C:\\Users\\alexc\\Documents\\MCT\\Jaar2_2020_2021\\MCT_semester_4\\BackendDevelopment\\BackDev_Project\\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\\PokemonAPI.Test\\PokemonAPI.Test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\alexc\\Documents\\MCT\\Jaar2_2020_2021\\MCT_semester_4\\BackendDevelopment\\BackDev_Project\\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\\PokemonAPI.Test\\PokemonAPI.Test.csproj",
+        "projectUniqueName": "C:\\Users\\alexc\\Documents\\MCT\\Jaar2_2020_2021\\MCT_semester_4\\BackendDevelopment\\BackDev_Project\\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\\PokemonAPI.Test\\PokemonAPI.Test.csproj",
         "projectName": "PokemonAPI.Test",
-        "projectPath": "c:\\Users\\alexc\\Documents\\MCT\\Jaar2_2020_2021\\MCT_semester_4\\BackendDevelopment\\BackDev_Project\\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\\PokemonAPI.Test\\PokemonAPI.Test.csproj",
+        "projectPath": "C:\\Users\\alexc\\Documents\\MCT\\Jaar2_2020_2021\\MCT_semester_4\\BackendDevelopment\\BackDev_Project\\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\\PokemonAPI.Test\\PokemonAPI.Test.csproj",
         "packagesPath": "C:\\Users\\alexc\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\alexc\\Documents\\MCT\\Jaar2_2020_2021\\MCT_semester_4\\BackendDevelopment\\BackDev_Project\\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\\PokemonAPI.Test\\obj\\",
+        "outputPath": "C:\\Users\\alexc\\Documents\\MCT\\Jaar2_2020_2021\\MCT_semester_4\\BackendDevelopment\\BackDev_Project\\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\\PokemonAPI.Test\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\alexc\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -26,8 +26,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "c:\\Users\\alexc\\Documents\\MCT\\Jaar2_2020_2021\\MCT_semester_4\\BackendDevelopment\\BackDev_Project\\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\\PokemonAPI\\PokemonAPI.csproj": {
-                "projectPath": "c:\\Users\\alexc\\Documents\\MCT\\Jaar2_2020_2021\\MCT_semester_4\\BackendDevelopment\\BackDev_Project\\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\\PokemonAPI\\PokemonAPI.csproj"
+              "C:\\Users\\alexc\\Documents\\MCT\\Jaar2_2020_2021\\MCT_semester_4\\BackendDevelopment\\BackDev_Project\\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\\PokemonAPI\\PokemonAPI.csproj": {
+                "projectPath": "C:\\Users\\alexc\\Documents\\MCT\\Jaar2_2020_2021\\MCT_semester_4\\BackendDevelopment\\BackDev_Project\\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\\PokemonAPI\\PokemonAPI.csproj"
               }
             }
           }
@@ -96,14 +96,14 @@
         }
       }
     },
-    "c:\\Users\\alexc\\Documents\\MCT\\Jaar2_2020_2021\\MCT_semester_4\\BackendDevelopment\\BackDev_Project\\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\\PokemonAPI\\PokemonAPI.csproj": {
+    "C:\\Users\\alexc\\Documents\\MCT\\Jaar2_2020_2021\\MCT_semester_4\\BackendDevelopment\\BackDev_Project\\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\\PokemonAPI\\PokemonAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\alexc\\Documents\\MCT\\Jaar2_2020_2021\\MCT_semester_4\\BackendDevelopment\\BackDev_Project\\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\\PokemonAPI\\PokemonAPI.csproj",
+        "projectUniqueName": "C:\\Users\\alexc\\Documents\\MCT\\Jaar2_2020_2021\\MCT_semester_4\\BackendDevelopment\\BackDev_Project\\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\\PokemonAPI\\PokemonAPI.csproj",
         "projectName": "PokemonAPI",
-        "projectPath": "c:\\Users\\alexc\\Documents\\MCT\\Jaar2_2020_2021\\MCT_semester_4\\BackendDevelopment\\BackDev_Project\\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\\PokemonAPI\\PokemonAPI.csproj",
+        "projectPath": "C:\\Users\\alexc\\Documents\\MCT\\Jaar2_2020_2021\\MCT_semester_4\\BackendDevelopment\\BackDev_Project\\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\\PokemonAPI\\PokemonAPI.csproj",
         "packagesPath": "C:\\Users\\alexc\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\alexc\\Documents\\MCT\\Jaar2_2020_2021\\MCT_semester_4\\BackendDevelopment\\BackDev_Project\\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\\PokemonAPI\\obj\\",
+        "outputPath": "C:\\Users\\alexc\\Documents\\MCT\\Jaar2_2020_2021\\MCT_semester_4\\BackendDevelopment\\BackDev_Project\\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\\PokemonAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\alexc\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -138,9 +138,21 @@
               "target": "Package",
               "version": "[8.1.1, )"
             },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[5.0.5, )"
+            },
+            "Microsoft.AspNetCore.Mvc": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
               "target": "Package",
               "version": "[5.0.4, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Versioning": {
+              "target": "Package",
+              "version": "[5.0.0, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -152,9 +164,13 @@
               "target": "Package",
               "version": "[5.0.4, )"
             },
+            "Microsoft.Identity.Web": {
+              "target": "Package",
+              "version": "[1.8.2, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[5.6.3, )"
+              "version": "[6.1.2, )"
             }
           },
           "imports": [
