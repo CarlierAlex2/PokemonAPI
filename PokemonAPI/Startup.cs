@@ -6,11 +6,14 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+
+using Microsoft.Identity.Web;
 
 //to fix infinite loopin
 using Newtonsoft.Json;
@@ -20,6 +23,7 @@ using PokemonAPI.Services;
 using PokemonAPI.Repositories;
 using PokemonAPI.Data;
 using PokemonAPI.DTO;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace PokemonAPI
 {
@@ -35,14 +39,22 @@ namespace PokemonAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //add configurations
+            //configurations
             services.Configure<ConnectionStrings>(Configuration.GetSection("ConnectionStrings"));
 
-            //add db context
+            //db context
             services.AddDbContext<PokemonContext>(); //nog altijd nodig voor migrations
 
-            //add controllers
+            //controllers
             services.AddControllers().AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
+            //
+            services.AddApiVersioning(config=> {
+                config.DefaultApiVersion = new ApiVersion(1, 0);
+                config.AssumeDefaultVersionWhenUnspecified = true;
+                config.ReportApiVersions = true;
+                config.ApiVersionReader = new HeaderApiVersionReader("api-version");
+            });
 
             // context
             services.AddTransient<IPokemonContext, PokemonContext>();
@@ -54,6 +66,21 @@ namespace PokemonAPI
 
             //rest
             services.AddAutoMapper(typeof(Startup)); //automapper
+
+            //auth0
+            /*
+            services.AddAuthentication(options => {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options => {
+                options.Authority = "https://dev-epycux53.eu.auth0.com/";
+                options.Audience = "https://alex.carlier.PokemonAPI";
+            });
+            */
+
+            //PCKE
+            services.AddMicrosoftIdentityWebApiAuthentication(Configuration, "AzureAdB2C");
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { 
@@ -84,6 +111,7 @@ namespace PokemonAPI
 
             app.UseRouting();
 
+            //app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

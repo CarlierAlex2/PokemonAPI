@@ -4,15 +4,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
 
 using PokemonAPI.Models;
 using PokemonAPI.DTO;
 using PokemonAPI.Services;
 
+
 namespace PokemonAPI.Controllers
 {
+    //[Authorize]
     [ApiController]
     [Route("api")]
+    [ApiVersion("1.0")]
     public class PokemonController : ControllerBase
     {
         #region Global Variables + Constructor
@@ -44,6 +48,7 @@ namespace PokemonAPI.Controllers
         /// </remarks>
         [HttpGet]
         [Route("types")]
+        [MapToApiVersion("1.0")]
         public async Task<ActionResult<List<Typing>>> GetTypings()
         {
             try{
@@ -68,6 +73,7 @@ namespace PokemonAPI.Controllers
         /// <param name="typeName">Name of the type</param>   
         [HttpGet]
         [Route("type/{typeName}")]
+        [MapToApiVersion("1.0")]
         public async Task<ActionResult<TypingDTO>> GetTypingByName(string typeName)
         {
             try{
@@ -100,6 +106,7 @@ namespace PokemonAPI.Controllers
         /// <param name="typeName">Name of the type</param>  
         [HttpGet]
         [Route("pokemons")]
+        [MapToApiVersion("1.0")]
         public async Task<ActionResult<List<PokemonDTO>>> GetPokemons(string typeName = "")
         {
             try{
@@ -134,6 +141,7 @@ namespace PokemonAPI.Controllers
         /// <param name="pokemonId">Pokemon ID within the database</param>  
         [HttpGet]
         [Route("pokemon/id/{pokemonId}")]
+        [MapToApiVersion("1.0")]
         public async Task<ActionResult<PokemonDTO>> GetPokemonById(Guid pokemonId)
         {
             try{
@@ -158,6 +166,7 @@ namespace PokemonAPI.Controllers
         /// <param name="pokedexEntry">Pokemon's Pokedex entry</param>  
         [HttpGet]
         [Route("pokemon/entry/{pokedexEntry}")]
+        [MapToApiVersion("1.0")]
         public async Task<ActionResult<PokemonDTO>> GetPokemonByEntry(int pokedexEntry)
         {
             try{
@@ -191,6 +200,7 @@ namespace PokemonAPI.Controllers
         /// <param name="pokemonDTO">Pokemon to add</param>  
         [HttpPost]
         [Route("pokemon")]
+        [MapToApiVersion("1.0")]
         public async Task<ActionResult<Pokemon>> AddPokemon(PokemonDTO pokemonDTO){
             try{
                 var result = await _pokemonService.AddPokemon(pokemonDTO);
