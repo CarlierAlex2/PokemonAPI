@@ -21,6 +21,7 @@ namespace PokemonAPI.Data
 
         DbSet<Typing> Typings { get; set; }
         DbSet<TypeEffect> TypeEffects { get; set; }
+
         int SaveChanges();
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
@@ -57,7 +58,19 @@ namespace PokemonAPI.Data
 
         private void SetRelationShips(ModelBuilder modelBuilder)
         {
-            #region TypeEffect Relations
+            #region Typing Relations
+            modelBuilder.Entity<Typing>()
+                    .HasMany(t => t.TypeOffense)
+                    .WithOne(e => e.OffenseTyping)
+                    .HasForeignKey(e => e.OffenseTypingId)
+                    .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Typing>()
+                    .HasMany(t => t.TypeDefense)
+                    .WithOne(e => e.DefenseTyping)
+                    .HasForeignKey(e => e.DefenseTypingId)
+                    .OnDelete(DeleteBehavior.NoAction);
+            /*
             modelBuilder.Entity<TypeEffect>()
                     .HasOne(effect => effect.OffenseTyping)
                     .WithMany(pokemon => pokemon.TypeOffense)
@@ -69,23 +82,38 @@ namespace PokemonAPI.Data
                     .WithMany(pokemon => pokemon.TypeDefense)
                     .HasForeignKey(effect => effect.DefenseTypingId)
                     .OnDelete(DeleteBehavior.NoAction);
+            */
             #endregion
 
-            #region PokemonTyping Relations
+            #region Pokemon Relations
+            modelBuilder.Entity<Pokemon>().HasIndex(p => new {p.PokedexEntry , p.Generation}).IsUnique();
             modelBuilder.Entity<PokemonTyping>().HasKey(cs => new { cs.PokemonId, cs.TypingId });
             
+            modelBuilder.Entity<Pokemon>()
+                    .HasMany(pok => pok.PokemonTypings)
+                    .WithOne(pokType => pokType.Pokemon)
+                    .HasForeignKey(pokType => pokType.PokemonId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Typing>()
+                    .HasMany(t => t.PokemonTypings)
+                    .WithOne(pokType => pokType.Typing)
+                    .HasForeignKey(pokType => pokType.TypingId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+            /*
             modelBuilder.Entity<PokemonTyping>()
                     .HasOne(pokType => pokType.Pokemon)
                     .WithMany(pok => pok.PokemonTypings)
                     .HasForeignKey(pokType => pokType.PokemonId)
                     .OnDelete(DeleteBehavior.NoAction);
-            
 
             modelBuilder.Entity<PokemonTyping>()
                     .HasOne(pokType => pokType.Typing)
                     .WithMany(typing => typing.PokemonTypings)
                     .HasForeignKey(pokType => pokType.TypingId)
                     .OnDelete(DeleteBehavior.NoAction);
+            */
             #endregion
         }
 

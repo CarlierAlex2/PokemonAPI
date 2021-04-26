@@ -15,6 +15,7 @@ namespace PokemonAPI.Models
         public int PokedexEntry { get; set; }
 
         [Required(ErrorMessage="Name Required")] 
+        [MinLength(3, ErrorMessage="Name Required - Name is not sufficiently long enough")]
         public string  Name { get; set; }
 
         [Required(ErrorMessage="Generation Required")] 

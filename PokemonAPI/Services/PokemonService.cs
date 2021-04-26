@@ -16,7 +16,10 @@ namespace PokemonAPI.Services
     public interface IPokemonService
     {
         Task<Pokemon> AddPokemon(PokemonDTO pokemonDTO);
-        Task<PokemonDTO> GetPokemonByEntry(int pokedexEntry);
+        Task DeletePokemonByEntry(int pokedexEntry);
+        Task DeletePokemonByEntryAndGen(int pokedexEntry, int generation);
+        Task<List<PokemonDTO>> GetPokemonByEntry(int pokedexEntry);
+        Task<PokemonDTO> GetPokemonByEntryAndGen(int pokedexEntry, int generation);
         Task<PokemonDTO> GetPokemonById(Guid id);
         Task<List<PokemonDTO>> GetPokemonByType(string typeName);
         Task<List<PokemonDTO>> GetPokemons();
@@ -79,9 +82,16 @@ namespace PokemonAPI.Services
             return resultDTO;
         }
 
-        public async Task<PokemonDTO> GetPokemonByEntry(int pokedexEntry)
+        public async Task<List<PokemonDTO>> GetPokemonByEntry(int pokedexEntry)
         {
-            var results = await _pokemonRepository.GetPokemonByEntry(pokedexEntry);
+            var results = await _pokemonRepository.GetPokemonByEntry(pokedexEntry, DetailLevel.Details);
+            List<PokemonDTO> resultDTO = GetPokemonDTOList(results);
+            return resultDTO;
+        }
+
+        public async Task<PokemonDTO> GetPokemonByEntryAndGen(int pokedexEntry, int generation)
+        {
+            var results = await _pokemonRepository.GetPokemonByEntryAndGen(pokedexEntry, generation, DetailLevel.Details);
             PokemonDTO resultDTO = GetPokemonDTO(results);
             return resultDTO;
         }
@@ -96,7 +106,8 @@ namespace PokemonAPI.Services
         private PokemonDTO GetPokemonDTO(Pokemon pokemon)
         {
             var dto = _mapper.Map<PokemonDTO>(pokemon);
-            dto.Types = pokemon.PokemonTypings.Select(r => r.Typing.Name).ToList();
+            if (pokemon.PokemonTypings != null)
+                dto.Types = pokemon.PokemonTypings.Select(r => r.Typing.Name).ToList();
             return dto;
         }
 
@@ -104,11 +115,7 @@ namespace PokemonAPI.Services
         {
             List<PokemonDTO> resultDTO = new List<PokemonDTO>();
             foreach (var pok in pokemons)
-            {
-                var dto = _mapper.Map<PokemonDTO>(pok);
-                dto.Types = pok.PokemonTypings.Select(r => r.Typing.Name).ToList();
-                resultDTO.Add(dto);
-            }
+                resultDTO.Add(GetPokemonDTO(pok));
             return resultDTO;
         }
 
@@ -128,6 +135,24 @@ namespace PokemonAPI.Services
             }
             pokemon = await _pokemonRepository.AddPokemon(pokemon);
             return pokemon;
+        }
+
+        public async Task DeletePokemonByEntry(int pokedexEntry)
+        {
+            List<Pokemon> listPokemon = await _pokemonRepository.GetPokemonByEntry(pokedexEntry, DetailLevel.ForeignKeys);
+            if (listPokemon == null)
+                return;
+
+            await _pokemonRepository.DeletePokemonList(listPokemon);
+        }
+
+        public async Task DeletePokemonByEntryAndGen(int pokedexEntry, int generation)
+        {
+            Pokemon pokemon = await _pokemonRepository.GetPokemonByEntryAndGen(pokedexEntry, generation, DetailLevel.ForeignKeys);
+            if (pokemon == null)
+                return;
+
+            await _pokemonRepository.DeletePokemon(pokemon);
         }
     }
 }

@@ -157,7 +157,7 @@ namespace PokemonAPI.Controllers
         }
 
         /// <summary>
-        /// Get a Pokemon by Pokedex entry.
+        /// Get Pokemons by Pokedex entry.
         /// </summary>
         /// <remarks>
         /// Sample request:
@@ -167,12 +167,46 @@ namespace PokemonAPI.Controllers
         /// </remarks>
         /// <param name="pokedexEntry">Pokemon's Pokedex entry</param>  
         [HttpGet]
-        [Route("pokemon/entry/{pokedexEntry}")]
+        [Route("pokemons/entry/{pokedexEntry}")]
         [MapToApiVersion("1.0")]
-        public async Task<ActionResult<PokemonDTO>> GetPokemonByEntry(int pokedexEntry)
+        public async Task<ActionResult<List<PokemonDTO>>> GetPokemonByEntry(int pokedexEntry)
         {
             try{
-                PokemonDTO results = await _pokemonService.GetPokemonByEntry(pokedexEntry);
+                if(pokedexEntry <= 0)
+                    return new BadRequestObjectResult("Pokedex Entry cannot be less than 1");
+
+                List<PokemonDTO> results = await _pokemonService.GetPokemonByEntry(pokedexEntry);
+                return new OkObjectResult(results);
+            }
+            catch(Exception ex){
+                _logger.LogError(ex.Message);
+                return new StatusCodeResult(500);
+            }
+        }
+
+        /// <summary>
+        /// Get a Pokemon by Pokedex entry and generation.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// 
+        ///     GET api/pokemon/entry/350/gen/3
+        ///
+        /// </remarks>
+        /// <param name="pokedexEntry">Pokemon's Pokedex entry</param>  
+        /// <param name="generation">Generation</param>  
+        [HttpGet]
+        [Route("pokemon/entry/{pokedexEntry}/gen/{generation}")]
+        [MapToApiVersion("1.0")]
+        public async Task<ActionResult<PokemonDTO>> GetPokemonByEntryAndGen(int pokedexEntry, int generation)
+        {
+            try{
+                if(pokedexEntry <= 0)
+                    return new BadRequestObjectResult("Pokedex Entry cannot be less than 1");
+                if(generation <= 0)
+                    return new BadRequestObjectResult("Generation cannot be less than 1");
+
+                PokemonDTO results = await _pokemonService.GetPokemonByEntryAndGen(pokedexEntry, generation);
                 return new OkObjectResult(results);
             }
             catch(Exception ex){
@@ -208,6 +242,45 @@ namespace PokemonAPI.Controllers
                 var result = await _pokemonService.AddPokemon(pokemonDTO);
                 _logger.LogInformation($"Pokemon was added - {result}");
                 return new OkObjectResult(result);
+            }
+            catch (Exception ex){
+                _logger.LogWarning($"Warning {ex.Message}");
+                return new StatusCodeResult(500);
+            }
+        }
+
+        /// <summary>
+        /// Remove a Pokemon from the API
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// 
+        ///     DELETE api/pokemons/entry/350
+        ///
+        ///     or
+        ///
+        ///     DELETE api/pokemons/entry/350?generation=3
+        ///
+        /// </remarks>
+        /// <param name="pokedexEntry">Pokedex Entry</param>  
+        /// <param name="generation">Generation</param>  
+        [HttpDelete]
+        [Route("pokemons/entry/{pokedexEntry}")]
+        [MapToApiVersion("1.0")]
+        public async Task<ActionResult> DeletePokemon(int pokedexEntry, int generation = -1){
+            try{
+                if(generation > 0)
+                {
+                    await _pokemonService.DeletePokemonByEntryAndGen(pokedexEntry, generation);
+                    _logger.LogInformation($"Pokemons were removed - PokedexEntry:{pokedexEntry} - Generation{generation}");
+                    return new OkResult();
+                }
+                else
+                {
+                    await _pokemonService.DeletePokemonByEntry(pokedexEntry);
+                    _logger.LogInformation($"Pokemons were removed - PokedexEntry:{pokedexEntry}");
+                    return new OkResult();
+                }
             }
             catch (Exception ex){
                 _logger.LogWarning($"Warning {ex.Message}");

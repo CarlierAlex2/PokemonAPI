@@ -43,12 +43,15 @@ namespace PokemonAPI.Migrations
 
                     b.HasKey("PokemonId");
 
+                    b.HasIndex("PokedexEntry", "Generation")
+                        .IsUnique();
+
                     b.ToTable("Pokemons");
 
                     b.HasData(
                         new
                         {
-                            PokemonId = new Guid("7b7d665b-5d95-4d55-8f7f-7be362fc97f9"),
+                            PokemonId = new Guid("40bb873f-2acf-4b8e-882b-ceedcbcf817f"),
                             Classification = "Sleeping Pokemon",
                             EggGroup = "Monster",
                             Generation = 1,
@@ -57,7 +60,7 @@ namespace PokemonAPI.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("3c5524e4-ce5c-4086-bcd0-1de86d595086"),
+                            PokemonId = new Guid("5a23d352-5c7d-43d7-914b-5260db5dc43d"),
                             Classification = "Blocking Pokemon",
                             EggGroup = "Field",
                             Generation = 8,
@@ -66,7 +69,7 @@ namespace PokemonAPI.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("ec0f9285-22ab-4853-9e21-a0b0b796bfbd"),
+                            PokemonId = new Guid("d46240f9-22de-40b3-a7dd-b8a66abea7a3"),
                             Classification = "Lizard Pokemon",
                             EggGroup = "Monster, Dragon",
                             Generation = 1,
@@ -75,7 +78,7 @@ namespace PokemonAPI.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("3d899972-db96-44d9-8592-8d3fcfc9e74e"),
+                            PokemonId = new Guid("d1938c55-457a-4ad7-8a7f-1384c4b2eb27"),
                             Classification = "Sun Pokemon",
                             EggGroup = "Bug",
                             Generation = 5,
@@ -84,7 +87,7 @@ namespace PokemonAPI.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("5feafb41-ad8c-489f-a202-f484ce3cb1b0"),
+                            PokemonId = new Guid("a612fd00-184e-4a3f-969b-9d676150fd8b"),
                             Classification = "Superpower Pokemon",
                             EggGroup = "Human-Like",
                             Generation = 1,
@@ -93,7 +96,7 @@ namespace PokemonAPI.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("320aab3a-b006-4d4e-80f4-7f3e0f2dbbb8"),
+                            PokemonId = new Guid("2c4738b0-152e-45bb-b54b-9130660fe35e"),
                             Classification = "Single Horn Pokemon",
                             EggGroup = "Bug",
                             Generation = 2,
@@ -102,7 +105,7 @@ namespace PokemonAPI.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("1120373b-1ed7-45e6-82a3-77d37327b230"),
+                            PokemonId = new Guid("9fe15559-2e02-45e5-97b1-7605d18a50f2"),
                             Classification = "Mud Fish Pokemon",
                             EggGroup = "Monster, Water 1",
                             Generation = 3,
@@ -111,7 +114,7 @@ namespace PokemonAPI.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("89599747-2623-4a60-a9ed-dce8e5259bb6"),
+                            PokemonId = new Guid("236a69da-00ca-4066-adaf-e71ecaa6e0ab"),
                             Classification = "Mock Kelp Pokemon",
                             EggGroup = "Bug",
                             Generation = 6,
@@ -120,7 +123,7 @@ namespace PokemonAPI.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("93c2eace-ccec-4afe-8f52-ca9aaf80239e"),
+                            PokemonId = new Guid("a7b873c7-9d43-4506-b2bd-778b4a53b9ca"),
                             Classification = "Raven Pokemon",
                             EggGroup = "Flying",
                             Generation = 8,
@@ -129,7 +132,7 @@ namespace PokemonAPI.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("fb1d7ad6-5b62-429c-8e05-6a26f2ddded1"),
+                            PokemonId = new Guid("e3e8f216-debb-410f-811c-46c9da30ae00"),
                             Classification = "Balloon Pokemon",
                             EggGroup = "Amorphous",
                             Generation = 4,
@@ -138,7 +141,7 @@ namespace PokemonAPI.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("bdfa3d07-9159-45a4-a9cb-0838ad6ac5b6"),
+                            PokemonId = new Guid("19abab28-b860-4d57-b006-bb1f0b17dd12"),
                             Classification = "Sickle Grass Pokemon",
                             EggGroup = "Grass",
                             Generation = 7,
@@ -147,7 +150,7 @@ namespace PokemonAPI.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("da796b4d-0e8c-482b-9636-bccdb5f6c713"),
+                            PokemonId = new Guid("beb21f21-3cc3-45bf-967a-3cf512588e1d"),
                             Classification = "Sea Lily Pokemon",
                             EggGroup = "Water 3",
                             Generation = 3,
@@ -156,7 +159,7 @@ namespace PokemonAPI.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("62868e50-e229-48e2-b321-0c0f52d4d00d"),
+                            PokemonId = new Guid("710af572-446f-4edd-9228-fef6f8827fd7"),
                             Classification = "Poison Pin Pokemon",
                             EggGroup = "Undiscovered",
                             Generation = 7,
@@ -165,7 +168,7 @@ namespace PokemonAPI.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("f560d6ea-6946-487d-ab28-94d5046e32ca"),
+                            PokemonId = new Guid("23f4fc0b-498b-4b9f-b98f-27061ee99639"),
                             Classification = "Bouquet Pokemon",
                             EggGroup = "Fairy, Grass",
                             Generation = 4,
@@ -174,7 +177,7 @@ namespace PokemonAPI.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("eef550ed-a823-42bd-badf-fdafc7f839a6"),
+                            PokemonId = new Guid("0ec5f816-d6f2-4e08-817c-f30d990198b1"),
                             Classification = "Magnet Area Pokemon",
                             EggGroup = "Mineral",
                             Generation = 4,
@@ -183,7 +186,7 @@ namespace PokemonAPI.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("d724d735-a33f-4c5a-9430-0a31e6770519"),
+                            PokemonId = new Guid("6cd0ca06-95f3-447e-b1a7-e327b873c045"),
                             Classification = "Deep Black Pokemon",
                             EggGroup = "Undiscovered",
                             Generation = 5,
@@ -192,7 +195,7 @@ namespace PokemonAPI.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("7f73f100-8202-4b3b-96f0-e542252b97b9"),
+                            PokemonId = new Guid("6b66d586-979e-4a60-9e69-4c6f74974262"),
                             Classification = "Automaton Pokemon",
                             EggGroup = "Mineral",
                             Generation = 5,
@@ -201,7 +204,7 @@ namespace PokemonAPI.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("be7d9df2-a407-41ce-9f34-35ba6170705a"),
+                            PokemonId = new Guid("4a6a6ac2-2c7c-415d-838b-857437844365"),
                             Classification = "Order Pokemon",
                             EggGroup = "Undiscovered",
                             Generation = 6,
@@ -210,7 +213,7 @@ namespace PokemonAPI.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("fcadfdb2-c9e5-4df4-9a06-1c4830292ac0"),
+                            PokemonId = new Guid("c1ec31d8-0015-4d6b-ba75-e349ce5d3581"),
                             Classification = "Psi Pokemon",
                             EggGroup = "Human-Like",
                             Generation = 1,
@@ -219,7 +222,7 @@ namespace PokemonAPI.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("bd56fee9-ac65-4e7e-a43e-cd3313a929c7"),
+                            PokemonId = new Guid("275e29b5-8a33-448e-ac86-a49cc7955931"),
                             Classification = "Bronze Bell Pokemon",
                             EggGroup = "Mineral",
                             Generation = 4,
@@ -228,7 +231,7 @@ namespace PokemonAPI.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("d7561fe2-1672-43e9-83b2-a90444dc3863"),
+                            PokemonId = new Guid("2ab70264-8249-4b00-9337-75d6a5574e9c"),
                             Classification = "Head Butt Pokemon",
                             EggGroup = "Monster",
                             Generation = 4,
@@ -237,7 +240,7 @@ namespace PokemonAPI.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("5fbad038-49b1-4e71-a5af-1c45ddd872fc"),
+                            PokemonId = new Guid("361b83c6-81ff-4694-9219-6d41ffb3c448"),
                             Classification = "Tundra Pokemon",
                             EggGroup = "Monster",
                             Generation = 6,
@@ -246,7 +249,7 @@ namespace PokemonAPI.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("b0c07be1-6964-4bd8-b043-adad4a31f58e"),
+                            PokemonId = new Guid("cdb5e327-47fe-4395-a682-0a3ee83ae1c4"),
                             Classification = "Snow Hat Pokemon",
                             EggGroup = "Fairy, Mineral",
                             Generation = 3,
@@ -255,7 +258,7 @@ namespace PokemonAPI.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("ca0c64b9-0347-4edb-b378-6054f3adeb49"),
+                            PokemonId = new Guid("55d6fad3-615a-4476-995c-49463f074504"),
                             Classification = "Worm Pokemon",
                             EggGroup = "Bug",
                             Generation = 8,
@@ -264,7 +267,7 @@ namespace PokemonAPI.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("769e9e1f-b2a6-4bac-9f24-94541cca9484"),
+                            PokemonId = new Guid("32282913-92e1-48ae-b26b-ab76129e0ece"),
                             Classification = "Leaf-Wrapped Pokemon",
                             EggGroup = "Bug",
                             Generation = 5,
@@ -273,7 +276,7 @@ namespace PokemonAPI.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("b022d558-d506-4c45-9239-8db6c8f92be0"),
+                            PokemonId = new Guid("21d767c3-6fff-428e-a2fc-7721ed66ea29"),
                             Classification = "Curlipede Pokemon",
                             EggGroup = "Bug",
                             Generation = 5,
@@ -282,7 +285,7 @@ namespace PokemonAPI.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("15ff308f-a137-471a-b082-9e23e1059c98"),
+                            PokemonId = new Guid("7630549c-7f3b-4b36-aefb-febd1663cbb9"),
                             Classification = "Dragon Pokemon",
                             EggGroup = "Water 1, Dragon",
                             Generation = 1,
@@ -291,7 +294,7 @@ namespace PokemonAPI.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("7f06468c-c199-42ec-a31f-798ca1e1f0e7"),
+                            PokemonId = new Guid("35f46562-8ab5-4b61-98c5-ce8838da2ac2"),
                             Classification = "Stealth Pokemon",
                             EggGroup = "Amorphous, Dragon",
                             Generation = 8,
@@ -300,7 +303,7 @@ namespace PokemonAPI.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("1e6bc260-2aa9-4206-aa20-345897ccc32e"),
+                            PokemonId = new Guid("765bdf9a-6a83-43a6-94f6-f25ca1b5fad1"),
                             Classification = "Screech Pokemon",
                             EggGroup = "Amorphous",
                             Generation = 2,
@@ -309,7 +312,7 @@ namespace PokemonAPI.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("67daba33-f80b-439f-b64f-67b8379a1dd2"),
+                            PokemonId = new Guid("5e613c51-20a5-4bb2-ac3f-a4f69237b84d"),
                             Classification = "Magical Pokemon",
                             EggGroup = "Amorphous",
                             Generation = 4,
@@ -318,16 +321,16 @@ namespace PokemonAPI.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("3ce01a8a-5a84-4632-b903-ebcb8fca5eab"),
+                            PokemonId = new Guid("e8e4504d-cbfd-424e-b848-f07bfe0d7381"),
                             Classification = "Wily Pokemon",
                             EggGroup = "Field, Grass",
                             Generation = 3,
                             Name = "Nuzleaf",
-                            PokedexEntry = 306
+                            PokedexEntry = 274
                         },
                         new
                         {
-                            PokemonId = new Guid("bcf17486-bb68-425a-921e-834bc17f1e72"),
+                            PokemonId = new Guid("a32ca772-283c-4776-979d-4eaebed48578"),
                             Classification = "Skunk Pokemon",
                             EggGroup = "Field",
                             Generation = 4,
@@ -336,7 +339,7 @@ namespace PokemonAPI.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("9ae91a19-ba47-4506-ab97-fe20718b9bea"),
+                            PokemonId = new Guid("c2583f2c-aa81-4031-8626-92bbbf286bfe"),
                             Classification = "Iron Armor Pokemon",
                             EggGroup = "Monster",
                             Generation = 3,
@@ -345,7 +348,7 @@ namespace PokemonAPI.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("2f20628d-8f52-4026-bdb6-9d8eff83abef"),
+                            PokemonId = new Guid("46efd690-62be-4cad-a5c4-13d61ce74eca"),
                             Classification = "Thorn Pod Pokemon",
                             EggGroup = "Grass, Mineral",
                             Generation = 5,
@@ -354,7 +357,7 @@ namespace PokemonAPI.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("974b6559-e1d7-4150-8854-28d5496c4746"),
+                            PokemonId = new Guid("dc34adfd-5711-45aa-9dd2-b25a2d7ab5a1"),
                             Classification = "Balloon Pokemon",
                             EggGroup = "Fairy",
                             Generation = 1,
@@ -363,7 +366,7 @@ namespace PokemonAPI.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("ed1c79ea-e6e6-4e09-ae08-5c90aff1a61d"),
+                            PokemonId = new Guid("94b70f7a-e102-45f4-aac1-af4ac8f60869"),
                             Classification = "Embrace Pokemon",
                             EggGroup = "Human-Like, Amorphous",
                             Generation = 3,
@@ -389,312 +392,312 @@ namespace PokemonAPI.Migrations
                     b.HasData(
                         new
                         {
-                            PokemonId = new Guid("7b7d665b-5d95-4d55-8f7f-7be362fc97f9"),
+                            PokemonId = new Guid("40bb873f-2acf-4b8e-882b-ceedcbcf817f"),
                             TypingId = 1
                         },
                         new
                         {
-                            PokemonId = new Guid("3c5524e4-ce5c-4086-bcd0-1de86d595086"),
+                            PokemonId = new Guid("5a23d352-5c7d-43d7-914b-5260db5dc43d"),
                             TypingId = 16
                         },
                         new
                         {
-                            PokemonId = new Guid("3c5524e4-ce5c-4086-bcd0-1de86d595086"),
+                            PokemonId = new Guid("5a23d352-5c7d-43d7-914b-5260db5dc43d"),
                             TypingId = 1
                         },
                         new
                         {
-                            PokemonId = new Guid("ec0f9285-22ab-4853-9e21-a0b0b796bfbd"),
+                            PokemonId = new Guid("d46240f9-22de-40b3-a7dd-b8a66abea7a3"),
                             TypingId = 2
                         },
                         new
                         {
-                            PokemonId = new Guid("3d899972-db96-44d9-8592-8d3fcfc9e74e"),
+                            PokemonId = new Guid("d1938c55-457a-4ad7-8a7f-1384c4b2eb27"),
                             TypingId = 13
                         },
                         new
                         {
-                            PokemonId = new Guid("3d899972-db96-44d9-8592-8d3fcfc9e74e"),
+                            PokemonId = new Guid("d1938c55-457a-4ad7-8a7f-1384c4b2eb27"),
                             TypingId = 2
                         },
                         new
                         {
-                            PokemonId = new Guid("5feafb41-ad8c-489f-a202-f484ce3cb1b0"),
+                            PokemonId = new Guid("a612fd00-184e-4a3f-969b-9d676150fd8b"),
                             TypingId = 3
                         },
                         new
                         {
-                            PokemonId = new Guid("320aab3a-b006-4d4e-80f4-7f3e0f2dbbb8"),
+                            PokemonId = new Guid("2c4738b0-152e-45bb-b54b-9130660fe35e"),
                             TypingId = 13
                         },
                         new
                         {
-                            PokemonId = new Guid("320aab3a-b006-4d4e-80f4-7f3e0f2dbbb8"),
+                            PokemonId = new Guid("2c4738b0-152e-45bb-b54b-9130660fe35e"),
                             TypingId = 3
                         },
                         new
                         {
-                            PokemonId = new Guid("1120373b-1ed7-45e6-82a3-77d37327b230"),
+                            PokemonId = new Guid("9fe15559-2e02-45e5-97b1-7605d18a50f2"),
                             TypingId = 4
                         },
                         new
                         {
-                            PokemonId = new Guid("1120373b-1ed7-45e6-82a3-77d37327b230"),
+                            PokemonId = new Guid("9fe15559-2e02-45e5-97b1-7605d18a50f2"),
                             TypingId = 9
                         },
                         new
                         {
-                            PokemonId = new Guid("89599747-2623-4a60-a9ed-dce8e5259bb6"),
+                            PokemonId = new Guid("236a69da-00ca-4066-adaf-e71ecaa6e0ab"),
                             TypingId = 7
                         },
                         new
                         {
-                            PokemonId = new Guid("89599747-2623-4a60-a9ed-dce8e5259bb6"),
+                            PokemonId = new Guid("236a69da-00ca-4066-adaf-e71ecaa6e0ab"),
                             TypingId = 4
                         },
                         new
                         {
-                            PokemonId = new Guid("93c2eace-ccec-4afe-8f52-ca9aaf80239e"),
+                            PokemonId = new Guid("a7b873c7-9d43-4506-b2bd-778b4a53b9ca"),
                             TypingId = 5
                         },
                         new
                         {
-                            PokemonId = new Guid("93c2eace-ccec-4afe-8f52-ca9aaf80239e"),
+                            PokemonId = new Guid("a7b873c7-9d43-4506-b2bd-778b4a53b9ca"),
                             TypingId = 17
                         },
                         new
                         {
-                            PokemonId = new Guid("fb1d7ad6-5b62-429c-8e05-6a26f2ddded1"),
+                            PokemonId = new Guid("e3e8f216-debb-410f-811c-46c9da30ae00"),
                             TypingId = 15
                         },
                         new
                         {
-                            PokemonId = new Guid("fb1d7ad6-5b62-429c-8e05-6a26f2ddded1"),
+                            PokemonId = new Guid("e3e8f216-debb-410f-811c-46c9da30ae00"),
                             TypingId = 5
                         },
                         new
                         {
-                            PokemonId = new Guid("bdfa3d07-9159-45a4-a9cb-0838ad6ac5b6"),
+                            PokemonId = new Guid("19abab28-b860-4d57-b006-bb1f0b17dd12"),
                             TypingId = 6
                         },
                         new
                         {
-                            PokemonId = new Guid("da796b4d-0e8c-482b-9636-bccdb5f6c713"),
+                            PokemonId = new Guid("beb21f21-3cc3-45bf-967a-3cf512588e1d"),
                             TypingId = 11
                         },
                         new
                         {
-                            PokemonId = new Guid("da796b4d-0e8c-482b-9636-bccdb5f6c713"),
+                            PokemonId = new Guid("beb21f21-3cc3-45bf-967a-3cf512588e1d"),
                             TypingId = 6
                         },
                         new
                         {
-                            PokemonId = new Guid("62868e50-e229-48e2-b321-0c0f52d4d00d"),
+                            PokemonId = new Guid("710af572-446f-4edd-9228-fef6f8827fd7"),
                             TypingId = 7
                         },
                         new
                         {
-                            PokemonId = new Guid("62868e50-e229-48e2-b321-0c0f52d4d00d"),
+                            PokemonId = new Guid("710af572-446f-4edd-9228-fef6f8827fd7"),
                             TypingId = 14
                         },
                         new
                         {
-                            PokemonId = new Guid("f560d6ea-6946-487d-ab28-94d5046e32ca"),
+                            PokemonId = new Guid("23f4fc0b-498b-4b9f-b98f-27061ee99639"),
                             TypingId = 6
                         },
                         new
                         {
-                            PokemonId = new Guid("f560d6ea-6946-487d-ab28-94d5046e32ca"),
+                            PokemonId = new Guid("23f4fc0b-498b-4b9f-b98f-27061ee99639"),
                             TypingId = 7
                         },
                         new
                         {
-                            PokemonId = new Guid("eef550ed-a823-42bd-badf-fdafc7f839a6"),
+                            PokemonId = new Guid("0ec5f816-d6f2-4e08-817c-f30d990198b1"),
                             TypingId = 8
                         },
                         new
                         {
-                            PokemonId = new Guid("eef550ed-a823-42bd-badf-fdafc7f839a6"),
+                            PokemonId = new Guid("0ec5f816-d6f2-4e08-817c-f30d990198b1"),
                             TypingId = 17
                         },
                         new
                         {
-                            PokemonId = new Guid("d724d735-a33f-4c5a-9430-0a31e6770519"),
+                            PokemonId = new Guid("6cd0ca06-95f3-447e-b1a7-e327b873c045"),
                             TypingId = 14
                         },
                         new
                         {
-                            PokemonId = new Guid("d724d735-a33f-4c5a-9430-0a31e6770519"),
+                            PokemonId = new Guid("6cd0ca06-95f3-447e-b1a7-e327b873c045"),
                             TypingId = 8
                         },
                         new
                         {
-                            PokemonId = new Guid("7f73f100-8202-4b3b-96f0-e542252b97b9"),
+                            PokemonId = new Guid("6b66d586-979e-4a60-9e69-4c6f74974262"),
                             TypingId = 9
                         },
                         new
                         {
-                            PokemonId = new Guid("7f73f100-8202-4b3b-96f0-e542252b97b9"),
+                            PokemonId = new Guid("6b66d586-979e-4a60-9e69-4c6f74974262"),
                             TypingId = 15
                         },
                         new
                         {
-                            PokemonId = new Guid("be7d9df2-a407-41ce-9f34-35ba6170705a"),
+                            PokemonId = new Guid("4a6a6ac2-2c7c-415d-838b-857437844365"),
                             TypingId = 14
                         },
                         new
                         {
-                            PokemonId = new Guid("be7d9df2-a407-41ce-9f34-35ba6170705a"),
+                            PokemonId = new Guid("4a6a6ac2-2c7c-415d-838b-857437844365"),
                             TypingId = 9
                         },
                         new
                         {
-                            PokemonId = new Guid("fcadfdb2-c9e5-4df4-9a06-1c4830292ac0"),
+                            PokemonId = new Guid("c1ec31d8-0015-4d6b-ba75-e349ce5d3581"),
                             TypingId = 10
                         },
                         new
                         {
-                            PokemonId = new Guid("bd56fee9-ac65-4e7e-a43e-cd3313a929c7"),
+                            PokemonId = new Guid("275e29b5-8a33-448e-ac86-a49cc7955931"),
                             TypingId = 17
                         },
                         new
                         {
-                            PokemonId = new Guid("bd56fee9-ac65-4e7e-a43e-cd3313a929c7"),
+                            PokemonId = new Guid("275e29b5-8a33-448e-ac86-a49cc7955931"),
                             TypingId = 10
                         },
                         new
                         {
-                            PokemonId = new Guid("d7561fe2-1672-43e9-83b2-a90444dc3863"),
+                            PokemonId = new Guid("2ab70264-8249-4b00-9337-75d6a5574e9c"),
                             TypingId = 11
                         },
                         new
                         {
-                            PokemonId = new Guid("5fbad038-49b1-4e71-a5af-1c45ddd872fc"),
+                            PokemonId = new Guid("361b83c6-81ff-4694-9219-6d41ffb3c448"),
                             TypingId = 11
                         },
                         new
                         {
-                            PokemonId = new Guid("5fbad038-49b1-4e71-a5af-1c45ddd872fc"),
+                            PokemonId = new Guid("361b83c6-81ff-4694-9219-6d41ffb3c448"),
                             TypingId = 12
                         },
                         new
                         {
-                            PokemonId = new Guid("b0c07be1-6964-4bd8-b043-adad4a31f58e"),
+                            PokemonId = new Guid("cdb5e327-47fe-4395-a682-0a3ee83ae1c4"),
                             TypingId = 12
                         },
                         new
                         {
-                            PokemonId = new Guid("ca0c64b9-0347-4edb-b378-6054f3adeb49"),
+                            PokemonId = new Guid("55d6fad3-615a-4476-995c-49463f074504"),
                             TypingId = 12
                         },
                         new
                         {
-                            PokemonId = new Guid("ca0c64b9-0347-4edb-b378-6054f3adeb49"),
+                            PokemonId = new Guid("55d6fad3-615a-4476-995c-49463f074504"),
                             TypingId = 13
                         },
                         new
                         {
-                            PokemonId = new Guid("769e9e1f-b2a6-4bac-9f24-94541cca9484"),
+                            PokemonId = new Guid("32282913-92e1-48ae-b26b-ab76129e0ece"),
                             TypingId = 13
                         },
                         new
                         {
-                            PokemonId = new Guid("769e9e1f-b2a6-4bac-9f24-94541cca9484"),
+                            PokemonId = new Guid("32282913-92e1-48ae-b26b-ab76129e0ece"),
                             TypingId = 6
                         },
                         new
                         {
-                            PokemonId = new Guid("b022d558-d506-4c45-9239-8db6c8f92be0"),
+                            PokemonId = new Guid("21d767c3-6fff-428e-a2fc-7721ed66ea29"),
                             TypingId = 13
                         },
                         new
                         {
-                            PokemonId = new Guid("b022d558-d506-4c45-9239-8db6c8f92be0"),
+                            PokemonId = new Guid("21d767c3-6fff-428e-a2fc-7721ed66ea29"),
                             TypingId = 7
                         },
                         new
                         {
-                            PokemonId = new Guid("15ff308f-a137-471a-b082-9e23e1059c98"),
+                            PokemonId = new Guid("7630549c-7f3b-4b36-aefb-febd1663cbb9"),
                             TypingId = 14
                         },
                         new
                         {
-                            PokemonId = new Guid("7f06468c-c199-42ec-a31f-798ca1e1f0e7"),
+                            PokemonId = new Guid("35f46562-8ab5-4b61-98c5-ce8838da2ac2"),
                             TypingId = 14
                         },
                         new
                         {
-                            PokemonId = new Guid("7f06468c-c199-42ec-a31f-798ca1e1f0e7"),
+                            PokemonId = new Guid("35f46562-8ab5-4b61-98c5-ce8838da2ac2"),
                             TypingId = 15
                         },
                         new
                         {
-                            PokemonId = new Guid("1e6bc260-2aa9-4206-aa20-345897ccc32e"),
+                            PokemonId = new Guid("765bdf9a-6a83-43a6-94f6-f25ca1b5fad1"),
                             TypingId = 15
                         },
                         new
                         {
-                            PokemonId = new Guid("67daba33-f80b-439f-b64f-67b8379a1dd2"),
+                            PokemonId = new Guid("5e613c51-20a5-4bb2-ac3f-a4f69237b84d"),
                             TypingId = 15
                         },
                         new
                         {
-                            PokemonId = new Guid("3ce01a8a-5a84-4632-b903-ebcb8fca5eab"),
+                            PokemonId = new Guid("e8e4504d-cbfd-424e-b848-f07bfe0d7381"),
                             TypingId = 6
                         },
                         new
                         {
-                            PokemonId = new Guid("3ce01a8a-5a84-4632-b903-ebcb8fca5eab"),
+                            PokemonId = new Guid("e8e4504d-cbfd-424e-b848-f07bfe0d7381"),
                             TypingId = 16
                         },
                         new
                         {
-                            PokemonId = new Guid("bcf17486-bb68-425a-921e-834bc17f1e72"),
+                            PokemonId = new Guid("a32ca772-283c-4776-979d-4eaebed48578"),
                             TypingId = 7
                         },
                         new
                         {
-                            PokemonId = new Guid("bcf17486-bb68-425a-921e-834bc17f1e72"),
+                            PokemonId = new Guid("a32ca772-283c-4776-979d-4eaebed48578"),
                             TypingId = 16
                         },
                         new
                         {
-                            PokemonId = new Guid("9ae91a19-ba47-4506-ab97-fe20718b9bea"),
+                            PokemonId = new Guid("c2583f2c-aa81-4031-8626-92bbbf286bfe"),
                             TypingId = 17
                         },
                         new
                         {
-                            PokemonId = new Guid("9ae91a19-ba47-4506-ab97-fe20718b9bea"),
+                            PokemonId = new Guid("c2583f2c-aa81-4031-8626-92bbbf286bfe"),
                             TypingId = 11
                         },
                         new
                         {
-                            PokemonId = new Guid("2f20628d-8f52-4026-bdb6-9d8eff83abef"),
+                            PokemonId = new Guid("46efd690-62be-4cad-a5c4-13d61ce74eca"),
                             TypingId = 6
                         },
                         new
                         {
-                            PokemonId = new Guid("2f20628d-8f52-4026-bdb6-9d8eff83abef"),
+                            PokemonId = new Guid("46efd690-62be-4cad-a5c4-13d61ce74eca"),
                             TypingId = 17
                         },
                         new
                         {
-                            PokemonId = new Guid("974b6559-e1d7-4150-8854-28d5496c4746"),
+                            PokemonId = new Guid("dc34adfd-5711-45aa-9dd2-b25a2d7ab5a1"),
                             TypingId = 1
                         },
                         new
                         {
-                            PokemonId = new Guid("974b6559-e1d7-4150-8854-28d5496c4746"),
+                            PokemonId = new Guid("dc34adfd-5711-45aa-9dd2-b25a2d7ab5a1"),
                             TypingId = 18
                         },
                         new
                         {
-                            PokemonId = new Guid("ed1c79ea-e6e6-4e09-ae08-5c90aff1a61d"),
+                            PokemonId = new Guid("94b70f7a-e102-45f4-aac1-af4ac8f60869"),
                             TypingId = 10
                         },
                         new
                         {
-                            PokemonId = new Guid("ed1c79ea-e6e6-4e09-ae08-5c90aff1a61d"),
+                            PokemonId = new Guid("94b70f7a-e102-45f4-aac1-af4ac8f60869"),
                             TypingId = 18
                         });
                 });
@@ -1658,13 +1661,13 @@ namespace PokemonAPI.Migrations
                     b.HasOne("PokemonAPI.Models.Pokemon", "Pokemon")
                         .WithMany("PokemonTypings")
                         .HasForeignKey("PokemonId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("PokemonAPI.Models.Typing", "Typing")
                         .WithMany("PokemonTypings")
                         .HasForeignKey("TypingId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Pokemon");
