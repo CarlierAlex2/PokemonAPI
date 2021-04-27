@@ -40,6 +40,7 @@ namespace PokemonAPI
         public void ConfigureServices(IServiceCollection services)
         {
             // configurations
+            services.Configure<CsvSettings>(Configuration.GetSection("CsvSettings"));
             services.Configure<ConnectionStrings>(Configuration.GetSection("ConnectionStrings"));
 
             // db context

@@ -27,6 +27,7 @@
         "dependencies": {
           "AutoMapper": "10.1.1",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.1.1",
+          "CsvHelper": "27.0.1",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "5.0.5",
           "Microsoft.AspNetCore.Mvc": "2.2.0",
           "Microsoft.AspNetCore.Mvc.NewtonsoftJson": "5.0.4",
@@ -427,6 +428,17 @@
         },
         "compile": {
           "lib/netstandard2.0/Azure.Security.KeyVault.Secrets.dll": {}
+        }
+      },
+      "CsvHelper/27.0.1": {
+        "runtime": {
+          "lib/net5.0/CsvHelper.dll": {
+            "assemblyVersion": "27.0.0.0",
+            "fileVersion": "27.0.1.0"
+          }
+        },
+        "compile": {
+          "lib/net5.0/CsvHelper.dll": {}
         }
       },
       "Humanizer.Core/2.8.26": {
@@ -3859,6 +3871,13 @@
       "sha512": "sha512-SK4XTPEaXI5UTdtSkr8TN4ZKnvazNHhybnnkxHgOyRAhV9ObcIjbrNlhS4ZeR8XtI+HidL+v/WIIVfR1+jKB8Q==",
       "path": "azure.security.keyvault.secrets/4.1.0",
       "hashPath": "azure.security.keyvault.secrets.4.1.0.nupkg.sha512"
+    },
+    "CsvHelper/27.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ndJE6dMfB3Vv6j2y1XwuajO8lyHiQ2x2yZmaD+LkfW0GLwRy2jnqNB674/eKoUu8SlpYl08/1mdS7T6Mb1ktPw==",
+      "path": "csvhelper/27.0.1",
+      "hashPath": "csvhelper.27.0.1.nupkg.sha512"
     },
     "Humanizer.Core/2.8.26": {
       "type": "package",

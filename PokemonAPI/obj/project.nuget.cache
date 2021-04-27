@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "wgA8vfbMJla5MTHDHsu/hn737ebrVi2wvoalEOCYkHinLekB9Mqp+aeZtvBTERAKuRquQGkmaOBkcgXP2IQa9Q==",
+  "dgSpecHash": "sokZn+xD4d4tRH8BqpFLfjikcGsAhti3/E/wkprbP8qOcjuiM/h0ikK22g1hHijFwtb9VcxipQv7HasJDVH57w==",
   "success": true,
   "projectFilePath": "C:\\Users\\alexc\\Documents\\MCT\\Jaar2_2020_2021\\MCT_semester_4\\BackendDevelopment\\BackDev_Project\\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\\PokemonAPI\\PokemonAPI.csproj",
   "expectedPackageFiles": [
@@ -10,6 +10,7 @@
     "C:\\Users\\alexc\\.nuget\\packages\\azure.identity\\1.2.3\\azure.identity.1.2.3.nupkg.sha512",
     "C:\\Users\\alexc\\.nuget\\packages\\azure.security.keyvault.certificates\\4.1.0\\azure.security.keyvault.certificates.4.1.0.nupkg.sha512",
     "C:\\Users\\alexc\\.nuget\\packages\\azure.security.keyvault.secrets\\4.1.0\\azure.security.keyvault.secrets.4.1.0.nupkg.sha512",
+    "C:\\Users\\alexc\\.nuget\\packages\\csvhelper\\27.0.1\\csvhelper.27.0.1.nupkg.sha512",
     "C:\\Users\\alexc\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\alexc\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.2.0\\microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",
     "C:\\Users\\alexc\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

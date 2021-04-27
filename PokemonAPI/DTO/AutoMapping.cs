@@ -2,6 +2,7 @@ using System;
 using AutoMapper;
 
 using PokemonAPI.Models;
+using PokemonAPI.Data;
 
 namespace PokemonAPI.DTO
 {
@@ -10,6 +11,9 @@ namespace PokemonAPI.DTO
         public AutoMapping() {
             CreateMap<Pokemon, PokemonDTO>();
             CreateMap<PokemonDTO, Pokemon>();
+
+            CreateMap<PokemonDTO, PokemonData>();
+            CreateMap<PokemonData, PokemonDTO>();
 
             CreateMap<Typing, TypingDTO>();
             CreateMap<TypingDTO, Typing>();

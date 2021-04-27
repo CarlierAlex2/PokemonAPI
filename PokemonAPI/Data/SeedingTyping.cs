@@ -13,17 +13,91 @@ using PokemonAPI.Configuration;
 
 using AutoMapper;
 
+using System.Globalization;
+using System.IO;
+using CsvHelper;
+using Microsoft.Extensions.Options;
+using CsvHelper.Configuration;
+using System.Linq;
+
 namespace PokemonAPI.Data
 {
     public class SeedingTyping
     {
-        public static List<Typing> Seeding(ModelBuilder modelBuilder, IMapper mapper)
+        public static List<Typing> Seeding(
+            ModelBuilder modelBuilder, 
+            IMapper mapper,
+            CsvSettings csvSettings)
         {
-            List<Typing> listTypings = CreateListTyping();
+            //var listTypings = CreateListTyping();
+            //WriteToTypingCSV(listTypings, csvSettings);
+            var listTypings = ReadCSVTyping(csvSettings);
             SeedTypings(modelBuilder, listTypings);
-            List<TypeEffectDTO> listEffects = CreateEffectList();
+
+            //var listEffects = CreateEffectList();
+            //WriteToTypingEffectCSV(listEffects, csvSettings);
+            var listEffects = ReadCSVTypeEffect(csvSettings);
             SeedTypeEffect(modelBuilder, mapper, listTypings, listEffects);
+
             return listTypings;
+        }
+
+        private static List<Typing> ReadCSVTyping(CsvSettings csvSettings)
+        {
+            var config = new CsvConfiguration(CultureInfo.InvariantCulture){
+                HasHeaderRecord = true,
+                Delimiter = ";"
+            };
+            
+            using (var reader = new StreamReader(csvSettings.CsvTyping))
+            using (var csv = new CsvReader(reader, config))
+            {
+                var records = csv.GetRecords<Typing>();
+                return records.ToList<Typing>();
+            }   
+        }
+
+        private static List<TypeEffectDTO> ReadCSVTypeEffect(CsvSettings csvSettings)
+        {
+            var config = new CsvConfiguration(CultureInfo.InvariantCulture){
+                HasHeaderRecord = true,
+                Delimiter = ";"
+            };
+            
+            using (var reader = new StreamReader(csvSettings.CsvTypeEffect))
+            using (var csv = new CsvReader(reader, config))
+            {
+                var records = csv.GetRecords<TypeEffectDTO>();
+                return records.ToList<TypeEffectDTO>();
+            }   
+        }
+
+        private static void WriteToTypingCSV(List<Typing> listObjects, CsvSettings csvSettings)
+        {
+            var config = new CsvConfiguration(CultureInfo.InvariantCulture){
+                HasHeaderRecord = true,
+                Delimiter = ";"
+            };
+            
+            using (var writer = new StreamWriter(csvSettings.CsvTyping))
+            using (var csv = new CsvWriter(writer, config))
+            {
+                csv.WriteRecords(listObjects);
+            }
+        }
+
+        private static void WriteToTypingEffectCSV(List<TypeEffectDTO> listObjects, CsvSettings csvSettings)
+        {
+            var config = new CsvConfiguration(CultureInfo.InvariantCulture){
+                HasHeaderRecord = true,
+                Delimiter = ";"
+            };
+            
+            using (var writer = new StreamWriter(csvSettings.CsvTypeEffect))
+            using (var csv = new CsvWriter(writer, config))
+            {
+                csv.WriteRecords(listObjects);
+            }
         }
 
         private static List<Typing> CreateListTyping()

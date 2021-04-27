@@ -1,0 +1,37 @@
+PokedexEntry;Name;Generation;Types;Classification;EggGroup
+143;Snorlax;1;Normal;Sleeping Pokemon;Monster
+598;Obstagoon;8;Dark,Normal;Blocking Pokemon;Field
+4;Charmander;1;Fire;Lizard Pokemon;Monster,Dragon
+637;Volcarona;5;Bug,Fire;Sun Pokemon;Bug
+67;Machoke;1;Fighting;Superpower Pokemon;Human-Like
+214;Heracross;2;Bug,Fighting;Single Horn Pokemon;Bug
+260;Swampert;3;Water,Ground;Mud Fish Pokemon;Monster,Water 1
+637;Skrelp;6;Poison,Water;Mock Kelp Pokemon;Bug
+823;Corviknight;8;Flying,Steel;Raven Pokemon;Flying
+425;Drifloon;4;Ghost,Flying;Balloon Pokemon;Amorphous
+753;Fomantis;7;Grass;Sickle Grass Pokemon;Grass
+345;Lileep;3;Rock,Grass;Sea Lily Pokemon;Water 3
+804;Naganadel;7;Poison,Dragon;Poison Pin Pokemon;Undiscovered
+407;Roserade;4;Grass,Poison;Bouquet Pokemon;Fairy,Grass
+462;Magnezone;4;Electric,Steel;Magnet Area Pokemon;Mineral
+644;Zekrom;5;Dragon,Electric;Deep Black Pokemon;Undiscovered
+622;Golett;5;Ground,Ghost;Automaton Pokemon;Mineral
+718;Zygarde;6;Dragon,Ground;Order Pokemon;Undiscovered
+63;Abra;1;Psychic;Psi Pokemon;Human-Like
+437;Bronzong;4;Steel,Psychic;Bronze Bell Pokemon;Mineral
+409;Rampardos;4;Rock;Head Butt Pokemon;Monster
+699;Aurorus;6;Rock,Ice;Tundra Pokemon;Monster
+361;Snorunt;3;Ice;Snow Hat Pokemon;Fairy,Mineral
+872;Snom;8;Ice,Bug;Worm Pokemon;Bug
+541;Swadloon;5;Bug,Grass;Leaf-Wrapped Pokemon;Bug
+544;Whirlipede;5;Bug,Poison;Curlipede Pokemon;Bug
+148;Dragonair;1;Dragon;Dragon Pokemon;Water 1,Dragon
+887;Dragapult;8;Dragon,Ghost;Stealth Pokemon;Amorphous,Dragon
+200;Misdreavus;2;Ghost;Screech Pokemon;Amorphous
+429;Mismagius;4;Ghost;Magical Pokemon;Amorphous
+274;Nuzleaf;3;Grass,Dark;Wily Pokemon;Field,Grass
+435;Skuntank;4;Poison,Dark;Skunk Pokemon;Field
+306;Aggron;3;Steel,Rock;Iron Armor Pokemon;Monster
+598;Ferrothorn;5;Grass,Steel;Thorn Pod Pokemon;Grass,Mineral
+39;Jigglypuff;1;Normal,Fairy;Balloon Pokemon;Fairy
+282;Gardevoir;3;Psychic,Fairy;Embrace Pokemon;Human-Like,Amorphous

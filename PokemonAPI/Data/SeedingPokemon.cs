@@ -13,14 +13,74 @@ using PokemonAPI.Configuration;
 
 using AutoMapper;
 
+using System.Globalization;
+using System.IO;
+using CsvHelper;
+using Microsoft.Extensions.Options;
+using CsvHelper.Configuration;
+using System.Linq;
+
 namespace PokemonAPI.Data
 {
     public class SeedingPokemon
     {
-        public static void Seeding(ModelBuilder modelBuilder, IMapper mapper, List<Typing> listTypings)
+        public static void Seeding(
+            ModelBuilder modelBuilder, 
+            IMapper mapper, 
+            CsvSettings csvSettings,
+            List<Typing> listTypings)
         {
-            var listPokemon = CreateList();
+            //var listPokemon = CreateList();
+            //WriteToRegistrationsCSV(listPokemon, mapper, csvSettings);
+            var listPokemon = ReadCSVPokemonDTO(mapper, csvSettings);
             SeedPokemons(modelBuilder, mapper, listTypings, listPokemon);
+        }
+
+        private static void WriteToRegistrationsCSV(List<PokemonDTO> listPokemonDTO, IMapper mapper, CsvSettings csvSettings)
+        {
+            var config = new CsvConfiguration(CultureInfo.InvariantCulture){
+                HasHeaderRecord = true,
+                Delimiter = ";"
+            };
+            
+            using (var writer = new StreamWriter(csvSettings.CsvPokemon))
+            using (var csv = new CsvWriter(writer, config))
+            {
+                var listData = new List<PokemonData>();
+                foreach(var dto in listPokemonDTO)
+                {
+                    var p = mapper.Map<PokemonData>(dto);
+                    p.Types = dto.Types.Aggregate((a, b) => a + "," + b);
+                    listData.Add(p);
+                }
+
+                csv.WriteRecords(listData);
+            }
+        }
+
+        private static List<PokemonDTO> ReadCSVPokemonDTO(IMapper mapper, CsvSettings csvSettings)
+        {
+            var config = new CsvConfiguration(CultureInfo.InvariantCulture){
+                HasHeaderRecord = true,
+                Delimiter = ";"
+            };
+            
+            using (var reader = new StreamReader(csvSettings.CsvPokemon))
+            using (var csv = new CsvReader(reader, config))
+            {
+                var records = csv.GetRecords<PokemonData>().ToList<PokemonData>();
+
+                var listData = new List<PokemonDTO>();
+                foreach(var r in records)
+                {
+                    var dto = mapper.Map<PokemonDTO>(r);
+                    r.Types = r.Types.Replace(" ", "");
+                    dto.Types = r.Types.Split(',').ToList();
+                    listData.Add(dto);
+                }
+
+                return listData;
+            }   
         }
 
         private static List<PokemonDTO> CreateList()
@@ -38,7 +98,7 @@ namespace PokemonAPI.Data
 
             //Fire --------------------------
             listPokemon.Add(new PokemonDTO() { 
-                PokedexEntry = 4, Name = "Charmander", Generation = 1, Classification = "Lizard Pokemon", EggGroup = "Monster, Dragon",
+                PokedexEntry = 4, Name = "Charmander", Generation = 1, Classification = "Lizard Pokemon", EggGroup = "Monster,Dragon",
                 Types = new List<string>{"Fire"}});
             listPokemon.Add(new PokemonDTO() { 
                 PokedexEntry = 637, Name = "Volcarona", Generation = 5, Classification = "Sun Pokemon", EggGroup = "Bug",
@@ -54,7 +114,7 @@ namespace PokemonAPI.Data
 
             //Water --------------------------
             listPokemon.Add(new PokemonDTO() { 
-                PokedexEntry = 260, Name = "Swampert", Generation = 3, Classification = "Mud Fish Pokemon", EggGroup = "Monster, Water 1",
+                PokedexEntry = 260, Name = "Swampert", Generation = 3, Classification = "Mud Fish Pokemon", EggGroup = "Monster,Water 1",
                 Types = new List<string>{"Water", "Ground"}});
             listPokemon.Add(new PokemonDTO() { 
                 PokedexEntry = 637, Name = "Skrelp", Generation = 6, Classification = "Mock Kelp Pokemon", EggGroup = "Bug",
@@ -81,7 +141,7 @@ namespace PokemonAPI.Data
                 PokedexEntry = 804, Name = "Naganadel", Generation = 7, Classification = "Poison Pin Pokemon", EggGroup = "Undiscovered",
                 Types = new List<string>{"Poison", "Dragon"}});
             listPokemon.Add(new PokemonDTO() { 
-                PokedexEntry = 407, Name = "Roserade", Generation = 4, Classification = "Bouquet Pokemon", EggGroup = "Fairy, Grass",
+                PokedexEntry = 407, Name = "Roserade", Generation = 4, Classification = "Bouquet Pokemon", EggGroup = "Fairy,Grass",
                 Types = new List<string>{"Grass", "Poison"}});
 
             //Electric --------------------------
@@ -118,7 +178,7 @@ namespace PokemonAPI.Data
 
             //Ice --------------------------
             listPokemon.Add(new PokemonDTO() { 
-                PokedexEntry = 361, Name = "Snorunt", Generation = 3, Classification = "Snow Hat Pokemon", EggGroup = "Fairy, Mineral",
+                PokedexEntry = 361, Name = "Snorunt", Generation = 3, Classification = "Snow Hat Pokemon", EggGroup = "Fairy,Mineral",
                 Types = new List<string>{"Ice"}});
             listPokemon.Add(new PokemonDTO() { 
                 PokedexEntry = 872, Name = "Snom", Generation = 8, Classification = "Worm Pokemon", EggGroup = "Bug",
@@ -134,10 +194,10 @@ namespace PokemonAPI.Data
 
             //Dragon --------------------------
             listPokemon.Add(new PokemonDTO() { 
-                PokedexEntry = 148, Name = "Dragonair", Generation = 1, Classification = "Dragon Pokemon", EggGroup = "Water 1, Dragon",
+                PokedexEntry = 148, Name = "Dragonair", Generation = 1, Classification = "Dragon Pokemon", EggGroup = "Water 1,Dragon",
                 Types = new List<string>{"Dragon"}});
             listPokemon.Add(new PokemonDTO() { 
-                PokedexEntry = 887, Name = "Dragapult", Generation = 8, Classification = "Stealth Pokemon", EggGroup = "Amorphous, Dragon",
+                PokedexEntry = 887, Name = "Dragapult", Generation = 8, Classification = "Stealth Pokemon", EggGroup = "Amorphous,Dragon",
                 Types = new List<string>{"Dragon", "Ghost"}});
 
             //Ghost --------------------------
@@ -150,7 +210,7 @@ namespace PokemonAPI.Data
 
             //Dark --------------------------
             listPokemon.Add(new PokemonDTO() { 
-                PokedexEntry = 274, Name = "Nuzleaf", Generation = 3, Classification = "Wily Pokemon", EggGroup = "Field, Grass",
+                PokedexEntry = 274, Name = "Nuzleaf", Generation = 3, Classification = "Wily Pokemon", EggGroup = "Field,Grass",
                 Types = new List<string>{"Grass","Dark"}
                 });
             listPokemon.Add(new PokemonDTO() { 
@@ -164,7 +224,7 @@ namespace PokemonAPI.Data
                 Types = new List<string>{"Steel","Rock"}
                 });
             listPokemon.Add(new PokemonDTO() { 
-                PokedexEntry = 598, Name = "Ferrothorn", Generation = 5, Classification = "Thorn Pod Pokemon", EggGroup = "Grass, Mineral",
+                PokedexEntry = 598, Name = "Ferrothorn", Generation = 5, Classification = "Thorn Pod Pokemon", EggGroup = "Grass,Mineral",
                 Types = new List<string>{"Grass","Steel"}
                 });
 
@@ -174,7 +234,7 @@ namespace PokemonAPI.Data
                 Types = new List<string>{"Normal","Fairy"}
                 });
             listPokemon.Add(new PokemonDTO() { 
-                PokedexEntry = 282, Name = "Gardevoir", Generation = 3, Classification = "Embrace Pokemon", EggGroup = "Human-Like, Amorphous",
+                PokedexEntry = 282, Name = "Gardevoir", Generation = 3, Classification = "Embrace Pokemon", EggGroup = "Human-Like,Amorphous",
                 Types = new List<string>{"Psychic","Fairy"}
                 });
             #endregion
