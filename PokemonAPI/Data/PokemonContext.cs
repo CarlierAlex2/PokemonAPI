@@ -12,6 +12,9 @@ using PokemonAPI.DTO;
 using PokemonAPI.Configuration;
 
 using AutoMapper;
+using PokemonAPI.Data.CsvStream;
+using PokemonAPI.Data.Seeding;
+using System.Linq;
 
 namespace PokemonAPI.Data
 {
@@ -94,11 +97,37 @@ namespace PokemonAPI.Data
 
         private void SeedData(ModelBuilder modelBuilder)
         {
-            var seedingTyping = new SeedingTyping(modelBuilder, _csvSettings, _mapper);
-            var listTypings =  seedingTyping.Seeding();
+            // Read CSV ----------------------------------------------
+            CsvContext csvContext = new CsvContextTyping(_csvSettings, _mapper);
+            var listTypings = csvContext.ReadFromCsv().Cast<Typing>().ToList();
 
-            var seedingPokemon = new SeedingPokemon(modelBuilder, _csvSettings, _mapper);
-            seedingPokemon.Seeding(listTypings);
+            csvContext = new CsvContextTypeEffect(_csvSettings, _mapper);
+            var listTypeEffects = csvContext.ReadFromCsv().Cast<TypeEffectDTO>().ToList();
+            
+            csvContext = new CsvContextPokemon(_csvSettings, _mapper);
+            var listPokemon = csvContext.ReadFromCsv().Cast<PokemonDTO>().ToList();
+
+
+            // Seeding ----------------------------------------------
+            SeedingHelper seedingHelper = new SeedingTyping(modelBuilder, _mapper)
+            {
+                _listTypings = listTypings
+            };
+            seedingHelper.Seeding();
+
+            seedingHelper = new SeedingTypeEffect(modelBuilder, _mapper)
+            {
+                _listTypings = listTypings,
+                _listEffectDTO = listTypeEffects
+            };
+            seedingHelper.Seeding();
+
+            seedingHelper = new SeedingPokemon(modelBuilder, _mapper)
+            {
+                _listTypings = listTypings,
+                _listPokemonDTO = listPokemon
+            };
+            seedingHelper.Seeding();
         }
     }
 }

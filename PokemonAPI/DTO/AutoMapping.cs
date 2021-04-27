@@ -3,6 +3,7 @@ using AutoMapper;
 
 using PokemonAPI.Models;
 using PokemonAPI.Data;
+using PokemonAPI.Data.CsvStream;
 
 namespace PokemonAPI.DTO
 {

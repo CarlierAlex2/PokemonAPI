@@ -2,9 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
+using PokemonAPI.Models;
+using PokemonAPI.Helpers;
+
 namespace PokemonAPI.DTO
 {
-    public class TypingDTO
+    public class TypingDTO : ModelObject
     {
         [Required]
         public string  Name { get; set; }

@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
+using PokemonAPI.Helpers;
 
 namespace PokemonAPI.Models
 {
-    public class Typing
+    public class Typing : ModelObject
     {
         [Key]
         public int TypingId { get; set; }

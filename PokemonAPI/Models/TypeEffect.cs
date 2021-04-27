@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
+using PokemonAPI.Helpers;
 
 namespace PokemonAPI.Models
 {
-    public class TypeEffect
+    public class TypeEffect : ModelObject
     {
         [Key]
         public int TypeEffectId  { get; set; }

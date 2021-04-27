@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
+using PokemonAPI.Helpers;
+
 namespace PokemonAPI.Models
 {
-    public class Pokemon
+    public class Pokemon : ModelObject
     {
         [Key]
         public Guid PokemonId { get; set; }

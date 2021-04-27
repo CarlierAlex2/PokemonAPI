@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
+using PokemonAPI.Models;
+using PokemonAPI.Helpers;
+
 namespace PokemonAPI.DTO
 {
-    public class PokemonDTO
+    public class PokemonDTO : ModelObject
     {
         [Required(ErrorMessage="Pokedex Entry Required")] 
         [Range(1, int.MaxValue, ErrorMessage = "Pokedex Entry Required - Entry must be higher than 0")]
