@@ -37,6 +37,7 @@ namespace PokemonAPI.Data
             _mapper = mapper;
         }
 
+        //Seeding Functions -------------------------------------------------------------------------------------------
         public List<Typing> Seeding()
         {
             var listTypings = ReadCSVTyping();
@@ -80,6 +81,7 @@ namespace PokemonAPI.Data
             }
         }
 
+        //CSV Functions -------------------------------------------------------------------------------------------
         private List<Typing> ReadCSVTyping()
         {
             var config = new CsvConfiguration(CultureInfo.InvariantCulture){
@@ -138,6 +140,7 @@ namespace PokemonAPI.Data
             }
         }
 
+        //Hardcoded Seeding -------------------------------------------------------------------------------------------
         private List<Typing> CreateListTyping()
         {
             var listTypings = new List<Typing>();

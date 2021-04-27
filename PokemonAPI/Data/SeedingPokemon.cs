@@ -37,6 +37,7 @@ namespace PokemonAPI.Data
             _mapper = mapper;
         }
         
+        //Seeding functions -------------------------------------------------------------------------------------------
         public void Seeding(List<Typing> listTypings)
         {
             var listPokemon = ReadCSVPokemonDTO();
@@ -66,6 +67,7 @@ namespace PokemonAPI.Data
             }
         }
 
+        //CSV Functions -------------------------------------------------------------------------------------------
         private List<PokemonDTO> ReadCSVPokemonDTO()
         {
             var config = new CsvConfiguration(CultureInfo.InvariantCulture){
@@ -97,6 +99,7 @@ namespace PokemonAPI.Data
             }
         }
 
+        //Hardcoded seeding -------------------------------------------------------------------------------------------
         private List<PokemonDTO> CreateList()
         {
             var listPokemon = new List<PokemonDTO>();
