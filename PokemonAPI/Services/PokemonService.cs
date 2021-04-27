@@ -144,7 +144,8 @@ namespace PokemonAPI.Services
             PokemonDTO checkExists = await GetPokemonByEntryAndGen(pokemonDTO.PokedexEntry, pokemonDTO.Generation);
             if(checkExists != null)
                 return null;
-
+            
+            pokemonDTO.EggGroup = pokemonDTO.EggGroup.Replace(" ", "");
             Pokemon pokemon = _mapper.Map<Pokemon>(pokemonDTO);
             pokemon.PokemonId = Guid.NewGuid();
             pokemon.PokemonTypings = new List<PokemonTyping>();

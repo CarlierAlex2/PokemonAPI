@@ -94,8 +94,11 @@ namespace PokemonAPI.Data
 
         private void SeedData(ModelBuilder modelBuilder)
         {
-            var listTypings =  SeedingTyping.Seeding(modelBuilder, _mapper, _csvSettings);
-            SeedingPokemon.Seeding(modelBuilder, _mapper, _csvSettings, listTypings);
+            var seedingTyping = new SeedingTyping(modelBuilder, _csvSettings, _mapper);
+            var listTypings =  seedingTyping.Seeding();
+
+            var seedingPokemon = new SeedingPokemon(modelBuilder, _csvSettings, _mapper);
+            seedingPokemon.Seeding(listTypings);
         }
     }
 }
