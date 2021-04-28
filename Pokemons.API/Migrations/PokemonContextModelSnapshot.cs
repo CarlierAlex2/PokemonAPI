@@ -51,7 +51,7 @@ namespace Pokemons.API.Migrations
                     b.HasData(
                         new
                         {
-                            PokemonId = new Guid("762d45e1-f559-4338-aa51-e781962fcb2d"),
+                            PokemonId = new Guid("c6767aef-2570-4a06-a508-dabb633fa567"),
                             Classification = "Sleeping Pokemon",
                             EggGroup = "Monster",
                             Generation = 1,
@@ -60,7 +60,7 @@ namespace Pokemons.API.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("e86662c3-077f-4f88-abf6-a158ec1cc858"),
+                            PokemonId = new Guid("c2478ba4-6118-40b9-9746-8b4c1a12f0a4"),
                             Classification = "Blocking Pokemon",
                             EggGroup = "Field",
                             Generation = 8,
@@ -69,7 +69,7 @@ namespace Pokemons.API.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("59682e49-8da3-4fa6-9bc3-4b04094af87a"),
+                            PokemonId = new Guid("6ca5f605-d965-4795-80de-80bc09e1bf42"),
                             Classification = "Lizard Pokemon",
                             EggGroup = "Monster,Dragon",
                             Generation = 1,
@@ -78,7 +78,7 @@ namespace Pokemons.API.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("03a715fe-0cda-40ce-9b81-c8256e99b5af"),
+                            PokemonId = new Guid("0508dba5-c8a6-4f87-8adc-c6550b94dcab"),
                             Classification = "Sun Pokemon",
                             EggGroup = "Bug",
                             Generation = 5,
@@ -87,7 +87,7 @@ namespace Pokemons.API.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("de51da3f-4d12-463d-8b33-fe23d00c9487"),
+                            PokemonId = new Guid("87a61f3c-3bc4-4a29-a1fe-5b3f2e1ecb9a"),
                             Classification = "Superpower Pokemon",
                             EggGroup = "Human-Like",
                             Generation = 1,
@@ -96,7 +96,7 @@ namespace Pokemons.API.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("812daf11-fa93-41bc-8024-006f216e1ca9"),
+                            PokemonId = new Guid("94395695-0736-4d79-b25e-d95520b29328"),
                             Classification = "Single Horn Pokemon",
                             EggGroup = "Bug",
                             Generation = 2,
@@ -105,7 +105,7 @@ namespace Pokemons.API.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("9cd88407-247f-40ee-9e7d-10056bad9f4e"),
+                            PokemonId = new Guid("3ea65225-f952-4549-b06a-6b7c4bb1c107"),
                             Classification = "Mud Fish Pokemon",
                             EggGroup = "Monster,Water 1",
                             Generation = 3,
@@ -114,7 +114,7 @@ namespace Pokemons.API.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("2cccd836-5e6f-408b-9198-70f215c12c13"),
+                            PokemonId = new Guid("27a14f98-963f-46e2-9b34-c5fb4faa42ec"),
                             Classification = "Mock Kelp Pokemon",
                             EggGroup = "Bug",
                             Generation = 6,
@@ -123,7 +123,7 @@ namespace Pokemons.API.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("931653af-88ec-45e1-9f4d-05f8e0401963"),
+                            PokemonId = new Guid("abbe3e06-8cb6-45d3-8da1-51337b45e8d1"),
                             Classification = "Raven Pokemon",
                             EggGroup = "Flying",
                             Generation = 8,
@@ -132,7 +132,7 @@ namespace Pokemons.API.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("0c693784-c08b-44d0-ba30-1fa43784e085"),
+                            PokemonId = new Guid("3d9744a6-7ba4-423d-913e-7f8765703ba4"),
                             Classification = "Balloon Pokemon",
                             EggGroup = "Amorphous",
                             Generation = 4,
@@ -141,7 +141,7 @@ namespace Pokemons.API.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("b641379b-d93e-4873-aeea-1cdce12985bf"),
+                            PokemonId = new Guid("97b58c44-e60e-45c2-ae5d-8b9af6c85946"),
                             Classification = "Sickle Grass Pokemon",
                             EggGroup = "Grass",
                             Generation = 7,
@@ -150,7 +150,7 @@ namespace Pokemons.API.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("61e046ab-e29b-4f9f-a766-c95f558639c2"),
+                            PokemonId = new Guid("e8e78a90-6f80-486f-9d2e-097de3b8b326"),
                             Classification = "Sea Lily Pokemon",
                             EggGroup = "Water 3",
                             Generation = 3,
@@ -159,7 +159,7 @@ namespace Pokemons.API.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("31a78165-3172-486e-a878-16a682b952f8"),
+                            PokemonId = new Guid("1ecbff5d-0207-43f0-85c9-112c0f3dff44"),
                             Classification = "Poison Pin Pokemon",
                             EggGroup = "Undiscovered",
                             Generation = 7,
@@ -168,7 +168,7 @@ namespace Pokemons.API.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("e66152de-35f0-4ba8-8b2f-75d17f68c515"),
+                            PokemonId = new Guid("58a1e17e-8308-4422-ab7b-baa6f2a5ddd4"),
                             Classification = "Bouquet Pokemon",
                             EggGroup = "Fairy,Grass",
                             Generation = 4,
@@ -177,7 +177,7 @@ namespace Pokemons.API.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("94378bee-6bab-4bf0-91a1-3a650b35f55f"),
+                            PokemonId = new Guid("d2a35562-a5f3-4bbf-bbd4-da6f4bc6c685"),
                             Classification = "Magnet Area Pokemon",
                             EggGroup = "Mineral",
                             Generation = 4,
@@ -186,7 +186,7 @@ namespace Pokemons.API.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("debc1386-2792-4b0c-8abe-f40ab2b91370"),
+                            PokemonId = new Guid("b35a9edb-ba73-4d3a-b228-59ea3ba3cdbd"),
                             Classification = "Deep Black Pokemon",
                             EggGroup = "Undiscovered",
                             Generation = 5,
@@ -195,7 +195,7 @@ namespace Pokemons.API.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("85ecf0f7-4aed-49bd-9a84-836b023eab11"),
+                            PokemonId = new Guid("7c9e037a-cd44-420c-86b7-6290b1b3d4d2"),
                             Classification = "Automaton Pokemon",
                             EggGroup = "Mineral",
                             Generation = 5,
@@ -204,7 +204,7 @@ namespace Pokemons.API.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("2c52fd70-7e8b-4b33-b25d-48cfa0546ed4"),
+                            PokemonId = new Guid("45ad8ae0-4bd1-46c8-8a1b-13d547b98a2e"),
                             Classification = "Order Pokemon",
                             EggGroup = "Undiscovered",
                             Generation = 6,
@@ -213,7 +213,7 @@ namespace Pokemons.API.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("84efed31-01e8-4ac4-896e-6abb8d073e09"),
+                            PokemonId = new Guid("c7bb2593-e473-4964-b811-f807ac8c4227"),
                             Classification = "Psi Pokemon",
                             EggGroup = "Human-Like",
                             Generation = 1,
@@ -222,7 +222,7 @@ namespace Pokemons.API.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("1000b9b8-0ab4-4c98-8138-9b15a202ac7b"),
+                            PokemonId = new Guid("1e7e232f-4005-4524-8c97-4a870cbecd44"),
                             Classification = "Bronze Bell Pokemon",
                             EggGroup = "Mineral",
                             Generation = 4,
@@ -231,7 +231,7 @@ namespace Pokemons.API.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("6a2c07aa-7261-4d3c-9ba0-77cdf2a1d4fe"),
+                            PokemonId = new Guid("9503ff9c-c758-4696-bc90-d941779dca99"),
                             Classification = "Head Butt Pokemon",
                             EggGroup = "Monster",
                             Generation = 4,
@@ -240,7 +240,7 @@ namespace Pokemons.API.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("94a79ddc-e37b-48ca-ac34-8c4038880a52"),
+                            PokemonId = new Guid("053a5141-9b56-4a85-8f69-04931a7010c2"),
                             Classification = "Tundra Pokemon",
                             EggGroup = "Monster",
                             Generation = 6,
@@ -249,7 +249,7 @@ namespace Pokemons.API.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("6c83e537-25ea-49f0-ba14-9b50e9000c7b"),
+                            PokemonId = new Guid("a95e64c7-4db4-4dec-86d6-766975d5f2c6"),
                             Classification = "Snow Hat Pokemon",
                             EggGroup = "Fairy,Mineral",
                             Generation = 3,
@@ -258,7 +258,7 @@ namespace Pokemons.API.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("897df779-b730-4a4d-b841-2ed62f40c1ff"),
+                            PokemonId = new Guid("6a776247-1d5e-43da-b3f3-7624db34b5e3"),
                             Classification = "Worm Pokemon",
                             EggGroup = "Bug",
                             Generation = 8,
@@ -267,7 +267,7 @@ namespace Pokemons.API.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("21fc93e2-4d82-4fdc-9ebe-6668ae978d91"),
+                            PokemonId = new Guid("7697efcc-2fd4-47b9-8ff8-a3b2b8a6fe48"),
                             Classification = "Leaf-Wrapped Pokemon",
                             EggGroup = "Bug",
                             Generation = 5,
@@ -276,7 +276,7 @@ namespace Pokemons.API.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("ac0145d3-8ee5-4568-b2bb-408d58a5c122"),
+                            PokemonId = new Guid("389fd12d-2de2-4580-bf23-deba613de135"),
                             Classification = "Curlipede Pokemon",
                             EggGroup = "Bug",
                             Generation = 5,
@@ -285,7 +285,7 @@ namespace Pokemons.API.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("870ba31b-e824-485f-9708-4077b2fcd469"),
+                            PokemonId = new Guid("5b78d2c1-3929-4851-bad2-928b4b899579"),
                             Classification = "Dragon Pokemon",
                             EggGroup = "Water 1,Dragon",
                             Generation = 1,
@@ -294,7 +294,7 @@ namespace Pokemons.API.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("08f79218-253b-4b66-9598-1b59daa2276d"),
+                            PokemonId = new Guid("bd11fef1-b32c-466f-9aac-0d904ccb4bc7"),
                             Classification = "Stealth Pokemon",
                             EggGroup = "Amorphous,Dragon",
                             Generation = 8,
@@ -303,7 +303,7 @@ namespace Pokemons.API.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("221a1deb-a7b7-4cb2-a3cf-99452981dfc8"),
+                            PokemonId = new Guid("77031fbf-d613-4638-92f3-590bd8376520"),
                             Classification = "Screech Pokemon",
                             EggGroup = "Amorphous",
                             Generation = 2,
@@ -312,7 +312,7 @@ namespace Pokemons.API.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("41b97bfb-0aa2-427b-abbe-a29ead3ca5d6"),
+                            PokemonId = new Guid("3764f6da-00ed-4a68-aa3d-3131b29929ce"),
                             Classification = "Magical Pokemon",
                             EggGroup = "Amorphous",
                             Generation = 4,
@@ -321,7 +321,7 @@ namespace Pokemons.API.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("28d4f7de-c007-478c-9966-f40de0e7c1fb"),
+                            PokemonId = new Guid("571d3ed7-3b77-4f3c-a251-446dc30d02f6"),
                             Classification = "Wily Pokemon",
                             EggGroup = "Field,Grass",
                             Generation = 3,
@@ -330,7 +330,7 @@ namespace Pokemons.API.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("88089c96-d087-42dd-81a0-8df45a22f62c"),
+                            PokemonId = new Guid("ff17e5a8-9300-4668-8b9f-6026d8b1472a"),
                             Classification = "Skunk Pokemon",
                             EggGroup = "Field",
                             Generation = 4,
@@ -339,7 +339,7 @@ namespace Pokemons.API.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("8c9f3551-07e9-45a4-9309-f980531ae37b"),
+                            PokemonId = new Guid("eb644554-6660-4ecc-b08b-d09ea53abcd9"),
                             Classification = "Iron Armor Pokemon",
                             EggGroup = "Monster",
                             Generation = 3,
@@ -348,7 +348,7 @@ namespace Pokemons.API.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("78d31781-65a8-424e-95ab-7c90368b7d2b"),
+                            PokemonId = new Guid("2ee76c5d-3179-4930-acd7-44b4f9775523"),
                             Classification = "Thorn Pod Pokemon",
                             EggGroup = "Grass,Mineral",
                             Generation = 5,
@@ -357,7 +357,7 @@ namespace Pokemons.API.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("a95e9062-e194-4abd-8dfe-83991aacfb54"),
+                            PokemonId = new Guid("edcdebde-d477-4dbb-b5bf-5bcd1b1b2007"),
                             Classification = "Balloon Pokemon",
                             EggGroup = "Fairy",
                             Generation = 1,
@@ -366,7 +366,7 @@ namespace Pokemons.API.Migrations
                         },
                         new
                         {
-                            PokemonId = new Guid("d9f537f2-7042-4fd5-a9f4-d6de1b47a4fe"),
+                            PokemonId = new Guid("42b1c658-75c9-4bcf-95a8-5dc3cec4942c"),
                             Classification = "Embrace Pokemon",
                             EggGroup = "Human-Like,Amorphous",
                             Generation = 3,
@@ -392,312 +392,312 @@ namespace Pokemons.API.Migrations
                     b.HasData(
                         new
                         {
-                            PokemonId = new Guid("762d45e1-f559-4338-aa51-e781962fcb2d"),
+                            PokemonId = new Guid("c6767aef-2570-4a06-a508-dabb633fa567"),
                             TypingId = 1
                         },
                         new
                         {
-                            PokemonId = new Guid("e86662c3-077f-4f88-abf6-a158ec1cc858"),
+                            PokemonId = new Guid("c2478ba4-6118-40b9-9746-8b4c1a12f0a4"),
                             TypingId = 16
                         },
                         new
                         {
-                            PokemonId = new Guid("e86662c3-077f-4f88-abf6-a158ec1cc858"),
+                            PokemonId = new Guid("c2478ba4-6118-40b9-9746-8b4c1a12f0a4"),
                             TypingId = 1
                         },
                         new
                         {
-                            PokemonId = new Guid("59682e49-8da3-4fa6-9bc3-4b04094af87a"),
+                            PokemonId = new Guid("6ca5f605-d965-4795-80de-80bc09e1bf42"),
                             TypingId = 2
                         },
                         new
                         {
-                            PokemonId = new Guid("03a715fe-0cda-40ce-9b81-c8256e99b5af"),
+                            PokemonId = new Guid("0508dba5-c8a6-4f87-8adc-c6550b94dcab"),
                             TypingId = 13
                         },
                         new
                         {
-                            PokemonId = new Guid("03a715fe-0cda-40ce-9b81-c8256e99b5af"),
+                            PokemonId = new Guid("0508dba5-c8a6-4f87-8adc-c6550b94dcab"),
                             TypingId = 2
                         },
                         new
                         {
-                            PokemonId = new Guid("de51da3f-4d12-463d-8b33-fe23d00c9487"),
+                            PokemonId = new Guid("87a61f3c-3bc4-4a29-a1fe-5b3f2e1ecb9a"),
                             TypingId = 3
                         },
                         new
                         {
-                            PokemonId = new Guid("812daf11-fa93-41bc-8024-006f216e1ca9"),
+                            PokemonId = new Guid("94395695-0736-4d79-b25e-d95520b29328"),
                             TypingId = 13
                         },
                         new
                         {
-                            PokemonId = new Guid("812daf11-fa93-41bc-8024-006f216e1ca9"),
+                            PokemonId = new Guid("94395695-0736-4d79-b25e-d95520b29328"),
                             TypingId = 3
                         },
                         new
                         {
-                            PokemonId = new Guid("9cd88407-247f-40ee-9e7d-10056bad9f4e"),
+                            PokemonId = new Guid("3ea65225-f952-4549-b06a-6b7c4bb1c107"),
                             TypingId = 4
                         },
                         new
                         {
-                            PokemonId = new Guid("9cd88407-247f-40ee-9e7d-10056bad9f4e"),
+                            PokemonId = new Guid("3ea65225-f952-4549-b06a-6b7c4bb1c107"),
                             TypingId = 9
                         },
                         new
                         {
-                            PokemonId = new Guid("2cccd836-5e6f-408b-9198-70f215c12c13"),
+                            PokemonId = new Guid("27a14f98-963f-46e2-9b34-c5fb4faa42ec"),
                             TypingId = 7
                         },
                         new
                         {
-                            PokemonId = new Guid("2cccd836-5e6f-408b-9198-70f215c12c13"),
+                            PokemonId = new Guid("27a14f98-963f-46e2-9b34-c5fb4faa42ec"),
                             TypingId = 4
                         },
                         new
                         {
-                            PokemonId = new Guid("931653af-88ec-45e1-9f4d-05f8e0401963"),
+                            PokemonId = new Guid("abbe3e06-8cb6-45d3-8da1-51337b45e8d1"),
                             TypingId = 5
                         },
                         new
                         {
-                            PokemonId = new Guid("931653af-88ec-45e1-9f4d-05f8e0401963"),
+                            PokemonId = new Guid("abbe3e06-8cb6-45d3-8da1-51337b45e8d1"),
                             TypingId = 17
                         },
                         new
                         {
-                            PokemonId = new Guid("0c693784-c08b-44d0-ba30-1fa43784e085"),
+                            PokemonId = new Guid("3d9744a6-7ba4-423d-913e-7f8765703ba4"),
                             TypingId = 15
                         },
                         new
                         {
-                            PokemonId = new Guid("0c693784-c08b-44d0-ba30-1fa43784e085"),
+                            PokemonId = new Guid("3d9744a6-7ba4-423d-913e-7f8765703ba4"),
                             TypingId = 5
                         },
                         new
                         {
-                            PokemonId = new Guid("b641379b-d93e-4873-aeea-1cdce12985bf"),
+                            PokemonId = new Guid("97b58c44-e60e-45c2-ae5d-8b9af6c85946"),
                             TypingId = 6
                         },
                         new
                         {
-                            PokemonId = new Guid("61e046ab-e29b-4f9f-a766-c95f558639c2"),
+                            PokemonId = new Guid("e8e78a90-6f80-486f-9d2e-097de3b8b326"),
                             TypingId = 11
                         },
                         new
                         {
-                            PokemonId = new Guid("61e046ab-e29b-4f9f-a766-c95f558639c2"),
+                            PokemonId = new Guid("e8e78a90-6f80-486f-9d2e-097de3b8b326"),
                             TypingId = 6
                         },
                         new
                         {
-                            PokemonId = new Guid("31a78165-3172-486e-a878-16a682b952f8"),
+                            PokemonId = new Guid("1ecbff5d-0207-43f0-85c9-112c0f3dff44"),
                             TypingId = 7
                         },
                         new
                         {
-                            PokemonId = new Guid("31a78165-3172-486e-a878-16a682b952f8"),
+                            PokemonId = new Guid("1ecbff5d-0207-43f0-85c9-112c0f3dff44"),
                             TypingId = 14
                         },
                         new
                         {
-                            PokemonId = new Guid("e66152de-35f0-4ba8-8b2f-75d17f68c515"),
+                            PokemonId = new Guid("58a1e17e-8308-4422-ab7b-baa6f2a5ddd4"),
                             TypingId = 6
                         },
                         new
                         {
-                            PokemonId = new Guid("e66152de-35f0-4ba8-8b2f-75d17f68c515"),
+                            PokemonId = new Guid("58a1e17e-8308-4422-ab7b-baa6f2a5ddd4"),
                             TypingId = 7
                         },
                         new
                         {
-                            PokemonId = new Guid("94378bee-6bab-4bf0-91a1-3a650b35f55f"),
+                            PokemonId = new Guid("d2a35562-a5f3-4bbf-bbd4-da6f4bc6c685"),
                             TypingId = 8
                         },
                         new
                         {
-                            PokemonId = new Guid("94378bee-6bab-4bf0-91a1-3a650b35f55f"),
+                            PokemonId = new Guid("d2a35562-a5f3-4bbf-bbd4-da6f4bc6c685"),
                             TypingId = 17
                         },
                         new
                         {
-                            PokemonId = new Guid("debc1386-2792-4b0c-8abe-f40ab2b91370"),
+                            PokemonId = new Guid("b35a9edb-ba73-4d3a-b228-59ea3ba3cdbd"),
                             TypingId = 14
                         },
                         new
                         {
-                            PokemonId = new Guid("debc1386-2792-4b0c-8abe-f40ab2b91370"),
+                            PokemonId = new Guid("b35a9edb-ba73-4d3a-b228-59ea3ba3cdbd"),
                             TypingId = 8
                         },
                         new
                         {
-                            PokemonId = new Guid("85ecf0f7-4aed-49bd-9a84-836b023eab11"),
+                            PokemonId = new Guid("7c9e037a-cd44-420c-86b7-6290b1b3d4d2"),
                             TypingId = 9
                         },
                         new
                         {
-                            PokemonId = new Guid("85ecf0f7-4aed-49bd-9a84-836b023eab11"),
+                            PokemonId = new Guid("7c9e037a-cd44-420c-86b7-6290b1b3d4d2"),
                             TypingId = 15
                         },
                         new
                         {
-                            PokemonId = new Guid("2c52fd70-7e8b-4b33-b25d-48cfa0546ed4"),
+                            PokemonId = new Guid("45ad8ae0-4bd1-46c8-8a1b-13d547b98a2e"),
                             TypingId = 14
                         },
                         new
                         {
-                            PokemonId = new Guid("2c52fd70-7e8b-4b33-b25d-48cfa0546ed4"),
+                            PokemonId = new Guid("45ad8ae0-4bd1-46c8-8a1b-13d547b98a2e"),
                             TypingId = 9
                         },
                         new
                         {
-                            PokemonId = new Guid("84efed31-01e8-4ac4-896e-6abb8d073e09"),
+                            PokemonId = new Guid("c7bb2593-e473-4964-b811-f807ac8c4227"),
                             TypingId = 10
                         },
                         new
                         {
-                            PokemonId = new Guid("1000b9b8-0ab4-4c98-8138-9b15a202ac7b"),
+                            PokemonId = new Guid("1e7e232f-4005-4524-8c97-4a870cbecd44"),
                             TypingId = 17
                         },
                         new
                         {
-                            PokemonId = new Guid("1000b9b8-0ab4-4c98-8138-9b15a202ac7b"),
+                            PokemonId = new Guid("1e7e232f-4005-4524-8c97-4a870cbecd44"),
                             TypingId = 10
                         },
                         new
                         {
-                            PokemonId = new Guid("6a2c07aa-7261-4d3c-9ba0-77cdf2a1d4fe"),
+                            PokemonId = new Guid("9503ff9c-c758-4696-bc90-d941779dca99"),
                             TypingId = 11
                         },
                         new
                         {
-                            PokemonId = new Guid("94a79ddc-e37b-48ca-ac34-8c4038880a52"),
+                            PokemonId = new Guid("053a5141-9b56-4a85-8f69-04931a7010c2"),
                             TypingId = 11
                         },
                         new
                         {
-                            PokemonId = new Guid("94a79ddc-e37b-48ca-ac34-8c4038880a52"),
+                            PokemonId = new Guid("053a5141-9b56-4a85-8f69-04931a7010c2"),
                             TypingId = 12
                         },
                         new
                         {
-                            PokemonId = new Guid("6c83e537-25ea-49f0-ba14-9b50e9000c7b"),
+                            PokemonId = new Guid("a95e64c7-4db4-4dec-86d6-766975d5f2c6"),
                             TypingId = 12
                         },
                         new
                         {
-                            PokemonId = new Guid("897df779-b730-4a4d-b841-2ed62f40c1ff"),
+                            PokemonId = new Guid("6a776247-1d5e-43da-b3f3-7624db34b5e3"),
                             TypingId = 12
                         },
                         new
                         {
-                            PokemonId = new Guid("897df779-b730-4a4d-b841-2ed62f40c1ff"),
+                            PokemonId = new Guid("6a776247-1d5e-43da-b3f3-7624db34b5e3"),
                             TypingId = 13
                         },
                         new
                         {
-                            PokemonId = new Guid("21fc93e2-4d82-4fdc-9ebe-6668ae978d91"),
+                            PokemonId = new Guid("7697efcc-2fd4-47b9-8ff8-a3b2b8a6fe48"),
                             TypingId = 13
                         },
                         new
                         {
-                            PokemonId = new Guid("21fc93e2-4d82-4fdc-9ebe-6668ae978d91"),
+                            PokemonId = new Guid("7697efcc-2fd4-47b9-8ff8-a3b2b8a6fe48"),
                             TypingId = 6
                         },
                         new
                         {
-                            PokemonId = new Guid("ac0145d3-8ee5-4568-b2bb-408d58a5c122"),
+                            PokemonId = new Guid("389fd12d-2de2-4580-bf23-deba613de135"),
                             TypingId = 13
                         },
                         new
                         {
-                            PokemonId = new Guid("ac0145d3-8ee5-4568-b2bb-408d58a5c122"),
+                            PokemonId = new Guid("389fd12d-2de2-4580-bf23-deba613de135"),
                             TypingId = 7
                         },
                         new
                         {
-                            PokemonId = new Guid("870ba31b-e824-485f-9708-4077b2fcd469"),
+                            PokemonId = new Guid("5b78d2c1-3929-4851-bad2-928b4b899579"),
                             TypingId = 14
                         },
                         new
                         {
-                            PokemonId = new Guid("08f79218-253b-4b66-9598-1b59daa2276d"),
+                            PokemonId = new Guid("bd11fef1-b32c-466f-9aac-0d904ccb4bc7"),
                             TypingId = 14
                         },
                         new
                         {
-                            PokemonId = new Guid("08f79218-253b-4b66-9598-1b59daa2276d"),
+                            PokemonId = new Guid("bd11fef1-b32c-466f-9aac-0d904ccb4bc7"),
                             TypingId = 15
                         },
                         new
                         {
-                            PokemonId = new Guid("221a1deb-a7b7-4cb2-a3cf-99452981dfc8"),
+                            PokemonId = new Guid("77031fbf-d613-4638-92f3-590bd8376520"),
                             TypingId = 15
                         },
                         new
                         {
-                            PokemonId = new Guid("41b97bfb-0aa2-427b-abbe-a29ead3ca5d6"),
+                            PokemonId = new Guid("3764f6da-00ed-4a68-aa3d-3131b29929ce"),
                             TypingId = 15
                         },
                         new
                         {
-                            PokemonId = new Guid("28d4f7de-c007-478c-9966-f40de0e7c1fb"),
+                            PokemonId = new Guid("571d3ed7-3b77-4f3c-a251-446dc30d02f6"),
                             TypingId = 6
                         },
                         new
                         {
-                            PokemonId = new Guid("28d4f7de-c007-478c-9966-f40de0e7c1fb"),
+                            PokemonId = new Guid("571d3ed7-3b77-4f3c-a251-446dc30d02f6"),
                             TypingId = 16
                         },
                         new
                         {
-                            PokemonId = new Guid("88089c96-d087-42dd-81a0-8df45a22f62c"),
+                            PokemonId = new Guid("ff17e5a8-9300-4668-8b9f-6026d8b1472a"),
                             TypingId = 7
                         },
                         new
                         {
-                            PokemonId = new Guid("88089c96-d087-42dd-81a0-8df45a22f62c"),
+                            PokemonId = new Guid("ff17e5a8-9300-4668-8b9f-6026d8b1472a"),
                             TypingId = 16
                         },
                         new
                         {
-                            PokemonId = new Guid("8c9f3551-07e9-45a4-9309-f980531ae37b"),
+                            PokemonId = new Guid("eb644554-6660-4ecc-b08b-d09ea53abcd9"),
                             TypingId = 17
                         },
                         new
                         {
-                            PokemonId = new Guid("8c9f3551-07e9-45a4-9309-f980531ae37b"),
+                            PokemonId = new Guid("eb644554-6660-4ecc-b08b-d09ea53abcd9"),
                             TypingId = 11
                         },
                         new
                         {
-                            PokemonId = new Guid("78d31781-65a8-424e-95ab-7c90368b7d2b"),
+                            PokemonId = new Guid("2ee76c5d-3179-4930-acd7-44b4f9775523"),
                             TypingId = 6
                         },
                         new
                         {
-                            PokemonId = new Guid("78d31781-65a8-424e-95ab-7c90368b7d2b"),
+                            PokemonId = new Guid("2ee76c5d-3179-4930-acd7-44b4f9775523"),
                             TypingId = 17
                         },
                         new
                         {
-                            PokemonId = new Guid("a95e9062-e194-4abd-8dfe-83991aacfb54"),
+                            PokemonId = new Guid("edcdebde-d477-4dbb-b5bf-5bcd1b1b2007"),
                             TypingId = 1
                         },
                         new
                         {
-                            PokemonId = new Guid("a95e9062-e194-4abd-8dfe-83991aacfb54"),
+                            PokemonId = new Guid("edcdebde-d477-4dbb-b5bf-5bcd1b1b2007"),
                             TypingId = 18
                         },
                         new
                         {
-                            PokemonId = new Guid("d9f537f2-7042-4fd5-a9f4-d6de1b47a4fe"),
+                            PokemonId = new Guid("42b1c658-75c9-4bcf-95a8-5dc3cec4942c"),
                             TypingId = 10
                         },
                         new
                         {
-                            PokemonId = new Guid("d9f537f2-7042-4fd5-a9f4-d6de1b47a4fe"),
+                            PokemonId = new Guid("42b1c658-75c9-4bcf-95a8-5dc3cec4942c"),
                             TypingId = 18
                         });
                 });
@@ -1170,378 +1170,378 @@ namespace Pokemons.API.Migrations
                         },
                         new
                         {
-                            TypeEffectId = 65,
+                            TypeEffectId = 64,
                             DefenseTypingId = 7,
                             OffenseTypingId = 10,
                             Power = 2m
                         },
                         new
                         {
-                            TypeEffectId = 66,
+                            TypeEffectId = 65,
                             DefenseTypingId = 10,
+                            OffenseTypingId = 10,
+                            Power = 0.5m
+                        },
+                        new
+                        {
+                            TypeEffectId = 66,
+                            DefenseTypingId = 17,
                             OffenseTypingId = 10,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 67,
-                            DefenseTypingId = 17,
-                            OffenseTypingId = 10,
-                            Power = 0.5m
-                        },
-                        new
-                        {
-                            TypeEffectId = 68,
                             DefenseTypingId = 16,
                             OffenseTypingId = 10,
                             Power = 0m
                         },
                         new
                         {
-                            TypeEffectId = 69,
+                            TypeEffectId = 68,
                             DefenseTypingId = 13,
                             OffenseTypingId = 11,
                             Power = 2m
                         },
                         new
                         {
-                            TypeEffectId = 70,
+                            TypeEffectId = 69,
                             DefenseTypingId = 2,
+                            OffenseTypingId = 11,
+                            Power = 2m
+                        },
+                        new
+                        {
+                            TypeEffectId = 70,
+                            DefenseTypingId = 5,
                             OffenseTypingId = 11,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 71,
-                            DefenseTypingId = 5,
+                            DefenseTypingId = 12,
                             OffenseTypingId = 11,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 72,
-                            DefenseTypingId = 12,
+                            DefenseTypingId = 3,
                             OffenseTypingId = 11,
-                            Power = 2m
+                            Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 73,
-                            DefenseTypingId = 3,
+                            DefenseTypingId = 9,
                             OffenseTypingId = 11,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 74,
-                            DefenseTypingId = 9,
+                            DefenseTypingId = 17,
                             OffenseTypingId = 11,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 75,
-                            DefenseTypingId = 17,
-                            OffenseTypingId = 11,
-                            Power = 0.5m
+                            DefenseTypingId = 14,
+                            OffenseTypingId = 12,
+                            Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 76,
-                            DefenseTypingId = 14,
+                            DefenseTypingId = 5,
                             OffenseTypingId = 12,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 77,
-                            DefenseTypingId = 5,
+                            DefenseTypingId = 6,
                             OffenseTypingId = 12,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 78,
-                            DefenseTypingId = 6,
-                            OffenseTypingId = 12,
-                            Power = 2m
-                        },
-                        new
-                        {
-                            TypeEffectId = 79,
                             DefenseTypingId = 9,
                             OffenseTypingId = 12,
                             Power = 2m
                         },
                         new
                         {
-                            TypeEffectId = 80,
+                            TypeEffectId = 79,
                             DefenseTypingId = 2,
+                            OffenseTypingId = 12,
+                            Power = 0.5m
+                        },
+                        new
+                        {
+                            TypeEffectId = 80,
+                            DefenseTypingId = 12,
                             OffenseTypingId = 12,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 81,
-                            DefenseTypingId = 12,
+                            DefenseTypingId = 17,
                             OffenseTypingId = 12,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 82,
-                            DefenseTypingId = 17,
+                            DefenseTypingId = 4,
                             OffenseTypingId = 12,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 83,
-                            DefenseTypingId = 4,
-                            OffenseTypingId = 12,
-                            Power = 0.5m
-                        },
-                        new
-                        {
-                            TypeEffectId = 84,
                             DefenseTypingId = 16,
                             OffenseTypingId = 13,
                             Power = 2m
                         },
                         new
                         {
-                            TypeEffectId = 85,
+                            TypeEffectId = 84,
                             DefenseTypingId = 6,
                             OffenseTypingId = 13,
                             Power = 2m
                         },
                         new
                         {
-                            TypeEffectId = 86,
+                            TypeEffectId = 85,
                             DefenseTypingId = 10,
                             OffenseTypingId = 13,
                             Power = 2m
                         },
                         new
                         {
-                            TypeEffectId = 87,
+                            TypeEffectId = 86,
                             DefenseTypingId = 18,
+                            OffenseTypingId = 13,
+                            Power = 0.5m
+                        },
+                        new
+                        {
+                            TypeEffectId = 87,
+                            DefenseTypingId = 3,
                             OffenseTypingId = 13,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 88,
-                            DefenseTypingId = 3,
+                            DefenseTypingId = 2,
                             OffenseTypingId = 13,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 89,
-                            DefenseTypingId = 2,
-                            OffenseTypingId = 13,
-                            Power = 0.5m
-                        },
-                        new
-                        {
-                            TypeEffectId = 90,
                             DefenseTypingId = 5,
                             OffenseTypingId = 13,
                             Power = 0.5m
                         },
                         new
                         {
-                            TypeEffectId = 91,
+                            TypeEffectId = 90,
                             DefenseTypingId = 15,
+                            OffenseTypingId = 13,
+                            Power = 0.5m
+                        },
+                        new
+                        {
+                            TypeEffectId = 91,
+                            DefenseTypingId = 7,
                             OffenseTypingId = 13,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 92,
-                            DefenseTypingId = 7,
+                            DefenseTypingId = 17,
                             OffenseTypingId = 13,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 93,
-                            DefenseTypingId = 17,
-                            OffenseTypingId = 13,
-                            Power = 0.5m
-                        },
-                        new
-                        {
-                            TypeEffectId = 94,
                             DefenseTypingId = 14,
                             OffenseTypingId = 14,
                             Power = 2m
                         },
                         new
                         {
-                            TypeEffectId = 95,
+                            TypeEffectId = 94,
                             DefenseTypingId = 17,
                             OffenseTypingId = 14,
                             Power = 0.5m
                         },
                         new
                         {
-                            TypeEffectId = 96,
+                            TypeEffectId = 95,
                             DefenseTypingId = 18,
                             OffenseTypingId = 14,
                             Power = 0m
                         },
                         new
                         {
-                            TypeEffectId = 97,
+                            TypeEffectId = 96,
                             DefenseTypingId = 15,
+                            OffenseTypingId = 15,
+                            Power = 2m
+                        },
+                        new
+                        {
+                            TypeEffectId = 97,
+                            DefenseTypingId = 10,
                             OffenseTypingId = 15,
                             Power = 2m
                         },
                         new
                         {
                             TypeEffectId = 98,
-                            DefenseTypingId = 10,
-                            OffenseTypingId = 15,
-                            Power = 2m
-                        },
-                        new
-                        {
-                            TypeEffectId = 99,
                             DefenseTypingId = 16,
                             OffenseTypingId = 15,
                             Power = 0.5m
                         },
                         new
                         {
-                            TypeEffectId = 100,
+                            TypeEffectId = 99,
                             DefenseTypingId = 1,
                             OffenseTypingId = 15,
                             Power = 0m
                         },
                         new
                         {
-                            TypeEffectId = 101,
+                            TypeEffectId = 100,
                             DefenseTypingId = 15,
                             OffenseTypingId = 16,
                             Power = 2m
                         },
                         new
                         {
-                            TypeEffectId = 102,
+                            TypeEffectId = 101,
                             DefenseTypingId = 10,
                             OffenseTypingId = 16,
                             Power = 2m
                         },
                         new
                         {
-                            TypeEffectId = 103,
+                            TypeEffectId = 102,
                             DefenseTypingId = 16,
+                            OffenseTypingId = 16,
+                            Power = 0.5m
+                        },
+                        new
+                        {
+                            TypeEffectId = 103,
+                            DefenseTypingId = 18,
                             OffenseTypingId = 16,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 104,
-                            DefenseTypingId = 18,
+                            DefenseTypingId = 3,
                             OffenseTypingId = 16,
                             Power = 0.5m
                         },
                         new
                         {
                             TypeEffectId = 105,
-                            DefenseTypingId = 3,
-                            OffenseTypingId = 16,
-                            Power = 0.5m
-                        },
-                        new
-                        {
-                            TypeEffectId = 106,
                             DefenseTypingId = 18,
                             OffenseTypingId = 17,
                             Power = 2m
                         },
                         new
                         {
-                            TypeEffectId = 107,
+                            TypeEffectId = 106,
                             DefenseTypingId = 12,
                             OffenseTypingId = 17,
                             Power = 2m
                         },
                         new
                         {
-                            TypeEffectId = 108,
+                            TypeEffectId = 107,
                             DefenseTypingId = 11,
                             OffenseTypingId = 17,
                             Power = 2m
                         },
                         new
                         {
-                            TypeEffectId = 109,
+                            TypeEffectId = 108,
                             DefenseTypingId = 8,
                             OffenseTypingId = 17,
                             Power = 0.5m
                         },
                         new
                         {
-                            TypeEffectId = 110,
+                            TypeEffectId = 109,
                             DefenseTypingId = 2,
                             OffenseTypingId = 17,
                             Power = 0.5m
                         },
                         new
                         {
-                            TypeEffectId = 111,
+                            TypeEffectId = 110,
                             DefenseTypingId = 17,
                             OffenseTypingId = 17,
                             Power = 0.5m
                         },
                         new
                         {
-                            TypeEffectId = 112,
+                            TypeEffectId = 111,
                             DefenseTypingId = 4,
                             OffenseTypingId = 17,
                             Power = 0.5m
                         },
                         new
                         {
-                            TypeEffectId = 113,
+                            TypeEffectId = 112,
                             DefenseTypingId = 16,
                             OffenseTypingId = 18,
                             Power = 2m
                         },
                         new
                         {
-                            TypeEffectId = 114,
+                            TypeEffectId = 113,
                             DefenseTypingId = 14,
                             OffenseTypingId = 18,
                             Power = 2m
                         },
                         new
                         {
-                            TypeEffectId = 115,
+                            TypeEffectId = 114,
                             DefenseTypingId = 3,
                             OffenseTypingId = 18,
                             Power = 2m
                         },
                         new
                         {
-                            TypeEffectId = 116,
+                            TypeEffectId = 115,
                             DefenseTypingId = 2,
                             OffenseTypingId = 18,
                             Power = 0.5m
                         },
                         new
                         {
-                            TypeEffectId = 117,
+                            TypeEffectId = 116,
                             DefenseTypingId = 7,
                             OffenseTypingId = 18,
                             Power = 0.5m
                         },
                         new
                         {
-                            TypeEffectId = 118,
+                            TypeEffectId = 117,
                             DefenseTypingId = 17,
                             OffenseTypingId = 18,
                             Power = 0.5m

@@ -3,38 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 
-using AutoMapper;
 using CsvHelper;
 
-using Pokemons.API.Models;
-using Pokemons.API.DTO;
 using Pokemons.API.Configuration;
-using Pokemons.API.Helpers;
+using Pokemons.API.Data.CsvStream.CsvData;
+
 
 namespace Pokemons.API.Data.CsvStream
 {
     public class CsvContextTypeEffect  : CsvContext
     {
-        public CsvContextTypeEffect(CsvSettings csvSettings, IMapper mapper) 
-        : base(csvSettings, mapper)
+        public CsvContextTypeEffect(CsvSettings csvSettings) 
+        : base(csvSettings)
         {
             
         }
 
         //CSV Functions -------------------------------------------------------------------------------------------
-        protected override List<ModelObject> DoReadFromCsv()
+        protected override List<CsvDataObject> DoReadFromCsv()
         {
             using (var reader = new StreamReader(_csvSettings.CsvTypeEffect))
             using (var csv = new CsvReader(reader, _csvConfiguration))
             {
-                var records = csv.GetRecords<TypeEffectDTO>().ToList<TypeEffectDTO>();
-                return records.Cast<ModelObject>().ToList();
+                var records = csv.GetRecords<TypeEffectData>().ToList<CsvDataObject>();
+                return records;
             }   
         }
 
-        protected override void DoWriteToCsv(List<ModelObject> listObject)
+        protected override void DoWriteToCsv(List<CsvDataObject> listObject)
         {
-            var records = listObject.Cast<TypeEffectDTO>().ToList();
+            var records = listObject.Cast<TypeEffectData>().ToList();
             using (var writer = new StreamWriter(_csvSettings.CsvTypeEffect))
             using (var csv = new CsvWriter(writer, _csvConfiguration))
             {

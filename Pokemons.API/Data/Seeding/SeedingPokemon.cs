@@ -1,20 +1,20 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 
 using Pokemons.API.Models;
+using Pokemons.API.Data.CsvStream.CsvData;
 using Pokemons.API.DTO;
-using Pokemons.API.Helpers;
-
 
 namespace Pokemons.API.Data.Seeding
 {
     public class SeedingPokemon : SeedingHelper
     {
-        public List<Typing> _listTypings {get; set;}
-        public List<PokemonDTO> _listPokemonDTO {get; set;}
+        public List<CsvDataObject> _listTypingData {get; set;}
+        public List<CsvDataObject> _listPokemonData {get; set;}
         public SeedingPokemon(ModelBuilder modelBuilder, IMapper mapper) : base(modelBuilder, mapper)
         {
             
@@ -23,24 +23,19 @@ namespace Pokemons.API.Data.Seeding
         //Seeding functions -------------------------------------------------------------------------------------------
         protected override void DoSeeding()
         {
-            if (_listTypings == null || _listPokemonDTO == null)
+            if (_listTypingData == null || _listPokemonData == null)
                 return;
+            var listTypingData = _listTypingData.Cast<TypingData>().ToList();
+            var listPokemonData = _listPokemonData.Cast<PokemonData>().ToList();
 
             //Seeding ---------------------------------------------------------------------------
-            for(int index = 0; index < _listPokemonDTO.Count; index++)
+            foreach(var dataObj in listPokemonData)
             {
-                var pokemonDTO = _listPokemonDTO[index];
-                Pokemon pokemon = _mapper.Map<Pokemon>(pokemonDTO);
+                Pokemon pokemon = _mapper.Map<Pokemon>(dataObj);
                 pokemon.PokemonId = Guid.NewGuid();
-                var pokemonTypings = new List<PokemonTyping>();
-                foreach(var t in pokemonDTO.Types)
-                {
-                    var newPokemonTyping = new PokemonTyping(){
-                        PokemonId = pokemon.PokemonId,
-                        TypingId = _listTypings.Find(typing => typing.Name == t).TypingId
-                        };
-                    pokemonTypings.Add(newPokemonTyping);
-                }
+
+                var listTypeNames = MappingHelper.ExtractTypesFromString(dataObj.Types);
+                var pokemonTypings = MappingHelper.ExtractPokemonTypings(pokemon, listTypeNames, listTypingData);
 
                 _modelBuilder.Entity<Pokemon>().HasData(pokemon);
                 _modelBuilder.Entity<PokemonTyping>().HasData(pokemonTypings);
@@ -48,21 +43,21 @@ namespace Pokemons.API.Data.Seeding
         }
 
         //Hardcoded seeding -------------------------------------------------------------------------------------------
-        private List<ModelObject> CreateList()
+        private List<PokemonData> CreateSeedingData()
         {
-            var listPokemon = new List<ModelObject>();
+            var listPokemon = new List<PokemonData>();
 
-            listPokemon.Add(new PokemonDTO() { 
+            listPokemon.Add(new PokemonData() { 
                 PokedexEntry = 4, Name = "Charmander", Generation = 1, Classification = "Lizard Pokemon", EggGroup = "Monster,Dragon",
-                Types = new List<string>{"Fire"}});
+                Types = "Fire"});
 
-            listPokemon.Add(new PokemonDTO() { 
+            listPokemon.Add(new PokemonData() { 
                 PokedexEntry = 260, Name = "Swampert", Generation = 3, Classification = "Mud Fish Pokemon", EggGroup = "Monster,Water 1",
-                Types = new List<string>{"Water", "Ground"}});
+                Types = "Water,Ground"});
 
-            listPokemon.Add(new PokemonDTO() { 
+            listPokemon.Add(new PokemonData() { 
                 PokedexEntry = 753, Name = "Fomantis", Generation = 7, Classification = "Sickle Grass Pokemon", EggGroup = "Grass",
-                Types = new List<string>{"Grass"}});
+                Types = "Grass"});
 
             return listPokemon;
         }

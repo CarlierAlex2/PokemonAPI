@@ -2,11 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-using Pokemons.API.Helpers;
 
 namespace Pokemons.API.DTO
 {
-    public class PokemonDTO : ModelObject
+    public class PokemonDTO
     {
         [Required(ErrorMessage="Pokedex Entry Required")] 
         [Range(1, int.MaxValue, ErrorMessage = "Pokedex Entry Required - Entry must be higher than 0")]

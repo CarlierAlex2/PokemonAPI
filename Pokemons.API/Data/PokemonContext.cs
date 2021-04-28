@@ -1,28 +1,30 @@
 using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Linq;
-
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Logging;
 
-using AutoMapper;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 using Pokemons.API.Models;
 using Pokemons.API.DTO;
 using Pokemons.API.Configuration;
+
+using AutoMapper;
 using Pokemons.API.Data.CsvStream;
 using Pokemons.API.Data.Seeding;
+using System.Linq;
 
 namespace Pokemons.API.Data
 {
     public interface IPokemonContext
     {
         DbSet<Pokemon> Pokemons { get; set; }
+
         DbSet<Typing> Typings { get; set; }
         DbSet<TypeEffect> TypeEffects { get; set; }
+
         int SaveChanges();
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
@@ -37,7 +39,7 @@ namespace Pokemons.API.Data
         private readonly CsvSettings _csvSettings;
 
         public PokemonContext(
-            DbContextOptions<PokemonContext> options,
+            DbContextOptions<PokemonContext> options, 
             IOptions<ConnectionStrings> connectionstrings, IOptions<CsvSettings> csvSettings,
             IMapper mapper) : base(options)
         {
@@ -76,9 +78,9 @@ namespace Pokemons.API.Data
             #endregion
 
             #region Pokemon Relations
-            modelBuilder.Entity<Pokemon>().HasIndex(p => new { p.PokedexEntry, p.Generation }).IsUnique();
+            modelBuilder.Entity<Pokemon>().HasIndex(p => new {p.PokedexEntry , p.Generation}).IsUnique();
             modelBuilder.Entity<PokemonTyping>().HasKey(cs => new { cs.PokemonId, cs.TypingId });
-
+            
             modelBuilder.Entity<Pokemon>()
                     .HasMany(pok => pok.PokemonTypings)
                     .WithOne(pokType => pokType.Pokemon)
@@ -96,34 +98,34 @@ namespace Pokemons.API.Data
         private void SeedData(ModelBuilder modelBuilder)
         {
             // Read CSV ----------------------------------------------
-            CsvContext csvContext = new CsvContextTyping(_csvSettings, _mapper);
-            var listTypings = csvContext.ReadFromCsv().Cast<Typing>().ToList();
+            CsvContext csvContext = new CsvContextTyping(_csvSettings);
+            var listTypingData = csvContext.ReadFromCsv();
 
-            csvContext = new CsvContextTypeEffect(_csvSettings, _mapper);
-            var listTypeEffects = csvContext.ReadFromCsv().Cast<TypeEffectDTO>().ToList();
-
-            csvContext = new CsvContextPokemon(_csvSettings, _mapper);
-            var listPokemon = csvContext.ReadFromCsv().Cast<PokemonDTO>().ToList();
+            csvContext = new CsvContextTypeEffect(_csvSettings);
+            var listTypeEffectData = csvContext.ReadFromCsv();
+            
+            csvContext = new CsvContextPokemon(_csvSettings);
+            var listPokemonData = csvContext.ReadFromCsv();
 
 
             // Seeding ----------------------------------------------
             SeedingHelper seedingHelper = new SeedingTyping(modelBuilder, _mapper)
             {
-                _listTypings = listTypings
+                _listTypingData = listTypingData
             };
             seedingHelper.Seeding();
 
             seedingHelper = new SeedingTypeEffect(modelBuilder, _mapper)
             {
-                _listTypings = listTypings,
-                _listEffectDTO = listTypeEffects
+                _listTypingData = listTypingData,
+                _listTypeEffectData = listTypeEffectData
             };
             seedingHelper.Seeding();
 
             seedingHelper = new SeedingPokemon(modelBuilder, _mapper)
             {
-                _listTypings = listTypings,
-                _listPokemonDTO = listPokemon
+                _listTypingData = listTypingData,
+                _listPokemonData = listPokemonData
             };
             seedingHelper.Seeding();
         }

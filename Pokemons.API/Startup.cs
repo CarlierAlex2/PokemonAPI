@@ -80,7 +80,7 @@ namespace Pokemons.API
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(options => {
                 options.Authority = "https://dev-epycux53.eu.auth0.com/";
-                options.Audience = "https://alex.carlier.PokemonAPI";
+                options.Audience = "https://alex.carlier.Pokemons.API";
             });
             */
 
@@ -91,7 +91,7 @@ namespace Pokemons.API
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { 
-                    Title = "PokemonAPI", 
+                    Title = "Pokemons.API", 
                     Version = "v1",
                     Description = "An API to search for Pokemon and their Types"
                     });
@@ -107,12 +107,12 @@ namespace Pokemons.API
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PokemonAPI v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Pokemons.API v1"));
             }*/ //tussen deze comments => enkel in develop mode
 
 
             app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PokemonAPI v1"));
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Pokemons.API v1"));
 
             app.UseHttpsRedirection();
             app.UseRouting();

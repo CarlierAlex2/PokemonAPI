@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3gu+eyBIVizE/rk4NG8xmcAgoRptilwcvEi+o3eCapZdg4VN7X3Lu10l9Xk+4Tk5TiH6GkMarowVv+sOsdemlg==",
+  "dgSpecHash": "lXM1t1XRZCtsv1LwNkI5RfrgFkJxTTerSFcCeG0ZxMYBZ8wpSsmQx4HHKqTVWa1ObvNIr1kNTLIWdM9MmjHzWA==",
   "success": true,
-  "projectFilePath": "c:\\Users\\alexc\\Documents\\MCT\\Jaar2_2020_2021\\MCT_semester_4\\BackendDevelopment\\BackDev_Project\\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\\Pokemons.API\\Pokemons.API.csproj",
+  "projectFilePath": "C:\\Users\\alexc\\Documents\\MCT\\Jaar2_2020_2021\\MCT_semester_4\\BackendDevelopment\\BackDev_Project\\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\\Pokemons.API\\Pokemons.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alexc\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\alexc\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
