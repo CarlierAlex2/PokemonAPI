@@ -31,5 +31,23 @@ namespace Pokemons.API.Models
         public string Classification { get; set; }
 
         public string EggGroup { get; set; }
+
+        [Range(1, int.MaxValue, ErrorMessage="Stats Hp - Cannot be 0 or lower")]
+        public int Hp  { get; set; } = 1;
+
+        [Range(1, int.MaxValue, ErrorMessage="Stats Attack - Cannot be 0 or lower")]
+        public int Attack  { get; set; } = 1;
+
+        [Range(1, int.MaxValue, ErrorMessage="Stats Defense - Cannot be 0 or lower")]
+        public int Defense  { get; set; } = 1;
+
+        [Range(1, int.MaxValue, ErrorMessage="Stats SpAtk - Cannot be 0 or lower")]
+        public int SpAtk  { get; set; } = 1;
+
+        [Range(1, int.MaxValue, ErrorMessage="Stats SpDef - Cannot be 0 or lower")]
+        public int SpDef  { get; set; } = 1;
+
+        [Range(1, int.MaxValue, ErrorMessage="Stats Speed - Cannot be 0 or lower")]
+        public int Speed  { get; set; } = 1;
     }
 }

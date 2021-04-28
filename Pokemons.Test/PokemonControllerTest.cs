@@ -161,6 +161,12 @@ namespace Pokemons.Test
                 Types = new List<string>{"Electric"},
                 Classification = "testing pokemon",
                 EggGroup = "tester",
+                Hp = 1,
+                Attack = 1,
+                Defense = 1,
+                SpAtk = 1,
+                SpDef = 1,
+                Speed = 1
             };
 
             await AddPokemon_Ok(pokemonDTO);
