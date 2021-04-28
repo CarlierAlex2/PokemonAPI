@@ -170,9 +170,9 @@ namespace Pokemons.Test
         {
             PokemonDTO pokemonDTO = new PokemonDTO()
             {
-                Name = "test pokemon",
-                PokedexEntry = 1000,
-                Generation = 10,
+                Name = "tester",
+                PokedexEntry = 100,
+                Generation = 100,
                 Types = new List<string>{"Electric"},
                 Classification = "testing pokemon",
                 EggGroup = "tester",
@@ -195,6 +195,7 @@ namespace Pokemons.Test
             var response = await Client.PostAsync("/api/pokemon", contentSend);
             response.StatusCode.Should().Be(HttpStatusCode.OK);
 
+            pokemonDTO = PokemonHelper.CleanupPokemonDTO(pokemonDTO);
             var contentReceived = await response.Content.ReadAsStringAsync();
             var body = JsonConvert.DeserializeObject<Pokemon>(contentReceived);
             Assert.NotNull(body);
@@ -209,6 +210,31 @@ namespace Pokemons.Test
             int generation = pokemonDTO.Generation;
             var responseDelete = await Client.DeleteAsync($"/api/pokemons/entry/{pokedexEntry}?generation={generation}");
             responseDelete.StatusCode.Should().Be(HttpStatusCode.OK);
+        }
+
+        [Fact]
+        public async Task AddPokemon_NotOk()
+        {
+            // PokedexEntry not correct
+            PokemonDTO testDto = new PokemonDTO()
+            {
+                Name = "Vi",
+                PokedexEntry = 0,
+                Generation = 0,
+                Types = new List<string>{"Wood"},
+                Classification = "Village Pokemon",
+                EggGroup = "Minecraft",
+                Hp = 1,
+                Attack = 1,
+                Defense = 1,
+                SpAtk = 1,
+                SpDef = 1,
+                Speed = 1
+            };
+            string json = JsonConvert.SerializeObject(testDto);
+            StringContent contentSend = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await Client.PostAsync("/api/pokemon", contentSend);
+            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
         }
     }
 }

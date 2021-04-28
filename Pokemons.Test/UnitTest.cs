@@ -77,5 +77,52 @@ namespace Pokemons.Test
             Assert.Equal<double>(77.5, statObj.Statistics["Speed"].Average);
             Assert.Equal<double>(90, statObj.Statistics["Speed"].Maximum);
         }
+
+        [Fact]
+        public void UnitTest_CleanupPokemonDTO()
+        {
+
+            var testDto = new PokemonDTO()
+            {
+                Name = "Villager #27", 
+                Types = new List<string>{"Gr ass "}, 
+                EggGroup = "Mine craft ",
+                PokedexEntry = 111, Generation = 111, Classification = "Village Pokemon",
+                Hp = 1, Attack = 1,Defense = 1, SpAtk = 1, SpDef = 1, Speed = 1
+            };
+            
+            var result = PokemonHelper.CleanupPokemonDTO(testDto);
+            Assert.Equal("Villager#27", result.Name);
+            Assert.Equal("Minecraft", result.EggGroup);
+            Assert.Equal(new List<string>{"Grass"}, result.Types);
+        }
+
+        [Fact]
+        public void UnitTest_VerifyPokemonDTO()
+        {
+            List<string> listTyping = new List<string>() {"Grass", "Fire", "Water"};
+            var testDto = new PokemonDTO()
+            {
+                Name = "Villager",
+                PokedexEntry = 111,
+                Generation = 111,
+                Types = new List<string>{"Grass"},
+                Classification = "Village Pokemon",
+                EggGroup = "Minecraft",
+                Hp = 1,
+                Attack = 1,
+                Defense = 1,
+                SpAtk = 1,
+                SpDef = 1,
+                Speed = 1
+            };
+            
+            var result = PokemonHelper.VerifyPokemonDTO(testDto, listTyping);
+            Assert.Equal(true, result.Item1);
+
+            testDto.Types = new List<string>(){ "Dirt" };
+            result = PokemonHelper.VerifyPokemonDTO(testDto, listTyping);
+            Assert.NotEqual(true, result.Item1);
+        }
     }
 }

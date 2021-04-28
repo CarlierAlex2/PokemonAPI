@@ -80,12 +80,12 @@ namespace Pokemons.API
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(options => {
                 options.Authority = "https://dev-epycux53.eu.auth0.com/";
-                options.Audience = "https://alex.carlier.Pokemons.API";
+                options.Audience = "https://alex.carlier.PokemonAPI";
             });
             */
 
             // authorization + authentication - PCKE
-            services.AddMicrosoftIdentityWebApiAuthentication(Configuration, "AzureAdB2C");
+            // services.AddMicrosoftIdentityWebApiAuthentication(Configuration, "AzureAdB2C");
 
             // swagger
             services.AddSwaggerGen(c =>
@@ -112,7 +112,7 @@ namespace Pokemons.API
 
 
             app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Pokemons.API v2"));
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v2/swagger.json", "Pokemons.API v2"));
 
             app.UseHttpsRedirection();
             app.UseRouting();

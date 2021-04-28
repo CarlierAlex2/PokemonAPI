@@ -395,6 +395,13 @@ namespace Pokemons.API.Controllers
         [MapToApiVersion("2.0")]
         public async Task<ActionResult<Pokemon>> AddPokemon(PokemonDTO pokemonDTO){
             try{
+                // Clean + verify
+                pokemonDTO = PokemonHelper.CleanupPokemonDTO(pokemonDTO);
+                var verify = await _pokemonService.VerifyPokemonDTO(pokemonDTO);
+                if(verify.Item1 == false)
+                    return new BadRequestObjectResult($"The provided values cannot be used to create a Pokemon - {verify.Item2}");
+                
+                // Add pokemon
                 var result = await _pokemonService.AddPokemon(pokemonDTO);
                 if(result == null)
                     return new BadRequestObjectResult("Pokemon with given entry and generation already exists in database");

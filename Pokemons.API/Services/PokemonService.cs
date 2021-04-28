@@ -31,6 +31,7 @@ namespace Pokemons.API.Services
         Task<TypingList> GetTypingList();
         Task<List<Typing>> GetTypings_V1();
         Task<List<TypingBaseDTO>> GetTypings_V2();
+        Task<Tuple<bool, string>> VerifyPokemonDTO(PokemonDTO pokemonDTO);
     }
 
     public class PokemonService : IPokemonService
@@ -208,11 +209,12 @@ namespace Pokemons.API.Services
         //------------------------------------------------------------------------------------------------------------------------
         public async Task<Pokemon> AddPokemon(PokemonDTO pokemonDTO)
         {
+            // Check if pokemon with entry and gen already exists
             PokemonDTO checkExists = await GetPokemonByEntryAndGen(pokemonDTO.PokedexEntry, pokemonDTO.Generation);
             if (checkExists != null)
                 return null;
 
-            pokemonDTO.EggGroup = pokemonDTO.EggGroup.Replace(" ", "");
+            // Add pokemon + return results
             Pokemon pokemon = _mapper.Map<Pokemon>(pokemonDTO);
             pokemon.PokemonId = Guid.NewGuid();
             pokemon.PokemonTypings = new List<PokemonTyping>();
@@ -227,6 +229,13 @@ namespace Pokemons.API.Services
             }
             pokemon = await _pokemonRepository.AddPokemon(pokemon);
             return pokemon;
+        }
+
+        public async Task<Tuple<bool, string>> VerifyPokemonDTO(PokemonDTO pokemonDTO)
+        {
+            // Verify if values are correct
+            var listTypes = await _typeRepository.GetTypingList();
+            return PokemonHelper.VerifyPokemonDTO(pokemonDTO, listTypes);
         }
 
 

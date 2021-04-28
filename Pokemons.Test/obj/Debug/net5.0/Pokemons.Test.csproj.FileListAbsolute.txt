@@ -443,3 +443,4 @@ C:\Users\alexc\Documents\MCT\Jaar2_2020_2021\MCT_semester_4\BackendDevelopment\B
 C:\Users\alexc\Documents\MCT\Jaar2_2020_2021\MCT_semester_4\BackendDevelopment\BackDev_Project\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\Pokemons.Test\obj\Debug\net5.0\ref\Pokemons.Test.dll
 C:\Users\alexc\Documents\MCT\Jaar2_2020_2021\MCT_semester_4\BackendDevelopment\BackDev_Project\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\Pokemons.Test\obj\Debug\net5.0\Pokemons.Test.pdb
 C:\Users\alexc\Documents\MCT\Jaar2_2020_2021\MCT_semester_4\BackendDevelopment\BackDev_Project\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\Pokemons.Test\obj\Debug\net5.0\Pokemons.Test.genruntimeconfig.cache
+C:\Users\alexc\Documents\MCT\Jaar2_2020_2021\MCT_semester_4\BackendDevelopment\BackDev_Project\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\Pokemons.Test\bin\Debug\net5.0\CoverletSourceRootsMapping
