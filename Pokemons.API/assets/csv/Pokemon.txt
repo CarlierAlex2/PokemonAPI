@@ -1,23 +1,23 @@
-PokedexEntry;Name;Generation;Types;Classification;EggGroup;Hp;Attack;Defense;SpAtk;SpDef;Speed
-143;Snorlax;1;Normal;Sleeping Pokemon;Monster;160;110;65;65;110;30
-598;Obstagoon;8;"Dark,Normal";Blocking Pokemon;Field;93;90;101;60;81;95
-4;Charmander;1;Fire;Lizard Pokemon;"Monster,Dragon";39;52;43;60;50;65
-637;Volcarona;5;"Bug,Fire";Sun Pokemon;Bug;85;60;65;135;105;100
-67;Machoke;1;Fighting;Superpower Pokemon;Human-Like;80;100;70;50;60;45
-214;Heracross;2;"Bug,Fighting";Single Horn Pokemon;Bug;80;125;75;40;95;85
-260;Swampert;3;"Water,Ground";Mud Fish Pokemon;"Monster,Water 1";100;110;90;85;90;60
-637;Skrelp;6;"Poison,Water";Mock Kelp Pokemon;Bug;50;60;60;60;60;30
-823;Corviknight;8;"Flying,Steel";Raven Pokemon;Flying;98;87;105;53;85;67
-425;Drifloon;4;"Ghost,Flying";Balloon Pokemon;Amorphous;90;50;34;60;44;70
-753;Fomantis;7;Grass;Sickle Grass Pokemon;Grass;40;55;35;50;35;35
-345;Lileep;3;"Rock,Grass";Sea Lily Pokemon;Water 3;66;41;77;61;87;23
-804;Naganadel;7;"Poison,Dragon";Poison Pin Pokemon;Undiscovered;73;73;73;127;73;121
-407;Roserade;4;"Grass,Poison";Bouquet Pokemon;"Fairy,Grass";60;70;55;125;105;90
-462;Magnezone;4;"Electric,Steel";Magnet Area Pokemon;Mineral;70;70;115;130;90;60
-644;Zekrom;5;"Dragon,Electric";Deep Black Pokemon;Undiscovered;100;150;120;120;100;90
-622;Golett;5;"Ground,Ghost";Automaton Pokemon;Mineral;59;74;50;35;50;35
-718;Zygarde;6;"Dragon,Ground";Order Pokemon;Undiscovered;216;100;121;91;95;85
-63;Abra;1;Psychic;Psi Pokemon;Human-Like;25;20;15;105;55;90
-437;Bronzong;4;"Steel,Psychic";Bronze Bell Pokemon;Mineral;67;89;116;79;116;33
-409;Rampardos;4;Rock;Head Butt Pokemon;Monster;97;165;60;65;50;58
-699;Aurorus;6;"Rock,Ice";Tundra Pokemon;Monster;123;77;72;99;92;58
+PokedexEntry	Name	Generation	Types	Classification	EggGroup	Hp	Attack	Defense	SpAtk	SpDef	Speed
+143	Snorlax	1	Normal	Sleeping Pokemon	Monster	160	110	65	65	110	30
+598	Obstagoon	8	"Dark,Normal"	Blocking Pokemon	Field	93	90	101	60	81	95
+4	Charmander	1	Fire	Lizard Pokemon	"Monster,Dragon"	39	52	43	60	50	65
+637	Volcarona	5	"Bug,Fire"	Sun Pokemon	Bug	85	60	65	135	105	100
+67	Machoke	1	Fighting	Superpower Pokemon	Human-Like	80	100	70	50	60	45
+214	Heracross	2	"Bug,Fighting"	Single Horn Pokemon	Bug	80	125	75	40	95	85
+260	Swampert	3	"Water,Ground"	Mud Fish Pokemon	"Monster,Water 1"	100	110	90	85	90	60
+637	Skrelp	6	"Poison,Water"	Mock Kelp Pokemon	Bug	50	60	60	60	60	30
+823	Corviknight	8	"Flying,Steel"	Raven Pokemon	Flying	98	87	105	53	85	67
+425	Drifloon	4	"Ghost,Flying"	Balloon Pokemon	Amorphous	90	50	34	60	44	70
+753	Fomantis	7	Grass	Sickle Grass Pokemon	Grass	40	55	35	50	35	35
+345	Lileep	3	"Rock,Grass"	Sea Lily Pokemon	Water 3	66	41	77	61	87	23
+804	Naganadel	7	"Poison,Dragon"	Poison Pin Pokemon	Undiscovered	73	73	73	127	73	121
+407	Roserade	4	"Grass,Poison"	Bouquet Pokemon	"Fairy,Grass"	60	70	55	125	105	90
+462	Magnezone	4	"Electric,Steel"	Magnet Area Pokemon	Mineral	70	70	115	130	90	60
+644	Zekrom	5	"Dragon,Electric"	Deep Black Pokemon	Undiscovered	100	150	120	120	100	90
+622	Golett	5	"Ground,Ghost"	Automaton Pokemon	Mineral	59	74	50	35	50	35
+718	Zygarde	6	"Dragon,Ground"	Order Pokemon	Undiscovered	216	100	121	91	95	85
+63	Abra	1	Psychic	Psi Pokemon	Human-Like	25	20	15	105	55	90
+437	Bronzong	4	"Steel,Psychic"	Bronze Bell Pokemon	Mineral	67	89	116	79	116	33
+409	Rampardos	4	Rock	Head Butt Pokemon	Monster	97	165	60	65	50	58
+699	Aurorus	6	"Rock,Ice"	Tundra Pokemon	Monster	123	77	72	99	92	58

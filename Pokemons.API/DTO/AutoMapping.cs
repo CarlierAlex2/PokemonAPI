@@ -13,8 +13,14 @@ namespace Pokemons.API.DTO
             CreateMap<Pokemon, PokemonDTO>();
             CreateMap<PokemonDTO, Pokemon>();
 
+            CreateMap<Pokemon, PokemonBaseDTO>();
+            CreateMap<PokemonBaseDTO, Pokemon>();
+
             CreateMap<Typing, TypingDTO>();
             CreateMap<TypingDTO, Typing>();
+
+            CreateMap<Typing, TypingBaseDTO>();
+            CreateMap<TypingBaseDTO, Typing>();
             
             CreateMap<TypeEffect, TypeEffectDTO>();
             CreateMap<TypeEffectDTO, TypeEffect>();

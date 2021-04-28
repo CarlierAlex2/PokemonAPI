@@ -5,9 +5,15 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Pokemons.API.DTO
 {
+    public class TypingBaseDTO
+    {
+        public int TypingId { get; set; }
+        public string  Name { get; set; }
+    }
+
     public class TypingDTO
     {
-        [Required]
+        public int TypingId { get; set; }
         public string  Name { get; set; }
 
         public List<TypeEffectOffenseDTO> TypeOffense { get; set; }

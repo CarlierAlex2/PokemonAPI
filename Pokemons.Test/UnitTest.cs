@@ -37,7 +37,7 @@ namespace Pokemons.Test
             };
 
             var p2 = new Pokemon(){
-                Name = "63",
+                Name = "pokemon 2",
                 PokedexEntry = 2,
                 Generation = 1,
                 Classification = "testing pokemon",

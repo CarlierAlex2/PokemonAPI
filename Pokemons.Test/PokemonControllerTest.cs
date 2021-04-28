@@ -30,6 +30,8 @@ namespace Pokemons.Test
             Client = fixture.CreateClient();
         }
 
+
+        //------------------------------------------------------------------------------------------------------------------------
         [Fact]
         public async Task GetTypings_Return_Ok()
         {
@@ -37,10 +39,12 @@ namespace Pokemons.Test
             response.StatusCode.Should().Be(HttpStatusCode.OK);
 
             var content = await response.Content.ReadAsStringAsync();
-            var body = JsonConvert.DeserializeObject<TypingList>(content);
-            Assert.NotEmpty(body.Names);
+            var body = JsonConvert.DeserializeObject<List<TypingBaseDTO>>(content);
+            Assert.NotEmpty(body);
         }
 
+
+        //------------------------------------------------------------------------------------------------------------------------
         [Fact]
         public async Task GetTypingDetail_Return_Ok()
         {
@@ -55,14 +59,24 @@ namespace Pokemons.Test
         }
 
         [Fact]
+        public async Task GetTypingDetail_Return_NoOk()
+        {
+            string typingName = "test";
+            var response = await Client.GetAsync($"/api/type/{typingName}");
+            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+        }
+
+
+        //------------------------------------------------------------------------------------------------------------------------
+        [Fact]
         public async Task GetPokemons_Return_Ok()
         {
             var response = await Client.GetAsync("/api/pokemons");
             response.StatusCode.Should().Be(HttpStatusCode.OK);
 
             var content = await response.Content.ReadAsStringAsync();
-            var body = JsonConvert.DeserializeObject<PokemonList>(content);
-            Assert.NotEmpty(body.Names);
+            var body = JsonConvert.DeserializeObject<List<PokemonBaseDTO>>(content);
+            Assert.NotEmpty(body);
         }
 
         [Fact]
@@ -73,35 +87,22 @@ namespace Pokemons.Test
             response.StatusCode.Should().Be(HttpStatusCode.OK);
 
             var content = await response.Content.ReadAsStringAsync();
-            var body = JsonConvert.DeserializeObject<PokemonList>(content);
-            Assert.NotEmpty(body.Names);
+            var body = JsonConvert.DeserializeObject<List<PokemonBaseDTO>>(content);
+            Assert.NotEmpty(body);
         }
 
         /*
+        //dont know why but always returns ok when executing full test project, in debug + manual + run it gives badrequest
         [Fact]
         public async Task GetPokemons_ByType_Return_NotOk()
         {
             string typingName = "test";
-            var response = await Client.GetAsync($"/api/pokemons?typeName={typingName}");
+            var response = await Client.GetAsync( $"/api/pokemons?typeName={typingName}");
             response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
         }
         */
 
-        /*
-        [Fact]
-        public async Task GetPokemon_ById_ByType_Return_Ok()
-        {
-            Guid id = Guid.Parse("9ae91a19-ba47-4506-ab97-fe20718b9bea");
-
-            var response = await Client.GetAsync($"/api/pokemon/id/{id}");
-            response.StatusCode.Should().Be(HttpStatusCode.OK);
-
-            var content = await response.Content.ReadAsStringAsync();
-            var body = JsonConvert.DeserializeObject<PokemonDTO>(content);
-            Assert.NotNull(body);
-        }
-        */
-
+        //------------------------------------------------------------------------------------------------------------------------
         [Fact]
         public async Task GetPokemon_ByEntry_Return_Ok()
         {
@@ -128,6 +129,8 @@ namespace Pokemons.Test
             response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
         }
 
+
+        //------------------------------------------------------------------------------------------------------------------------
         [Fact]
         public async Task GetPokemon_ByEntryAndGen_Return_Ok()
         {
@@ -160,6 +163,8 @@ namespace Pokemons.Test
             response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
         }
 
+
+        //------------------------------------------------------------------------------------------------------------------------
         [Fact]
         public async Task Add_And_Delete_Pokemon_Ok()
         {

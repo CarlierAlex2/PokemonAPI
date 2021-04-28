@@ -20,15 +20,17 @@ namespace Pokemons.API.Services
         Task DeletePokemonByEntryAndGen(int pokedexEntry, int generation);
         Task<List<PokemonDTO>> GetPokemonByEntry(int pokedexEntry);
         Task<PokemonDTO> GetPokemonByEntryAndGen(int pokedexEntry, int generation);
-        Task<PokemonDTO> GetPokemonById(Guid id);
-        Task<List<PokemonDTO>> GetPokemonByType(string typeName);
+        Task<List<PokemonDTO>> GetPokemonByType_V1(string typeName);
+        Task<List<PokemonBaseDTO>> GetPokemonByType_V2(string typeName);
         Task<PokemonList> GetPokemonList();
         Task<PokemonList> GetPokemonListByType(string typeName);
-        Task<List<PokemonDTO>> GetPokemons();
         Task<PokemonStatisticsList> GetPokemonStatistics(List<string> names);
+        Task<List<PokemonDTO>> GetPokemons_V1();
+        Task<List<PokemonBaseDTO>> GetPokemons_V2();
         Task<TypingDTO> GetTypingByName(string name);
         Task<TypingList> GetTypingList();
-        Task<List<Typing>> GetTypings();
+        Task<List<Typing>> GetTypings_V1();
+        Task<List<TypingBaseDTO>> GetTypings_V2();
     }
 
     public class PokemonService : IPokemonService
@@ -46,14 +48,24 @@ namespace Pokemons.API.Services
             _pokemonRepository = pokemonRepository;
         }
 
-        //Pokemon Type -------------------------------------------------------------------------------------------
-        public async Task<List<Typing>> GetTypings()
+
+        //------------------------------------------------------------------------------------------------------------------------
+        public async Task<List<Typing>> GetTypings_V1()
         {
             var results = await _typeRepository.GetTypings();
             if (results.Count <= 0)
                 return null;
 
             return results;
+        }
+
+        public async Task<List<TypingBaseDTO>> GetTypings_V2()
+        {
+            var results = await _typeRepository.GetTypings();
+            if (results.Count <= 0)
+                return null;
+
+            return GetTypingBaseDTOList(results);
         }
 
         public async Task<TypingList> GetTypingList()
@@ -66,9 +78,14 @@ namespace Pokemons.API.Services
             return listObj;
         }
 
+
+        //------------------------------------------------------------------------------------------------------------------------
         public async Task<TypingDTO> GetTypingByName(string name)
         {
             Typing result = await _typeRepository.GetTypingByName(name, true);
+            if (result == null)
+                return null;
+
             TypingDTO resultDTO = _mapper.Map<TypingDTO>(result);
             for (int index = 0; index < result.TypeOffense.Count; index++)
             {
@@ -84,14 +101,24 @@ namespace Pokemons.API.Services
             return resultDTO;
         }
 
-        //Pokemon -------------------------------------------------------------------------------------------
-        public async Task<List<PokemonDTO>> GetPokemons()
+        //------------------------------------------------------------------------------------------------------------------------
+        public async Task<List<PokemonDTO>> GetPokemons_V1()
         {
             var results = await _pokemonRepository.GetPokemons();
             if (results == null || results.Count <= 0)
                 return null;
 
-            List<PokemonDTO> resultDTO = GetPokemonDTOList(results);
+            var resultDTO = GetPokemonDTOList(results);
+            return resultDTO;
+        }
+
+        public async Task<List<PokemonBaseDTO>> GetPokemons_V2()
+        {
+            var results = await _pokemonRepository.GetPokemons();
+            if (results == null || results.Count <= 0)
+                return null;
+
+            var resultDTO = GetPokemonBaseDTOList(results);
             return resultDTO;
         }
 
@@ -105,13 +132,25 @@ namespace Pokemons.API.Services
             return listObj;
         }
 
-        public async Task<List<PokemonDTO>> GetPokemonByType(string typeName)
+
+        //------------------------------------------------------------------------------------------------------------------------
+        public async Task<List<PokemonDTO>> GetPokemonByType_V1(string typeName)
         {
             var results = await _pokemonRepository.GetPokemonByType(typeName);
             if (results == null || results.Count <= 0)
                 return null;
 
-            List<PokemonDTO> resultDTO = GetPokemonDTOList(results);
+            var resultDTO = GetPokemonDTOList(results);
+            return resultDTO;
+        }
+
+        public async Task<List<PokemonBaseDTO>> GetPokemonByType_V2(string typeName)
+        {
+            var results = await _pokemonRepository.GetPokemonByType(typeName);
+            if (results == null || results.Count <= 0)
+                return null;
+
+            var resultDTO = GetPokemonBaseDTOList(results);
             return resultDTO;
         }
 
@@ -125,16 +164,8 @@ namespace Pokemons.API.Services
             return listObj;
         }
 
-        public async Task<PokemonDTO> GetPokemonById(Guid id)
-        {
-            var results = await _pokemonRepository.GetPokemonById(id);
-            if (results == null)
-                return null;
 
-            PokemonDTO resultDTO = GetPokemonDTO(results);
-            return resultDTO;
-        }
-
+        //------------------------------------------------------------------------------------------------------------------------
         public async Task<List<PokemonDTO>> GetPokemonByEntry(int pokedexEntry)
         {
             var results = await _pokemonRepository.GetPokemonByEntry(pokedexEntry, DetailLevel.Details);
@@ -155,6 +186,8 @@ namespace Pokemons.API.Services
             return resultDTO;
         }
 
+
+        //------------------------------------------------------------------------------------------------------------------------
         public async Task<PokemonStatisticsList> GetPokemonStatistics(List<string> names)
         {
             List<Pokemon> results = new List<Pokemon>();
@@ -171,6 +204,8 @@ namespace Pokemons.API.Services
             return statObj;
         }
 
+
+        //------------------------------------------------------------------------------------------------------------------------
         public async Task<Pokemon> AddPokemon(PokemonDTO pokemonDTO)
         {
             PokemonDTO checkExists = await GetPokemonByEntryAndGen(pokemonDTO.PokedexEntry, pokemonDTO.Generation);
@@ -194,6 +229,8 @@ namespace Pokemons.API.Services
             return pokemon;
         }
 
+
+        //------------------------------------------------------------------------------------------------------------------------
         public async Task DeletePokemonByEntry(int pokedexEntry)
         {
             List<Pokemon> listPokemon = await _pokemonRepository.GetPokemonByEntry(pokedexEntry, DetailLevel.ForeignKeys);
@@ -212,9 +249,26 @@ namespace Pokemons.API.Services
             await _pokemonRepository.DeletePokemon(pokemon);
         }
 
+
+        //------------------------------------------------------------------------------------------------------------------------
+        private List<TypingBaseDTO> GetTypingBaseDTOList(List<Typing> listTyping)
+        {
+            var dto = _mapper.Map<List<TypingBaseDTO>>(listTyping);
+            return dto;
+        }
+
         private PokemonDTO GetPokemonDTO(Pokemon pokemon)
         {
             var dto = _mapper.Map<PokemonDTO>(pokemon);
+            if (pokemon.PokemonTypings != null)
+                dto.Types = pokemon.PokemonTypings.Select(r => r.Typing.Name).ToList();
+
+            return dto;
+        }
+
+        private PokemonBaseDTO GetPokemonBaseDTO(Pokemon pokemon)
+        {
+            var dto = _mapper.Map<PokemonBaseDTO>(pokemon);
             if (pokemon.PokemonTypings != null)
                 dto.Types = pokemon.PokemonTypings.Select(r => r.Typing.Name).ToList();
 
@@ -227,6 +281,18 @@ namespace Pokemons.API.Services
             foreach (var pok in pokemons)
             {
                 var dto = GetPokemonDTO(pok);
+                if (dto != null)
+                    resultDTO.Add(dto);
+            }
+            return resultDTO;
+        }
+
+        private List<PokemonBaseDTO> GetPokemonBaseDTOList(List<Pokemon> pokemons)
+        {
+            List<PokemonBaseDTO> resultDTO = new List<PokemonBaseDTO>();
+            foreach (var pok in pokemons)
+            {
+                var dto = GetPokemonBaseDTO(pok);
                 if (dto != null)
                     resultDTO.Add(dto);
             }

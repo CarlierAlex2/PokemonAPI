@@ -19,7 +19,7 @@ namespace Pokemons.API.Data.CsvStream
             _csvSettings = csvSettings;
             _csvConfiguration = new CsvConfiguration(CultureInfo.InvariantCulture){
                 HasHeaderRecord = true,
-                Delimiter = ";"
+                Delimiter = "\t"
             };
         }
 
