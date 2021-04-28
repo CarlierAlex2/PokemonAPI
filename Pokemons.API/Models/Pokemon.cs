@@ -50,4 +50,10 @@ namespace Pokemons.API.Models
         [Range(1, int.MaxValue, ErrorMessage="Stats Speed - Cannot be 0 or lower")]
         public int Speed  { get; set; } = 1;
     }
+
+    public class PokemonList
+    {
+        [Required]
+        public List<string>  Names { get; set; }
+    }
 }

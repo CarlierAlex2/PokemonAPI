@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Pokemons.API.DTO
 {
+
     public class PokemonDTO
     {
         [Required(ErrorMessage="Pokedex Entry Required")] 

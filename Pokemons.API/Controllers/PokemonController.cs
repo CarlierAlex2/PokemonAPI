@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Pokemons.API.Models;
 using Pokemons.API.DTO;
 using Pokemons.API.Services;
+using Pokemons.API.Helpers;
 
 namespace Pokemons.API.Controllers
 {
@@ -16,6 +17,7 @@ namespace Pokemons.API.Controllers
     [ApiController]
     [Route("api")]
     [ApiVersion("1.0")]
+    [ApiVersion("2.0")]
     public class PokemonController
     {
         #region Global Variables + Constructor
@@ -35,7 +37,6 @@ namespace Pokemons.API.Controllers
 
         #region Controller Typing Methods
         //-----------------------------------------------------------------------------------------------------
-        
         /// <summary>
         /// Get a list of all available Pokemon Types.
         /// </summary>
@@ -48,10 +49,34 @@ namespace Pokemons.API.Controllers
         [HttpGet]
         [Route("types")]
         [MapToApiVersion("1.0")]
-        public async Task<ActionResult<List<Typing>>> GetTypings()
+        public async Task<ActionResult<List<Typing>>> GetTypings_V1()
         {
             try{
                 List<Typing> results = await _pokemonService.GetTypings();
+                return new OkObjectResult(results);
+            }
+            catch(Exception ex){
+                _logger.LogError(ex.Message);
+                return new StatusCodeResult(500);
+            }
+        }
+
+        /// <summary>
+        /// Get a list of all available Pokemon Types.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// 
+        ///     GET api/types
+        ///
+        /// </remarks>
+        [HttpGet]
+        [Route("types")]
+        [MapToApiVersion("2.0")]
+        public async Task<ActionResult<TypingList>> GetTypings_V2()
+        {
+            try{
+                TypingList results = await _pokemonService.GetTypingList();
                 return new OkObjectResult(results);
             }
             catch(Exception ex){
@@ -73,6 +98,7 @@ namespace Pokemons.API.Controllers
         [HttpGet]
         [Route("type/{typeName}")]
         [MapToApiVersion("1.0")]
+        [MapToApiVersion("2.0")]
         [ResponseCache(Duration = 60, Location = ResponseCacheLocation.Any)]
         public async Task<ActionResult<TypingDTO>> GetTypingByName(string typeName)
         {
@@ -108,19 +134,71 @@ namespace Pokemons.API.Controllers
         [Route("pokemons")]
         [MapToApiVersion("1.0")]
         [ResponseCache(Duration = 60, Location = ResponseCacheLocation.Any)]
-        public async Task<ActionResult<List<PokemonDTO>>> GetPokemons(string typeName = "")
+        public async Task<ActionResult<List<PokemonDTO>>> GetPokemons_V1(string typeName = "")
         {
             try{
                 //Type specified
                 if(typeName!= null & typeName.Length > 0)
                 {
                     List<PokemonDTO> results = await _pokemonService.GetPokemonByType(typeName);
+                    if(results == null)
+                        return new BadRequestObjectResult("No pokemon were found");
+                        
                     return new OkObjectResult(results);
                 }
                 //Default
                 else
                 {
                     List<PokemonDTO> results = await _pokemonService.GetPokemons();
+                    if(results == null)
+                        return new BadRequestObjectResult("No pokemon were found");
+
+                    return new OkObjectResult(results);
+                }
+            }
+            catch(Exception ex){
+                _logger.LogError(ex.Message);
+                return new StatusCodeResult(500);
+            }
+        }
+
+        /// <summary>
+        /// Get a list of Pokemon, with the option to specify a Pokemon Type.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// 
+        ///     GET api/pokemons
+        ///
+        ///     or
+        ///
+        ///     GET api/pokemons?typeName=Water
+        ///
+        /// </remarks>
+        /// <param name="typeName">Name of the type</param>  
+        [HttpGet]
+        [Route("pokemons")]
+        [MapToApiVersion("2.0")]
+        [ResponseCache(Duration = 60, Location = ResponseCacheLocation.Any)]
+        public async Task<ActionResult<PokemonList>> GetPokemons_V2(string typeName = "")
+        {
+            try{
+                //Type specified
+                if(typeName!= null & typeName.Length > 0)
+                {
+                    PokemonList results = await _pokemonService.GetPokemonListByType(typeName);
+                    if(results == null)
+                        return new BadRequestObjectResult("No pokemon were found");
+
+                    return new OkObjectResult(results);
+                }
+                //Default
+                else
+                {
+                    PokemonList results = await _pokemonService.GetPokemonList();
+                    if(results == null)
+                        return new BadRequestObjectResult("No pokemon were found");
+
                     return new OkObjectResult(results);
                 }
             }
@@ -143,6 +221,7 @@ namespace Pokemons.API.Controllers
         [HttpGet]
         [Route("pokemon/id/{pokemonId}")]
         [MapToApiVersion("1.0")]
+        [MapToApiVersion("2.0")]
         public async Task<ActionResult<PokemonDTO>> GetPokemonById(Guid pokemonId)
         {
             try{
@@ -168,6 +247,7 @@ namespace Pokemons.API.Controllers
         [HttpGet]
         [Route("pokemons/entry/{pokedexEntry}")]
         [MapToApiVersion("1.0")]
+        [MapToApiVersion("2.0")]
         public async Task<ActionResult<List<PokemonDTO>>> GetPokemonByEntry(int pokedexEntry)
         {
             try{
@@ -199,6 +279,7 @@ namespace Pokemons.API.Controllers
         [HttpGet]
         [Route("pokemon/entry/{pokedexEntry}/gen/{generation}")]
         [MapToApiVersion("1.0")]
+        [MapToApiVersion("2.0")]
         public async Task<ActionResult<PokemonDTO>> GetPokemonByEntryAndGen(int pokedexEntry, int generation)
         {
             try{
@@ -208,6 +289,28 @@ namespace Pokemons.API.Controllers
                     return new BadRequestObjectResult("Generation cannot be less than 1");
 
                 PokemonDTO results = await _pokemonService.GetPokemonByEntryAndGen(pokedexEntry, generation);
+                if(results == null)
+                    return new BadRequestObjectResult("No pokemon were found with given parameters");
+                return new OkObjectResult(results);
+            }
+            catch(Exception ex){
+                _logger.LogError(ex.Message);
+                return new StatusCodeResult(500);
+            }
+        }
+
+
+        [HttpPost]
+        [Route("pokemons/statistics")]
+        [MapToApiVersion("1.0")]
+        [MapToApiVersion("2.0")]
+        public async Task<ActionResult<PokemonStatisticsList>> GetPokemonStatistics([FromBody] List<string> names)
+        {
+            try{
+                if(names == null || names.Count <= 0)
+                    return new BadRequestObjectResult("No list of Pokemon names were given");
+
+                var results = await _pokemonService.GetPokemonStatistics(names);
                 if(results == null)
                     return new BadRequestObjectResult("No pokemon were found with given parameters");
                 return new OkObjectResult(results);
@@ -240,6 +343,7 @@ namespace Pokemons.API.Controllers
         [HttpPost]
         [Route("pokemon")]
         [MapToApiVersion("1.0")]
+        [MapToApiVersion("2.0")]
         public async Task<ActionResult<Pokemon>> AddPokemon(PokemonDTO pokemonDTO){
             try{
                 var result = await _pokemonService.AddPokemon(pokemonDTO);
@@ -273,6 +377,7 @@ namespace Pokemons.API.Controllers
         [HttpDelete]
         [Route("pokemons/entry/{pokedexEntry}")]
         [MapToApiVersion("1.0")]
+        [MapToApiVersion("2.0")]
         public async Task<ActionResult> DeletePokemon(int pokedexEntry, int generation = -1){
             try{
                 if(generation > 0)

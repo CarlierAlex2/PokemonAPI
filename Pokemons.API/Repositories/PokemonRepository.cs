@@ -16,15 +16,19 @@ namespace Pokemons.API.Repositories
         Details = 1,
         ForeignKeys = 2
     }
+
     public interface IPokemonRepository
     {
         Task<Pokemon> AddPokemon(Pokemon pokemon);
         Task DeletePokemon(Pokemon pokemon);
         Task DeletePokemonList(List<Pokemon> listPokemon);
-        Task<List<Pokemon>> GetPokemonByEntry(int pokedexEntry, DetailLevel detailLevel = 0);
-        Task<Pokemon> GetPokemonByEntryAndGen(int pokedexEntry, int generation, DetailLevel detailLevel = 0);
+        Task<List<Pokemon>> GetPokemonByEntry(int pokedexEntry, DetailLevel detailLevel = DetailLevel.Basic);
+        Task<Pokemon> GetPokemonByEntryAndGen(int pokedexEntry, int generation, DetailLevel detailLevel = DetailLevel.Basic);
         Task<Pokemon> GetPokemonById(Guid id);
+        Task<Pokemon> GetPokemonByName(string name);
         Task<List<Pokemon>> GetPokemonByType(string typeName);
+        Task<List<string>> GetPokemonList();
+        Task<List<string>> GetPokemonListByType(string typeName);
         Task<List<Pokemon>> GetPokemons();
     }
 
@@ -45,10 +49,46 @@ namespace Pokemons.API.Repositories
             .ToListAsync();
         }
 
+        public async Task<List<string>> GetPokemonList()
+        {
+            return await _context.Pokemons
+            .Select(t => t.Name).Distinct().ToListAsync();
+        }
+
+        public async Task<List<Pokemon>> GetPokemonByType(string typeName)
+        {
+            return await _context.Pokemons
+            .Include(pokemon => pokemon.PokemonTypings)
+            .ThenInclude(pokTyping => pokTyping.Typing)
+            .Where(p => p.PokemonTypings.Any(t => t.Typing.Name == typeName))
+            .OrderBy(t => t.PokedexEntry)
+            .ToListAsync();
+        }
+
+        public async Task<List<string>> GetPokemonListByType(string typeName)
+        {
+            return await _context.Pokemons
+            .Include(pokemon => pokemon.PokemonTypings)
+            .ThenInclude(pokTyping => pokTyping.Typing)
+            .Where(p => p.PokemonTypings.Any(t => t.Typing.Name == typeName))
+            .OrderBy(t => t.PokedexEntry)
+            .Select(pokemon => pokemon.Name)
+            .ToListAsync();
+        }
+
         public async Task<Pokemon> GetPokemonById(Guid id)
         {
             return await _context.Pokemons
             .Where(pokemon => pokemon.PokemonId == id)
+            .Include(pokemon => pokemon.PokemonTypings)
+            .ThenInclude(pokTyping => pokTyping.Typing)
+            .FirstOrDefaultAsync();
+        }
+
+        public async Task<Pokemon> GetPokemonByName(string name)
+        {
+            return await _context.Pokemons
+            .Where(pokemon => pokemon.Name == name)
             .Include(pokemon => pokemon.PokemonTypings)
             .ThenInclude(pokTyping => pokTyping.Typing)
             .FirstOrDefaultAsync();
@@ -96,16 +136,6 @@ namespace Pokemons.API.Repositories
             return await _context.Pokemons
             .Where(pokemon => pokemon.PokedexEntry == pokedexEntry && pokemon.Generation == generation)
             .SingleOrDefaultAsync();
-        }
-
-        public async Task<List<Pokemon>> GetPokemonByType(string typeName)
-        {
-            return await _context.Pokemons
-            .Include(pokemon => pokemon.PokemonTypings)
-            .ThenInclude(pokTyping => pokTyping.Typing)
-            .Where(p => p.PokemonTypings.Any(t => t.Typing.Name == typeName))
-            .OrderBy(t => t.PokedexEntry)
-            .ToListAsync();
         }
 
         public async Task<Pokemon> AddPokemon(Pokemon pokemon)

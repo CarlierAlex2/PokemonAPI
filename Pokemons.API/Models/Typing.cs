@@ -17,4 +17,10 @@ namespace Pokemons.API.Models
         public virtual List<TypeEffect> TypeDefense { get; set; }
         public virtual List<PokemonTyping> PokemonTypings { get; set; }
     }
+
+    public class TypingList
+    {
+        [Required]
+        public List<string>  Names { get; set; }
+    }
 }

@@ -56,7 +56,7 @@ namespace Pokemons.API
 
             // versioning
             services.AddApiVersioning(config=> {
-                config.DefaultApiVersion = new ApiVersion(1, 0);
+                config.DefaultApiVersion = new ApiVersion(2, 0);
                 config.AssumeDefaultVersionWhenUnspecified = true;
                 config.ReportApiVersions = true;
                 config.ApiVersionReader = new HeaderApiVersionReader("api-version");
@@ -90,9 +90,9 @@ namespace Pokemons.API
             // swagger
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { 
+                c.SwaggerDoc("v2", new OpenApiInfo { 
                     Title = "Pokemons.API", 
-                    Version = "v1",
+                    Version = "v2",
                     Description = "An API to search for Pokemon and their Types"
                     });
             });
@@ -112,7 +112,7 @@ namespace Pokemons.API
 
 
             app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Pokemons.API v1"));
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Pokemons.API v2"));
 
             app.UseHttpsRedirection();
             app.UseRouting();

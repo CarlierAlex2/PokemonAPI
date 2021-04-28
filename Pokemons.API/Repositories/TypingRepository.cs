@@ -14,6 +14,7 @@ namespace Pokemons.API.Repositories
     {
         Task<Typing> GetTypingById(int id);
         Task<Typing> GetTypingByName(string name, bool isDetailed = false);
+        Task<List<string>> GetTypingList();
         Task<List<Typing>> GetTypings();
     }
 
@@ -28,6 +29,11 @@ namespace Pokemons.API.Repositories
         public async Task<List<Typing>> GetTypings()
         {
             return await _context.Typings.ToListAsync();
+        }
+
+        public async Task<List<string>> GetTypingList()
+        {
+            return await _context.Typings.Select(t => t.Name).Distinct().ToListAsync();
         }
 
         public async Task<Typing> GetTypingById(int id)

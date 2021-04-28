@@ -13,6 +13,7 @@ using Newtonsoft.Json;
 
 using Pokemons.API.DTO;
 using Pokemons.API.Models;
+using Pokemons.API.Helpers;
 
 namespace Pokemons.Test
 {
@@ -36,8 +37,8 @@ namespace Pokemons.Test
             response.StatusCode.Should().Be(HttpStatusCode.OK);
 
             var content = await response.Content.ReadAsStringAsync();
-            var body = JsonConvert.DeserializeObject<List<Typing>>(content);
-            Assert.NotEmpty(body);
+            var body = JsonConvert.DeserializeObject<TypingList>(content);
+            Assert.NotEmpty(body.Names);
         }
 
         [Fact]
@@ -60,22 +61,31 @@ namespace Pokemons.Test
             response.StatusCode.Should().Be(HttpStatusCode.OK);
 
             var content = await response.Content.ReadAsStringAsync();
-            var body = JsonConvert.DeserializeObject<List<PokemonDTO>>(content);
-            Assert.NotEmpty(body);
+            var body = JsonConvert.DeserializeObject<PokemonList>(content);
+            Assert.NotEmpty(body.Names);
         }
 
         [Fact]
         public async Task GetPokemons_ByType_Return_Ok()
         {
             string typingName = "Grass";
-            var response = await Client.GetAsync($"/api/pokemons?typeName={typingName}");
+            var response = await Client.GetAsync( $"/api/pokemons?typeName={typingName}");
             response.StatusCode.Should().Be(HttpStatusCode.OK);
 
             var content = await response.Content.ReadAsStringAsync();
-            var body = JsonConvert.DeserializeObject<List<PokemonDTO>>(content);
-            Assert.NotEmpty(body);
-            Assert.Contains<string>(typingName, body[0].Types);
+            var body = JsonConvert.DeserializeObject<PokemonList>(content);
+            Assert.NotEmpty(body.Names);
         }
+
+        /*
+        [Fact]
+        public async Task GetPokemons_ByType_Return_NotOk()
+        {
+            string typingName = "test";
+            var response = await Client.GetAsync($"/api/pokemons?typeName={typingName}");
+            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+        }
+        */
 
         /*
         [Fact]
