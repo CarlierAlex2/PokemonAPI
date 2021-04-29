@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<coverage line-rate="0.1734" branch-rate="0.7364" version="1.9" timestamp="1619689757" lines-covered="781" lines-valid="4504" branches-covered="109" branches-valid="148">
+<coverage line-rate="0.1734" branch-rate="0.7364" version="1.9" timestamp="1619696160" lines-covered="781" lines-valid="4504" branches-covered="109" branches-valid="148">
   <sources>
-    <source>C:\Users\alexc\Documents\MCT\Jaar2_2020_2021\MCT_semester_4\BackendDevelopment\BackDev_Project\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\Pokemons.API\</source>
+    <source>c:\Users\alexc\Documents\MCT\Jaar2_2020_2021\MCT_semester_4\BackendDevelopment\BackDev_Project\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\Pokemons.API\</source>
   </sources>
   <packages>
     <package name="Pokemons.API" line-rate="0.1734" branch-rate="0.7364" complexity="309">
@@ -10478,14 +10478,14 @@
                 <line number="253" hits="2" branch="False" />
                 <line number="255" hits="2" branch="True" condition-coverage="100% (2/2)">
                   <conditions>
-                    <condition number="47" type="jump" coverage="100%" />
+                    <condition number="52" type="jump" coverage="100%" />
                   </conditions>
                 </line>
                 <line number="256" hits="1" branch="False" />
                 <line number="257" hits="1" branch="False" />
                 <line number="258" hits="1" branch="True" condition-coverage="50% (1/2)">
                   <conditions>
-                    <condition number="203" type="jump" coverage="50%" />
+                    <condition number="208" type="jump" coverage="50%" />
                   </conditions>
                 </line>
                 <line number="259" hits="1" branch="False" />
@@ -10505,14 +10505,14 @@
             <line number="253" hits="2" branch="False" />
             <line number="255" hits="2" branch="True" condition-coverage="100% (2/2)">
               <conditions>
-                <condition number="47" type="jump" coverage="100%" />
+                <condition number="52" type="jump" coverage="100%" />
               </conditions>
             </line>
             <line number="256" hits="1" branch="False" />
             <line number="257" hits="1" branch="False" />
             <line number="258" hits="1" branch="True" condition-coverage="50% (1/2)">
               <conditions>
-                <condition number="203" type="jump" coverage="50%" />
+                <condition number="208" type="jump" coverage="50%" />
               </conditions>
             </line>
             <line number="259" hits="1" branch="False" />

@@ -8,31 +8,39 @@ using Microsoft.EntityFrameworkCore;
 using Pokemons.API.Models;
 using Pokemons.API.Data.CsvStream.CsvData;
 
+
 namespace Pokemons.API.Data.Seeding
 {
     public class SeedingTyping : SeedingHelper
     {
+        // Variables //-------------------------------------------------------------------------------------------------------------------------------
         public List<CsvDataObject> _listTypingData {get; set;}
+
+
+        // Constructor //-------------------------------------------------------------------------------------------------------------------------------
         public SeedingTyping(ModelBuilder modelBuilder, IMapper mapper) : base(modelBuilder, mapper)
         {
             
         }
 
-        //Seeding Functions -------------------------------------------------------------------------------------------
+
+        // Seeding Functions //-------------------------------------------------------------------------------------------------------------------------------
         protected override void DoSeeding()
         {
+            // Check if we got provided with necessary data
             if (_listTypingData == null)
                 return;
+
+            // Convert CSV data to corresponding object
             var listTypingData = _listTypingData.Cast<TypingData>().ToList();
 
-            foreach (var dataObj in listTypingData)
-            {
-                var typing = _mapper.Map<Typing>(dataObj);
+            // Do seeding
+            var listTyping = _mapper.Map<List<Typing>>(listTypingData);
+            foreach (var typing in listTyping)
                 _modelBuilder.Entity<Typing>().HasData(typing);
-            }
         }
 
-        //Hardcoded Seeding -------------------------------------------------------------------------------------------
+        // Hardcoded Seeding //-------------------------------------------------------------------------------------------------------------------------------
         private List<TypingData> CreateSeedingData()
         {
             var listTypings = new List<TypingData>();

@@ -32,6 +32,7 @@ namespace Pokemons.Test
 
 
         //------------------------------------------------------------------------------------------------------------------------
+        #region Test Typing Methods
         [Fact]
         public async Task GetTypings_Return_Ok()
         {
@@ -75,9 +76,10 @@ namespace Pokemons.Test
             var response = await Client.GetAsync($"/api/type/{typingName}");
             response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
         }
-
+        #endregion
 
         //------------------------------------------------------------------------------------------------------------------------
+        #region Test Pokemon Methods - Get list
         [Fact]
         public async Task GetPokemons_Return_Ok()
         {
@@ -87,30 +89,6 @@ namespace Pokemons.Test
             var content = await response.Content.ReadAsStringAsync();
             var body = JsonConvert.DeserializeObject<List<PokemonBaseDTO>>(content);
             Assert.NotEmpty(body);
-        }
-
-        [Fact]
-        public async Task GetPokemons_ByName_Return_Ok()
-        {
-            string name = "Abra";
-            var response = await Client.GetAsync($"/api/pokemons/name/{name}");
-            response.StatusCode.Should().Be(HttpStatusCode.OK);
-
-            var content = await response.Content.ReadAsStringAsync();
-            var body = JsonConvert.DeserializeObject<PokemonBaseDTO>(content);
-            Assert.Equal(name, body.Name);
-        }
-
-        [Fact]
-        public async Task GetPokemons_ByName_Return_NotOk()
-        {
-            string name = "V";
-            var response = await Client.GetAsync($"/api/pokemons/name/{name}");
-            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
-
-            name = "Villager#2145";
-            response = await Client.GetAsync($"/api/pokemons/name/{name}");
-            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
         }
 
         [Fact]
@@ -166,8 +144,34 @@ namespace Pokemons.Test
             response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
         }
         */
+        #endregion
 
         //------------------------------------------------------------------------------------------------------------------------
+        #region Test Pokemon Methods - Specific
+        [Fact]
+        public async Task GetPokemons_ByName_Return_Ok()
+        {
+            string name = "Abra";
+            var response = await Client.GetAsync($"/api/pokemons/name/{name}");
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+
+            var content = await response.Content.ReadAsStringAsync();
+            var body = JsonConvert.DeserializeObject<PokemonBaseDTO>(content);
+            Assert.Equal(name, body.Name);
+        }
+
+        [Fact]
+        public async Task GetPokemons_ByName_Return_NotOk()
+        {
+            string name = "V";
+            var response = await Client.GetAsync($"/api/pokemons/name/{name}");
+            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+
+            name = "Villager#2145";
+            response = await Client.GetAsync($"/api/pokemons/name/{name}");
+            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+        }
+        
         [Fact]
         public async Task GetPokemon_ByEntry_Return_Ok()
         {
@@ -242,9 +246,11 @@ namespace Pokemons.Test
             response = await GetPokemon_ByEntryAndGen(pokedexEntry, generation);
             response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
         }
+        #endregion
 
 
         //------------------------------------------------------------------------------------------------------------------------
+        #region Test Pokemon Methods - Delete + Add
         [Fact]
         public async Task Add_And_Delete_Pokemon_Ok()
         {
@@ -353,6 +359,11 @@ namespace Pokemons.Test
             var response = await Client.PostAsync("/api/pokemon", contentSend);
             response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
         }
+        #endregion
+
+
+        //------------------------------------------------------------------------------------------------------------------------
+        #region Test Pokemon Methods - Statistics
 
         [Fact]
         public async Task GetPokemon_Statistics_Return_Ok()
@@ -385,5 +396,6 @@ namespace Pokemons.Test
             response = await Client.PostAsync("/api/pokemons/statistics", contentSend);
             response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
         }
+        #endregion
     }
 }

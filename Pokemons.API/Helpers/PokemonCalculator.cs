@@ -10,7 +10,10 @@ namespace Pokemons.API.Helpers
     {
         public static PokemonStatisticsList GetPokemonStatistics(List<Pokemon> listPokemon)
         {
-            PokemonStatisticsList dictObj = new PokemonStatisticsList() { Statistics = new Dictionary<string, PokemonStatistics>() };
+            PokemonStatisticsList dictObj = new PokemonStatisticsList() { 
+                Statistics = new Dictionary<string, PokemonStatistics>(),
+                Names = listPokemon.Select(p => p.Name).ToList(),
+            };
 
             dictObj.Statistics.Add("Hp", GetPokemonStatistics_Hp(listPokemon));
 
@@ -78,18 +81,5 @@ namespace Pokemons.API.Helpers
                 Maximum = listPokemon.Select(p => p.Speed).DefaultIfEmpty(0).Max(),
             };
         }
-    }
-
-    public class PokemonStatisticsList
-    {
-        public Dictionary<string, PokemonStatistics> Statistics {get; set;}
-    }
-
-    public class PokemonStatistics
-    {
-        public double Minimum {get; set;}
-        public double Average {get; set;}
-
-        public double Maximum {get; set;}
     }
 }

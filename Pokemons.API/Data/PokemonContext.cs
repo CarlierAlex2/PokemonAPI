@@ -3,18 +3,17 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Logging;
 
+using System.Linq;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
 using Pokemons.API.Models;
-using Pokemons.API.DTO;
 using Pokemons.API.Configuration;
 
 using AutoMapper;
 using Pokemons.API.Data.CsvStream;
 using Pokemons.API.Data.Seeding;
-using System.Linq;
 
 namespace Pokemons.API.Data
 {
@@ -29,15 +28,21 @@ namespace Pokemons.API.Data
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
 
+
+
     public class PokemonContext : DbContext, IPokemonContext
     {
-        private readonly IMapper _mapper;
+        // Variables //-------------------------------------------------------------------------------------------------------------------------------
         public DbSet<Pokemon> Pokemons { get; set; }
         public DbSet<Typing> Typings { get; set; }
         public DbSet<TypeEffect> TypeEffects { get; set; }
+
         private readonly ConnectionStrings _connectionStrings;
         private readonly CsvSettings _csvSettings;
+        private readonly IMapper _mapper;
 
+
+        // Constructor //-------------------------------------------------------------------------------------------------------------------------------
         public PokemonContext(
             DbContextOptions<PokemonContext> options, 
             IOptions<ConnectionStrings> connectionstrings, IOptions<CsvSettings> csvSettings,
@@ -48,6 +53,8 @@ namespace Pokemons.API.Data
             _mapper = mapper;
         }
 
+
+        // Constructor //-------------------------------------------------------------------------------------------------------------------------------
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             options.UseLoggerFactory(LoggerFactory.Create(builder => builder.AddDebug()));
@@ -56,14 +63,22 @@ namespace Pokemons.API.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // Set model RelationShips
             SetRelationShips(modelBuilder);
+
+            // Seed database with data
             SeedData(modelBuilder);
+
+            // Execute base
             base.OnModelCreating(modelBuilder);
         }
 
+
+        // Constructor //-------------------------------------------------------------------------------------------------------------------------------
         private void SetRelationShips(ModelBuilder modelBuilder)
         {
-            #region Typing Relations
+            #region // Typing Relations //----------------------------------------------------------------------------------
+            // many-to-many relationship between Typing - TypeEffect - Typing
             modelBuilder.Entity<Typing>()
                     .HasMany(t => t.TypeOffense)
                     .WithOne(e => e.OffenseTyping)
@@ -77,10 +92,16 @@ namespace Pokemons.API.Data
                     .OnDelete(DeleteBehavior.NoAction);
             #endregion
 
-            #region Pokemon Relations
+
+            #region // Pokemon Relations //----------------------------------------------------------------------------------
+            // Pokemon have unique key of (PokedexEntry, Generation) 
+            // -> Easier to identify + in actual games, pokemon can only have one variant per generation
             modelBuilder.Entity<Pokemon>().HasIndex(p => new {p.PokedexEntry , p.Generation}).IsUnique();
+
+            // Intermediate table key is combination of keys from references (PokemonId, TypingId)
             modelBuilder.Entity<PokemonTyping>().HasKey(cs => new { cs.PokemonId, cs.TypingId });
             
+            // many-to-many relationship between Pokemon - PokemonTyping - Typing
             modelBuilder.Entity<Pokemon>()
                     .HasMany(pok => pok.PokemonTypings)
                     .WithOne(pokType => pokType.Pokemon)
@@ -95,39 +116,41 @@ namespace Pokemons.API.Data
             #endregion
         }
 
+
         private void SeedData(ModelBuilder modelBuilder)
         {
-            // Read CSV ----------------------------------------------
-            CsvContext csvContext = new CsvContextTyping(_csvSettings);
+            #region // Read CSV //----------------------------------------------------------------------------------  
+            // Read CSV files from assets for seeding data
+            CsvContext csvContext = new CsvContextTyping(_csvSettings); // Read Typing CSV
             var listTypingData = csvContext.ReadFromCsv();
-
-            csvContext = new CsvContextTypeEffect(_csvSettings);
+            
+            csvContext = new CsvContextTypeEffect(_csvSettings); // Read TypeEffect CSV
             var listTypeEffectData = csvContext.ReadFromCsv();
             
-            csvContext = new CsvContextPokemon(_csvSettings);
+            csvContext = new CsvContextPokemon(_csvSettings); // Read Pokemon CSV
             var listPokemonData = csvContext.ReadFromCsv();
+            #endregion
 
 
-            // Seeding ----------------------------------------------
-            SeedingHelper seedingHelper = new SeedingTyping(modelBuilder, _mapper)
-            {
+            #region // Seeding //----------------------------------------------------------------------------------  
+            // Execute seeding with provided seeding data
+            SeedingHelper seedingHelper = new SeedingTyping(modelBuilder, _mapper) { // Seed Typing
                 _listTypingData = listTypingData
             };
             seedingHelper.Seeding();
 
-            seedingHelper = new SeedingTypeEffect(modelBuilder, _mapper)
-            {
+            seedingHelper = new SeedingTypeEffect(modelBuilder, _mapper) { // Seed TypeEffect
                 _listTypingData = listTypingData,
                 _listTypeEffectData = listTypeEffectData
             };
             seedingHelper.Seeding();
 
-            seedingHelper = new SeedingPokemon(modelBuilder, _mapper)
-            {
+            seedingHelper = new SeedingPokemon(modelBuilder, _mapper) { // Seed Pokemon + PokemonTyping
                 _listTypingData = listTypingData,
                 _listPokemonData = listPokemonData
             };
             seedingHelper.Seeding();
+            #endregion
         }
     }
 }

@@ -8,33 +8,43 @@ using CsvHelper;
 using Pokemons.API.Configuration;
 using Pokemons.API.Data.CsvStream.CsvData;
 
+
 namespace Pokemons.API.Data.CsvStream
 {
     public class CsvContextPokemon : CsvContext
     {
+        // Constructor //-------------------------------------------------------------------------------------------------------------------------------
         public CsvContextPokemon(CsvSettings csvSettings) 
         : base(csvSettings)
         {
             
         }
 
-        //CSV Functions -------------------------------------------------------------------------------------------
+
+        // CSV Functions //-------------------------------------------------------------------------------------------------------------------------------
         protected override List<CsvDataObject> DoReadFromCsv()
         {
+            // Open stream
             using (var reader = new StreamReader(_csvSettings.CsvPokemon))
             using (var csv = new CsvReader(reader, _csvConfiguration))
             {
+                // Retrieve data from CSV
                 var records = csv.GetRecords<PokemonData>().ToList<CsvDataObject>();
                 return records;
             }   
         }
 
+
         protected override void DoWriteToCsv(List<CsvDataObject> listObject)
         {
+            // Cast data to corresponding Data type
             var records = listObject.Cast<PokemonData>().ToList();
+
+            // Open stream
             using (var writer = new StreamWriter(_csvSettings.CsvPokemon))
             using (var csv = new CsvWriter(writer, _csvConfiguration))
             {
+                // Write data to CSV
                 csv.WriteRecords(records);
             }
         }

@@ -226,7 +226,7 @@ var assemblies = [
     "classes": [
       { "name": "Pokemons.API.Configuration.ConnectionStrings", "rp": "Pokemons.API_ConnectionStrings.html", "cl": 1, "ucl": 0, "cal": 1, "tl": 9, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Pokemons.API.Configuration.CsvSettings", "rp": "Pokemons.API_CsvSettings.html", "cl": 3, "ucl": 0, "cal": 3, "tl": 11, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
-      { "name": "Pokemons.API.Controllers.PokemonController", "rp": "Pokemons.API_PokemonController.html", "cl": 104, "ucl": 63, "cal": 167, "tl": 484, "ct": "LineCoverage", "mc": "-", "cb": 31, "tb": 40, "lch": [], "bch": [], "hc": [] },
+      { "name": "Pokemons.API.Controllers.PokemonController", "rp": "Pokemons.API_PokemonController.html", "cl": 104, "ucl": 63, "cal": 167, "tl": 487, "ct": "LineCoverage", "mc": "-", "cb": 31, "tb": 40, "lch": [], "bch": [], "hc": [] },
       { "name": "Pokemons.API.Data.CsvStream.CsvContext", "rp": "Pokemons.API_CsvContext.html", "cl": 11, "ucl": 3, "cal": 14, "tl": 39, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Pokemons.API.Data.CsvStream.CsvContextPokemon", "rp": "Pokemons.API_CsvContextPokemon.html", "cl": 10, "ucl": 8, "cal": 18, "tl": 42, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Pokemons.API.Data.CsvStream.CsvContextTypeEffect", "rp": "Pokemons.API_CsvContextTypeEffect.html", "cl": 10, "ucl": 8, "cal": 18, "tl": 43, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
