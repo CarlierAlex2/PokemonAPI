@@ -43,6 +43,16 @@ namespace Pokemons.Test
             Assert.NotEmpty(body);
         }
 
+        [Fact]
+        public async Task GetTypingList_Return_Ok()
+        {
+            var response = await Client.GetAsync("/api/types/list");
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+
+            var content = await response.Content.ReadAsStringAsync();
+            var body = JsonConvert.DeserializeObject<TypingList>(content);
+            Assert.NotEmpty(body.Names);
+        }
 
         //------------------------------------------------------------------------------------------------------------------------
         [Fact]
@@ -80,6 +90,61 @@ namespace Pokemons.Test
         }
 
         [Fact]
+        public async Task GetPokemons_ByName_Return_Ok()
+        {
+            string name = "Abra";
+            var response = await Client.GetAsync($"/api/pokemons/name/{name}");
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+
+            var content = await response.Content.ReadAsStringAsync();
+            var body = JsonConvert.DeserializeObject<PokemonBaseDTO>(content);
+            Assert.Equal(name, body.Name);
+        }
+
+        [Fact]
+        public async Task GetPokemons_ByName_Return_NotOk()
+        {
+            string name = "V";
+            var response = await Client.GetAsync($"/api/pokemons/name/{name}");
+            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+
+            name = "Villager#2145";
+            response = await Client.GetAsync($"/api/pokemons/name/{name}");
+            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+        }
+
+        [Fact]
+        public async Task GetPokemons_List_Return_Ok()
+        {
+            var response = await Client.GetAsync("/api/pokemons/list");
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+
+            var content = await response.Content.ReadAsStringAsync();
+            var body = JsonConvert.DeserializeObject<PokemonList>(content);
+            Assert.NotEmpty(body.Names);
+        }
+
+        [Fact]
+        public async Task GetPokemons_List_ByType_Return_Ok()
+        {
+            string typingName = "Grass";
+            var response = await Client.GetAsync($"/api/pokemons/list?typeName={typingName}");
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+
+            var content = await response.Content.ReadAsStringAsync();
+            var body = JsonConvert.DeserializeObject<PokemonList>(content);
+            Assert.NotEmpty(body.Names);
+        }
+
+        [Fact]
+        public async Task GetPokemons_List_ByType_Return_NotOk()
+        {
+            string typingName = "Wood";
+            var response = await Client.GetAsync($"/api/pokemons/list?typeName={typingName}");
+            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+        }
+
+        [Fact]
         public async Task GetPokemons_ByType_Return_Ok()
         {
             string typingName = "Grass";
@@ -107,7 +172,7 @@ namespace Pokemons.Test
         public async Task GetPokemon_ByEntry_Return_Ok()
         {
             int pokedexEntry = 637;
-            var response = await Client.GetAsync($"/api/pokemons/entry/{pokedexEntry}");
+            var response = await GetPokemon_ByEntry(pokedexEntry);
             response.StatusCode.Should().Be(HttpStatusCode.OK);
 
             var content = await response.Content.ReadAsStringAsync();
@@ -117,15 +182,20 @@ namespace Pokemons.Test
             Assert.Equal<int>(pokedexEntry, body[0].PokedexEntry);
         }
 
+        public async Task<HttpResponseMessage> GetPokemon_ByEntry(int pokedexEntry)
+        {
+            return await Client.GetAsync($"/api/pokemons/entry/{pokedexEntry}");
+        }
+
         [Fact]
         public async Task GetPokemon_ByEntry_Return_NotOk()
         {
             int pokedexEntry = -1;
-            var response = await Client.GetAsync($"/api/pokemons/entry/{pokedexEntry}");
+            var response = await GetPokemon_ByEntry(pokedexEntry);
             response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
 
-            pokedexEntry = 1001;
-            response = await Client.GetAsync($"/api/pokemons/entry/{pokedexEntry}");
+            pokedexEntry = 999999;
+            response = await GetPokemon_ByEntry(pokedexEntry);
             response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
         }
 
@@ -136,7 +206,7 @@ namespace Pokemons.Test
         {
             int pokedexEntry = 637;
             int generation = 5;
-            var response = await Client.GetAsync($"/api/pokemon/entry/{pokedexEntry}/gen/{generation}");
+            var response = await GetPokemon_ByEntryAndGen(pokedexEntry, generation);
             response.StatusCode.Should().Be(HttpStatusCode.OK);
 
             var content = await response.Content.ReadAsStringAsync();
@@ -145,21 +215,31 @@ namespace Pokemons.Test
             Assert.Equal<int>(pokedexEntry, body.PokedexEntry);
         }
 
+        public async Task<HttpResponseMessage> GetPokemon_ByEntryAndGen(int pokedexEntry, int generation)
+        {
+            return await Client.GetAsync($"/api/pokemon/entry/{pokedexEntry}/gen/{generation}");
+        }
+
         [Fact]
         public async Task GetPokemon_ByEntryAndGen_Return_NotOk()
         {
-            int pokedexEntry = 1001;
-            int generation = 1001;
-            var response = await Client.GetAsync($"/api/pokemon/entry/{pokedexEntry}/gen/{generation}");
+            int pokedexEntry = -1;
+            int generation = -1;
+            var response = await GetPokemon_ByEntryAndGen(pokedexEntry, generation);
             response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
 
-            generation = 0;
-            response = await Client.GetAsync($"/api/pokemon/entry/{pokedexEntry}/gen/{generation}");
+            generation = 1;
+            response = await GetPokemon_ByEntryAndGen(pokedexEntry, generation);
             response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
 
-            generation = 1001;
-            pokedexEntry = 0;
-            response = await Client.GetAsync($"/api/pokemon/entry/{pokedexEntry}/gen/{generation}");
+            generation = -1;
+            pokedexEntry = 1;
+            response = await GetPokemon_ByEntryAndGen(pokedexEntry, generation);
+            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+
+            generation = 9999;
+            pokedexEntry = 9999;
+            response = await GetPokemon_ByEntryAndGen(pokedexEntry, generation);
             response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
         }
 
@@ -171,9 +251,9 @@ namespace Pokemons.Test
             PokemonDTO pokemonDTO = new PokemonDTO()
             {
                 Name = "tester",
-                PokedexEntry = 100,
-                Generation = 100,
-                Types = new List<string>{"Electric"},
+                PokedexEntry = 88,
+                Generation = 88,
+                Types = new List<string>{"Steel"},
                 Classification = "testing pokemon",
                 EggGroup = "tester",
                 Hp = 1,
@@ -185,7 +265,8 @@ namespace Pokemons.Test
             };
 
             await AddPokemon_Ok(pokemonDTO);
-            await DeletePokemon_Ok(pokemonDTO);
+            await AddPokemon_NotOk(pokemonDTO);
+            await DeletePokemon_Ok(pokemonDTO.PokedexEntry, pokemonDTO.Generation);
         }
 
         private async Task AddPokemon_Ok(PokemonDTO pokemonDTO)
@@ -202,18 +283,48 @@ namespace Pokemons.Test
             Assert.Equal<string>(pokemonDTO.Name, body.Name);
         }
 
-        private async Task DeletePokemon_Ok(PokemonDTO pokemonDTO)
+        private async Task DeletePokemon_Ok(int pokedexEntry, int generation)
         {
-            string json = JsonConvert.SerializeObject(pokemonDTO);
-            StringContent contentSend = new StringContent(json, Encoding.UTF8, "application/json");
-            int pokedexEntry = pokemonDTO.PokedexEntry;
-            int generation = pokemonDTO.Generation;
             var responseDelete = await Client.DeleteAsync($"/api/pokemons/entry/{pokedexEntry}?generation={generation}");
             responseDelete.StatusCode.Should().Be(HttpStatusCode.OK);
         }
 
+        private async Task DeletePokemon_ByEntry_Ok(int pokedexEntry)
+        {
+            var responseDelete = await Client.DeleteAsync($"/api/pokemons/entry/{pokedexEntry}");
+            responseDelete.StatusCode.Should().Be(HttpStatusCode.OK);
+        }
+
         [Fact]
-        public async Task AddPokemon_NotOk()
+        public async Task Add_And_Delete_Pokemon_ByEntry_Ok()
+        {
+            PokemonDTO pokemonDTO = new PokemonDTO()
+            {
+                Name = "tester",
+                PokedexEntry = 100,
+                Generation = 1,
+                Types = new List<string>{"Electric"},
+                Classification = "testing pokemon",
+                EggGroup = "tester"
+            };
+
+            PokemonDTO pokemonDTO2 = new PokemonDTO()
+            {
+                Name = "tester",
+                PokedexEntry = 100,
+                Generation = 2,
+                Types = new List<string>{"Fire"},
+                Classification = "testing pokemon",
+                EggGroup = "tester"
+            };
+
+            await AddPokemon_Ok(pokemonDTO);
+            await AddPokemon_Ok(pokemonDTO2);
+            await DeletePokemon_ByEntry_Ok(pokemonDTO.PokedexEntry);
+        }
+
+        [Fact]
+        public async Task AddPokemon_Return_NotOk()
         {
             // PokedexEntry not correct
             PokemonDTO testDto = new PokemonDTO()
@@ -231,9 +342,47 @@ namespace Pokemons.Test
                 SpDef = 1,
                 Speed = 1
             };
+
+            await AddPokemon_NotOk(testDto);
+        }
+
+        public async Task AddPokemon_NotOk(PokemonDTO testDto)
+        {
             string json = JsonConvert.SerializeObject(testDto);
             StringContent contentSend = new StringContent(json, Encoding.UTF8, "application/json");
             var response = await Client.PostAsync("/api/pokemon", contentSend);
+            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+        }
+
+        [Fact]
+        public async Task GetPokemon_Statistics_Return_Ok()
+        {
+            List<string> names = new List<string>(){"Abra", "Charmander"};
+
+            string json = JsonConvert.SerializeObject(names);
+            StringContent contentSend = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await Client.PostAsync("/api/pokemons/statistics", contentSend);
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+        }
+
+        [Fact]
+        public async Task GetPokemon_Statistics_Return_NotOk()
+        {
+            string json = JsonConvert.SerializeObject(null);
+            StringContent contentSend = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await Client.PostAsync("/api/pokemons/statistics", contentSend);
+            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+
+            List<string> names = new List<string>();
+            json = JsonConvert.SerializeObject(names);
+            contentSend = new StringContent(json, Encoding.UTF8, "application/json");
+            response = await Client.PostAsync("/api/pokemons/statistics", contentSend);
+            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+
+            names = new List<string>(){"Villager#1, Villager#2"};
+            json = JsonConvert.SerializeObject(names);
+            contentSend = new StringContent(json, Encoding.UTF8, "application/json");
+            response = await Client.PostAsync("/api/pokemons/statistics", contentSend);
             response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
         }
     }

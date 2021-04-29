@@ -12,9 +12,9 @@ namespace Pokemons.API.Repositories
 {
     public interface ITypingRepository
     {
-        Task<Typing> GetTypingById(int id);
-        Task<Typing> GetTypingByName(string name, bool isDetailed = false);
-        Task<List<string>> GetTypingList();
+        Task<Typing> GetTyping_ById(int id);
+        Task<Typing> GetTyping_ByName(string name, bool isDetailed = false);
+        Task<List<string>> GetTypings_List();
         Task<List<Typing>> GetTypings();
     }
 
@@ -31,34 +31,34 @@ namespace Pokemons.API.Repositories
             return await _context.Typings.ToListAsync();
         }
 
-        public async Task<List<string>> GetTypingList()
+        public async Task<List<string>> GetTypings_List()
         {
             return await _context.Typings.Select(t => t.Name).Distinct().ToListAsync();
         }
 
-        public async Task<Typing> GetTypingById(int id)
+        public async Task<Typing> GetTyping_ById(int id)
         {
             return await _context.Typings
             .Where(Typing => Typing.TypingId == id)
             .FirstOrDefaultAsync();
         }
 
-        public async Task<Typing> GetTypingByName(string name, bool isDetailed = false)
+        public async Task<Typing> GetTyping_ByName(string name, bool isDetailed = false)
         {
             if (isDetailed == true)
-                return await GetTypingByName_Detailed(name);
+                return await GetTyping_ByName_Detailed(name);
 
-            return await GetTypingByName_Simple(name);
+            return await GetTyping_ByName_Simple(name);
         }
 
-        private async Task<Typing> GetTypingByName_Simple(string name)
+        private async Task<Typing> GetTyping_ByName_Simple(string name)
         {
             return await _context.Typings
             .Where(Typing => Typing.Name == name)
             .FirstOrDefaultAsync();
         }
 
-        private async Task<Typing> GetTypingByName_Detailed(string name)
+        private async Task<Typing> GetTyping_ByName_Detailed(string name)
         {
             return await _context.Typings
             .Where(Typing => Typing.Name == name)

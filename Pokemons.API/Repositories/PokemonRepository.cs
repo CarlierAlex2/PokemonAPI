@@ -21,14 +21,14 @@ namespace Pokemons.API.Repositories
     {
         Task<Pokemon> AddPokemon(Pokemon pokemon);
         Task DeletePokemon(Pokemon pokemon);
-        Task DeletePokemonList(List<Pokemon> listPokemon);
-        Task<List<Pokemon>> GetPokemonByEntry(int pokedexEntry, DetailLevel detailLevel = DetailLevel.Basic);
-        Task<Pokemon> GetPokemonByEntryAndGen(int pokedexEntry, int generation, DetailLevel detailLevel = DetailLevel.Basic);
-        Task<Pokemon> GetPokemonById(Guid id);
-        Task<Pokemon> GetPokemonByName(string name);
-        Task<List<Pokemon>> GetPokemonByType(string typeName);
-        Task<List<string>> GetPokemonList();
-        Task<List<string>> GetPokemonListByType(string typeName);
+        Task DeletePokemon_List(List<Pokemon> listPokemon);
+        Task<List<Pokemon>> GetPokemons_ByEntry(int pokedexEntry, DetailLevel detailLevel = DetailLevel.Basic);
+        Task<Pokemon> GetPokemon_ByEntryAndGen(int pokedexEntry, int generation, DetailLevel detailLevel = DetailLevel.Basic);
+        Task<Pokemon> GetPokemon_ById(Guid id);
+        Task<Pokemon> GetPokemon_ByName(string name);
+        Task<List<Pokemon>> GetPokemons_ByType(string typeName);
+        Task<List<string>> GetPokemons_List();
+        Task<List<string>> GetPokemons_List_ByType(string typeName);
         Task<List<Pokemon>> GetPokemons();
     }
 
@@ -49,13 +49,13 @@ namespace Pokemons.API.Repositories
             .ToListAsync();
         }
 
-        public async Task<List<string>> GetPokemonList()
+        public async Task<List<string>> GetPokemons_List()
         {
             return await _context.Pokemons
             .Select(t => t.Name).Distinct().ToListAsync();
         }
 
-        public async Task<List<Pokemon>> GetPokemonByType(string typeName)
+        public async Task<List<Pokemon>> GetPokemons_ByType(string typeName)
         {
             return await _context.Pokemons
             .Include(pokemon => pokemon.PokemonTypings)
@@ -65,7 +65,7 @@ namespace Pokemons.API.Repositories
             .ToListAsync();
         }
 
-        public async Task<List<string>> GetPokemonListByType(string typeName)
+        public async Task<List<string>> GetPokemons_List_ByType(string typeName)
         {
             return await _context.Pokemons
             .Include(pokemon => pokemon.PokemonTypings)
@@ -76,7 +76,7 @@ namespace Pokemons.API.Repositories
             .ToListAsync();
         }
 
-        public async Task<Pokemon> GetPokemonById(Guid id)
+        public async Task<Pokemon> GetPokemon_ById(Guid id)
         {
             return await _context.Pokemons
             .Where(pokemon => pokemon.PokemonId == id)
@@ -85,7 +85,7 @@ namespace Pokemons.API.Repositories
             .FirstOrDefaultAsync();
         }
 
-        public async Task<Pokemon> GetPokemonByName(string name)
+        public async Task<Pokemon> GetPokemon_ByName(string name)
         {
             return await _context.Pokemons
             .Where(pokemon => pokemon.Name == name)
@@ -94,7 +94,7 @@ namespace Pokemons.API.Repositories
             .FirstOrDefaultAsync();
         }
 
-        public async Task<List<Pokemon>> GetPokemonByEntry(int pokedexEntry, DetailLevel detailLevel = 0)
+        public async Task<List<Pokemon>> GetPokemons_ByEntry(int pokedexEntry, DetailLevel detailLevel = 0)
         {
             if (detailLevel == DetailLevel.Details)
             {
@@ -116,7 +116,7 @@ namespace Pokemons.API.Repositories
             .ToListAsync();
         }
 
-        public async Task<Pokemon> GetPokemonByEntryAndGen(int pokedexEntry, int generation, DetailLevel detailLevel = 0)
+        public async Task<Pokemon> GetPokemon_ByEntryAndGen(int pokedexEntry, int generation, DetailLevel detailLevel = 0)
         {
             if (detailLevel == DetailLevel.Details)
             {
@@ -151,7 +151,7 @@ namespace Pokemons.API.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeletePokemonList(List<Pokemon> listPokemon)
+        public async Task DeletePokemon_List(List<Pokemon> listPokemon)
         {
             _context.Pokemons.RemoveRange(listPokemon);
             await _context.SaveChangesAsync();

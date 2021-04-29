@@ -97,10 +97,10 @@ namespace Pokemons.API.Controllers
         [HttpGet]
         [Route("types/list")]
         [MapToApiVersion("2.0")]
-        public async Task<ActionResult<TypingList>> GetTypingsList()
+        public async Task<ActionResult<TypingList>> GetTypings_List()
         {
             try{
-                TypingList results = await _pokemonService.GetTypingList();
+                TypingList results = await _pokemonService.GetTypings_List();
                 return new OkObjectResult(results);
             }
             catch(Exception ex){
@@ -124,10 +124,10 @@ namespace Pokemons.API.Controllers
         [MapToApiVersion("1.0")]
         [MapToApiVersion("2.0")]
         [ResponseCache(Duration = 60, Location = ResponseCacheLocation.Any)]
-        public async Task<ActionResult<TypingDTO>> GetTypingByName(string typeName)
+        public async Task<ActionResult<TypingDTO>> GetTyping_ByName(string typeName)
         {
             try{
-                TypingDTO results = await _pokemonService.GetTypingByName(typeName);
+                TypingDTO results = await _pokemonService.GetTyping_ByName(typeName);
                 if(results == null)
                     return new BadRequestObjectResult($"Could not find type named: {typeName}");
 
@@ -167,7 +167,7 @@ namespace Pokemons.API.Controllers
                 //Type specified
                 if(typeName!= null & typeName.Length > 0)
                 {
-                    List<PokemonDTO> results = await _pokemonService.GetPokemonByType_V1(typeName);
+                    List<PokemonDTO> results = await _pokemonService.GetPokemon_ByType_V1(typeName);
                     if(results == null)
                         return new BadRequestObjectResult("No pokemon were found");
                         
@@ -177,9 +177,6 @@ namespace Pokemons.API.Controllers
                 else
                 {
                     List<PokemonDTO> results = await _pokemonService.GetPokemons_V1();
-                    if(results == null)
-                        return new BadRequestObjectResult("No pokemon were found");
-
                     return new OkObjectResult(results);
                 }
             }
@@ -211,9 +208,9 @@ namespace Pokemons.API.Controllers
         {
             try{
                 //Type specified
-                if(typeName!= null & typeName.Length > 0)
+                if(typeName.Length > 0)
                 {
-                    var results = await _pokemonService.GetPokemonByType_V2(typeName);
+                    var results = await _pokemonService.GetPokemon_ByType_V2(typeName);
                     if(results == null)
                         return new BadRequestObjectResult("No pokemon were found");
 
@@ -223,9 +220,6 @@ namespace Pokemons.API.Controllers
                 else
                 {
                     var results = await _pokemonService.GetPokemons_V2();
-                    if(results == null)
-                        return new BadRequestObjectResult("No pokemon were found");
-
                     return new OkObjectResult(results);
                 }
             }
@@ -254,13 +248,13 @@ namespace Pokemons.API.Controllers
         [Route("pokemons/list")]
         [MapToApiVersion("2.0")]
         [ResponseCache(Duration = 60, Location = ResponseCacheLocation.Any)]
-        public async Task<ActionResult<PokemonList>> GetPokemonsList(string typeName = "")
+        public async Task<ActionResult<PokemonList>> GetPokemons_List(string typeName = "")
         {
             try{
                 //Type specified
-                if(typeName!= null & typeName.Length > 0)
+                if(typeName.Length > 0)
                 {
-                    var results = await _pokemonService.GetPokemonListByType(typeName);
+                    var results = await _pokemonService.GetPokemons_List_ByType(typeName);
                     if(results == null)
                         return new BadRequestObjectResult("No pokemon were found");
 
@@ -269,12 +263,41 @@ namespace Pokemons.API.Controllers
                 //Default
                 else
                 {
-                    var results = await _pokemonService.GetPokemonList();
-                    if(results == null)
-                        return new BadRequestObjectResult("No pokemon were found");
-
+                    var results = await _pokemonService.GetPokemons_List();
                     return new OkObjectResult(results);
                 }
+            }
+            catch(Exception ex){
+                _logger.LogError(ex.Message);
+                return new StatusCodeResult(500);
+            }
+        }
+
+
+        /// <summary>
+        /// Get Pokemons by name.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// 
+        ///     GET api/pokemons/name/25
+        ///
+        /// </remarks>
+        /// <param name="name">Pokemon's name</param>  
+        [HttpGet]
+        [Route("pokemons/name/{name}")]
+        [MapToApiVersion("1.0")]
+        [MapToApiVersion("2.0")]
+        public async Task<ActionResult<List<PokemonDTO>>> GetPokemon_ByName(string name)
+        {
+            try{
+                if(name.Length < 3)
+                    return new BadRequestObjectResult("Pokedex name not long enough");
+
+                PokemonDTO results = await _pokemonService.GetPokemon_ByName(name);
+                if(results == null)
+                    return new BadRequestObjectResult($"No pokemon were found with given name - {name}");
+                return new OkObjectResult(results);
             }
             catch(Exception ex){
                 _logger.LogError(ex.Message);
@@ -297,13 +320,13 @@ namespace Pokemons.API.Controllers
         [Route("pokemons/entry/{pokedexEntry}")]
         [MapToApiVersion("1.0")]
         [MapToApiVersion("2.0")]
-        public async Task<ActionResult<List<PokemonDTO>>> GetPokemonByEntry(int pokedexEntry)
+        public async Task<ActionResult<List<PokemonDTO>>> GetPokemons_ByEntry(int pokedexEntry)
         {
             try{
                 if(pokedexEntry <= 0)
                     return new BadRequestObjectResult("Pokedex Entry cannot be less than 1");
 
-                List<PokemonDTO> results = await _pokemonService.GetPokemonByEntry(pokedexEntry);
+                List<PokemonDTO> results = await _pokemonService.GetPokemons_ByEntry(pokedexEntry);
                 if(results == null)
                     return new BadRequestObjectResult("No pokemon were found with given parameters");
                 return new OkObjectResult(results);
@@ -329,7 +352,7 @@ namespace Pokemons.API.Controllers
         [Route("pokemon/entry/{pokedexEntry}/gen/{generation}")]
         [MapToApiVersion("1.0")]
         [MapToApiVersion("2.0")]
-        public async Task<ActionResult<PokemonDTO>> GetPokemonByEntryAndGen(int pokedexEntry, int generation)
+        public async Task<ActionResult<PokemonDTO>> GetPokemon_ByEntryAndGen(int pokedexEntry, int generation)
         {
             try{
                 if(pokedexEntry <= 0)
@@ -337,7 +360,7 @@ namespace Pokemons.API.Controllers
                 if(generation <= 0)
                     return new BadRequestObjectResult("Generation cannot be less than 1");
 
-                PokemonDTO results = await _pokemonService.GetPokemonByEntryAndGen(pokedexEntry, generation);
+                PokemonDTO results = await _pokemonService.GetPokemon_ByEntryAndGen(pokedexEntry, generation);
                 if(results == null)
                     return new BadRequestObjectResult("No pokemon were found with given parameters");
                 return new OkObjectResult(results);
@@ -353,13 +376,15 @@ namespace Pokemons.API.Controllers
         [Route("pokemons/statistics")]
         [MapToApiVersion("1.0")]
         [MapToApiVersion("2.0")]
-        public async Task<ActionResult<PokemonStatisticsList>> GetPokemonStatistics([FromBody] List<string> names)
+        public async Task<ActionResult<PokemonStatisticsList>> GetPokemons_Statistics([FromBody] List<string> names = null)
         {
             try{
-                if(names == null || names.Count <= 0)
-                    return new BadRequestObjectResult("No list of Pokemon names were given");
+                if(names == null)
+                    return new BadRequestObjectResult("No list of Pokemon names were given - No list found");
+                if(names.Count <= 0)
+                    return new BadRequestObjectResult("No list of Pokemon names were given - List is empty");
 
-                var results = await _pokemonService.GetPokemonStatistics(names);
+                var results = await _pokemonService.GetPokemons_Statistics(names);
                 if(results == null)
                     return new BadRequestObjectResult("No pokemon were found with given parameters");
                 return new OkObjectResult(results);
@@ -438,13 +463,13 @@ namespace Pokemons.API.Controllers
             try{
                 if(generation > 0)
                 {
-                    await _pokemonService.DeletePokemonByEntryAndGen(pokedexEntry, generation);
+                    await _pokemonService.DeletePokemon_ByEntryAndGen(pokedexEntry, generation);
                     _logger.LogInformation($"Pokemons were removed - PokedexEntry:{pokedexEntry} - Generation{generation}");
                     return new OkResult();
                 }
                 else
                 {
-                    await _pokemonService.DeletePokemonByEntry(pokedexEntry);
+                    await _pokemonService.DeletePokemon_ByEntry(pokedexEntry);
                     _logger.LogInformation($"Pokemons were removed - PokedexEntry:{pokedexEntry}");
                     return new OkResult();
                 }
