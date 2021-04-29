@@ -6,8 +6,10 @@ using System.Text.Json.Serialization;
 
 namespace Pokemons.API.Models
 {
+    // Pokemon Model //-------------------------------------------------------------------------------------------------------------------------------
     public class Pokemon
     {
+        // Variables //-----------------------------------------------------------------------------------
         [Key]
         public Guid PokemonId { get; set; }
 
@@ -28,10 +30,14 @@ namespace Pokemons.API.Models
         [MaxLength(2, ErrorMessage="List of Pokemon types Required - Cannot hold more than 2 types")]
         public List<PokemonTyping> PokemonTypings { get; set; }
 
+
+        // Extra //-----------------------------------------------------------------------------------
         public string Classification { get; set; }
 
         public string EggGroup { get; set; }
 
+
+        // Stats //-----------------------------------------------------------------------------------
         [Range(1, int.MaxValue, ErrorMessage="Stats Hp - Cannot be 0 or lower")]
         public int Hp  { get; set; } = 1;
 
@@ -51,6 +57,8 @@ namespace Pokemons.API.Models
         public int Speed  { get; set; } = 1;
     }
 
+
+    // Pokemon List //-------------------------------------------------------------------------------------------------------------------------------
     public class PokemonList
     {
         [Required]
