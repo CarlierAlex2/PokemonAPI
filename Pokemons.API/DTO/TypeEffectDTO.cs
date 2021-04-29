@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Pokemons.API.DTO
 {
+    // Complete TypeEffectDTO //-------------------------------------------------------------------------------------------------------------------------------
     public class TypeEffectDTO
     {
         public string Defend { get; set; }
@@ -12,6 +13,8 @@ namespace Pokemons.API.DTO
         public decimal Power { get; set; }
     }
 
+
+    // Split TypeEffectDTO //-------------------------------------------------------------------------------------------------------------------------------
     public class TypeEffectOffenseDTO
     {
         public string Defend { get; set; }

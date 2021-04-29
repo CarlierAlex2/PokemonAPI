@@ -9,7 +9,7 @@ namespace Pokemons.API.DTO
     public class AutoMapping: Profile
     {
         public AutoMapping() {
-            // DTO mapping -------------------------------------
+            // DTO mapping //-------------------------------------------------------------------------------------------------------------------------------
             CreateMap<Pokemon, PokemonDTO>();
             CreateMap<PokemonDTO, Pokemon>();
 
@@ -28,7 +28,7 @@ namespace Pokemons.API.DTO
             CreateMap<TypeEffect, TypeEffectDefenseDTO>();
             CreateMap<TypeEffect, TypeEffectOffenseDTO>();
 
-            // Data mapping ------------------------------------
+            // Data mapping //-------------------------------------------------------------------------------------------------------------------------------
             CreateMap<Pokemon, PokemonData>();
             CreateMap<PokemonData, Pokemon>();
 

@@ -225,19 +225,7 @@ namespace Pokemons.API.Services
             if (checkExists != null)
                 return null;
 
-            // Add pokemon + return results
-            Pokemon pokemon = _mapper.Map<Pokemon>(pokemonDTO);
-            pokemon.PokemonId = Guid.NewGuid();
-            pokemon.PokemonTypings = new List<PokemonTyping>();
-            foreach (var typingName in pokemonDTO.Types)
-            {
-                var typing = await _typeRepository.GetTyping_ByName(typingName);
-                pokemon.PokemonTypings.Add(new PokemonTyping()
-                {
-                    PokemonId = pokemon.PokemonId,
-                    TypingId = typing.TypingId
-                });
-            }
+            var pokemon = await GetPokemonDTO_FromPokemon(pokemonDTO);
             pokemon = await _pokemonRepository.AddPokemon(pokemon);
             return pokemon;
         }
@@ -275,6 +263,25 @@ namespace Pokemons.API.Services
         {
             var dto = _mapper.Map<List<TypingBaseDTO>>(listTyping);
             return dto;
+        }
+
+        private async Task<Pokemon> GetPokemonDTO_FromPokemon(PokemonDTO pokemonDTO)
+        {
+            // Add pokemon + return results
+            Pokemon pokemon = _mapper.Map<Pokemon>(pokemonDTO);
+            pokemon.PokemonId = Guid.NewGuid();
+            pokemon.PokemonTypings = new List<PokemonTyping>();
+            foreach (var typingName in pokemonDTO.Types)
+            {
+                var typing = await _typeRepository.GetTyping_ByName(typingName);
+                pokemon.PokemonTypings.Add(new PokemonTyping()
+                {
+                    PokemonId = pokemon.PokemonId,
+                    TypingId = typing.TypingId
+                });
+            }
+
+            return pokemon;
         }
 
         private PokemonDTO GetPokemonDTO(Pokemon pokemon)
