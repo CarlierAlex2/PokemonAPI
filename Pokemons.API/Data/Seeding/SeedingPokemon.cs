@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 using Pokemons.API.Models;
 using Pokemons.API.Data.CsvStream.CsvData;
-using Pokemons.API.DTO;
+using Pokemons.API.Helpers;
 
 
 namespace Pokemons.API.Data.Seeding
@@ -45,8 +45,8 @@ namespace Pokemons.API.Data.Seeding
                 pokemon.PokemonId = Guid.NewGuid();
 
                 // Extract list of PokemonTyping
-                var listTypeNames = MappingHelper.ExtractTypesFromString(dataObj.Types);
-                var pokemonTypings = MappingHelper.ExtractPokemonTypings(pokemon, listTypeNames, listTypingData);
+                var listTypeNames = DataHelper.ExtractTypesFromString(dataObj.Types);
+                var pokemonTypings = DataHelper.ExtractPokemonTypings(pokemon, listTypeNames, listTypingData);
 
                 // Actual seeding
                 _modelBuilder.Entity<Pokemon>().HasData(pokemon);

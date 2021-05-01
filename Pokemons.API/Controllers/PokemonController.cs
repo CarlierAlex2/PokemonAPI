@@ -86,7 +86,7 @@ namespace Pokemons.API.Controllers
         }
 
         /// <summary>
-        /// Get a list of all available Pokemon Types.
+        /// Get a list of names for all available Pokemon Types.
         /// </summary>
         /// <remarks>
         /// Sample request:
@@ -110,7 +110,7 @@ namespace Pokemons.API.Controllers
         }
 
         /// <summary>
-        /// Get a detailed summary of one specified Pokemon Type.
+        /// Get a detailed view of one specified Pokemon Type.
         /// </summary>
         /// <remarks>
         /// Sample request:
@@ -144,7 +144,7 @@ namespace Pokemons.API.Controllers
         //-----------------------------------------------------------------------------------------------------
         
         /// <summary>
-        /// Get a list of Pokemon with some details, with the option to specify a Pokemon Type.
+        /// Get a list of Pokemon, with the option to specify a Pokemon Type.
         /// </summary>
         /// <remarks>
         /// Sample request:
@@ -187,7 +187,7 @@ namespace Pokemons.API.Controllers
         }
 
         /// <summary>
-        /// Get a list of Pokemon with some details, with the option to specify a Pokemon Type.
+        /// Get a list of Pokemon, with the option to specify a Pokemon Type.
         /// </summary>
         /// <remarks>
         /// Sample request:
@@ -275,12 +275,12 @@ namespace Pokemons.API.Controllers
 
 
         /// <summary>
-        /// Get Pokemons by name.
+        /// Get a Pokemon by name.
         /// </summary>
         /// <remarks>
         /// Sample request:
         /// 
-        ///     GET api/pokemons/name/25
+        ///     GET api/pokemons/name/Charmander
         ///
         /// </remarks>
         /// <param name="name">Pokemon's name</param>  
@@ -349,7 +349,7 @@ namespace Pokemons.API.Controllers
         ///
         /// </remarks>
         /// <param name="pokedexEntry">Pokemon's Pokedex entry</param>  
-        /// <param name="generation">Generation</param>  
+        /// <param name="generation">Pokemon's Generation</param>  
         [HttpGet]
         [Route("pokemon/entry/{pokedexEntry}/gen/{generation}")]
         [MapToApiVersion("1.0")]
@@ -375,6 +375,17 @@ namespace Pokemons.API.Controllers
         }
 
 
+        /// <summary>
+        /// Get statistics about a group of Pokemon.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// 
+        ///     POST api/pokemons/statistics
+        ///     ["Charmander", "Abra", "Roserade"] 
+        ///
+        /// </remarks>
+        /// <param name="names">A list Pokemon names</param>  
         [HttpPost]
         [Route("pokemons/statistics")]
         [MapToApiVersion("1.0")]
@@ -405,14 +416,13 @@ namespace Pokemons.API.Controllers
         /// 
         ///     POST api/pokemon
         ///     {
-        ///     "pokedexEntry": 350,
-        ///     "name": "Milotic",
-        ///     "generation": 3,
-        ///     "types": [
-        ///         "Water"
-        ///     ],
-        ///     "classification": "Tender Pokemon",
-        ///     "eggGroup": "Water 1, Dragon"
+        ///         "pokedexEntry": 350,
+        ///         "name": "Milotic",
+        ///         "generation": 3,
+        ///         "types": ["Water"],
+        ///         "classification": "Tender Pokemon",
+        ///         "eggGroup": "Water 1, Dragon"
+        ///     }
         ///
         /// </remarks>
         /// <param name="pokemonDTO">Pokemon to add</param>  

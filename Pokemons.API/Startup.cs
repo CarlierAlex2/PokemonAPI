@@ -24,7 +24,7 @@ using Pokemons.API.Configuration;
 using Pokemons.API.Services;
 using Pokemons.API.Repositories;
 using Pokemons.API.Data;
-using Pokemons.API.DTO;
+using Pokemons.API.Helpers;
 
 namespace Pokemons.API
 {
@@ -68,6 +68,8 @@ namespace Pokemons.API
             services.AddTransient<IPokemonRepository, PokemonRepository>();
             // services
             services.AddTransient<IPokemonService, PokemonService>();
+            // extra
+            services.AddTransient<IConvertHelper, ConvertHelper>();
 
             // automapper
             services.AddAutoMapper(typeof(Startup));

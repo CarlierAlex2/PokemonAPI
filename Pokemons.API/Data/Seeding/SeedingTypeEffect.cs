@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 using Pokemons.API.Models;
 using Pokemons.API.Data.CsvStream.CsvData;
-using Pokemons.API.DTO;
+using Pokemons.API.Helpers;
 
 
 namespace Pokemons.API.Data.Seeding
@@ -37,7 +37,7 @@ namespace Pokemons.API.Data.Seeding
             var listTypeEffectData = _listTypeEffectData.Cast<TypeEffectData>().ToList();
 
             // Create list of TypeEffect
-            var listTypeEffect = MappingHelper.ExtractTypeEffects(listTypingData, listTypeEffectData, _mapper);
+            var listTypeEffect = DataHelper.ExtractTypeEffects(listTypingData, listTypeEffectData, _mapper);
 
             // Do seeding
             foreach (var effectObj in listTypeEffect)
