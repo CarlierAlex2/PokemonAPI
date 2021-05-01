@@ -54,7 +54,7 @@ namespace Pokemons.API.Data
         }
 
 
-        // Constructor //-------------------------------------------------------------------------------------------------------------------------------
+        // Configurations + seeding //-------------------------------------------------------------------------------------------------------------------------------
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             options.UseLoggerFactory(LoggerFactory.Create(builder => builder.AddDebug()));
@@ -74,7 +74,7 @@ namespace Pokemons.API.Data
         }
 
 
-        // Constructor //-------------------------------------------------------------------------------------------------------------------------------
+        // Relationships //-------------------------------------------------------------------------------------------------------------------------------
         private void SetRelationShips(ModelBuilder modelBuilder)
         {
             #region // Typing Relations //----------------------------------------------------------------------------------
@@ -117,6 +117,7 @@ namespace Pokemons.API.Data
         }
 
 
+        // Seeding //-------------------------------------------------------------------------------------------------------------------------------
         private void SeedData(ModelBuilder modelBuilder)
         {
             #region // Read CSV //----------------------------------------------------------------------------------  

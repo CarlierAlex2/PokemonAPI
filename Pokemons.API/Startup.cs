@@ -18,8 +18,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Microsoft.Identity.Web;
 
-//to fix infinite loopin
-using Newtonsoft.Json;
+using Newtonsoft.Json; //to fix infinite looping during SELECT
 
 using Pokemons.API.Configuration;
 using Pokemons.API.Services;
@@ -46,7 +45,7 @@ namespace Pokemons.API
             services.Configure<ConnectionStrings>(Configuration.GetSection("ConnectionStrings"));
 
             // db context
-            services.AddDbContext<PokemonContext>(); //nog altijd nodig voor migrations
+            services.AddDbContext<PokemonContext>();
 
             // caching
             services.AddResponseCaching();
@@ -70,8 +69,8 @@ namespace Pokemons.API
             // services
             services.AddTransient<IPokemonService, PokemonService>();
 
-            // mapping
-            services.AddAutoMapper(typeof(Startup)); //automapper
+            // automapper
+            services.AddAutoMapper(typeof(Startup));
 
             // authorization + authentication - auth0
             /*
@@ -83,9 +82,6 @@ namespace Pokemons.API
                 options.Audience = "https://alex.carlier.PokemonAPI";
             });
             */
-
-            // authorization + authentication - PCKE
-            // services.AddMicrosoftIdentityWebApiAuthentication(Configuration, "AzureAdB2C");
 
             // swagger
             services.AddSwaggerGen(c =>
@@ -101,18 +97,12 @@ namespace Pokemons.API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            //https://code-maze.com/how-to-prepare-aspnetcore-app-dockerization/
-            //https://code-maze.com/swagger-ui-asp-net-core-web-api/
-            /*if (env.IsDevelopment())
+            if (env.IsDevelopment() || env.IsEnvironment("Docker"))
             {
-                app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Pokemons.API v1"));
-            }*/ //tussen deze comments => enkel in develop mode
-
-
-            app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v2/swagger.json", "Pokemons.API v2"));
+                //app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Pokemons.API v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v2/swagger.json", "Pokemons.API v2"));
+            }
 
             app.UseHttpsRedirection();
             app.UseRouting();

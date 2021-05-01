@@ -51,7 +51,7 @@ namespace Pokemons.Test
             };
 
             var list = new List<Pokemon>() {p1, p2};
-            var statObj = PokemonCalculator.GetPokemonStatistics(list);
+            var statObj = PokemonCalculator.Calculate_Statistics(list);
 
             Assert.Equal<double>(25, statObj.Statistics["Hp"].Minimum);
             Assert.Equal<double>(32, statObj.Statistics["Hp"].Average);

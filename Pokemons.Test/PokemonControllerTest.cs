@@ -19,10 +19,10 @@ namespace Pokemons.Test
 {
     public class PokemonControllerTest:  IClassFixture<CustomWebApplicationFactory>
     {
-        //dotnet test
-        //dotnet test /p:CollectCoverage=true
-        //dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:Exclude="[xunit*]\*" /p:CoverletOutput="./TestResults/"
-        //dotnet reportgenerator "-reports:TestResults\coverage.cobertura.xml" "-targetdir:TestResults\html" -reporttypes:HTML
+        // dotnet test
+        // dotnet test /p:CollectCoverage=true
+        // dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:Exclude="[xunit*]\*" /p:CoverletOutput="./TestResults/"
+        // dotnet reportgenerator "-reports:TestResults\coverage.cobertura.xml" "-targetdir:TestResults\html" -reporttypes:HTML
 
         public HttpClient Client { get; set;}
         public PokemonControllerTest(CustomWebApplicationFactory fixture)
@@ -91,6 +91,33 @@ namespace Pokemons.Test
             Assert.NotEmpty(body);
         }
 
+
+        [Fact]
+        public async Task GetPokemons_ByType_Return_Ok()
+        {
+            string typingName = "Grass";
+            var response = await Client.GetAsync( $"/api/pokemons?typeName={typingName}");
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+
+            var content = await response.Content.ReadAsStringAsync();
+            var body = JsonConvert.DeserializeObject<List<PokemonBaseDTO>>(content);
+            Assert.NotEmpty(body);
+
+            foreach(var pokemonDTO in body)
+                Assert.Contains(typingName, pokemonDTO.Types);
+        }
+
+        /*
+        //dont know why but always returns ok when executing full test project, in debug + manual + run it gives badrequest
+        [Fact]
+        public async Task GetPokemons_ByType_Return_NotOk()
+        {
+            string typingName = "test";
+            var response = await Client.GetAsync( $"/api/pokemons?typeName={typingName}");
+            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+        }
+        */
+
         [Fact]
         public async Task GetPokemons_List_Return_Ok()
         {
@@ -121,29 +148,6 @@ namespace Pokemons.Test
             var response = await Client.GetAsync($"/api/pokemons/list?typeName={typingName}");
             response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
         }
-
-        [Fact]
-        public async Task GetPokemons_ByType_Return_Ok()
-        {
-            string typingName = "Grass";
-            var response = await Client.GetAsync( $"/api/pokemons?typeName={typingName}");
-            response.StatusCode.Should().Be(HttpStatusCode.OK);
-
-            var content = await response.Content.ReadAsStringAsync();
-            var body = JsonConvert.DeserializeObject<List<PokemonBaseDTO>>(content);
-            Assert.NotEmpty(body);
-        }
-
-        /*
-        //dont know why but always returns ok when executing full test project, in debug + manual + run it gives badrequest
-        [Fact]
-        public async Task GetPokemons_ByType_Return_NotOk()
-        {
-            string typingName = "test";
-            var response = await Client.GetAsync( $"/api/pokemons?typeName={typingName}");
-            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
-        }
-        */
         #endregion
 
         //------------------------------------------------------------------------------------------------------------------------
@@ -183,7 +187,9 @@ namespace Pokemons.Test
             var body = JsonConvert.DeserializeObject<List<PokemonDTO>>(content);
             Assert.NotNull(body);
             Assert.NotEmpty(body);
-            Assert.Equal<int>(pokedexEntry, body[0].PokedexEntry);
+
+            foreach(var pokemonDTO in body)
+                Assert.Equal(pokedexEntry, pokemonDTO.PokedexEntry);
         }
 
         public async Task<HttpResponseMessage> GetPokemon_ByEntry(int pokedexEntry)
@@ -216,7 +222,8 @@ namespace Pokemons.Test
             var content = await response.Content.ReadAsStringAsync();
             var body = JsonConvert.DeserializeObject<PokemonDTO>(content);
             Assert.NotNull(body);
-            Assert.Equal<int>(pokedexEntry, body.PokedexEntry);
+            Assert.Equal(pokedexEntry, body.PokedexEntry);
+            Assert.Equal(generation, body.Generation);
         }
 
         public async Task<HttpResponseMessage> GetPokemon_ByEntryAndGen(int pokedexEntry, int generation)
@@ -286,7 +293,9 @@ namespace Pokemons.Test
             var contentReceived = await response.Content.ReadAsStringAsync();
             var body = JsonConvert.DeserializeObject<Pokemon>(contentReceived);
             Assert.NotNull(body);
-            Assert.Equal<string>(pokemonDTO.Name, body.Name);
+            Assert.Equal(pokemonDTO.Name, body.Name);
+            Assert.Equal(pokemonDTO.PokedexEntry, body.PokedexEntry);    
+            Assert.Equal(pokemonDTO.Generation, body.Generation);   
         }
 
         private async Task DeletePokemon_Ok(int pokedexEntry, int generation)
