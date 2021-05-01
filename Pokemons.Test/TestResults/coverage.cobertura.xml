@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<coverage line-rate="0.8" branch-rate="0.7187" version="1.9" timestamp="1619871181" lines-covered="796" lines-valid="995" branches-covered="115" branches-valid="160">
+<coverage line-rate="0.8073999999999999" branch-rate="0.7243" version="1.9" timestamp="1619874434" lines-covered="797" lines-valid="987" branches-covered="113" branches-valid="156">
   <sources>
     <source>C:\Users\alexc\Documents\MCT\Jaar2_2020_2021\MCT_semester_4\BackendDevelopment\BackDev_Project\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\Pokemons.API\</source>
   </sources>
   <packages>
-    <package name="Pokemons.API" line-rate="0.8" branch-rate="0.7187" complexity="325">
+    <package name="Pokemons.API" line-rate="0.8073999999999999" branch-rate="0.7243" complexity="319">
       <classes>
         <class name="Pokemons.API.Program" filename="Program.cs" line-rate="0.625" branch-rate="1" complexity="2">
           <methods>
@@ -36,14 +36,14 @@
             <line number="24" hits="2" branch="False" />
           </lines>
         </class>
-        <class name="Pokemons.API.Startup" filename="Startup.cs" line-rate="1" branch-rate="0.75" complexity="7">
+        <class name="Pokemons.API.Startup" filename="Startup.cs" line-rate="0.9074" branch-rate="0.75" complexity="7">
           <methods>
             <method name="get_Configuration" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="38" hits="2" branch="False" />
               </lines>
             </method>
-            <method name="ConfigureServices" signature="(Microsoft.Extensions.DependencyInjection.IServiceCollection)" line-rate="1" branch-rate="1" complexity="1">
+            <method name="ConfigureServices" signature="(Microsoft.Extensions.DependencyInjection.IServiceCollection)" line-rate="0.8529000000000001" branch-rate="1" complexity="1">
               <lines>
                 <line number="42" hits="1" branch="False" />
                 <line number="44" hits="1" branch="False" />
@@ -63,39 +63,46 @@
                 <line number="70" hits="1" branch="False" />
                 <line number="72" hits="1" branch="False" />
                 <line number="75" hits="1" branch="False" />
+                <line number="78" hits="1" branch="False" />
+                <line number="79" hits="0" branch="False" />
+                <line number="80" hits="0" branch="False" />
+                <line number="81" hits="0" branch="False" />
+                <line number="82" hits="0" branch="False" />
+                <line number="83" hits="0" branch="False" />
+                <line number="84" hits="1" branch="False" />
+                <line number="88" hits="1" branch="False" />
                 <line number="89" hits="1" branch="False" />
                 <line number="90" hits="1" branch="False" />
                 <line number="91" hits="1" branch="False" />
                 <line number="92" hits="1" branch="False" />
                 <line number="93" hits="1" branch="False" />
                 <line number="94" hits="1" branch="False" />
-                <line number="95" hits="1" branch="False" />
-                <line number="96" hits="2" branch="False" />
-                <line number="97" hits="1" branch="False" />
+                <line number="95" hits="2" branch="False" />
+                <line number="96" hits="1" branch="False" />
               </lines>
             </method>
             <method name="Configure" signature="(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)" line-rate="1" branch-rate="0.75" complexity="4">
               <lines>
-                <line number="101" hits="1" branch="False" />
-                <line number="102" hits="1" branch="True" condition-coverage="75% (3/4)">
+                <line number="100" hits="1" branch="False" />
+                <line number="101" hits="1" branch="True" condition-coverage="75% (3/4)">
                   <conditions>
                     <condition number="7" type="jump" coverage="50%" />
                     <condition number="25" type="jump" coverage="100%" />
                   </conditions>
                 </line>
+                <line number="102" hits="1" branch="False" />
                 <line number="103" hits="1" branch="False" />
-                <line number="104" hits="1" branch="False" />
-                <line number="106" hits="2" branch="False" />
-                <line number="107" hits="1" branch="False" />
+                <line number="105" hits="2" branch="False" />
+                <line number="106" hits="1" branch="False" />
+                <line number="108" hits="1" branch="False" />
                 <line number="109" hits="1" branch="False" />
-                <line number="110" hits="1" branch="False" />
-                <line number="113" hits="1" branch="False" />
+                <line number="112" hits="1" branch="False" />
+                <line number="114" hits="1" branch="False" />
                 <line number="115" hits="1" branch="False" />
                 <line number="116" hits="1" branch="False" />
                 <line number="117" hits="1" branch="False" />
-                <line number="118" hits="1" branch="False" />
-                <line number="119" hits="2" branch="False" />
-                <line number="120" hits="1" branch="False" />
+                <line number="118" hits="2" branch="False" />
+                <line number="119" hits="1" branch="False" />
               </lines>
             </method>
             <method name=".ctor" signature="(Microsoft.Extensions.Configuration.IConfiguration)" line-rate="1" branch-rate="1" complexity="1">
@@ -127,35 +134,42 @@
             <line number="70" hits="1" branch="False" />
             <line number="72" hits="1" branch="False" />
             <line number="75" hits="1" branch="False" />
+            <line number="78" hits="1" branch="False" />
+            <line number="79" hits="0" branch="False" />
+            <line number="80" hits="0" branch="False" />
+            <line number="81" hits="0" branch="False" />
+            <line number="82" hits="0" branch="False" />
+            <line number="83" hits="0" branch="False" />
+            <line number="84" hits="1" branch="False" />
+            <line number="88" hits="1" branch="False" />
             <line number="89" hits="1" branch="False" />
             <line number="90" hits="1" branch="False" />
             <line number="91" hits="1" branch="False" />
             <line number="92" hits="1" branch="False" />
             <line number="93" hits="1" branch="False" />
             <line number="94" hits="1" branch="False" />
-            <line number="95" hits="1" branch="False" />
-            <line number="96" hits="2" branch="False" />
-            <line number="97" hits="1" branch="False" />
-            <line number="101" hits="1" branch="False" />
-            <line number="102" hits="1" branch="True" condition-coverage="75% (3/4)">
+            <line number="95" hits="2" branch="False" />
+            <line number="96" hits="1" branch="False" />
+            <line number="100" hits="1" branch="False" />
+            <line number="101" hits="1" branch="True" condition-coverage="75% (3/4)">
               <conditions>
                 <condition number="7" type="jump" coverage="50%" />
                 <condition number="25" type="jump" coverage="100%" />
               </conditions>
             </line>
+            <line number="102" hits="1" branch="False" />
             <line number="103" hits="1" branch="False" />
-            <line number="104" hits="1" branch="False" />
-            <line number="106" hits="2" branch="False" />
-            <line number="107" hits="1" branch="False" />
+            <line number="105" hits="2" branch="False" />
+            <line number="106" hits="1" branch="False" />
+            <line number="108" hits="1" branch="False" />
             <line number="109" hits="1" branch="False" />
-            <line number="110" hits="1" branch="False" />
-            <line number="113" hits="1" branch="False" />
+            <line number="112" hits="1" branch="False" />
+            <line number="114" hits="1" branch="False" />
             <line number="115" hits="1" branch="False" />
             <line number="116" hits="1" branch="False" />
             <line number="117" hits="1" branch="False" />
-            <line number="118" hits="1" branch="False" />
-            <line number="119" hits="2" branch="False" />
-            <line number="120" hits="1" branch="False" />
+            <line number="118" hits="2" branch="False" />
+            <line number="119" hits="1" branch="False" />
             <line number="33" hits="1" branch="False" />
             <line number="34" hits="1" branch="False" />
             <line number="35" hits="1" branch="False" />
@@ -821,12 +835,11 @@
             <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="2">
               <lines>
                 <line number="321" hits="3" branch="False" />
-                <line number="322" hits="15" branch="True" condition-coverage="100% (2/2)">
+                <line number="323" hits="15" branch="True" condition-coverage="100% (2/2)">
                   <conditions>
                     <condition number="290" type="jump" coverage="100%" />
                   </conditions>
                 </line>
-                <line number="323" hits="3" branch="False" />
                 <line number="324" hits="3" branch="False" />
                 <line number="325" hits="3" branch="False" />
                 <line number="326" hits="3" branch="False" />
@@ -835,17 +848,17 @@
                 <line number="329" hits="3" branch="False" />
                 <line number="330" hits="3" branch="False" />
                 <line number="331" hits="3" branch="False" />
+                <line number="332" hits="3" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
             <line number="321" hits="3" branch="False" />
-            <line number="322" hits="15" branch="True" condition-coverage="100% (2/2)">
+            <line number="323" hits="15" branch="True" condition-coverage="100% (2/2)">
               <conditions>
                 <condition number="290" type="jump" coverage="100%" />
               </conditions>
             </line>
-            <line number="323" hits="3" branch="False" />
             <line number="324" hits="3" branch="False" />
             <line number="325" hits="3" branch="False" />
             <line number="326" hits="3" branch="False" />
@@ -854,56 +867,78 @@
             <line number="329" hits="3" branch="False" />
             <line number="330" hits="3" branch="False" />
             <line number="331" hits="3" branch="False" />
+            <line number="332" hits="3" branch="False" />
           </lines>
         </class>
         <class name="Pokemons.API.Repositories.PokemonRepository" filename="Repositories\PokemonRepository.cs" line-rate="1" branch-rate="1" complexity="1">
           <methods>
             <method name=".ctor" signature="(Pokemons.API.Data.IPokemonContext)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="43" hits="29" branch="False" />
-                <line number="44" hits="29" branch="False" />
-                <line number="45" hits="29" branch="False" />
-                <line number="46" hits="29" branch="False" />
+                <line number="36" hits="29" branch="False" />
+                <line number="37" hits="29" branch="False" />
+                <line number="38" hits="29" branch="False" />
+                <line number="39" hits="29" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="43" hits="29" branch="False" />
-            <line number="44" hits="29" branch="False" />
-            <line number="45" hits="29" branch="False" />
-            <line number="46" hits="29" branch="False" />
+            <line number="36" hits="29" branch="False" />
+            <line number="37" hits="29" branch="False" />
+            <line number="38" hits="29" branch="False" />
+            <line number="39" hits="29" branch="False" />
           </lines>
         </class>
         <class name="Pokemons.API.Repositories.PokemonRepository/&lt;GetPokemons&gt;d__2" filename="Repositories\PokemonRepository.cs" line-rate="0" branch-rate="1" complexity="1">
           <methods>
             <method name="MoveNext" signature="()" line-rate="0" branch-rate="1" complexity="1">
               <lines>
-                <line number="52" hits="0" branch="False" />
-                <line number="54" hits="0" branch="False" />
-                <line number="55" hits="0" branch="False" />
-                <line number="56" hits="0" branch="False" />
-                <line number="57" hits="0" branch="False" />
-                <line number="58" hits="0" branch="False" />
+                <line number="45" hits="0" branch="False" />
+                <line number="47" hits="0" branch="False" />
+                <line number="48" hits="0" branch="False" />
+                <line number="49" hits="0" branch="False" />
+                <line number="50" hits="0" branch="False" />
+                <line number="51" hits="0" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="52" hits="0" branch="False" />
-            <line number="54" hits="0" branch="False" />
-            <line number="55" hits="0" branch="False" />
-            <line number="56" hits="0" branch="False" />
-            <line number="57" hits="0" branch="False" />
-            <line number="58" hits="0" branch="False" />
+            <line number="45" hits="0" branch="False" />
+            <line number="47" hits="0" branch="False" />
+            <line number="48" hits="0" branch="False" />
+            <line number="49" hits="0" branch="False" />
+            <line number="50" hits="0" branch="False" />
+            <line number="51" hits="0" branch="False" />
           </lines>
         </class>
         <class name="Pokemons.API.Repositories.PokemonRepository/&lt;GetPokemons_ByType&gt;d__3" filename="Repositories\PokemonRepository.cs" line-rate="1" branch-rate="1" complexity="1">
           <methods>
             <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
+                <line number="54" hits="1" branch="False" />
+                <line number="56" hits="1" branch="False" />
+                <line number="57" hits="1" branch="False" />
+                <line number="58" hits="1" branch="False" />
+                <line number="59" hits="1" branch="False" />
+                <line number="60" hits="1" branch="False" />
                 <line number="61" hits="1" branch="False" />
-                <line number="63" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="54" hits="1" branch="False" />
+            <line number="56" hits="1" branch="False" />
+            <line number="57" hits="1" branch="False" />
+            <line number="58" hits="1" branch="False" />
+            <line number="59" hits="1" branch="False" />
+            <line number="60" hits="1" branch="False" />
+            <line number="61" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="Pokemons.API.Repositories.PokemonRepository/&lt;GetPokemons_List&gt;d__4" filename="Repositories\PokemonRepository.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
                 <line number="64" hits="1" branch="False" />
-                <line number="65" hits="1" branch="False" />
                 <line number="66" hits="1" branch="False" />
                 <line number="67" hits="1" branch="False" />
                 <line number="68" hits="1" branch="False" />
@@ -911,16 +946,13 @@
             </method>
           </methods>
           <lines>
-            <line number="61" hits="1" branch="False" />
-            <line number="63" hits="1" branch="False" />
             <line number="64" hits="1" branch="False" />
-            <line number="65" hits="1" branch="False" />
             <line number="66" hits="1" branch="False" />
             <line number="67" hits="1" branch="False" />
             <line number="68" hits="1" branch="False" />
           </lines>
         </class>
-        <class name="Pokemons.API.Repositories.PokemonRepository/&lt;GetPokemons_List&gt;d__4" filename="Repositories\PokemonRepository.cs" line-rate="1" branch-rate="1" complexity="1">
+        <class name="Pokemons.API.Repositories.PokemonRepository/&lt;GetPokemons_List_ByType&gt;d__5" filename="Repositories\PokemonRepository.cs" line-rate="1" branch-rate="1" complexity="1">
           <methods>
             <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
@@ -928,6 +960,9 @@
                 <line number="73" hits="1" branch="False" />
                 <line number="74" hits="1" branch="False" />
                 <line number="75" hits="1" branch="False" />
+                <line number="76" hits="1" branch="False" />
+                <line number="77" hits="1" branch="False" />
+                <line number="78" hits="1" branch="False" />
               </lines>
             </method>
           </methods>
@@ -936,274 +971,244 @@
             <line number="73" hits="1" branch="False" />
             <line number="74" hits="1" branch="False" />
             <line number="75" hits="1" branch="False" />
-          </lines>
-        </class>
-        <class name="Pokemons.API.Repositories.PokemonRepository/&lt;GetPokemons_List_ByType&gt;d__5" filename="Repositories\PokemonRepository.cs" line-rate="1" branch-rate="1" complexity="1">
-          <methods>
-            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
-              <lines>
-                <line number="78" hits="1" branch="False" />
-                <line number="80" hits="1" branch="False" />
-                <line number="81" hits="1" branch="False" />
-                <line number="82" hits="1" branch="False" />
-                <line number="83" hits="1" branch="False" />
-                <line number="84" hits="1" branch="False" />
-                <line number="85" hits="1" branch="False" />
-              </lines>
-            </method>
-          </methods>
-          <lines>
+            <line number="76" hits="1" branch="False" />
+            <line number="77" hits="1" branch="False" />
             <line number="78" hits="1" branch="False" />
-            <line number="80" hits="1" branch="False" />
-            <line number="81" hits="1" branch="False" />
-            <line number="82" hits="1" branch="False" />
-            <line number="83" hits="1" branch="False" />
-            <line number="84" hits="1" branch="False" />
-            <line number="85" hits="1" branch="False" />
           </lines>
         </class>
         <class name="Pokemons.API.Repositories.PokemonRepository/&lt;GetPokemon_ById&gt;d__6" filename="Repositories\PokemonRepository.cs" line-rate="0" branch-rate="1" complexity="1">
           <methods>
             <method name="MoveNext" signature="()" line-rate="0" branch-rate="1" complexity="1">
               <lines>
+                <line number="85" hits="0" branch="False" />
+                <line number="87" hits="0" branch="False" />
+                <line number="88" hits="0" branch="False" />
+                <line number="89" hits="0" branch="False" />
+                <line number="90" hits="0" branch="False" />
+                <line number="91" hits="0" branch="False" />
                 <line number="92" hits="0" branch="False" />
-                <line number="94" hits="0" branch="False" />
-                <line number="95" hits="0" branch="False" />
-                <line number="96" hits="0" branch="False" />
-                <line number="97" hits="0" branch="False" />
-                <line number="98" hits="0" branch="False" />
-                <line number="99" hits="0" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
+            <line number="85" hits="0" branch="False" />
+            <line number="87" hits="0" branch="False" />
+            <line number="88" hits="0" branch="False" />
+            <line number="89" hits="0" branch="False" />
+            <line number="90" hits="0" branch="False" />
+            <line number="91" hits="0" branch="False" />
             <line number="92" hits="0" branch="False" />
-            <line number="94" hits="0" branch="False" />
-            <line number="95" hits="0" branch="False" />
-            <line number="96" hits="0" branch="False" />
-            <line number="97" hits="0" branch="False" />
-            <line number="98" hits="0" branch="False" />
-            <line number="99" hits="0" branch="False" />
           </lines>
         </class>
         <class name="Pokemons.API.Repositories.PokemonRepository/&lt;GetPokemon_ByName&gt;d__7" filename="Repositories\PokemonRepository.cs" line-rate="1" branch-rate="1" complexity="1">
           <methods>
             <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
+                <line number="95" hits="5" branch="False" />
+                <line number="97" hits="5" branch="False" />
+                <line number="98" hits="5" branch="False" />
+                <line number="99" hits="5" branch="False" />
+                <line number="100" hits="5" branch="False" />
+                <line number="101" hits="5" branch="False" />
                 <line number="102" hits="5" branch="False" />
-                <line number="104" hits="5" branch="False" />
-                <line number="105" hits="5" branch="False" />
-                <line number="106" hits="5" branch="False" />
-                <line number="107" hits="5" branch="False" />
-                <line number="108" hits="5" branch="False" />
-                <line number="109" hits="5" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
+            <line number="95" hits="5" branch="False" />
+            <line number="97" hits="5" branch="False" />
+            <line number="98" hits="5" branch="False" />
+            <line number="99" hits="5" branch="False" />
+            <line number="100" hits="5" branch="False" />
+            <line number="101" hits="5" branch="False" />
             <line number="102" hits="5" branch="False" />
-            <line number="104" hits="5" branch="False" />
-            <line number="105" hits="5" branch="False" />
-            <line number="106" hits="5" branch="False" />
-            <line number="107" hits="5" branch="False" />
-            <line number="108" hits="5" branch="False" />
-            <line number="109" hits="5" branch="False" />
           </lines>
         </class>
-        <class name="Pokemons.API.Repositories.PokemonRepository/&lt;GetPokemons_ByEntry&gt;d__8" filename="Repositories\PokemonRepository.cs" line-rate="0.8571" branch-rate="0.75" complexity="4">
+        <class name="Pokemons.API.Repositories.PokemonRepository/&lt;GetPokemons_ByEntry&gt;d__8" filename="Repositories\PokemonRepository.cs" line-rate="1" branch-rate="1" complexity="2">
           <methods>
-            <method name="MoveNext" signature="()" line-rate="0.8571" branch-rate="0.75" complexity="4">
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="2">
               <lines>
+                <line number="109" hits="3" branch="False" />
+                <line number="112" hits="3" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="34" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="113" hits="2" branch="False" />
+                <line number="115" hits="1" branch="False" />
                 <line number="116" hits="3" branch="False" />
-                <line number="119" hits="3" branch="True" condition-coverage="100% (2/2)">
-                  <conditions>
-                    <condition number="51" type="jump" coverage="100%" />
-                  </conditions>
-                </line>
-                <line number="120" hits="2" branch="False" />
-                <line number="122" hits="1" branch="True" condition-coverage="50% (1/2)">
-                  <conditions>
-                    <condition number="191" type="jump" coverage="50%" />
-                  </conditions>
-                </line>
-                <line number="123" hits="0" branch="False" />
-                <line number="125" hits="1" branch="False" />
-                <line number="126" hits="3" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
+            <line number="109" hits="3" branch="False" />
+            <line number="112" hits="3" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="34" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="113" hits="2" branch="False" />
+            <line number="115" hits="1" branch="False" />
             <line number="116" hits="3" branch="False" />
-            <line number="119" hits="3" branch="True" condition-coverage="100% (2/2)">
-              <conditions>
-                <condition number="51" type="jump" coverage="100%" />
-              </conditions>
-            </line>
-            <line number="120" hits="2" branch="False" />
-            <line number="122" hits="1" branch="True" condition-coverage="50% (1/2)">
-              <conditions>
-                <condition number="191" type="jump" coverage="50%" />
-              </conditions>
-            </line>
-            <line number="123" hits="0" branch="False" />
-            <line number="125" hits="1" branch="False" />
-            <line number="126" hits="3" branch="False" />
           </lines>
         </class>
         <class name="Pokemons.API.Repositories.PokemonRepository/&lt;GetPokemons_ByEntry_Detailed&gt;d__9" filename="Repositories\PokemonRepository.cs" line-rate="1" branch-rate="1" complexity="1">
           <methods>
             <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="129" hits="2" branch="False" />
-                <line number="131" hits="2" branch="False" />
-                <line number="132" hits="2" branch="False" />
-                <line number="133" hits="2" branch="False" />
-                <line number="134" hits="2" branch="False" />
-                <line number="135" hits="2" branch="False" />
-                <line number="136" hits="2" branch="False" />
+                <line number="119" hits="2" branch="False" />
+                <line number="121" hits="2" branch="False" />
+                <line number="122" hits="2" branch="False" />
+                <line number="123" hits="2" branch="False" />
+                <line number="124" hits="2" branch="False" />
+                <line number="125" hits="2" branch="False" />
+                <line number="126" hits="2" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="129" hits="2" branch="False" />
-            <line number="131" hits="2" branch="False" />
-            <line number="132" hits="2" branch="False" />
-            <line number="133" hits="2" branch="False" />
-            <line number="134" hits="2" branch="False" />
-            <line number="135" hits="2" branch="False" />
-            <line number="136" hits="2" branch="False" />
+            <line number="119" hits="2" branch="False" />
+            <line number="121" hits="2" branch="False" />
+            <line number="122" hits="2" branch="False" />
+            <line number="123" hits="2" branch="False" />
+            <line number="124" hits="2" branch="False" />
+            <line number="125" hits="2" branch="False" />
+            <line number="126" hits="2" branch="False" />
           </lines>
         </class>
-        <class name="Pokemons.API.Repositories.PokemonRepository/&lt;GetPokemons_ByEntry_ForeignKeys&gt;d__10" filename="Repositories\PokemonRepository.cs" line-rate="0" branch-rate="1" complexity="1">
-          <methods>
-            <method name="MoveNext" signature="()" line-rate="0" branch-rate="1" complexity="1">
-              <lines>
-                <line number="139" hits="0" branch="False" />
-                <line number="141" hits="0" branch="False" />
-                <line number="142" hits="0" branch="False" />
-                <line number="143" hits="0" branch="False" />
-                <line number="144" hits="0" branch="False" />
-                <line number="145" hits="0" branch="False" />
-              </lines>
-            </method>
-          </methods>
-          <lines>
-            <line number="139" hits="0" branch="False" />
-            <line number="141" hits="0" branch="False" />
-            <line number="142" hits="0" branch="False" />
-            <line number="143" hits="0" branch="False" />
-            <line number="144" hits="0" branch="False" />
-            <line number="145" hits="0" branch="False" />
-          </lines>
-        </class>
-        <class name="Pokemons.API.Repositories.PokemonRepository/&lt;GetPokemons_ByEntry_Simple&gt;d__11" filename="Repositories\PokemonRepository.cs" line-rate="1" branch-rate="1" complexity="1">
+        <class name="Pokemons.API.Repositories.PokemonRepository/&lt;GetPokemons_ByEntry_Simple&gt;d__10" filename="Repositories\PokemonRepository.cs" line-rate="1" branch-rate="1" complexity="1">
           <methods>
             <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="148" hits="1" branch="False" />
-                <line number="150" hits="1" branch="False" />
-                <line number="151" hits="1" branch="False" />
+                <line number="129" hits="1" branch="False" />
+                <line number="131" hits="1" branch="False" />
+                <line number="132" hits="1" branch="False" />
+                <line number="133" hits="1" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="148" hits="1" branch="False" />
-            <line number="150" hits="1" branch="False" />
-            <line number="151" hits="1" branch="False" />
+            <line number="129" hits="1" branch="False" />
+            <line number="131" hits="1" branch="False" />
+            <line number="132" hits="1" branch="False" />
+            <line number="133" hits="1" branch="False" />
           </lines>
         </class>
-        <class name="Pokemons.API.Repositories.PokemonRepository/&lt;GetPokemon_ByEntryAndGen&gt;d__12" filename="Repositories\PokemonRepository.cs" line-rate="0.8571" branch-rate="0.75" complexity="4">
+        <class name="Pokemons.API.Repositories.PokemonRepository/&lt;GetPokemon_ByEntryAndGen&gt;d__11" filename="Repositories\PokemonRepository.cs" line-rate="1" branch-rate="1" complexity="2">
           <methods>
-            <method name="MoveNext" signature="()" line-rate="0.8571" branch-rate="0.75" complexity="4">
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="2">
               <lines>
-                <line number="158" hits="7" branch="False" />
-                <line number="161" hits="7" branch="True" condition-coverage="100% (2/2)">
+                <line number="140" hits="7" branch="False" />
+                <line number="143" hits="7" branch="True" condition-coverage="100% (2/2)">
                   <conditions>
-                    <condition number="51" type="jump" coverage="100%" />
+                    <condition number="34" type="jump" coverage="100%" />
                   </conditions>
                 </line>
-                <line number="162" hits="6" branch="False" />
-                <line number="164" hits="1" branch="True" condition-coverage="50% (1/2)">
-                  <conditions>
-                    <condition number="200" type="jump" coverage="50%" />
-                  </conditions>
-                </line>
-                <line number="165" hits="0" branch="False" />
-                <line number="167" hits="1" branch="False" />
-                <line number="168" hits="7" branch="False" />
+                <line number="144" hits="6" branch="False" />
+                <line number="146" hits="1" branch="False" />
+                <line number="147" hits="7" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="158" hits="7" branch="False" />
-            <line number="161" hits="7" branch="True" condition-coverage="100% (2/2)">
+            <line number="140" hits="7" branch="False" />
+            <line number="143" hits="7" branch="True" condition-coverage="100% (2/2)">
               <conditions>
-                <condition number="51" type="jump" coverage="100%" />
+                <condition number="34" type="jump" coverage="100%" />
               </conditions>
             </line>
-            <line number="162" hits="6" branch="False" />
-            <line number="164" hits="1" branch="True" condition-coverage="50% (1/2)">
-              <conditions>
-                <condition number="200" type="jump" coverage="50%" />
-              </conditions>
-            </line>
-            <line number="165" hits="0" branch="False" />
-            <line number="167" hits="1" branch="False" />
-            <line number="168" hits="7" branch="False" />
+            <line number="144" hits="6" branch="False" />
+            <line number="146" hits="1" branch="False" />
+            <line number="147" hits="7" branch="False" />
           </lines>
         </class>
-        <class name="Pokemons.API.Repositories.PokemonRepository/&lt;GetPokemon_ByEntryAndGen_Detailed&gt;d__13" filename="Repositories\PokemonRepository.cs" line-rate="1" branch-rate="1" complexity="1">
+        <class name="Pokemons.API.Repositories.PokemonRepository/&lt;GetPokemon_ByEntryAndGen_Detailed&gt;d__12" filename="Repositories\PokemonRepository.cs" line-rate="1" branch-rate="1" complexity="1">
           <methods>
             <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="171" hits="6" branch="False" />
-                <line number="173" hits="6" branch="False" />
-                <line number="174" hits="6" branch="False" />
-                <line number="175" hits="6" branch="False" />
-                <line number="176" hits="6" branch="False" />
-                <line number="177" hits="6" branch="False" />
-                <line number="178" hits="6" branch="False" />
+                <line number="150" hits="6" branch="False" />
+                <line number="152" hits="6" branch="False" />
+                <line number="153" hits="6" branch="False" />
+                <line number="154" hits="6" branch="False" />
+                <line number="155" hits="6" branch="False" />
+                <line number="156" hits="6" branch="False" />
+                <line number="157" hits="6" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="171" hits="6" branch="False" />
-            <line number="173" hits="6" branch="False" />
-            <line number="174" hits="6" branch="False" />
-            <line number="175" hits="6" branch="False" />
-            <line number="176" hits="6" branch="False" />
-            <line number="177" hits="6" branch="False" />
-            <line number="178" hits="6" branch="False" />
+            <line number="150" hits="6" branch="False" />
+            <line number="152" hits="6" branch="False" />
+            <line number="153" hits="6" branch="False" />
+            <line number="154" hits="6" branch="False" />
+            <line number="155" hits="6" branch="False" />
+            <line number="156" hits="6" branch="False" />
+            <line number="157" hits="6" branch="False" />
           </lines>
         </class>
-        <class name="Pokemons.API.Repositories.PokemonRepository/&lt;GetPokemon_ByEntryAndGen_ForeignKeys&gt;d__14" filename="Repositories\PokemonRepository.cs" line-rate="0" branch-rate="1" complexity="1">
-          <methods>
-            <method name="MoveNext" signature="()" line-rate="0" branch-rate="1" complexity="1">
-              <lines>
-                <line number="181" hits="0" branch="False" />
-                <line number="183" hits="0" branch="False" />
-                <line number="184" hits="0" branch="False" />
-                <line number="185" hits="0" branch="False" />
-                <line number="186" hits="0" branch="False" />
-                <line number="187" hits="0" branch="False" />
-              </lines>
-            </method>
-          </methods>
-          <lines>
-            <line number="181" hits="0" branch="False" />
-            <line number="183" hits="0" branch="False" />
-            <line number="184" hits="0" branch="False" />
-            <line number="185" hits="0" branch="False" />
-            <line number="186" hits="0" branch="False" />
-            <line number="187" hits="0" branch="False" />
-          </lines>
-        </class>
-        <class name="Pokemons.API.Repositories.PokemonRepository/&lt;GetPokemon_ByEntryAndGen_Simple&gt;d__15" filename="Repositories\PokemonRepository.cs" line-rate="1" branch-rate="1" complexity="1">
+        <class name="Pokemons.API.Repositories.PokemonRepository/&lt;GetPokemon_ByEntryAndGen_Simple&gt;d__13" filename="Repositories\PokemonRepository.cs" line-rate="1" branch-rate="1" complexity="1">
           <methods>
             <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="190" hits="1" branch="False" />
-                <line number="192" hits="1" branch="False" />
+                <line number="160" hits="1" branch="False" />
+                <line number="162" hits="1" branch="False" />
+                <line number="163" hits="1" branch="False" />
+                <line number="164" hits="1" branch="False" />
+                <line number="165" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="160" hits="1" branch="False" />
+            <line number="162" hits="1" branch="False" />
+            <line number="163" hits="1" branch="False" />
+            <line number="164" hits="1" branch="False" />
+            <line number="165" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="Pokemons.API.Repositories.PokemonRepository/&lt;AddPokemon&gt;d__14" filename="Repositories\PokemonRepository.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="172" hits="3" branch="False" />
+                <line number="174" hits="3" branch="False" />
+                <line number="175" hits="3" branch="False" />
+                <line number="176" hits="3" branch="False" />
+                <line number="177" hits="3" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="172" hits="3" branch="False" />
+            <line number="174" hits="3" branch="False" />
+            <line number="175" hits="3" branch="False" />
+            <line number="176" hits="3" branch="False" />
+            <line number="177" hits="3" branch="False" />
+          </lines>
+        </class>
+        <class name="Pokemons.API.Repositories.PokemonRepository/&lt;DeletePokemon&gt;d__15" filename="Repositories\PokemonRepository.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="184" hits="1" branch="False" />
+                <line number="186" hits="1" branch="False" />
+                <line number="187" hits="1" branch="False" />
+                <line number="188" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="184" hits="1" branch="False" />
+            <line number="186" hits="1" branch="False" />
+            <line number="187" hits="1" branch="False" />
+            <line number="188" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="Pokemons.API.Repositories.PokemonRepository/&lt;DeletePokemon_List&gt;d__16" filename="Repositories\PokemonRepository.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="191" hits="1" branch="False" />
                 <line number="193" hits="1" branch="False" />
                 <line number="194" hits="1" branch="False" />
                 <line number="195" hits="1" branch="False" />
@@ -1211,67 +1216,10 @@
             </method>
           </methods>
           <lines>
-            <line number="190" hits="1" branch="False" />
-            <line number="192" hits="1" branch="False" />
+            <line number="191" hits="1" branch="False" />
             <line number="193" hits="1" branch="False" />
             <line number="194" hits="1" branch="False" />
             <line number="195" hits="1" branch="False" />
-          </lines>
-        </class>
-        <class name="Pokemons.API.Repositories.PokemonRepository/&lt;AddPokemon&gt;d__16" filename="Repositories\PokemonRepository.cs" line-rate="1" branch-rate="1" complexity="1">
-          <methods>
-            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
-              <lines>
-                <line number="202" hits="3" branch="False" />
-                <line number="204" hits="3" branch="False" />
-                <line number="205" hits="3" branch="False" />
-                <line number="206" hits="3" branch="False" />
-                <line number="207" hits="3" branch="False" />
-              </lines>
-            </method>
-          </methods>
-          <lines>
-            <line number="202" hits="3" branch="False" />
-            <line number="204" hits="3" branch="False" />
-            <line number="205" hits="3" branch="False" />
-            <line number="206" hits="3" branch="False" />
-            <line number="207" hits="3" branch="False" />
-          </lines>
-        </class>
-        <class name="Pokemons.API.Repositories.PokemonRepository/&lt;DeletePokemon&gt;d__17" filename="Repositories\PokemonRepository.cs" line-rate="1" branch-rate="1" complexity="1">
-          <methods>
-            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
-              <lines>
-                <line number="214" hits="1" branch="False" />
-                <line number="216" hits="1" branch="False" />
-                <line number="217" hits="1" branch="False" />
-                <line number="218" hits="1" branch="False" />
-              </lines>
-            </method>
-          </methods>
-          <lines>
-            <line number="214" hits="1" branch="False" />
-            <line number="216" hits="1" branch="False" />
-            <line number="217" hits="1" branch="False" />
-            <line number="218" hits="1" branch="False" />
-          </lines>
-        </class>
-        <class name="Pokemons.API.Repositories.PokemonRepository/&lt;DeletePokemon_List&gt;d__18" filename="Repositories\PokemonRepository.cs" line-rate="1" branch-rate="1" complexity="1">
-          <methods>
-            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
-              <lines>
-                <line number="221" hits="1" branch="False" />
-                <line number="223" hits="1" branch="False" />
-                <line number="224" hits="1" branch="False" />
-                <line number="225" hits="1" branch="False" />
-              </lines>
-            </method>
-          </methods>
-          <lines>
-            <line number="221" hits="1" branch="False" />
-            <line number="223" hits="1" branch="False" />
-            <line number="224" hits="1" branch="False" />
-            <line number="225" hits="1" branch="False" />
           </lines>
         </class>
         <class name="Pokemons.API.Repositories.TypingRepository" filename="Repositories\TypingRepository.cs" line-rate="1" branch-rate="1" complexity="1">

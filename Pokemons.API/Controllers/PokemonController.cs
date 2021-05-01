@@ -13,7 +13,7 @@ using Pokemons.API.Helpers;
 
 namespace Pokemons.API.Controllers
 {
-    //[Authorize]
+    [Authorize] // <--
     [ApiController]
     [Route("api")]
     [ApiVersion("1.0")]
@@ -292,7 +292,7 @@ namespace Pokemons.API.Controllers
         {
             try{
                 if(name == null || name.Length < 3)
-                    return new BadRequestObjectResult("Pokedex name not long enough");
+                    return new BadRequestObjectResult("Pokemon name not long enough");
 
                 PokemonDTO results = await _pokemonService.GetPokemon_ByName(name);
                 if(results == null)

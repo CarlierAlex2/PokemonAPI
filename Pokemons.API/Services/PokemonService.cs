@@ -201,7 +201,7 @@ namespace Pokemons.API.Services
         public async Task<List<PokemonDTO>> GetPokemons_ByEntry(int pokedexEntry)
         {
             // Get a list of Pokemon by entry
-            var results = await _pokemonRepository.GetPokemons_ByEntry(pokedexEntry, DetailLevel.Details);
+            var results = await _pokemonRepository.GetPokemons_ByEntry(pokedexEntry, true);
             if (results == null || results.Count <= 0)
                 return null;
 
@@ -212,7 +212,7 @@ namespace Pokemons.API.Services
         public async Task<PokemonDTO> GetPokemon_ByEntryAndGen(int pokedexEntry, int generation)
         {
             // Get a Pokemon by entry and gen
-            var results = await _pokemonRepository.GetPokemon_ByEntryAndGen(pokedexEntry, generation, DetailLevel.Details);
+            var results = await _pokemonRepository.GetPokemon_ByEntryAndGen(pokedexEntry, generation, true);
             if (results == null)
                 return null;
 
@@ -273,7 +273,7 @@ namespace Pokemons.API.Services
             
             // Search for Pokemon list by entry
             //List<Pokemon> listPokemon = await _pokemonRepository.GetPokemons_ByEntry(pokedexEntry, DetailLevel.ForeignKeys);
-            List<Pokemon> listPokemon = await _pokemonRepository.GetPokemons_ByEntry(pokedexEntry, DetailLevel.Basic);
+            List<Pokemon> listPokemon = await _pokemonRepository.GetPokemons_ByEntry(pokedexEntry);
             if (listPokemon == null)
                 return;
 
@@ -287,7 +287,7 @@ namespace Pokemons.API.Services
             
             // Search for a Pokemon by entry and gen (unique values)
             //Pokemon pokemon = await _pokemonRepository.GetPokemon_ByEntryAndGen(pokedexEntry, generation, DetailLevel.ForeignKeys);
-            Pokemon pokemon = await _pokemonRepository.GetPokemon_ByEntryAndGen(pokedexEntry, generation, DetailLevel.Basic);
+            Pokemon pokemon = await _pokemonRepository.GetPokemon_ByEntryAndGen(pokedexEntry, generation);
             if (pokemon == null)
                 return;
             
@@ -308,7 +308,7 @@ namespace Pokemons.API.Services
 
         private async Task<Pokemon> CreatePokemonDTO_FromPokemon(PokemonDTO pokemonDTO)
         {
-            // Add pokemon + return results
+            // Create Pokemon from DTO
             Pokemon pokemon = _mapper.Map<Pokemon>(pokemonDTO);
             pokemon.PokemonId = Guid.NewGuid();
             pokemon.PokemonTypings = new List<PokemonTyping>();
@@ -319,6 +319,7 @@ namespace Pokemons.API.Services
 
         private async Task AddPokemonTyping_To_Pokemon(PokemonDTO pokemonDTO, Pokemon pokemon)
         {
+            // Create PokemonTyping's for new Pokemon
             foreach (var typingName in pokemonDTO.Types)
             {
                 var typing = await _typeRepository.GetTyping_ByName(typingName);

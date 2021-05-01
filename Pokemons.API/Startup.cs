@@ -75,7 +75,6 @@ namespace Pokemons.API
             services.AddAutoMapper(typeof(Startup));
 
             // authorization + authentication - auth0
-            /*
             services.AddAuthentication(options => {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -83,16 +82,24 @@ namespace Pokemons.API
                 options.Authority = "https://dev-epycux53.eu.auth0.com/";
                 options.Audience = "https://alex.carlier.PokemonAPI";
             });
-            */
+            
 
             // swagger
             services.AddSwaggerGen(c =>
             {
+                /*c.SwaggerDoc("v1", new OpenApiInfo { 
+                    Title = "Pokemons API v1", 
+                    Version = "v1",
+                    Description = "An API to search for Pokemon and their Types"
+                    });*/
+
                 c.SwaggerDoc("v2", new OpenApiInfo { 
-                    Title = "Pokemons.API", 
+                    Title = "Pokemons API v2", 
                     Version = "v2",
                     Description = "An API to search for Pokemon and their Types"
                     });
+
+                c.ResolveConflictingActions(apiDescriptions => apiDescriptions.Last());
             });
         }
 
@@ -102,14 +109,14 @@ namespace Pokemons.API
             if (env.IsDevelopment() || env.IsEnvironment("Docker"))
             {
                 app.UseSwagger();
-                //app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Pokemons.API v1"));
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v2/swagger.json", "Pokemons.API v2"));
+                /*app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Pokemons API v1"));*/
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v2/swagger.json", "Pokemons API v2"));
             }
 
             app.UseHttpsRedirection();
             app.UseRouting();
 
-            //app.UseAuthentication();
+            app.UseAuthentication(); // <--
             app.UseAuthorization();
 
             app.UseResponseCaching();
