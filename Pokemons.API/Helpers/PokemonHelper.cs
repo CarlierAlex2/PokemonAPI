@@ -15,7 +15,10 @@ namespace Pokemons.API.Helpers
             // Cleanup PokemonDTO for user input
             pokemonDTO.Name = pokemonDTO.Name.Replace(" ", "");
             pokemonDTO.EggGroup = pokemonDTO.EggGroup.Replace(" ", "");
-            pokemonDTO.Types = pokemonDTO.Types.Select(t => t.Replace(" ", "")).ToList();
+            var intermediate = pokemonDTO.Types.Select(t => t.Replace(" ", "").ToLower()) // convert all to lower + remove spacing
+                                                .Where(t => !string.IsNullOrWhiteSpace(t)) // check if there is a value
+                                                .Distinct().ToList(); // get distinct
+            pokemonDTO.Types = intermediate.Select(t => char.ToUpper(t[0]) + t.Substring(1)).ToList(); // convert first char to uppercase
             return pokemonDTO;
         }
 

@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<coverage line-rate="0.8073999999999999" branch-rate="0.7243" version="1.9" timestamp="1619874434" lines-covered="797" lines-valid="987" branches-covered="113" branches-valid="156">
+<coverage line-rate="0.8096" branch-rate="0.7243" version="1.9" timestamp="1619957826" lines-covered="808" lines-valid="998" branches-covered="113" branches-valid="156">
   <sources>
     <source>C:\Users\alexc\Documents\MCT\Jaar2_2020_2021\MCT_semester_4\BackendDevelopment\BackDev_Project\2MCT4-AIE_Carlier_Alex_BackendDevelopment_Project\Pokemons.API\</source>
   </sources>
   <packages>
-    <package name="Pokemons.API" line-rate="0.8073999999999999" branch-rate="0.7243" complexity="319">
+    <package name="Pokemons.API" line-rate="0.8096" branch-rate="0.7243" complexity="319">
       <classes>
         <class name="Pokemons.API.Program" filename="Program.cs" line-rate="0.625" branch-rate="1" complexity="2">
           <methods>
@@ -36,14 +36,14 @@
             <line number="24" hits="2" branch="False" />
           </lines>
         </class>
-        <class name="Pokemons.API.Startup" filename="Startup.cs" line-rate="0.9074" branch-rate="0.75" complexity="7">
+        <class name="Pokemons.API.Startup" filename="Startup.cs" line-rate="0.9193000000000001" branch-rate="0.75" complexity="7">
           <methods>
             <method name="get_Configuration" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="38" hits="2" branch="False" />
               </lines>
             </method>
-            <method name="ConfigureServices" signature="(Microsoft.Extensions.DependencyInjection.IServiceCollection)" line-rate="0.8529000000000001" branch-rate="1" complexity="1">
+            <method name="ConfigureServices" signature="(Microsoft.Extensions.DependencyInjection.IServiceCollection)" line-rate="0.8809" branch-rate="1" complexity="1">
               <lines>
                 <line number="42" hits="1" branch="False" />
                 <line number="44" hits="1" branch="False" />
@@ -77,32 +77,40 @@
                 <line number="92" hits="1" branch="False" />
                 <line number="93" hits="1" branch="False" />
                 <line number="94" hits="1" branch="False" />
-                <line number="95" hits="2" branch="False" />
+                <line number="95" hits="1" branch="False" />
                 <line number="96" hits="1" branch="False" />
+                <line number="97" hits="1" branch="False" />
+                <line number="98" hits="1" branch="False" />
+                <line number="99" hits="1" branch="False" />
+                <line number="100" hits="1" branch="False" />
+                <line number="101" hits="1" branch="False" />
+                <line number="102" hits="1" branch="False" />
+                <line number="103" hits="2" branch="False" />
+                <line number="104" hits="1" branch="False" />
               </lines>
             </method>
             <method name="Configure" signature="(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)" line-rate="1" branch-rate="0.75" complexity="4">
               <lines>
-                <line number="100" hits="1" branch="False" />
-                <line number="101" hits="1" branch="True" condition-coverage="75% (3/4)">
+                <line number="108" hits="1" branch="False" />
+                <line number="109" hits="1" branch="True" condition-coverage="75% (3/4)">
                   <conditions>
                     <condition number="7" type="jump" coverage="50%" />
                     <condition number="25" type="jump" coverage="100%" />
                   </conditions>
                 </line>
-                <line number="102" hits="1" branch="False" />
-                <line number="103" hits="1" branch="False" />
-                <line number="105" hits="2" branch="False" />
-                <line number="106" hits="1" branch="False" />
-                <line number="108" hits="1" branch="False" />
-                <line number="109" hits="1" branch="False" />
-                <line number="112" hits="1" branch="False" />
+                <line number="110" hits="1" branch="False" />
+                <line number="111" hits="1" branch="False" />
+                <line number="113" hits="2" branch="False" />
                 <line number="114" hits="1" branch="False" />
-                <line number="115" hits="1" branch="False" />
                 <line number="116" hits="1" branch="False" />
                 <line number="117" hits="1" branch="False" />
-                <line number="118" hits="2" branch="False" />
-                <line number="119" hits="1" branch="False" />
+                <line number="120" hits="1" branch="False" />
+                <line number="122" hits="1" branch="False" />
+                <line number="123" hits="1" branch="False" />
+                <line number="124" hits="1" branch="False" />
+                <line number="125" hits="1" branch="False" />
+                <line number="126" hits="2" branch="False" />
+                <line number="127" hits="1" branch="False" />
               </lines>
             </method>
             <method name=".ctor" signature="(Microsoft.Extensions.Configuration.IConfiguration)" line-rate="1" branch-rate="1" complexity="1">
@@ -148,28 +156,36 @@
             <line number="92" hits="1" branch="False" />
             <line number="93" hits="1" branch="False" />
             <line number="94" hits="1" branch="False" />
-            <line number="95" hits="2" branch="False" />
+            <line number="95" hits="1" branch="False" />
             <line number="96" hits="1" branch="False" />
+            <line number="97" hits="1" branch="False" />
+            <line number="98" hits="1" branch="False" />
+            <line number="99" hits="1" branch="False" />
             <line number="100" hits="1" branch="False" />
-            <line number="101" hits="1" branch="True" condition-coverage="75% (3/4)">
+            <line number="101" hits="1" branch="False" />
+            <line number="102" hits="1" branch="False" />
+            <line number="103" hits="2" branch="False" />
+            <line number="104" hits="1" branch="False" />
+            <line number="108" hits="1" branch="False" />
+            <line number="109" hits="1" branch="True" condition-coverage="75% (3/4)">
               <conditions>
                 <condition number="7" type="jump" coverage="50%" />
                 <condition number="25" type="jump" coverage="100%" />
               </conditions>
             </line>
-            <line number="102" hits="1" branch="False" />
-            <line number="103" hits="1" branch="False" />
-            <line number="105" hits="2" branch="False" />
-            <line number="106" hits="1" branch="False" />
-            <line number="108" hits="1" branch="False" />
-            <line number="109" hits="1" branch="False" />
-            <line number="112" hits="1" branch="False" />
+            <line number="110" hits="1" branch="False" />
+            <line number="111" hits="1" branch="False" />
+            <line number="113" hits="2" branch="False" />
             <line number="114" hits="1" branch="False" />
-            <line number="115" hits="1" branch="False" />
             <line number="116" hits="1" branch="False" />
             <line number="117" hits="1" branch="False" />
-            <line number="118" hits="2" branch="False" />
-            <line number="119" hits="1" branch="False" />
+            <line number="120" hits="1" branch="False" />
+            <line number="122" hits="1" branch="False" />
+            <line number="123" hits="1" branch="False" />
+            <line number="124" hits="1" branch="False" />
+            <line number="125" hits="1" branch="False" />
+            <line number="126" hits="2" branch="False" />
+            <line number="127" hits="1" branch="False" />
             <line number="33" hits="1" branch="False" />
             <line number="34" hits="1" branch="False" />
             <line number="35" hits="1" branch="False" />
@@ -2104,26 +2120,29 @@
                 <line number="18" hits="16" branch="False" />
                 <line number="19" hits="8" branch="False" />
                 <line number="20" hits="8" branch="False" />
+                <line number="21" hits="16" branch="False" />
+                <line number="22" hits="8" branch="False" />
+                <line number="23" hits="8" branch="False" />
               </lines>
             </method>
             <method name="VerifyPokemonDTO" signature="(Pokemons.API.DTO.PokemonDTO,System.Collections.Generic.List`1&lt;System.String&gt;)" line-rate="1" branch-rate="1" complexity="4">
               <lines>
-                <line number="25" hits="6" branch="False" />
-                <line number="27" hits="29" branch="True" condition-coverage="100% (2/2)">
+                <line number="28" hits="6" branch="False" />
+                <line number="30" hits="29" branch="True" condition-coverage="100% (2/2)">
                   <conditions>
                     <condition number="72" type="jump" coverage="100%" />
                   </conditions>
                 </line>
-                <line number="28" hits="6" branch="False" />
-                <line number="30" hits="6" branch="True" condition-coverage="100% (2/2)">
+                <line number="31" hits="6" branch="False" />
+                <line number="33" hits="6" branch="True" condition-coverage="100% (2/2)">
                   <conditions>
                     <condition number="37" type="jump" coverage="100%" />
                   </conditions>
                 </line>
-                <line number="31" hits="1" branch="False" />
-                <line number="32" hits="5" branch="False" />
-                <line number="34" hits="5" branch="False" />
-                <line number="35" hits="6" branch="False" />
+                <line number="34" hits="1" branch="False" />
+                <line number="35" hits="5" branch="False" />
+                <line number="37" hits="5" branch="False" />
+                <line number="38" hits="6" branch="False" />
               </lines>
             </method>
           </methods>
@@ -2134,22 +2153,25 @@
             <line number="18" hits="16" branch="False" />
             <line number="19" hits="8" branch="False" />
             <line number="20" hits="8" branch="False" />
-            <line number="25" hits="6" branch="False" />
-            <line number="27" hits="29" branch="True" condition-coverage="100% (2/2)">
+            <line number="21" hits="16" branch="False" />
+            <line number="22" hits="8" branch="False" />
+            <line number="23" hits="8" branch="False" />
+            <line number="28" hits="6" branch="False" />
+            <line number="30" hits="29" branch="True" condition-coverage="100% (2/2)">
               <conditions>
                 <condition number="72" type="jump" coverage="100%" />
               </conditions>
             </line>
-            <line number="28" hits="6" branch="False" />
-            <line number="30" hits="6" branch="True" condition-coverage="100% (2/2)">
+            <line number="31" hits="6" branch="False" />
+            <line number="33" hits="6" branch="True" condition-coverage="100% (2/2)">
               <conditions>
                 <condition number="37" type="jump" coverage="100%" />
               </conditions>
             </line>
-            <line number="31" hits="1" branch="False" />
-            <line number="32" hits="5" branch="False" />
-            <line number="34" hits="5" branch="False" />
-            <line number="35" hits="6" branch="False" />
+            <line number="34" hits="1" branch="False" />
+            <line number="35" hits="5" branch="False" />
+            <line number="37" hits="5" branch="False" />
+            <line number="38" hits="6" branch="False" />
           </lines>
         </class>
         <class name="Pokemons.API.DTO.AutoMapping" filename="DTO\AutoMapping.cs" line-rate="1" branch-rate="1" complexity="1">
